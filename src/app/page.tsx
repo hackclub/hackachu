@@ -31,6 +31,14 @@ export default function Home() {
           height={361}
           priority
         />
+        <Image
+          className={styles.pokeball}
+          src={`${ASSETS}/pokeball.gif`}
+          alt="spinning pokeball"
+          width={1024}
+          height={1024}
+          unoptimized
+        />
       </header>
 
       <main className={styles.main}>
