@@ -182,6 +182,15 @@ export default function Home() {
           start now. #hackachu on slack.
           <br />
           releases thursday, july 9th.
+          <br />
+          <a
+            className={styles.link}
+            href="https://auth.hackclub.com/join/hackachu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            join now.
+          </a>
         </p>
         <Image
           className={styles.footerPika}
