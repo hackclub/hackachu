@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./page.module.css";
 
 const ASSETS = "";
@@ -8,16 +9,16 @@ export default function Home() {
     <div className={styles.page}>
       <header className={styles.hero}>
         <p className={styles.presents}>lola &amp; seba at hack club hq present...</p>
-        <h1 className={styles.title}>
-          <Image
-            className={styles.titleImage}
-            src={`${ASSETS}/hackachu.png`}
-            alt="hackachu"
-            width={923}
-            height={230}
-            priority
-          />
-        </h1>
+
+        <Image
+          className={styles.titleImage}
+          src={`${ASSETS}/hackachu.png`}
+          alt="hackachu"
+          width={923}
+          height={230}
+          priority
+        />
+
         <div className={styles.heroDialog}>
           <span className={styles.heroDialogText}>
             build a card game, gamble with pokemon cards.
@@ -199,6 +200,10 @@ export default function Home() {
           >
             join now.
           </a>
+          <br />
+          <Link className={styles.link} href="/dashboard">
+            trainer dashboard.
+          </Link>
         </p>
         <Image
           className={styles.footerPika}
@@ -211,3 +216,4 @@ export default function Home() {
     </div>
   );
 }
+
