@@ -1,0 +1,124 @@
+{
+  "nodes": [
+    {
+      "id": "query:color scheme theme tailwind colors css variables globals",
+      "type": "query",
+      "meta": {
+        "text": "color scheme, theme, tailwind colors, CSS variables, globals.css"
+      }
+    },
+    {
+      "id": "src/app/layout.tsx::RootLayout",
+      "type": "file"
+    },
+    {
+      "id": "src/app/page.tsx::Home",
+      "type": "file"
+    },
+    {
+      "id": "next-env.d.ts",
+      "type": "file"
+    },
+    {
+      "id": "next.config.ts",
+      "type": "file"
+    },
+    {
+      "id": "package-lock.json",
+      "type": "file"
+    },
+    {
+      "id": "query:(empty)",
+      "type": "query",
+      "meta": {
+        "text": ""
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "query:color scheme theme tailwind colors css variables globals",
+      "to": "src/app/layout.tsx::RootLayout",
+      "rel": "retrieved",
+      "ts": 1783621956
+    },
+    {
+      "from": "query:color scheme theme tailwind colors css variables globals",
+      "to": "src/app/page.tsx::Home",
+      "rel": "retrieved",
+      "ts": 1783621956
+    },
+    {
+      "from": "query:color scheme theme tailwind colors css variables globals",
+      "to": "next-env.d.ts",
+      "rel": "retrieved",
+      "ts": 1783621956
+    },
+    {
+      "from": "query:color scheme theme tailwind colors css variables globals",
+      "to": "next.config.ts",
+      "rel": "retrieved",
+      "ts": 1783621956
+    },
+    {
+      "from": "query:color scheme theme tailwind colors css variables globals",
+      "to": "package-lock.json",
+      "rel": "retrieved",
+      "ts": 1783621956
+    },
+    {
+      "from": "query:(empty)",
+      "to": "src/app/layout.tsx::RootLayout",
+      "rel": "read",
+      "ts": 1783621989,
+      "meta": {
+        "mode": "symbol_excerpt"
+      }
+    },
+    {
+      "from": "query:(empty)",
+      "to": "src/app/page.tsx::Home",
+      "rel": "read",
+      "ts": 1783621989,
+      "meta": {
+        "mode": "symbol_excerpt"
+      }
+    }
+  ],
+  "files": {
+    "src/app/layout.tsx::RootLayout": {
+      "query_terms": [],
+      "cached_content": "  title: \"hackachu\",\n  description: \"build a card game, gamble with pokemon cards.\",\n};\n\nexport default function RootLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return (\n    <html lang=\"en\" className={cn(\"font-sans\", geist.variable, pokemonGb.variable)}>",
+      "cached_chars": 282,
+      "cached_tokens_est": 70,
+      "last_action": "read",
+      "last_ts": 1783621989
+    },
+    "src/app/page.tsx::Home": {
+      "query_terms": [],
+      "cached_content": "const ASSETS = \"\";\n\nexport default function Home() {\n  return (\n    <div className={styles.page}>\n      \n      <header className={styles.hero}>\n        <p className={styles.presents}>lola &amp; seba at hack club hq present...</p>\n\n        <Image\n          className={styles.titleImage}\n          src=",
+      "cached_chars": 5985,
+      "cached_tokens_est": 1496,
+      "last_action": "read",
+      "last_ts": 1783621989
+    }
+  },
+  "actions": [
+    {
+      "ts": 1783621956,
+      "kind": "retrieve",
+      "payload": {
+        "kind": "retrieve",
+        "query": "color scheme, theme, tailwind colors, CSS variables, globals.css"
+      }
+    },
+    {
+      "ts": 1783621956,
+      "kind": "continue_retrieve",
+      "payload": {
+        "kind": "continue_retrieve",
+        "query": "color scheme, theme, tailwind colors, CSS variables, globals.css"
+      }
+    }
+  ]
+}

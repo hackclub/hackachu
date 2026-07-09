@@ -1,0 +1,176 @@
+{
+  "entries": {
+    "color scheme theme tailwind colors css variables globals|tf=5|te=12": {
+      "created_epoch": 1783621956,
+      "files": [
+        "src/app/layout.tsx::RootLayout",
+        "src/app/page.tsx::Home",
+        "next-env.d.ts",
+        "next.config.ts",
+        "package-lock.json"
+      ],
+      "mtimes_ns": {
+        "src/app/layout.tsx::RootLayout": 1783621622218527438,
+        "src/app/page.tsx::Home": 1783621622218527438,
+        "next-env.d.ts": 1783621647598476053,
+        "next.config.ts": 1783621622212617243,
+        "package-lock.json": 1783621641968466495
+      },
+      "result": {
+        "ok": true,
+        "query": "color scheme, theme, tailwind colors, CSS variables, globals.css",
+        "graph_files": [
+          {
+            "id": "src/app/layout.tsx::RootLayout",
+            "kind": "symbol",
+            "path": "src/app/layout.tsx",
+            "ext": ".tsx",
+            "size": 11,
+            "keywords": [
+              "rootlayout",
+              "root",
+              "layout"
+            ],
+            "symbol_type": "use_case",
+            "name": "RootLayout",
+            "line_start": 14,
+            "line_end": 24,
+            "body_hash": "7f169dae",
+            "confidence": "medium",
+            "exported": true,
+            "_score": 8,
+            "_role": "code",
+            "_intent": "general"
+          },
+          {
+            "id": "src/app/page.tsx::Home",
+            "kind": "symbol",
+            "path": "src/app/page.tsx",
+            "ext": ".tsx",
+            "size": 208,
+            "keywords": [
+              "home"
+            ],
+            "symbol_type": "use_case",
+            "name": "Home",
+            "line_start": 5,
+            "line_end": 212,
+            "body_hash": "ae9d8055",
+            "confidence": "medium",
+            "exported": true,
+            "_score": 8,
+            "_role": "code",
+            "_intent": "general"
+          },
+          {
+            "id": "next-env.d.ts",
+            "kind": "file",
+            "path": "next-env.d.ts",
+            "ext": ".ts",
+            "size": 251,
+            "keywords": [],
+            "summary": "<reference types=\"next\" />.",
+            "file_hash": "d0f8375a",
+            "_score": 5,
+            "_role": "code",
+            "_intent": "general"
+          },
+          {
+            "id": "next.config.ts",
+            "kind": "file",
+            "path": "next.config.ts",
+            "ext": ".ts",
+            "size": 133,
+            "keywords": [],
+            "summary": "import type { NextConfig } from \"next\";.",
+            "file_hash": "9b77af18",
+            "_score": 5,
+            "_role": "code",
+            "_intent": "general"
+          },
+          {
+            "id": "package-lock.json",
+            "kind": "file",
+            "path": "package-lock.json",
+            "ext": ".json",
+            "size": 211442,
+            "keywords": [],
+            "summary": "\"name\": \"hackachu\",.",
+            "file_hash": "cf62851e",
+            "_score": 4,
+            "_role": "code",
+            "_intent": "general"
+          }
+        ],
+        "graph_edges": [
+          {
+            "from": "next-env.d.ts",
+            "to": "./.next/dev/types/routes.d.ts",
+            "rel": "imports"
+          },
+          {
+            "from": "next.config.ts",
+            "to": "next",
+            "rel": "imports"
+          },
+          {
+            "from": "next.config.ts",
+            "to": "type",
+            "rel": "imports"
+          },
+          {
+            "from": "src/app/layout.tsx",
+            "to": "./globals.css",
+            "rel": "imports"
+          },
+          {
+            "from": "package-lock.json",
+            "to": "//github.c",
+            "rel": "references"
+          },
+          {
+            "from": "package-lock.json",
+            "to": "//opencollective.c",
+            "rel": "references"
+          },
+          {
+            "from": "package-lock.json",
+            "to": "//tidelift.c",
+            "rel": "references"
+          },
+          {
+            "from": "package-lock.json",
+            "to": "bin/babel-parser.js",
+            "rel": "references"
+          },
+          {
+            "from": "package-lock.json",
+            "to": "bin/eslint.js",
+            "rel": "references"
+          },
+          {
+            "from": "package-lock.json",
+            "to": "bin/js-yaml.js",
+            "rel": "references"
+          },
+          {
+            "from": "package-lock.json",
+            "to": "bin/nanoid.c",
+            "rel": "references"
+          },
+          {
+            "from": "package-lock.json",
+            "to": "bin/semver.js",
+            "rel": "references"
+          }
+        ],
+        "grep_hits": [],
+        "reuse_candidates": [],
+        "read_budget": {
+          "remaining_chars": 60000,
+          "reuse_gate_candidates": []
+        }
+      }
+    }
+  }
+}

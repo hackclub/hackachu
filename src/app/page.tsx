@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
 import Gravity, { MatterBody } from "@/components/fancy/physics/gravity";
+import OnboardingWizard from "@/components/OnboardingWizard";
 
 const ASSETS = "";
 
@@ -34,6 +35,8 @@ export default function Home() {
           height={361}
           priority
         />
+
+        <OnboardingWizard isButtonBigger={true} />
         <Image
           className={styles.pokeball}
           src={`${ASSETS}/pokeball.gif`}
@@ -215,7 +218,9 @@ export default function Home() {
           height={285}
         />
       </footer>
-      
+
+      <OnboardingWizard />
+
     </div>
   );
 }
