@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
+import Gravity, { MatterBody } from "@/components/fancy/physics/gravity";
 
 const ASSETS = "";
 
 export default function Home() {
   return (
     <div className={styles.page}>
+      
       <header className={styles.hero}>
         <p className={styles.presents}>lola &amp; seba at hack club hq present...</p>
 
@@ -213,6 +215,7 @@ export default function Home() {
           height={285}
         />
       </footer>
+      
     </div>
   );
 }
