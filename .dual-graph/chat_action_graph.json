@@ -33,6 +33,40 @@
       "meta": {
         "text": ""
       }
+    },
+    {
+      "id": "query:submit projects from form onto airtable criteria project",
+      "type": "query",
+      "meta": {
+        "text": "submit projects from form onto airtable, form criteria for project submission requirements"
+      }
+    },
+    {
+      "id": "src/utils/calculate-position.ts::calculatePosition",
+      "type": "file"
+    },
+    {
+      "id": "src/utils/svg-path-to-vertices.ts::parsePathToVertices",
+      "type": "file"
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx::ScreenId",
+      "type": "file"
+    },
+    {
+      "id": "src/components/fancy/physics/gravity.tsx::GravityProps",
+      "type": "file"
+    },
+    {
+      "id": "src/lib/utils.ts::cn",
+      "type": "file"
+    },
+    {
+      "id": "query:where backend located project how create first api",
+      "type": "query",
+      "meta": {
+        "text": "where is the backend located in this project, how to create first API route"
+      }
     }
   ],
   "edges": [
@@ -83,6 +117,93 @@
       "meta": {
         "mode": "symbol_excerpt"
       }
+    },
+    {
+      "from": "query:submit projects from form onto airtable criteria project",
+      "to": "src/utils/calculate-position.ts::calculatePosition",
+      "rel": "retrieved",
+      "ts": 1783627641
+    },
+    {
+      "from": "query:submit projects from form onto airtable criteria project",
+      "to": "src/utils/svg-path-to-vertices.ts::parsePathToVertices",
+      "rel": "retrieved",
+      "ts": 1783627641
+    },
+    {
+      "from": "query:submit projects from form onto airtable criteria project",
+      "to": "src/components/OnboardingWizard.tsx::ScreenId",
+      "rel": "retrieved",
+      "ts": 1783627641
+    },
+    {
+      "from": "query:submit projects from form onto airtable criteria project",
+      "to": "src/components/fancy/physics/gravity.tsx::GravityProps",
+      "rel": "retrieved",
+      "ts": 1783627641
+    },
+    {
+      "from": "query:submit projects from form onto airtable criteria project",
+      "to": "src/lib/utils.ts::cn",
+      "rel": "retrieved",
+      "ts": 1783627641
+    },
+    {
+      "from": "query:where backend located project how create first api",
+      "to": "src/utils/calculate-position.ts::calculatePosition",
+      "rel": "retrieved",
+      "ts": 1783637172
+    },
+    {
+      "from": "query:where backend located project how create first api",
+      "to": "src/utils/svg-path-to-vertices.ts::parsePathToVertices",
+      "rel": "retrieved",
+      "ts": 1783637172
+    },
+    {
+      "from": "query:where backend located project how create first api",
+      "to": "src/components/OnboardingWizard.tsx::ScreenId",
+      "rel": "retrieved",
+      "ts": 1783637172
+    },
+    {
+      "from": "query:where backend located project how create first api",
+      "to": "src/components/fancy/physics/gravity.tsx::GravityProps",
+      "rel": "retrieved",
+      "ts": 1783637172
+    },
+    {
+      "from": "query:where backend located project how create first api",
+      "to": "src/lib/utils.ts::cn",
+      "rel": "retrieved",
+      "ts": 1783637172
+    },
+    {
+      "from": "query:(empty)",
+      "to": "src/utils/calculate-position.ts::calculatePosition",
+      "rel": "read",
+      "ts": 1783637190,
+      "meta": {
+        "mode": "symbol_excerpt"
+      }
+    },
+    {
+      "from": "query:(empty)",
+      "to": "src/utils/svg-path-to-vertices.ts::parsePathToVertices",
+      "rel": "read",
+      "ts": 1783637191,
+      "meta": {
+        "mode": "symbol_excerpt"
+      }
+    },
+    {
+      "from": "query:(empty)",
+      "to": "src/components/OnboardingWizard.tsx::ScreenId",
+      "rel": "read",
+      "ts": 1783637191,
+      "meta": {
+        "mode": "symbol_excerpt"
+      }
     }
   ],
   "files": {
@@ -101,6 +222,30 @@
       "cached_tokens_est": 1496,
       "last_action": "read",
       "last_ts": 1783621989
+    },
+    "src/utils/calculate-position.ts::calculatePosition": {
+      "query_terms": [],
+      "cached_content": "export function calculatePosition(\n  value: number | string | undefined,\n  containerSize: number,\n  elementSize: number\n): number {\n  // Handle percentage strings (e.g. \"50%\")\n  if (typeof value === \"string\" && value.endsWith(\"%\")) {\n    const percentage = parseFloat(value) / 100\n    return containe",
+      "cached_chars": 503,
+      "cached_tokens_est": 125,
+      "last_action": "read",
+      "last_ts": 1783637190
+    },
+    "src/utils/svg-path-to-vertices.ts::parsePathToVertices": {
+      "query_terms": [],
+      "cached_content": "export function parsePathToVertices(path: string, sampleLength = 15) {\n  // Convert path to absolute commands\n  const commander = new SVGPathCommander(path)\n\n  const points: { x: number; y: number }[] = []\n  let lastPoint: { x: number; y: number } | null = null\n\n  // Get total length of the path\n  c",
+      "cached_chars": 996,
+      "cached_tokens_est": 249,
+      "last_action": "read",
+      "last_ts": 1783637191
+    },
+    "src/components/OnboardingWizard.tsx::ScreenId": {
+      "query_terms": [],
+      "cached_content": "type ScreenId = (typeof SCREENS)[number];\n\nconst SCREEN_LABELS: Record<ScreenId, string> = {\n  welcome: \"welcome\",\n  loot: \"the loot\",\n  rules: \"trainer rules\",\n  start: \"ready to start\",\n};",
+      "cached_chars": 190,
+      "cached_tokens_est": 47,
+      "last_action": "read",
+      "last_ts": 1783637191
     }
   },
   "actions": [
@@ -118,6 +263,38 @@
       "payload": {
         "kind": "continue_retrieve",
         "query": "color scheme, theme, tailwind colors, CSS variables, globals.css"
+      }
+    },
+    {
+      "ts": 1783627641,
+      "kind": "retrieve",
+      "payload": {
+        "kind": "retrieve",
+        "query": "submit projects from form onto airtable, form criteria for project submission requirements"
+      }
+    },
+    {
+      "ts": 1783627641,
+      "kind": "continue_retrieve",
+      "payload": {
+        "kind": "continue_retrieve",
+        "query": "submit projects from form onto airtable, form criteria for project submission requirements"
+      }
+    },
+    {
+      "ts": 1783637172,
+      "kind": "retrieve",
+      "payload": {
+        "kind": "retrieve",
+        "query": "where is the backend located in this project, how to create first API route"
+      }
+    },
+    {
+      "ts": 1783637172,
+      "kind": "continue_retrieve",
+      "payload": {
+        "kind": "continue_retrieve",
+        "query": "where is the backend located in this project, how to create first API route"
       }
     }
   ]

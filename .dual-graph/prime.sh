@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-PORT=$(cat "/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph/run/claude/mcp_port" 2>/dev/null || echo 8082)
+PORT=$(cat "/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph/run/claude/mcp_port" 2>/dev/null || echo 8080)
 OUT=$(curl -sf --max-time 2 "http://127.0.0.1:$PORT/prime" 2>/dev/null || true)
 if [[ -n "$OUT" ]]; then
   echo "$OUT"

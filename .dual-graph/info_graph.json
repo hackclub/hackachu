@@ -1,21 +1,10 @@
 {
   "root": "/home/plastuchino/code/hackachu-codebase/hackachu",
-  "node_count": 23,
-  "edge_count": 34,
-  "file_count": 21,
-  "symbol_count": 2,
+  "node_count": 55,
+  "edge_count": 102,
+  "file_count": 34,
+  "symbol_count": 21,
   "nodes": [
-    {
-      "id": "package-lock.json",
-      "kind": "file",
-      "path": "package-lock.json",
-      "ext": ".json",
-      "size": 211442,
-      "keywords": [],
-      "content": "{\n  \"name\": \"hackachu\",\n  \"version\": \"0.1.0\",\n  \"lockfileVersion\": 3,\n  \"requires\": true,\n  \"packages\": {\n    \"\": {\n      \"name\": \"hackachu\",\n      \"version\": \"0.1.0\",\n      \"dependencies\": {\n        \"next\": \"16.2.10\",\n        \"react\": \"19.2.4\",\n        \"react-dom\": \"19.2.4\"\n      },\n      \"devDependencies\": {\n        \"@types/node\": \"^20\",\n        \"@types/react\": \"^19\",\n        \"@types/react-dom\": \"^19\",\n        \"eslint\": \"^9\",\n        \"eslint-config-next\": \"16.2.10\",\n        \"typescript\": \"^5\"\n      }\n    },\n    \"node_modules/@babel/code-frame\": {\n      \"version\": \"7.29.7\",\n      \"resolved\": \"https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.29.7.tgz\",\n      \"integrity\": \"sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"@babel/helper-validator-identifier\": \"^7.29.7\",\n        \"js-tokens\": \"^4.0.0\",\n        \"picocolors\": \"^1.1.1\"\n      },\n      \"engines\": {\n        \"node\": \">=6.9.0\"\n      }\n    },\n    \"node_modules/@babel/compat-data\": {\n      \"version\": \"7.29.7\",\n      \"resolved\": \"https://registry.npmjs.org/@babel/compat-data/-/compat-data-7.29.7.tgz\",\n      \"integrity\": \"sha512-locTkQyKvwIEgBzVrn8693ebc97F2U8ZHjbXwDXJ5Fn2TCpNwTlKcaKLkdHop5c/icOFE7qt7Q9JC5hnKNa6Gg==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"engines\": {\n        \"node\": \">=6.9.0\"\n      }\n    },\n    \"node_modules/@babel/core\": {\n      \"version\": \"7.29.7\",\n      \"resolved\": \"https://registry.npmjs.org/@babel/core/-/core-7.29.7.tgz\",\n      \"integrity\": \"sha512-RgHBCvtjbOK2gXSNBNIkNoEc9qoVEtau3hj8gEqKQuL3HZAibKarWFEI3Lfm6EYKkLalOh8eSrj9b+ch9H/VBA==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"peer\": true,\n      \"dependencies\": {\n        \"@babel/code-frame\": \"^7.29.7\",\n        \"@babel/generator\": \"^7.29.7\",\n        \"@babel/helper-compilation-targets\": \"^7.29.7\",\n        \"@babel/helper-module-transforms\": \"^7.29.7\",\n        \"@babel/helpers\": \"^7.29.7\",\n        \"@babel/parser\": \"^7.29.7\",\n        \"@babel/template\": \"^7.29.7\",\n        \"@babel/traverse\": \"^7.29.7\",\n        \"@babel/types\": \"^7.29.7\",\n        \"@jridgewell/remapping\": \"^2.3.5\",\n        \"convert-source-map\": \"^2.0.0\",\n        \"debug\": \"^4.1.0\",\n        \"gensync\": \"^1.0.0-beta.2\",\n        \"json5\": \"^2.2.3\",\n        \"semver\": \"^6.3.1\"\n      },\n      \"engines\": {\n        \"node\": \">=6.9.0\"\n      },\n      \"funding\": {\n        \"type\": \"opencollective\",\n        \"url\": \"https://opencollective.com/babel\"\n      }\n    },\n    \"node_modules/@babel/generator\": {\n      \"version\": \"7.29.7\",\n      \"resolved\": \"https://registry.npmjs.org/@babel/generator/-/generator-7.29.7.tgz\",\n      \"integrity\": \"sha512-DkXD5OJQaAQIdZ1bt3UZdEnHAn9Imd3IVBdX03UFe+ony9Ojw5pzr9YVKGDY1jt+Gcn/FnGkNf8r+Vj5NOJWtQ==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"@babel/parser\": \"^7.29.7\",\n        \"@babel/types\": \"^7.29.7\",\n        \"@jridgewell/gen-mapping\": \"^0.3.12\",\n        \"@jridgewell/trace-mapping\": \"^0.3.28\",\n        \"jsesc\": \"^3.0.2\"\n      },\n      \"engines\": {\n        \"node\": \">=6.9.0\"\n      }\n    },\n    \"node_modules/@babel/helper-compilation-targets\": {\n      \"version\": \"7.29.7\",\n      \"resolved\": \"https://registry.npmjs.org/@babel/helper-compilation-targets/-/helper-compilation-targets-7.29.7.tgz\",\n      \"integrity\": \"sha512-wem6WaBj4NaVYVdNhLPPVacES6ZJ+KBBfSkTMD3YZxbP3rm3Di85tJU5ljaUNhaOynt+Aj0xruhYuzQBt8n71g==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"@babel/compat-data\": \"^7.29.7\",\n        \"@babel/helper-validator-option\": \"^7.29.7\",\n        \"browserslist\": \"^4.24.0\",\n        \"lru-cache\": \"^5.1.1\",\n        \"semver\": \"^6.3.1\"\n      },\n      \"engines\": {\n        \"node\": \">=6.9.0\"\n      }\n    },\n    \"node_modules/@babel/helper-globals\": {\n      \"version\": \"7.29.7\",\n      \"resolved\": \"https://registry.npmjs.org/@babel/helper-globals/-/helper-globals-7.29.7.tgz\",\n      \"integrity\": \"sha512-3nQVUAtvkKH9zahfWgw96Jc/uFOmjACE1kQz82E2lqWmHBgjzbNlsC22nuQTfahmWeQtTq5nQ/4Nnd2A1wj4zA==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"engines\": {\n        \"node\": \">=6.9.0\"\n      }\n    },\n    \"node_modules/@babel/helper-module-imports\": {\n      \"version\": \"7.29.7\",\n      \"resolved\": \"https://registry.npmjs.org/@babel/helper-module-imports/-/helper-module-imports-7.29.7.tgz\",\n      \"integrity\": \"sha512-ejHwrQQYcm9xnTivShn2IDOlIzInN34AXskvq9QicvCtEzq1Vzclu/tKF8Jq1Cg8JG2GL6/EmjgsCT7lXepE3g==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"@babel/traverse\": \"^7.29.7\",\n        \"@babel/types\": \"^7.29.7\"\n      },\n      \"engines\": {\n        \"node\": \">=6.9.0\"\n      }\n    },\n    \"node_modules/@babel/helper-module-transforms\": {\n      \"version\": \"7.29.7\",\n      \"resolved\": \"https://registry.npmjs.org/@babel/helper-module-transforms/-/helper-module-transforms-7.29.7.tgz\",\n      \"integrity\": \"sha512-UPUVSyXbOh627KiCIGQSgwWzGeBKLkaJ9PJEdrngIwMSzxLR4jS4+f1f1jb7VzBbg8nFLaYotvVPFCTqdrmTAg==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"@babel/helper-module-imports\": \"^7.29.7\",\n        \"@babel/helper-validator-identifier\": \"^7.29.7\",\n        \"@babel/traverse\": \"^7.29.7\"\n      },\n      \"engines\": {\n        \"node\": \">=6.9.0\"\n      },\n      \"peerDependencies\": {\n        \"@babel/core\": \"^7.0.0\"\n      }\n    },\n    \"node_modules/@babel/helper-string-parser\": {\n      \"version\": \"7.29.7\",\n      \"resolved\": \"https://registry.npmjs.org/@babel/helper-string-parser/-/helper-string-parser-7.29.7.tgz\",\n      \"integrity\": \"sha512-Pb5ijPrZ89GDH8223L4UP8i6QApWxs04RbPQJTeWDV0/keR2E36MeKnyr6LYmUUvqRRI+Iv87SuF1W6ErINzYw==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"engines\": {\n        \"node\": \">=6.9.0\"\n      }\n    },\n    \"node_modules/@babel/helper-validator-identifier\": {\n      \"version\": \"7.29.7\",\n      \"resolved\": \"https://registry.npmjs.org/@babel/helper-validator-identifier/-/helper-validator-identifier-7.29.7.tgz\",\n      \"integrity\": \"sha512-qehxGkRj55h/ff8EMaJ+cYhyaKlHIxqYDn682wQD7RNp9UujOQsHog2uS0r2vzr4pW+sXf90NeeayjcNaX3fFg==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"engines\": {\n        \"node\": \">=6.9.0\"\n      }\n    },\n    \"node_modules/@babel/helper-validator-option\": {\n      \"version\": \"7.29.7\",\n      \"resolved\": \"https://registry.npmjs.org/@babel/helper-validator-option/-/helper-validator-option-7.29.7.tgz\",\n      \"integrity\": \"sha512-N9ZErrD+yW5geCDtBqnOoxmR8+tNKiGuxKlDpuJxfsqpa2dFcexaziGAE/qoHLiDDreVNMupxGmSoNlyvsA3gw==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"engines\": {\n        \"node\": \">=6.9.0\"\n      }\n    },\n    \"node_modules/@babel/helpers\": {\n      \"version\": \"7.29.7\",\n      \"resolved\": \"https://registry.npmjs.org/@babel/helpers/-/helpers-7.29.7.tgz\",\n      \"integrity\": \"sha512-1k2lAGRMfHTcwuNYcCNUmaUffmQv8KWMfh2iJUUeRlwlwH4FdNG7mfPI10NPfLHJFThE4Tyr4mv7kTNZOiPuBg==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"@babel/template\": \"^7.29.7\",\n        \"@babel/types\": \"^7.29.7\"\n      },\n      \"engines\": {\n        \"node\": \">=6.9.0\"\n      }\n    },\n    \"node_modules/@babel/parser\": {\n      \"version\": \"7.29.7\",\n      \"resolved\": \"https://registry.npmjs.org/@babel/parser/-/parser-7.29.7.tgz\",\n      \"integrity\": \"sha512-hnORnjP/1P/zFEndoeX+n+t1RwWRJiJpM/jO7FW32Kn9r5+sJB2JWOdYo4L6k78j15eCwY3Gm/7364B1EMwtNg==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"@babel/types\": \"^7.29.7\"\n      },\n      \"bin\": {\n        \"parser\": \"bin/babel-parser.js\"\n      },\n      \"engines\": {\n        \"node\": \">=6.0.0\"\n      }\n    },\n    \"node_modules/@babel/template\": {\n      \"version\": \"7.29.7\",\n      \"resolved\": \"https://registry.npmjs.org/@babel/template/-/template-7.29.7.tgz\",\n      \"integrity\": \"sha512-puq+Gf35oI24FeN11LkoUQFqv9uwNeWpxXZi/Ji3rRIoKAzKnxRaZ+Gkj0vKS9ZCiTESfng1N9LyOyXvo+m+Gg==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"@babel/code-frame\": \"^7.29.7\",\n        \"@babel/parser\": \"^7.29.7\",\n        \"@babel/types\": \"^7.29.7\"\n      },\n      \"engines\": {\n        \"node\": \">=6.9.0\"\n      }\n    },\n    \"node_modules/@babel/traverse\": {\n      \"version\": \"7.29.7\",\n      \"resolved\": \"https://registry.npmjs.org/@babel/traverse/-/traverse-7.29.7.tgz\",\n      \"integrity\": \"sha512-EhlfNQtZ+NK22w5BM61ciuiq1m58ed33Wr1Xan//ZRTy6hgjnwyCffRYwzsGXdASJSUJ1guZILsErh1eQcl+zw==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"@babel/code-frame\": \"^7.29.7\",\n        \"@babel/generator\": \"^7.29.7\",\n        \"@babel/helper-globals\": \"^7.29.7\",\n        \"@babel/parser\": \"^7.29.7\",\n        \"@babel/template\": \"^7.29.7\",\n        \"@babel/types\": \"^7.29.7\",\n        \"debug\": \"^4.3.1\"\n      },\n      \"engines\": {\n        \"node\": \">=6.9.0\"\n      }\n    },\n    \"node_modules/@babel/types\": {\n      \"version\": \"7.29.7\",\n      \"resolved\": \"https://registry.npmjs.org/@babel/types/-/types-7.29.7.tgz\",\n      \"integrity\": \"sha512-4zBIxpPzowiZpusoFkyGVwakdRJUyuH5PxQ/PrqghfdFWWasvnCdPfQXHrenDai+gyLARulZjZowCOj6fjT4pA==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"@babel/helper-string-parser\": \"^7.29.7\",\n        \"@babel/helper-validator-identifier\": \"^7.29.7\"\n      },\n      \"engines\": {\n        \"node\": \">=6.9.0\"\n      }\n    },\n    \"node_modules/@emnapi/wasi-threads\": {\n      \"version\": \"1.2.1\",\n      \"resolved\": \"https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-1.2.1.tgz\",\n      \"integrity\": \"sha512-uTII7OYF+/Mes/MrcIOYp5yOtSMLBWSIoLPpcgwipoiKbli6k322tcoFsxoIIxPDqW01SQGAgko4EzZi2BNv2w==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"optional\": true,\n      \"dependencies\": {\n        \"tslib\": \"^2.4.0\"\n      }\n    },\n    \"node_modules/@eslint-community/eslint-utils\": {\n      \"version\": \"4.9.1\",\n      \"resolved\": \"https://registry.npmjs.org/@eslint-community/eslint-utils/-/eslint-utils-4.9.1.tgz\",\n      \"integrity\": \"sha512-phrYmNiYppR7znFEdqgfWHXR6NCkZEK7hwWDHZUjit/2/U0r6XvkDl0SYnoM51Hq7FhCGdLDT6zxCCOY1hexsQ==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"eslint-visitor-keys\": \"^3.4.3\"\n      },\n      \"engines\": {\n        \"node\": \"^12.22.0 || ^14.17.0 || >=16.0.0\"\n      },\n      \"funding\": {\n        \"url\": \"https://opencollective.com/eslint\"\n      },\n      \"peerDependencies\": {\n        \"eslint\": \"^6.0.0 || ^7.0.0 || >=8.0.0\"\n      }\n    },\n    \"node_modules/@eslint-community/eslint-utils/node_modules/eslint-visitor-keys\": {\n      \"version\": \"3.4.3\",\n      \"resolved\": \"https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-3.4.3.tgz\",\n      \"integrity\": \"sha512-wpc+LXeiyiisxPlEkUzU6svyS1frIO3Mgxj1fdy7Pm8Ygzguax2N3Fa/D/ag1WqbOprdI+uY6wMUl8/a2G+iag==\",\n      \"dev\": true,\n      \"license\": \"Apache-2.0\",\n      \"engines\": {\n        \"node\": \"^12.22.0 || ^14.17.0 || >=16.0.0\"\n      },\n      \"funding\": {\n        \"url\": \"https://opencollective.com/eslint\"\n      }\n    },\n    \"node_modules/@eslint-community/regexpp\": {\n      \"version\": \"4.12.2\",\n      \"resolved\": \"https://registry.npmjs.org/@eslint-community/regexpp/-/regexpp-4.12.2.tgz\",\n      \"integrity\": \"sha512-EriSTlt5OC9/7SXkRSCAhfSxxoSUgBm33OH+IkwbdpgoqsSsUg7y3uh+IICI/Qg4BBWr3U2i39RpmycbxMq4ew==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"engines\": {\n        \"node\": \"^12.0.0 || ^14.0.0 || >=16.0.0\"\n      }\n    },\n    \"node_modules/@eslint/config-array\": {\n      \"version\": \"0.21.2\",\n      \"resolved\": \"https://registry.npmjs.org/@eslint/config-array/-/config-array-0.21.2.tgz\",\n      \"integrity\": \"sha512-nJl2KGTlrf9GjLimgIru+V/mzgSK0ABCDQRvxw5BjURL7WfH5uoWmizbH7QB6MmnMBd8cIC9uceWnezL1VZWWw==\",\n      \"dev\": true,\n      \"license\": \"Apache-2.0\",\n      \"dependencies\": {\n        \"@eslint/object-schema\": \"^2.1.7\",\n        \"debug\": \"^4.3.1\",\n        \"minimatch\": \"^3.1.5\"\n      },\n      \"engines\": {\n        \"node\": \"^18.18.0 || ^20.9.0 || >=21.1.0\"\n      }\n    },\n    \"node_modules/@eslint/config-helpers\": {\n      \"version\": \"0.4.2\",\n      \"resolved\": \"https://registry.npmjs.org/@eslint/config-helpers/-/config-helpers-0.4.2.tgz\",\n      \"integrity\": \"sha512-gBrxN88gOIf3R7ja5K9slwNayVcZgK6SOUORm2uBzTeIEfeVaIhOpCtTox3P6R7o2jLFwLFTLnC7kU/RGcYEgw==\",\n      \"dev\": true,\n      \"license\": \"Apache-2.0\",\n      \"dependencies\": {\n        \"@eslint/core\": \"^0.17.0\"\n      },\n      \"engines\": {\n        \"node\": \"^18.18.0 || ^20.9.0 || >=21.1.0\"\n      }\n    },\n    \"node_modules/@eslint/core\": {\n      \"version\": \"0.17.0\",\n      \"resolved\": \"https://registry.npmjs.org/@eslint/core/-/core-0.17.0.tgz\",\n      \"integrity\": \"sha512-yL/sLrpmtDaFEiUj1osRP4TI2MDz1AddJL+jZ7KSqvBuliN4xqYY54IfdN8qD8Toa6g1iloph1fxQNkjOxrrpQ==\",\n      \"dev\": true,\n      \"license\": \"Apache-2.0\",\n      \"dependencies\": {\n        \"@types/json-schema\": \"^7.0.15\"\n      },\n      \"engines\": {\n        \"node\": \"^18.18.0 || ^20.9.0 || >=21.1.0\"\n      }\n    },\n    \"node_modules/@eslint/eslintrc\": {\n      \"version\": \"3.3.5\",\n      \"resolved\": \"https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-3.3.5.tgz\",\n      \"integrity\": \"sha512-4IlJx0X0qftVsN5E+/vGujTRIFtwuLbNsVUe7TO6zYPDR1O6nFwvwhIKEKSrl6dZchmYBITazxKoUYOjdtjlRg==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"ajv\": \"^6.14.0\",\n        \"debug\": \"^4.3.2\",\n        \"espree\": \"^10.0.1\",\n        \"globals\": \"^14.0.0\",\n        \"ignore\": \"^5.2.0\",\n        \"import-fresh\": \"^3.2.1\",\n        \"js-yaml\": \"^4.1.1\",\n        \"minimatch\": \"^3.1.5\",\n        \"strip-json-comments\": \"^3.1.1\"\n      },\n      \"engines\": {\n        \"node\": \"^18.18.0 || ^20.9.0 || >=21.1.0\"\n      },\n      \"funding\": {\n        \"url\": \"https://opencollective.com/eslint\"\n      }\n    },\n    \"node_modules/@eslint/js\": {\n      \"version\": \"9.39.4\",\n      \"resolved\": \"https://registry.npmjs.org/@eslint/js/-/js-9.39.4.tgz\",\n      \"integrity\": \"sha512-nE7DEIchvtiFTwBw4Lfbu59PG+kCofhjsKaCWzxTpt4lfRjRMqG6uMBzKXuEcyXhOHoUp9riAm7/aWYGhXZ9cw==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"engines\": {\n        \"node\": \"^18.18.0 || ^20.9.0 || >=21.1.0\"\n      },\n      \"funding\": {\n        \"url\": \"https://eslint.org/donate\"\n      }\n    },\n    \"node_modules/@eslint/object-schema\": {\n      \"version\": \"2.1.7\",\n      \"resolved\": \"https://registry.npmjs.org/@eslint/object-schema/-/object-schema-2.1.7.tgz\",\n      \"integrity\": \"sha512-VtAOaymWVfZcmZbp6E2mympDIHvyjXs/12LqWYjVw6qjrfF+VK+fyG33kChz3nnK+SU5/NeHOqrTEHS8sXO3OA==\",\n      \"dev\": true,\n      \"license\": \"Apache-2.0\",\n      \"engines\": {\n        \"node\": \"^18.18.0 || ^20.9.0 || >=21.1.0\"\n      }\n    },\n    \"node_modules/@eslint/plugin-kit\": {\n      \"version\": \"0.4.1\",\n      \"resolved\": \"https://registry.npmjs.org/@eslint/plugin-kit/-/plugin-kit-0.4.1.tgz\",\n      \"integrity\": \"sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==\",\n      \"dev\": true,\n      \"license\": \"Apache-2.0\",\n      \"dependencies\": {\n        \"@eslint/core\": \"^0.17.0\",\n        \"levn\": \"^0.4.1\"\n      },\n      \"engines\": {\n        \"node\": \"^18.18.0 || ^20.9.0 || >=21.1.0\"\n      }\n    },\n    \"node_modules/@humanfs/core\": {\n      \"version\": \"0.19.2\",\n      \"resolved\": \"https://registry.npmjs.org/@humanfs/core/-/core-0.19.2.tgz\",\n      \"integrity\": \"sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==\",\n      \"dev\": true,\n      \"license\": \"Apache-2.0\",\n      \"dependencies\": {\n        \"@humanfs/types\": \"^0.15.0\"\n      },\n      \"engines\": {\n        \"node\": \">=18.18.0\"\n      }\n    },\n    \"node_modules/@humanfs/node\": {\n      \"version\": \"0.16.8\",\n      \"resolved\": \"https://registry.npmjs.org/@humanfs/node/-/node-0.16.8.tgz\",\n      \"integrity\": \"sha512-gE1eQNZ3R++kTzFUpdGlpmy8kDZD/MLyHqDwqjkVQI0JMdI1D51sy1H958PNXYkM2rAac7e5/CnIKZrHtPh3BQ==\",\n      \"dev\": true,\n      \"license\": \"Apache-2.0\",\n      \"dependencies\": {\n        \"@humanfs/core\": \"^0.19.2\",\n        \"@humanfs/types\": \"^0.15.0\",\n        \"@humanwhocodes/retry\": \"^0.4.0\"\n      },\n      \"engines\": {\n        \"node\": \">=18.18.0\"\n      }\n    },\n    \"node_modules/@humanfs/types\": {\n      \"version\": \"0.15.0\",\n      \"resolved\": \"https://registry.npmjs.org/@humanfs/types/-/types-0.15.0.tgz\",\n      \"integrity\": \"sha512-ZZ1w0aoQkwuUuC7Yf+7sdeaNfqQiiLcSRbfI08oAxqLtpXQr9AIVX7Ay7HLDuiLYAaFPu8oBYNq/QIi9URHJ3Q==\",\n      \"dev\": true,\n      \"license\": \"Apache-2.0\",\n      \"engines\": {\n        \"node\": \">=18.18.0\"\n      }\n    },\n    \"node_modules/@humanwhocodes/module-importer\": {\n      \"version\": \"1.0.1\",\n      \"resolved\": \"https://registry.npmjs.org/@humanwhocodes/module-importer/-/module-importer-1.0.1.tgz\",\n      \"integrity\": \"sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==\",\n      \"dev\": true,\n      \"license\": \"Apache-2.0\",\n      \"engines\": {\n        \"node\": \">=12.22\"\n      },\n      \"funding\": {\n        \"type\": \"github\",\n        \"url\": \"https://github.com/sponsors/nzakas\"\n      }\n    },\n    \"node_modules/@humanwhocodes/retry\": {\n      \"version\": \"0.4.3\",\n      \"resolved\": \"https://registry.npmjs.org/@humanwhocodes/retry/-/retry-0.4.3.tgz\",\n      \"integrity\": \"sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==\",\n      \"dev\": true,\n      \"license\": \"Apache-2.0\",\n      \"engines\": {\n        \"node\": \">=18.18\"\n      },\n      \"funding\": {\n        \"type\": \"github\",\n        \"url\": \"https://github.com/sponsors/nzakas\"\n      }\n    },\n    \"node_modules/@img/colour\": {\n      \"version\": \"1.1.0\",\n      \"resolved\": \"https://registry.npmjs.org/@img/colour/-/colour-1.1.0.tgz\",\n      \"integrity\": \"sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==\",\n      \"license\": \"MIT\",\n      \"optional\": true,\n      \"engines\": {\n        \"node\": \">=18\"\n      }\n    },\n    \"node_modules/@img/sharp-darwin-arm64\": {\n      \"version\": \"0.34.5\",\n      \"resolved\": \"https://registry.npmjs.org/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.34.5.tgz\",\n      \"integrity\": \"sha512-imtQ3WMJXbMY4fxb/Ndp6HBTNVtWCUI0WdobyheGf5+ad6xX8VIDO8u2xE4qc/fr08CKG/7dDseFtn6M6g/r3w==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n      \"license\": \"Apache-2.0\",\n      \"optional\": true,\n      \"os\": [\n        \"darwin\"\n      ],\n      \"engines\": {\n        \"node\": \"^18.17.0 || ^20.3.0 || >=21.0.0\"\n      },\n      \"funding\": {\n        \"url\": \"https://opencollective.com/libvips\"\n      },\n      \"optionalDependencies\": {\n        \"@img/sharp-libvips-darwin-arm64\": \"1.2.4\"\n      }\n    },\n    \"node_modules/@img/sharp-darwin-x64\": {\n      \"version\": \"0.34.5\",\n      \"resolved\": \"https://registry.npmjs.org/@img/sharp-darwin-x64/-/sharp-darwin-x64-0.34.5.tgz\",\n      \"integrity\": \"sha512-YNEFAF/4KQ/PeW0N+r+aVVsoIY0/qxxikF2SWdp+NRkmMB7y9LBZAVqQ4yhGCm/H3H270OSykqmQMKLBhBJDEw==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n      \"license\": \"Apache-2.0\",\n      \"optional\": true,\n      \"os\": [\n        \"darwin\"\n      ],\n      \"engines\": {\n        \"node\": \"^18.17.0 || ^20.3.0 || >=21.0.0\"\n      },\n      \"funding\": {\n        \"url\": \"https://opencollective.com/libvips\"\n      },\n      \"optionalDependencies\": {\n        \"@img/sharp-libvips-darwin-x64\": \"1.2.4\"\n      }\n    },\n    \"node_modules/@img/sharp-libvips-darwin-arm64\": {\n      \"version\": \"1.2.4\",\n      \"resolved\": \"https://registry.npmjs.org/@img/sharp-libvips-darwin-arm64/-/sharp-libvips-darwin-arm64-1.2.4.tgz\",\n      \"integrity\": \"sha512-zqjjo7RatFfFoP0MkQ51jfuFZBnVE2pRiaydKJ1G/rHZvnsrHAOcQALIi9sA5co5xenQdTugCvtb1cuf78Vf4g==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n      \"license\": \"LGPL-3.0-or-later\",\n      \"optional\": true,\n      \"os\": [\n        \"darwin\"\n      ],\n      \"funding\": {\n        \"url\": \"https://opencollective.com/libvips\"\n      }\n    },\n    \"node_modules/@img/sharp-libvips-darwin-x64\": {\n      \"version\": \"1.2.4\",\n      \"resolved\": \"https://registry.npmjs.org/@img/sharp-libvips-darwin-x64/-/sharp-libvips-darwin-x64-1.2.4.tgz\",\n      \"integrity\": \"sha512-1IOd5xfVhlGwX+zXv2N93k0yMONvUlANylbJw1eTah8K/Jtpi15KC+WSiaX/nBmbm2HxRM1gZ0nSdjSsrZbGKg==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n      \"license\": \"LGPL-3.0-or-later\",\n      \"optional\": true,\n      \"os\": [\n        \"darwin\"\n      ],\n      \"funding\": {\n        \"url\": \"https://opencollective.com/libvips\"\n      }\n    },\n    \"node_modules/@img/sharp-libvips-linux-arm\": {\n      \"version\": \"1.2.4\",\n      \"resolved\": \"https://registry.npmjs.org/@img/sharp-libvips-linux-arm/-/sharp-libvips-linux-arm-1.2.4.tgz\",\n      \"integrity\": \"sha512-bFI7xcKFELdiNCVov8e44Ia4u2byA+l3XtsAj+Q8tfCwO6BQ8iDojYdvoPMqsKDkuoOo+X6HZA0s0q11ANMQ8A==\",\n      \"cpu\": [\n        \"arm\"\n      ],\n      \"license\": \"LGPL-3.0-or-later\",\n      \"optional\": true,\n      \"os\": [\n        \"linux\"\n      ],\n      \"funding\": {\n        \"url\": \"https://opencollective.com/libvips\"\n      }\n    },\n    \"node_modules/@img/sharp-libvips-linux-arm64\": {\n      \"version\": \"1.2.4\",\n      \"resolved\": \"https://registry.npmjs.org/@img/sharp-libvips-linux-arm64/-/sharp-libvips-linux-arm64-1.2.4.tgz\",\n      \"integrity\": \"sha512-excjX8DfsIcJ10x1Kzr4RcWe1edC9PquDRRPx3YVCvQv+U5p7Yin2s32ftzikXojb1PIFc/9Mt28/y+iRklkrw==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n      \"license\": \"LGPL-3.0-or-later\",\n      \"optional\": true,\n      \"os\": [\n        \"linux\"\n      ],\n      \"funding\": {\n        \"url\": \"https://opencollective.com/libvips\"\n      }\n    },\n    \"node_modules/@img/sharp-libvips-linux-ppc64\": {\n      \"version\": \"1.2.4\",\n      \"resolved\": \"https://registry.npmjs.org/@img/sharp-libvips-linux-ppc64/-/sharp-libvips-linux-ppc64-1.2.4.tgz\",\n      \"integrity\": \"sha512-FMuvGijLDYG6lW+b/UvyilUWu5Ayu+3r2d1S8notiGCIyYU/76eig1UfMmkZ7vwgOrzKzlQbFSuQfgm7GYUPpA==\",\n      \"cpu\": [\n        \"ppc64\"\n      ],\n      \"license\": \"LGPL-3.0-or-later\",\n      \"optional\": true,\n      \"os\": [\n        \"linux\"\n      ],\n      \"funding\": {\n        \"url\": \"https://opencollective.com/libvips\"\n      }\n    },\n    \"node_modules/@img/sharp-libvips-linux-riscv64\": {\n      \"version\": \"1.2.4\",\n      \"resolved\": \"https://registry.npmjs.org/@img/sharp-libvips-linux-riscv64/-/sharp-libvips-linux-riscv64-1.2.4.tgz\",\n      \"integrity\": \"sha512-oVDbcR4zUC0ce82teubSm+x6ETixtKZBh/qbREIOcI3cULzDyb18Sr/Wcyx7NRQeQzOiHTNbZFF1UwPS2scyGA==\",\n      \"cpu\": [\n        \"riscv64\"\n      ],\n      \"license\": \"LGPL-3.0-or-later\",\n      \"optional\": true,\n      \"os\": [\n        \"linux\"\n      ],\n      \"funding\": {\n        \"url\": \"https://opencollective.com/libvips\"\n      }\n    },\n    \"node_modules/@img/sharp-libvips-linux-s390x\": {\n      \"version\": \"1.2.4\",\n      \"resolved\": \"https://registry.npmjs.org/@img/sharp-libvips-linux-s390x/-/sharp-libvips-linux-s390x-1.2.4.tgz\",\n      \"integrity\": \"sha512-qmp9VrzgPgMoGZyPvrQHqk02uyjA0/QrTO26Tqk6l4ZV0MPWIW6LTkqOIov+J1yEu7MbFQaDpwdwJKhbJvuRxQ==\",\n      \"cpu\": [\n        \"s390x\"\n      ],\n      \"license\": \"LGPL-3.0-or-later\",\n      \"optional\": true,\n      \"os\": [\n        \"linux\"\n      ],\n      \"funding\": {\n        \"url\": \"https://opencollective.com/libvips\"\n      }\n    },\n    \"node_modules/@img/sharp-libvips-linux-x64\": {\n      \"version\": \"1.2.4\",\n      \"resolved\": \"https://registry.npmjs.org/@img/sharp-libvips-linux-x64/-/sharp-libvips-linux-x64-1.2.4.tgz\",\n      \"integrity\": \"sha512-tJxiiLsmHc9Ax1bz3oaOYBURTXGIRDODBqhveVHonrHJ9/+k89qbLl0bcJns+e4t4rvaNBxaEZsFtSfAdquPrw==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n      \"license\": \"LGPL-3.0-or-later\",\n      \"optional\": true,\n      \"os\": [\n        \"linux\"\n      ],\n      \"funding\": {\n        \"url\": \"https://opencollective.com/libvips\"\n      }\n    },\n    \"node_modules/@img/sharp-libvips-linuxmusl-arm64\": {\n      \"version\": \"1.2.4\",\n      \"resolved\": \"https://registry.npmjs.org/@img/sharp-libvips-linuxmusl-arm64/-/sharp-libvips-linuxmusl-arm64-1.2.4.tgz\",\n      \"integrity\": \"sha512-FVQHuwx1IIuNow9QAbYUzJ+En8KcVm9Lk5+uGUQJHaZmMECZmOlix9HnH7n1TRkXMS0pGxIJokIVB9SuqZGGXw==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n      \"license\": \"LGPL-3.0-or-later\",\n      \"optional\": true,\n      \"os\": [\n        \"linux\"\n      ],\n      \"funding\": {\n        \"url\": \"https://opencollective.com/libvips\"\n      }\n    },\n    \"node_modules/@img/sharp-libvips-linuxmusl-x64\": {\n      \"version\": \"1.2.4\",\n      \"resolved\": \"https://regist",
-      "summary": "\"name\": \"hackachu\",.",
-      "file_hash": "cf62851e"
-    },
     {
       "id": "CLAUDE.md",
       "kind": "file",
@@ -61,6 +50,17 @@
       "file_hash": "104542a1"
     },
     {
+      "id": "components.json",
+      "kind": "file",
+      "path": "components.json",
+      "ext": ".json",
+      "size": 580,
+      "keywords": [],
+      "content": "{\n  \"$schema\": \"https://ui.shadcn.com/schema.json\",\n  \"style\": \"base-nova\",\n  \"rsc\": true,\n  \"tsx\": true,\n  \"tailwind\": {\n    \"config\": \"\",\n    \"css\": \"src/app/globals.css\",\n    \"baseColor\": \"neutral\",\n    \"cssVariables\": true,\n    \"prefix\": \"\"\n  },\n  \"iconLibrary\": \"lucide\",\n  \"rtl\": false,\n  \"aliases\": {\n    \"components\": \"@/components\",\n    \"utils\": \"@/lib/utils\",\n    \"ui\": \"@/components/ui\",\n    \"lib\": \"@/lib\",\n    \"hooks\": \"@/hooks\"\n  },\n  \"menuColor\": \"default\",\n  \"menuAccent\": \"subtle\",\n  \"registries\": {\n    \"@fancy\": \"https://fancycomponents.dev/r/{name}.json\"\n  }\n}",
+      "summary": "\"$schema\": \"https://ui.shadcn.com/schema.json\",.",
+      "file_hash": "85e90e11"
+    },
+    {
       "id": "next.config.ts",
       "kind": "file",
       "path": "next.config.ts",
@@ -76,11 +76,11 @@
       "kind": "file",
       "path": "package.json",
       "ext": ".json",
-      "size": 473,
+      "size": 961,
       "keywords": [],
-      "content": "{\n  \"name\": \"hackachu\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"lint\": \"eslint\"\n  },\n  \"dependencies\": {\n    \"next\": \"16.2.10\",\n    \"react\": \"19.2.4\",\n    \"react-dom\": \"19.2.4\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"^20\",\n    \"@types/react\": \"^19\",\n    \"@types/react-dom\": \"^19\",\n    \"eslint\": \"^9\",\n    \"eslint-config-next\": \"16.2.10\",\n    \"typescript\": \"^5\"\n  }\n}\n",
+      "content": "{\n  \"name\": \"hackachu\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"lint\": \"eslint\"\n  },\n  \"dependencies\": {\n    \"@base-ui/react\": \"^1.6.0\",\n    \"@tailwindcss/postcss\": \"^4.3.2\",\n    \"@types/matter-js\": \"^0.20.2\",\n    \"class-variance-authority\": \"^0.7.1\",\n    \"clsx\": \"^2.1.1\",\n    \"lodash\": \"^4.18.1\",\n    \"lucide-react\": \"^1.24.0\",\n    \"matter-js\": \"^0.20.0\",\n    \"motion\": \"^12.42.2\",\n    \"next\": \"16.2.10\",\n    \"poly-decomp\": \"^0.3.0\",\n    \"postcss\": \"^8.5.16\",\n    \"react\": \"19.2.4\",\n    \"react-dom\": \"19.2.4\",\n    \"shadcn\": \"^4.13.0\",\n    \"svg-path-commander\": \"^2.2.1\",\n    \"tailwind-merge\": \"^3.6.0\",\n    \"tailwindcss\": \"^4.3.2\",\n    \"tw-animate-css\": \"^1.4.0\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"^20\",\n    \"@types/react\": \"^19\",\n    \"@types/react-dom\": \"^19\",\n    \"eslint\": \"^9\",\n    \"eslint-config-next\": \"16.2.10\",\n    \"typescript\": \"^5\"\n  }\n}\n",
       "summary": "\"name\": \"hackachu\",.",
-      "file_hash": "ad3e72fb"
+      "file_hash": "fd2916ba"
     },
     {
       "id": "AGENTS.md",
@@ -94,26 +94,15 @@
       "file_hash": "9e092417"
     },
     {
-      "id": ".claude/settings.json",
+      "id": ".claude/settings.local.json",
       "kind": "file",
-      "path": ".claude/settings.json",
+      "path": ".claude/settings.local.json",
       "ext": ".json",
-      "size": 50,
+      "size": 1788,
       "keywords": [],
-      "content": "{\n  \"worktree\": {\n    \"bgIsolation\": \"none\"\n  }\n}\n",
-      "summary": "\"worktree\": {.",
-      "file_hash": "be0109ea"
-    },
-    {
-      "id": ".claude/launch.json",
-      "kind": "file",
-      "path": ".claude/launch.json",
-      "ext": ".json",
-      "size": 208,
-      "keywords": [],
-      "content": "{\n  \"version\": \"0.0.1\",\n  \"configurations\": [\n    {\n      \"name\": \"hackachu-dev\",\n      \"runtimeExecutable\": \"npm\",\n      \"runtimeArgs\": [\"run\", \"dev\"],\n      \"port\": 3000,\n      \"autoPort\": true\n    }\n  ]\n}\n",
-      "summary": "\"version\": \"0.0.1\",.",
-      "file_hash": "919e63ba"
+      "content": "{\n  \"permissions\": {\n    \"allow\": [\n      \"mcp__dual-graph__graph_read\",\n      \"Bash(openspec list *)\",\n      \"Bash(openspec new *)\",\n      \"Bash(openspec status *)\",\n      \"Bash(openspec instructions *)\",\n      \"Bash(npx next *)\",\n      \"Bash(npx eslint *)\",\n      \"Skill(run)\",\n      \"Bash(find / -iname \\\"*chromium-cli*\\\" -maxdepth 6)\",\n      \"Bash(npm ls *)\",\n      \"Bash(timeout 20 npx --yes playwright --version 2>&1)\",\n      \"Read(//tmp/wizard-check/**)\",\n      \"Bash(npx playwright *)\",\n      \"Bash(echo \\\"exit: $?\\\")\",\n      \"Read(//tmp/**)\",\n      \"Bash(node check.js)\",\n      \"Bash(node *)\"\n    ]\n  },\n  \"hooks\": {\n    \"SessionStart\": [\n      {\n        \"matcher\": \"\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"/bin/bash \\\"/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph/prime.sh\\\"\"\n          }\n        ]\n      }\n    ],\n    \"PreCompact\": [\n      {\n        \"matcher\": \"\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"/bin/bash \\\"/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph/prime.sh\\\"\"\n          }\n        ]\n      }\n    ],\n    \"Stop\": [\n      {\n        \"matcher\": \"\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"/bin/bash \\\"/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph/stop.sh\\\"\"\n          }\n        ]\n      }\n    ],\n    \"PreToolUse\": [\n      {\n        \"matcher\": \"Write|Edit|Bash|NotebookEdit\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"DG_DATA_DIR=\\\"/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph\\\" /home/plastuchino/.dual-graph/venv/bin/python3 -c \\\"from graperoot.undo_shield import main; main()\\\"\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
+      "summary": "\"permissions\": {.",
+      "file_hash": "cf161ecf"
     },
     {
       "id": ".claude/commands/opsx/propose.md",
@@ -215,32 +204,87 @@
       "file_hash": "9e3e7672"
     },
     {
+      "id": "openspec/changes/add-onboarding-wizard/.openspec.yaml",
+      "kind": "file",
+      "path": "openspec/changes/add-onboarding-wizard/.openspec.yaml",
+      "ext": ".yaml",
+      "size": 40,
+      "keywords": [],
+      "content": "schema: spec-driven\ncreated: 2026-07-09\n",
+      "summary": "schema: spec-driven.",
+      "file_hash": "aa7d11c7"
+    },
+    {
+      "id": "openspec/changes/add-onboarding-wizard/tasks.md",
+      "kind": "file",
+      "path": "openspec/changes/add-onboarding-wizard/tasks.md",
+      "ext": ".md",
+      "size": 3971,
+      "keywords": [],
+      "content": "## 1. Component scaffolding\n\n- [x] 1.1 Create `src/components/OnboardingWizard.tsx` with a closed/open state (`step: 0 | 1 | 2 | 3 | null`) and screen sequence array `[\"welcome\", \"loot\", \"rules\", \"start\"]`\n- [x] 1.2 Create `src/components/OnboardingWizard.module.css` establishing the new visual system (slab-serif headline styles, hard black drop-shadow utility, red/cream/olive color values, game-menu chrome primitives: dialogue box, quest card, EXP bar)\n- [x] 1.3 Add the wizard trigger CTA button and the login button (linking to `/dashboard`) to `src/app/page.tsx` \u2014 implemented as a self-contained `<OnboardingWizard />` launcher; note: a second trigger was added directly in the hero section (see deviation note below), which the original task text did not anticipate\n- [x] 1.4 Mount `<OnboardingWizard />` in `page.tsx`, controlled by the trigger button's open state\n\n## 2. Screen content\n\n- [x] 2.1 Build the \"Welcome\" screen: Prof. Hacker dialogue intro inviting the visitor to view the rules, with Next control\n- [x] 2.2 Build \"The Loot\" screen: three cumulative prize tier cards (5hrs \u2192 4 booster packs, 15hrs \u2192 plushie/merch, 40hrs \u2192 booster box or watch) plus a \"prizes are cumulative\" note\n- [x] 2.3 Build \"Trainer Rules\" screen: quest cards for card-game-or-RPG (any theme), AI-allowed-no-slop, and original/creative-work requirements, plus a restated summary of the three prize tiers\n- [x] 2.4 Build \"Ready to Start\" screen: booster pack preview list and final \"Start Adventure\" CTA linking to `https://auth.hackclub.com/join/hackachu`\n\n## 3. Navigation and controls\n\n- [x] 3.1 Implement Next/Back button behavior per screen, including closing the wizard when Back is pressed on the \"Welcome\" screen\n- [x] 3.2 Implement the menu control for jumping directly to any of the four screens\n- [x] 3.3 Implement animated transitions between screens using CSS keyframes (opacity/translate), matching the existing homepage's `fadeIn`/`dropIn`/`riseIn`/`popIn` pattern, and respect `prefers-reduced-motion`\n- [x] 3.4 Implement keyboard shortcuts while the wizard is open (`A` = next, `B` = back, `Option+S` = jump to \"Ready to Start\"), attaching/detaching the listener on open/close\n\n## 4. Replay behavior\n\n- [x] 4.1 Verify no state (localStorage, cookies, query params) persists wizard progress or completion across page loads\n- [x] 4.2 Verify reopening the wizard \u2014 whether after a full completion or an early close \u2014 always starts at the \"Welcome\" screen\n\n## 5. Verification\n\n- [x] 5.1 Manually walk through the full screen sequence (Welcome \u2192 Loot \u2192 Rules \u2192 Start) via mouse and via keyboard shortcuts (verified headless via Playwright)\n- [x] 5.2 Verify the login button navigates to `/dashboard` without opening the wizard\n- [x] 5.3 Verify the final \"Start Adventure\" CTA links to `https://auth.hackclub.com/join/hackachu`\n- [x] 5.4 Verify existing homepage comic-strip/footer are visually and functionally unchanged \u2014 **deviation**: the hero section was directly edited (outside this task flow) to add a second, larger wizard trigger between the trainer and pokeball images; verified it renders without layout overlap, but this contradicts the original \"hero unchanged\" requirement (see note below)\n- [x] 5.5 Check responsive behavior on small screens (mirroring the homepage's existing `@media (max-width: 700px)` handling)\n\n## Deviation note\n\nThe homepage now has **two** wizard entry points instead of the one originally specced:\n- A larger `<OnboardingWizard isButtonBigger={true} />` inside the hero section (added directly in the editor, not through this task list)\n- The original `<OnboardingWizard />` below the footer\n\nBoth were confirmed working and visually non-overlapping. The `onboarding-wizard` spec's \"Homepage wizard trigger\" requirement (single CTA, hero/comic-strip/footer unchanged) is now stale relative to the implementation and should be updated to describe both entry points if this is the intended final design.\n",
+      "summary": "1. Component scaffolding.",
+      "file_hash": "a1d25aae"
+    },
+    {
+      "id": "openspec/changes/add-onboarding-wizard/design.md",
+      "kind": "file",
+      "path": "openspec/changes/add-onboarding-wizard/design.md",
+      "ext": ".md",
+      "size": 5593,
+      "keywords": [],
+      "content": "## Context\n\nThe homepage (`src/app/page.tsx` + `src/app/page.module.css`) is a single static page: hero \u2192 7 comic-strip dialogue boxes \u2192 footer with a \"join now.\" link to `https://auth.hackclub.com/join/hackachu`, a \"trainer dashboard.\" link to `/dashboard`, and static release-date text. It uses a pastel pixel-art aesthetic (`--font-gb`, `#fff`/`#131313`, gameboy dialog boxes).\n\nThis change adds a self-contained onboarding wizard beneath that content, on the same route, with its own distinct visual language (bold slab-serif, hard drop-shadows, red/cream/olive palette, game-menu chrome). It does not touch the existing hero/comic-strip/footer markup or styling.\n\n## Goals / Non-Goals\n\n**Goals:**\n- Explain the program's real rules (prize tiers, hour thresholds, game/AI requirements) before a visitor reaches the external Hack Club auth link.\n- Keep the wizard on the homepage \u2014 no new route, no page navigation \u2014 driven entirely by client-side state and CSS/JS animation.\n- Give returning trainers a fast, wizard-free path to `/dashboard` via a dedicated login button.\n- Support both pointer and keyboard navigation (Next/Back/Start shortcuts) to match the \"game menu\" framing.\n\n**Non-Goals:**\n- No backend, auth, or data-persistence work. No API calls, no database, no session tracking.\n- No \"seen it\" skip logic \u2014 replay-every-visit is the explicit, deliberate behavior.\n- No changes to `/dashboard`, `TrainerDashboard`, or the existing homepage hero/comic-strip/footer.\n- No real user progress data feeding the wizard (e.g. EXP bars are static/decorative, not tied to an authenticated user's actual hours).\n\n## Decisions\n\n**1. Wizard lives in a new client component (`src/components/OnboardingWizard.tsx` + module CSS), mounted at the bottom of `page.tsx`.**\nKeeps `page.tsx` changes minimal (append a trigger button + login button + `<OnboardingWizard />`), isolates the new visual system from the existing homepage CSS, and matches the existing project pattern of one component + one `*.module.css` per unit (see `TrainerDashboard`, `Pokeball`).\n\n**2. State machine: local `useState` for `step: 0 | 1 | 2 | 3 | null`, `null` = closed/not started.**\nFour fixed screens, no branching logic, no need for a router or global state library. Alternative considered: encode step in the URL (`?step=`) for shareability/back-button support \u2014 rejected because the spec explicitly treats this as a homepage animation, not a navigable set of pages, and \"always replay\" already means there's nothing durable to bookmark.\n\n**3. Screen sequence is a fixed array: `[\"welcome\", \"loot\", \"rules\", \"start\"]`.**\nNext/Back move the index by 1 and clamp at bounds; the menu control jumps directly to an index. `Option+S` on any step jumps straight to the final \"start\" screen (matches the mockup's global shortcut, acting as a \"skip to CTA\" affordance) \u2014 Back (`B`) on step 0 closes the wizard back to the homepage trigger button.\n\n**4. Transitions are CSS-driven (opacity/translate keyframes per step), consistent with the existing homepage's own `fadeIn`/`dropIn`/`riseIn`/`popIn` keyframe pattern in `page.module.css`.**\nNo animation library needed; matches project convention (`prefers-reduced-motion` handling already exists on the homepage and should be mirrored here).\n\n**5. Keyboard shortcuts are bound only while the wizard is open** (`A` = next, `B` = back, `Option+S` = jump to start screen), removed on close/unmount to avoid intercepting keys elsewhere on the homepage.\n\n**6. Content (copy, prize numbers, quest text) is hardcoded in the component**, not fetched or CMS-driven \u2014 same approach as the existing homepage's hardcoded dialogue strings.\n\n**7. \"Always replay\" means no `localStorage`/cookie/skip-state of any kind is written or read for this feature.**\nEvery homepage load starts with the wizard closed (as today) and, when the trigger button is clicked, always opens at step 0. This is a deliberate product decision from the proposal, not an oversight.\n\n**8. Login button placement: rendered directly below the wizard trigger CTA, always visible (not conditional on wizard state), linking to `/dashboard` via existing `next/link`.**\nConsistent with how the current footer already links to `/dashboard` \u2014 this change relocates/adds that entry point near the new CTA rather than removing the footer's existing link.\n\n## Risks / Trade-offs\n\n- **Visual inconsistency between homepage and wizard** (pastel pixel-art vs. bold slab-serif/red-cream-olive) \u2192 Mitigated by intentionally scoping the new palette/typography to the wizard's own CSS module so it reads as a distinct \"opening a menu\" moment rather than a broken mismatch, matching the reference mockups.\n- **Keyboard shortcuts could conflict with browser/OS shortcuts** (e.g. some `Option+` combos) \u2192 Mitigated by scoping the listener to only fire while the wizard is mounted/open, and treating shortcuts as an enhancement on top of always-clickable Back/Next/Start buttons.\n- **\"Always replay\" may frustrate repeat visitors who just want to log in** \u2192 Mitigated by the dedicated login button sitting right next to the trigger, giving returning trainers a one-click bypass.\n- **Static EXP bars/quest progress in \"Trainer Rules\" screen could be misread as real per-user data** \u2192 Mitigated by treating them purely as decorative game-menu chrome per Goals/Non-Goals; copy should avoid implying personalized tracking.\n\n## Open Questions\n\n- Final visual asset needs (fonts, icons for quest cards, booster-pack art) aren't specified \u2014 implementation may need placeholder assets until final art is provided.\n",
+      "summary": "The homepage (`src/app/page.tsx` + `src/app/page.module.css`) is a single static page: hero \u2192 7 comic-strip dialogue box.",
+      "file_hash": "ec28b3a8"
+    },
+    {
+      "id": "openspec/changes/add-onboarding-wizard/proposal.md",
+      "kind": "file",
+      "path": "openspec/changes/add-onboarding-wizard/proposal.md",
+      "ext": ".md",
+      "size": 2991,
+      "keywords": [],
+      "content": "## Why\n\nNew visitors currently see the homepage's whimsical comic-strip pitch and then hit a single \"join now.\" link straight to Hack Club's external auth \u2014 with no explanation of the actual program rules (prize tiers, hour thresholds, game requirements, AI policy) anywhere on the site. That information only exists in a Slack thread, making the jump from \"vibes\" to \"sign up\" feel abrupt and leaving prospective trainers to commit before they understand what they're committing to.\n\n## What Changes\n\n- Add a new animated, stateful onboarding wizard to the homepage, triggered by a new CTA button at the bottom of the existing page (hero, comic strip, and footer are untouched).\n- The wizard is a 4-screen, single-page sequence driven by client-side state/animation (no new route): **Welcome** \u2192 **The Loot** (prize tiers) \u2192 **Trainer Rules** (quest cards) \u2192 **Ready to Start** (booster catalog + final CTA).\n- Prize tiers are finalized as 5 / 15 / 40 cumulative hours (4 booster packs / plushie-merch / booster box or watch), superseding the earlier 5 / 10 / 25 figures from the original Slack announcement.\n- Navigation: Back / Next controls with keyboard shortcuts (`A` = next, `B` = back, `Option+S` = start), plus a menu control to jump between screens.\n- The wizard **always replays in full** on every homepage visit \u2014 no \"seen it\" skip state is persisted.\n- The final screen's \"Start Adventure\" CTA links out to `https://auth.hackclub.com/join/hackachu`, same destination as today's \"join now.\" link.\n- A new **login** button is added directly below the wizard's trigger CTA, linking straight to `/dashboard` for trainers who are already part of the program, bypassing the wizard entirely.\n- New visual language scoped only to the wizard: bold slab-serif headlines, hard black drop-shadows, red/cream/olive block palette, and game-menu chrome (EXP bars, quest-card layout, speaker-tagged dialogue boxes) \u2014 distinct from the homepage's existing pastel pixel-art styling.\n- Frontend only. No backend, auth, or data-persistence changes.\n\n## Capabilities\n\n### New Capabilities\n- `onboarding-wizard`: The 4-screen animated onboarding sequence living on the homepage \u2014 its screens, content, navigation/keyboard controls, and always-replay behavior.\n\n### Modified Capabilities\n- None. The existing homepage content and behavior are unchanged; this only adds new elements (trigger button, login button, wizard) alongside it.\n\n## Impact\n\n- Affected code: `src/app/page.tsx` and `src/app/page.module.css` (new trigger + login buttons appended at the bottom), plus new component(s) for the wizard itself (e.g. under `src/components/`).\n- No changes to `/dashboard`, `TrainerDashboard`, backend routes, or auth flow \u2014 the login button and final CTA both link to existing external/internal destinations.\n- No new dependencies expected beyond what's already used for animation in the codebase (e.g. existing `fancy/physics` or CSS animations already present in `page.module.css`).\n",
+      "summary": "New visitors currently see the homepage's whimsical comic-strip pitch and then hit a single \"join now.\" link straight to.",
+      "file_hash": "3bc6bab7"
+    },
+    {
+      "id": "openspec/changes/add-onboarding-wizard/specs/onboarding-wizard/spec.md",
+      "kind": "file",
+      "path": "openspec/changes/add-onboarding-wizard/specs/onboarding-wizard/spec.md",
+      "ext": ".md",
+      "size": 5592,
+      "keywords": [],
+      "content": "## ADDED Requirements\n\n### Requirement: Homepage wizard trigger\nThe homepage SHALL display a CTA button at the bottom of the page, below the existing footer content, that opens the onboarding wizard. The existing hero, comic-strip, and footer content SHALL remain unchanged.\n\n#### Scenario: Visitor opens the wizard\n- **WHEN** a visitor clicks the \"start adventure\" / onboarding CTA button on the homepage\n- **THEN** the onboarding wizard opens on the same page (no navigation to a new URL) and displays the first screen (\"Welcome\")\n\n### Requirement: Homepage login shortcut\nThe homepage SHALL display a login button directly below the wizard trigger CTA, always visible regardless of wizard state, that links to `/dashboard`.\n\n#### Scenario: Returning trainer bypasses the wizard\n- **WHEN** a visitor clicks the \"login\" button on the homepage\n- **THEN** the browser navigates to `/dashboard` without opening or requiring interaction with the onboarding wizard\n\n### Requirement: Four-screen wizard sequence\nThe onboarding wizard SHALL consist of exactly four screens presented in a fixed order: Welcome, The Loot, Trainer Rules, and Ready to Start.\n\n#### Scenario: Screen order\n- **WHEN** the wizard is opened and the visitor repeatedly triggers \"next\"\n- **THEN** the screens are shown in the order Welcome \u2192 The Loot \u2192 Trainer Rules \u2192 Ready to Start, and no further \"next\" action is available past the final screen\n\n#### Scenario: Welcome screen content\n- **WHEN** the \"Welcome\" screen is displayed\n- **THEN** it shows a Prof. Hacker dialogue introduction inviting the trainer to view the rules\n\n#### Scenario: The Loot screen content\n- **WHEN** the \"The Loot\" screen is displayed\n- **THEN** it shows three cumulative prize tiers: 5 hours (4x booster packs), 15 hours (plushie or merch), and 40 hours (booster box or sick watch), each labeled with its hour threshold and reward, and a note that prizes are cumulative across milestones\n\n#### Scenario: Trainer Rules screen content\n- **WHEN** the \"Trainer Rules\" screen is displayed\n- **THEN** it shows quest cards covering: building a card game or RPG of any theme, AI being allowed but requiring honest/non-slop use, and a requirement for original/creative work, alongside a restatement of the three prize tiers from \"The Loot\"\n\n#### Scenario: Ready to Start screen content\n- **WHEN** the \"Ready to Start\" screen is displayed\n- **THEN** it shows a preview of available booster packs and a final \"Start Adventure\" call-to-action\n\n### Requirement: Wizard navigation controls\nThe wizard SHALL support moving between screens via visible Back and Next controls, and closing back to the homepage from the first screen via Back.\n\n#### Scenario: Advancing screens\n- **WHEN** the visitor activates \"Next\" on any screen except the last\n- **THEN** the wizard advances to the next screen in the sequence with an animated transition\n\n#### Scenario: Returning to a previous screen\n- **WHEN** the visitor activates \"Back\" on any screen except the first\n- **THEN** the wizard returns to the previous screen in the sequence with an animated transition\n\n#### Scenario: Closing the wizard from the first screen\n- **WHEN** the visitor activates \"Back\" on the \"Welcome\" screen\n- **THEN** the wizard closes and the homepage returns to its pre-wizard state (trigger CTA visible)\n\n### Requirement: Wizard keyboard shortcuts\nWhile the wizard is open, the wizard SHALL respond to keyboard shortcuts equivalent to its Back, Next, and Start controls, and SHALL stop responding to those shortcuts once closed.\n\n#### Scenario: Keyboard next/back\n- **WHEN** the wizard is open and the visitor presses the designated \"next\" key or the designated \"back\" key\n- **THEN** the wizard performs the same action as clicking the corresponding Next or Back button\n\n#### Scenario: Keyboard jump to start\n- **WHEN** the wizard is open and the visitor presses the designated \"start\" shortcut\n- **THEN** the wizard jumps directly to the \"Ready to Start\" screen\n\n#### Scenario: Shortcuts inactive when closed\n- **WHEN** the wizard is closed\n- **THEN** pressing the wizard's designated keyboard shortcuts has no effect on the page\n\n### Requirement: Wizard screen jump menu\nThe wizard SHALL provide a menu control that allows jumping directly to any of the four screens.\n\n#### Scenario: Jumping via menu\n- **WHEN** the visitor opens the menu control and selects a screen\n- **THEN** the wizard displays the selected screen directly, without requiring sequential Next/Back navigation\n\n### Requirement: Wizard final call-to-action\nThe \"Ready to Start\" screen's primary action SHALL link out to the Hack Club join URL.\n\n#### Scenario: Starting the adventure\n- **WHEN** the visitor activates \"Start Adventure\" on the final wizard screen\n- **THEN** the browser navigates to `https://auth.hackclub.com/join/hackachu`\n\n### Requirement: Wizard always replays\nThe wizard SHALL NOT persist any \"seen\" or \"completed\" state across page loads or sessions. Every time the wizard is opened, it SHALL start at the \"Welcome\" screen.\n\n#### Scenario: Repeat visit after completing the wizard\n- **WHEN** a visitor has previously opened and closed or completed the wizard, and then reloads or revisits the homepage\n- **THEN** the homepage shows the wizard trigger CTA in its default (closed) state, with no skip or \"already seen\" behavior\n\n#### Scenario: Reopening after closing mid-sequence\n- **WHEN** a visitor closes the wizard partway through (e.g. from \"Trainer Rules\") and then reopens it via the trigger CTA\n- **THEN** the wizard opens starting from the \"Welcome\" screen, not from where it was left\n",
+      "summary": "ADDED Requirements.",
+      "file_hash": "5c495ce8"
+    },
+    {
       "id": "src/app/page.tsx",
       "kind": "file",
       "path": "src/app/page.tsx",
       "ext": ".tsx",
-      "size": 6083,
+      "size": 6397,
       "keywords": [
         "home"
       ],
-      "content": "import Image from \"next/image\";\nimport styles from \"./page.module.css\";\n\nconst ASSETS = \"\";\n\nexport default function Home() {\n  return (\n    <div className={styles.page}>\n      <header className={styles.hero}>\n        <p className={styles.presents}>lola &amp; seba at hack club hq present...</p>\n        <h1 className={styles.title}>\n          <Image\n            className={styles.titleImage}\n            src={`${ASSETS}/hackachu.png`}\n            alt=\"hackachu\"\n            width={923}\n            height={230}\n            priority\n          />\n        </h1>\n        <div className={styles.heroDialog}>\n          <span className={styles.heroDialogText}>\n            build a card game, gamble with pokemon cards.\n          </span>\n        </div>\n        <Image\n          className={styles.trainer}\n          src={`${ASSETS}/trainer.png`}\n          alt=\"pokemon trainer seen from behind\"\n          width={327}\n          height={361}\n          priority\n        />\n        <Image\n          className={styles.pokeball}\n          src={`${ASSETS}/pokeball.gif`}\n          alt=\"spinning pokeball\"\n          width={1024}\n          height={1024}\n          unoptimized\n        />\n      </header>\n\n      <main className={styles.main}>\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={styles.gbBox}>\n            a card game?\n            <br />\n            what does\n            <br />\n            that mean?\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n\n        <section className={`${styles.row} ${styles.rowLeft}`}>\n          <Image\n            className={styles.flyingPika}\n            src={`${ASSETS}/flying_pika.png`}\n            alt=\"pikachu floating with balloons\"\n            width={244}\n            height={285}\n          />\n          <div className={styles.gbBox}>\n            any game that\n            <br />\n            involves\n            <br />\n            playing with\n            <br />\n            cards!\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n        </section>\n\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={styles.gbBox}>\n            and i get\n            <br />\n            POKEMON\n            <br />\n            CARDS?? for\n            <br />\n            FREE?????\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n\n        <section className={`${styles.row} ${styles.rowLeft}`}>\n          <Image\n            className={styles.flyingPika}\n            src={`${ASSETS}/flying_pika.png`}\n            alt=\"pikachu floating with balloons\"\n            width={244}\n            height={285}\n          />\n          <div className={styles.gbBox}>\n            yep.{\" \"}\n            <a\n              className={styles.link}\n              href=\"https://hackclub.com\"\n              target=\"_blank\"\n              rel=\"noopener noreferrer\"\n            >\n              hack club.\n            </a>\n            <br />\n            the longer you code,\n            <br />\n            the more chances you\n            <br />\n            get.\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n        </section>\n\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={`${styles.gbBox} ${styles.tallBox}`}>\n            chances????\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n\n        <section className={`${styles.row} ${styles.rowLeft}`}>\n          <Image\n            className={styles.flyingPika}\n            src={`${ASSETS}/flying_pika.png`}\n            alt=\"pikachu floating with balloons\"\n            width={244}\n            height={285}\n          />\n          <div className={styles.gbBox}>\n            oh yeah. you&apos;ll\n            <br />\n            always get cards,\n            <br />\n            but the cards you\n            <br />\n            get are up to the\n            <br />\n            fates...\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n        </section>\n\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={`${styles.gbBox} ${styles.cryBox}`}>\n            <Image\n              className={styles.cryImg}\n              src={`${ASSETS}/crying_emojis.png`}\n              alt=\"two crying emojis\"\n              width={153}\n              height={82}\n            />\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n      </main>\n\n      <footer className={styles.footer}>\n        <p className={styles.footerText}>\n          start now. #hackachu on slack.\n          <br />\n          releases thursday, july 9th.\n          <br />\n          <a\n            className={styles.link}\n            href=\"https://auth.hackclub.com/join/hackachu\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n          >\n            join now.\n          </a>\n        </p>\n        <Image\n          className={styles.footerPika}\n          src={`/pika_with_cup.png`}\n          alt=\"pikachu floating with balloons\"\n          width={244}\n          height={285}\n        />\n      </footer>\n    </div>\n  );\n}\n",
+      "content": "import Image from \"next/image\";\nimport Link from \"next/link\";\nimport styles from \"./page.module.css\";\nimport Gravity, { MatterBody } from \"@/components/fancy/physics/gravity\";\nimport OnboardingWizard from \"@/components/OnboardingWizard\";\n\nconst ASSETS = \"\";\n\nexport default function Home() {\n  return (\n    <div className={styles.page}>\n      \n      <header className={styles.hero}>\n        <p className={styles.presents}>lola &amp; seba at hack club hq present...</p>\n\n        <Image\n          className={styles.titleImage}\n          src={`${ASSETS}/hackachu.png`}\n          alt=\"hackachu\"\n          width={923}\n          height={230}\n          priority\n        />\n\n        <div className={styles.heroDialog}>\n          <span className={styles.heroDialogText}>\n            build a card game, gamble with pokemon cards.\n          </span>\n        </div>\n        <Image\n          className={styles.trainer}\n          src={`${ASSETS}/trainer.png`}\n          alt=\"pokemon trainer seen from behind\"\n          width={327}\n          height={361}\n          priority\n        />\n\n        <OnboardingWizard isButtonBigger={true} />\n        <Image\n          className={styles.pokeball}\n          src={`${ASSETS}/pokeball.gif`}\n          alt=\"spinning pokeball\"\n          width={1024}\n          height={1024}\n          unoptimized\n        />\n      </header>\n\n      <main className={styles.main}>\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={styles.gbBox}>\n            a card game?\n            <br />\n            what does\n            <br />\n            that mean?\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n\n        <section className={`${styles.row} ${styles.rowLeft}`}>\n          <Image\n            className={styles.flyingPika}\n            src={`${ASSETS}/flying_pika.png`}\n            alt=\"pikachu floating with balloons\"\n            width={244}\n            height={285}\n          />\n          <div className={styles.gbBox}>\n            any game that\n            <br />\n            involves\n            <br />\n            playing with\n            <br />\n            cards!\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n        </section>\n\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={styles.gbBox}>\n            and i get\n            <br />\n            POKEMON\n            <br />\n            CARDS?? for\n            <br />\n            FREE?????\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n\n        <section className={`${styles.row} ${styles.rowLeft}`}>\n          <Image\n            className={styles.flyingPika}\n            src={`${ASSETS}/flying_pika.png`}\n            alt=\"pikachu floating with balloons\"\n            width={244}\n            height={285}\n          />\n          <div className={styles.gbBox}>\n            yep.{\" \"}\n            <a\n              className={styles.link}\n              href=\"https://hackclub.com\"\n              target=\"_blank\"\n              rel=\"noopener noreferrer\"\n            >\n              hack club.\n            </a>\n            <br />\n            the longer you code,\n            <br />\n            the more chances you\n            <br />\n            get.\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n        </section>\n\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={`${styles.gbBox} ${styles.tallBox}`}>\n            chances????\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n\n        <section className={`${styles.row} ${styles.rowLeft}`}>\n          <Image\n            className={styles.flyingPika}\n            src={`${ASSETS}/flying_pika.png`}\n            alt=\"pikachu floating with balloons\"\n            width={244}\n            height={285}\n          />\n          <div className={styles.gbBox}>\n            oh yeah. you&apos;ll\n            <br />\n            always get cards,\n            <br />\n            but the cards you\n            <br />\n            get are up to the\n            <br />\n            fates...\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n        </section>\n\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={`${styles.gbBox} ${styles.cryBox}`}>\n            <Image\n              className={styles.cryImg}\n              src={`${ASSETS}/crying_emojis.png`}\n              alt=\"two crying emojis\"\n              width={153}\n              height={82}\n            />\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n      </main>\n\n      <footer className={styles.footer}>\n        <p className={styles.footerText}>\n          start now. #hackachu on slack.\n          <br />\n          releases thursday, july 9th.\n          <br />\n          <a\n            className={styles.link}\n            href=\"https://auth.hackclub.com/join/hackachu\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n          >\n            join now.\n          </a>\n          <br />\n          <Link className={styles.link} href=\"/dashboard\">\n            trainer dashboard.\n          </Link>\n        </p>\n        <Image\n          className={styles.footerPika}\n          src={`/pika_with_cup.png`}\n          alt=\"pikachu floating with balloons\"\n          width={244}\n          height={285}\n        />\n      </footer>\n\n      <OnboardingWizard />\n\n    </div>\n  );\n}\n\n",
       "summary": "import Image from \"next/image\";. Contains 1 function: Home.",
-      "file_hash": "f8e58e24"
+      "file_hash": "77b750e1"
     },
     {
       "id": "src/app/page.tsx::Home",
       "kind": "symbol",
       "path": "src/app/page.tsx",
       "ext": ".tsx",
-      "size": 208,
+      "size": 218,
       "keywords": [
         "home"
       ],
       "symbol_type": "use_case",
       "name": "Home",
-      "line_start": 5,
-      "line_end": 212,
-      "body_hash": "ae9d8055",
+      "line_start": 8,
+      "line_end": 225,
+      "body_hash": "a3b1fd56",
       "confidence": "medium",
       "exported": true
     },
@@ -249,16 +293,16 @@
       "kind": "file",
       "path": "src/app/layout.tsx",
       "ext": ".tsx",
-      "size": 541,
+      "size": 1006,
       "keywords": [
         "metadata",
         "rootlayout",
         "root",
         "layout"
       ],
-      "content": "import type { Metadata } from \"next\";\nimport localFont from \"next/font/local\";\nimport \"./globals.css\";\n\nconst pokemonGb = localFont({\n  src: \"../../public/PokemonGb-RAeo.ttf\",\n  variable: \"--font-gb\",\n});\n\nexport const metadata: Metadata = {\n  title: \"hackachu\",\n  description: \"build a card game, gamble with pokemon cards.\",\n};\n\nexport default function RootLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return (\n    <html lang=\"en\" className={pokemonGb.variable}>\n      <body>{children}</body>\n    </html>\n  );\n}\n",
+      "content": "import type { Metadata } from \"next\";\nimport localFont from \"next/font/local\";\nimport \"./globals.css\";\nimport { Geist, Bitter, IBM_Plex_Mono } from \"next/font/google\";\nimport { cn } from \"@/lib/utils\";\n\nconst geist = Geist({subsets:['latin'],variable:'--font-sans'});\n\nconst pokemonGb = localFont({\n  src: \"../../public/PokemonGb-RAeo.ttf\",\n  variable: \"--font-gb\",\n});\n\nconst bitter = Bitter({\n  subsets: [\"latin\"],\n  weight: [\"700\", \"900\"],\n  variable: \"--font-slab\",\n});\n\nconst plexMono = IBM_Plex_Mono({\n  subsets: [\"latin\"],\n  weight: [\"400\", \"500\", \"600\", \"700\"],\n  variable: \"--font-mono\",\n});\n\nexport const metadata: Metadata = {\n  title: \"hackachu\",\n  description: \"build a card game, gamble with pokemon cards.\",\n};\n\nexport default function RootLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return (\n    <html lang=\"en\" className={cn(\"font-sans\", geist.variable, pokemonGb.variable, bitter.variable, plexMono.variable)}>\n      <body>{children}</body>\n    </html>\n  );\n}\n",
       "summary": "import type { Metadata } from \"next\";. Contains 1 function: RootLayout.",
-      "file_hash": "8455aaf1"
+      "file_hash": "7a4fb0f8"
     },
     {
       "id": "src/app/layout.tsx::RootLayout",
@@ -273,64 +317,502 @@
       ],
       "symbol_type": "use_case",
       "name": "RootLayout",
-      "line_start": 14,
-      "line_end": 24,
-      "body_hash": "7f169dae",
+      "line_start": 30,
+      "line_end": 40,
+      "body_hash": "87ffa23f",
       "confidence": "medium",
+      "exported": true
+    },
+    {
+      "id": "src/app/dashboard/page.tsx",
+      "kind": "file",
+      "path": "src/app/dashboard/page.tsx",
+      "ext": ".tsx",
+      "size": 727,
+      "keywords": [
+        "metadata",
+        "dashboardpage",
+        "dashboard",
+        "page"
+      ],
+      "content": "import type { Metadata } from \"next\";\nimport { IBM_Plex_Mono, Press_Start_2P } from \"next/font/google\";\nimport TrainerDashboard from \"@/components/TrainerDashboard\";\n\nconst pressStart = Press_Start_2P({\n  weight: \"400\",\n  subsets: [\"latin\"],\n  variable: \"--font-pixel\",\n});\n\nconst plexMono = IBM_Plex_Mono({\n  weight: [\"400\", \"500\", \"600\", \"700\"],\n  subsets: [\"latin\"],\n  variable: \"--font-mono\",\n});\n\nexport const metadata: Metadata = {\n  title: \"hackachu \u00b7 Trainer Dashboard\",\n  description: \"your trainer dashboard. ship projects, evolve your prizes.\",\n};\n\nexport default function DashboardPage() {\n  return (\n    <div className={`${pressStart.variable} ${plexMono.variable}`}>\n      <TrainerDashboard />\n    </div>\n  );\n}\n",
+      "summary": "import type { Metadata } from \"next\";. Contains 1 function: DashboardPage.",
+      "file_hash": "f33e7cd5"
+    },
+    {
+      "id": "src/app/dashboard/page.tsx::DashboardPage",
+      "kind": "symbol",
+      "path": "src/app/dashboard/page.tsx",
+      "ext": ".tsx",
+      "size": 7,
+      "keywords": [
+        "dashboardpage",
+        "dashboard",
+        "page"
+      ],
+      "symbol_type": "use_case",
+      "name": "DashboardPage",
+      "line_start": 21,
+      "line_end": 27,
+      "body_hash": "0e484353",
+      "confidence": "medium",
+      "exported": true
+    },
+    {
+      "id": "src/components/Pokeball.tsx",
+      "kind": "file",
+      "path": "src/components/Pokeball.tsx",
+      "ext": ".tsx",
+      "size": 1522,
+      "keywords": [
+        "pokeball"
+      ],
+      "content": "\"use client\";\n\nimport Image from \"next/image\";\nimport { useEffect, useRef } from \"react\";\nimport styles from \"./Pokeball.module.css\";\n\nconst GRAVITY = 3600; // px/s^2\nconst LAUNCH_V = -950; // px/s, upward\nconst RESTITUTION = 0.58; // energy kept per bounce\nconst REST_V = 60; // settle when rebound is slower than this\n\nexport default function Pokeball({ size = 48 }: { size?: number }) {\n  const ref = useRef<HTMLSpanElement | null>(null);\n  const sim = useRef({ y: 0, v: 0, raf: 0, last: 0 });\n\n  useEffect(() => {\n    const s = sim.current;\n    return () => cancelAnimationFrame(s.raf);\n  }, []);\n\n  const step = (now: number) => {\n    const s = sim.current;\n    const dt = Math.min((now - s.last) / 1000, 0.032);\n    s.last = now;\n    s.v += GRAVITY * dt;\n    s.y += s.v * dt;\n    if (s.y >= 0) {\n      // hit the floor: rebound with damping\n      s.y = 0;\n      s.v = -s.v * RESTITUTION;\n      if (-s.v < REST_V) {\n        s.v = 0;\n        s.raf = 0;\n        if (ref.current) ref.current.style.transform = \"\";\n        return;\n      }\n    }\n    if (ref.current) ref.current.style.transform = `translateY(${s.y}px)`;\n    s.raf = requestAnimationFrame(step);\n  };\n\n  const launch = () => {\n    const s = sim.current;\n    s.v = LAUNCH_V;\n    if (!s.raf) {\n      s.last = performance.now();\n      s.raf = requestAnimationFrame(step);\n    }\n  };\n\n  return (\n    <span ref={ref} className={styles.pokeball} onClick={launch}>\n      <Image src=\"/pokeball.webp\" alt=\"pokeball\" width={size} height={size} />\n    </span>\n  );\n}\n",
+      "summary": "\"use client\";. Contains 1 function: Pokeball.",
+      "file_hash": "f4ebd5e5"
+    },
+    {
+      "id": "src/components/Pokeball.tsx::Pokeball",
+      "kind": "symbol",
+      "path": "src/components/Pokeball.tsx",
+      "ext": ".tsx",
+      "size": 45,
+      "keywords": [
+        "pokeball"
+      ],
+      "symbol_type": "use_case",
+      "name": "Pokeball",
+      "line_start": 11,
+      "line_end": 55,
+      "body_hash": "20452d56",
+      "confidence": "medium",
+      "exported": true
+    },
+    {
+      "id": "src/components/TrainerDashboard.tsx",
+      "kind": "file",
+      "path": "src/components/TrainerDashboard.tsx",
+      "ext": ".tsx",
+      "size": 9637,
+      "keywords": [
+        "trainerdashboard",
+        "trainer",
+        "dashboard"
+      ],
+      "content": "\"use client\";\n\nimport { Fragment, useEffect, useRef, useState } from \"react\";\nimport styles from \"./TrainerDashboard.module.css\";\nimport Image from \"next/image\";\nimport Gravity, { MatterBody } from \"./fancy/physics/gravity\";\nconst TIPS = [\n  \"join #hackachu!\",\n  \"pikapika\",\n  \"hack club loves you\",\n  \"your prizes are waiting....\",\n  \"lock in\"\n];\n\nconst PROJECT_TYPES = [\"Game\", \"Web\", \"CLI\", \"Hardware\", \"Other\"];\nconst PIKAS = [\"flying_pika.png\", \"magic_pika.png\", \"pika_with_cup.png\"]\nconst PRIZES = [\n  {\n    name: \"5 decks\",\n    hours: \"+5 hours\",\n    img: \"/prizes/decks.png\",\n    tilt: \"tiltA\",\n  },\n  {\n    name: \"awesome plushies\",\n    hours: \"+10 hours\",\n    img: \"/prizes/plushie.png\",\n    tilt: \"tiltB\",\n  },\n  {\n    name: \"watch or booster pack\",\n    hours: \"+30 hours\",\n    img: \"/prizes/booster.png\",\n    tilt: \"tiltC\",\n  },\n] as const;\n\nexport default function TrainerDashboard() {\n  const [trainerName, setTrainerName] = useState(\"\");\n  const [tipIndex, setTipIndex] = useState(0);\n  const [tipVisible, setTipVisible] = useState(true);\n  const [panelOpen, setPanelOpen] = useState(false);\n  const [shipped, setShipped] = useState(false);\n  const [projName, setProjName] = useState(\"\");\n  const [projLink, setProjLink] = useState(\"\");\n  const [projDesc, setProjDesc] = useState(\"\");\n  const [activeTags, setActiveTags] = useState<string[]>([]);\n  const panelRef = useRef<HTMLDivElement>(null);\n\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setTipVisible(false);\n      setTimeout(() => {\n        setTipIndex((i) => (i + 1) % TIPS.length);\n        setTipVisible(true);\n      }, 250);\n    }, 5000);\n    return () => clearInterval(interval);\n  }, []);\n\n  const togglePanel = () => {\n    const opening = !panelOpen;\n    setPanelOpen(opening);\n    if (opening) {\n      panelRef.current?.scrollIntoView({ behavior: \"smooth\", block: \"center\" });\n    }\n  };\n\n  const toggleTag = (tag: string) => {\n    setActiveTags((tags) =>\n      tags.includes(tag) ? tags.filter((t) => t !== tag) : [...tags, tag]\n    );\n  };\n\n  const resetForm = () => {\n    setShipped(false);\n    setProjName(\"\");\n    setProjLink(\"\");\n    setProjDesc(\"\");\n    setActiveTags([]);\n  };\n\n  return (\n    <div className={styles.page}>\n      <Gravity className={styles.gravityLayer}>\n        {PIKAS.map((pika, i) => {\n          return (\n        <MatterBody\n          x=\"20%\"\n          y=\"5%\"\n          matterBodyOptions={{\n            friction: 0.5,\n            restitution: 0.7,\n            density: 0.001,\n            isStatic: false,\n          }}\n          key={i}\n        >\n          <Image\n            src={`/${pika}`}\n            alt=\"pikachu\"\n            width={150}\n            height={175}\n          />\n        </MatterBody>\n          )\n})}\n        \n      </Gravity>\n      <div className={styles.wrap}>\n        <div className={styles.nav}>\n          <div className={styles.brand}>\n            \n            <div className={styles.brandText}>\n              <span className={styles.brandEyebrow}>Hack Club \u00b7 YSWS</span>\n              <Image\n              src=\"/hackachu.png\"\n              alt=\"Hackachu logo\"\n              width={200}\n              height={48}\n              className={styles.brandLogo}\n              />\n            </div>\n          </div>\n       \n        </div>\n\n        \n\n        <div className={styles.dex}>\n          \n        \n            <div className={styles.scanlines} />\n            <div className={styles.screenGlow} />\n            <div className={styles.greet}>\n              WELCOME TRAINER,\n              <br />\n              <input\n                className={styles.nameField}\n                placeholder=\"YOU\"\n                maxLength={14}\n                aria-label=\"Enter your trainer name\"\n                value={trainerName}\n                onChange={(e) => setTrainerName(e.target.value)}\n                style={\n                  trainerName\n                    ? { width: `${Math.max(3, trainerName.length + 1)}ch` }\n                    : undefined\n                }\n              />\n              .\n            </div>\n            <div\n              className={styles.tip}\n              style={{ opacity: tipVisible ? 1 : 0 }}\n            >\n              {TIPS[tipIndex]}\n            </div>\n            <a\n              className={styles.hackatimeLink}\n              href=\"https://hackatime.hackclub.com\"\n              target=\"_blank\"\n              rel=\"noopener\"\n            >\n              &gt; connect your hackatime\n            </a>\n\n            <div className={styles.statGrid}>\n              <div className={styles.stat}>\n                <div className={styles.statNum}>0</div>\n                <div className={styles.statLabel}>Projects Shipped</div>\n              </div>\n              <div className={styles.stat}>\n                <div className={styles.statNum}>0h</div>\n                <div className={styles.statLabel}>Hours Logged</div>\n              </div>\n              <div className={styles.stat}>\n                <div className={styles.statNum}>I</div>\n                <div className={styles.statLabel}>Trainer Rank</div>\n              </div>\n              \n            </div>\n          \n        </div>\n\n        <div className={styles.ctaRow}>\n          <button className={styles.cta} onClick={togglePanel}>\n            &gt; SUBMIT YOUR PROJECT\n          </button>\n        </div>\n\n        <div\n          ref={panelRef}\n          className={`${styles.panel} ${panelOpen ? styles.panelOpen : \"\"}`}\n        >\n          <div className={styles.panelInner}>\n            {!shipped ? (\n              <div>\n                <h3 className={styles.panelTitle}>Log your catch</h3>\n                <p className={styles.panelSub}>\n                  Tell us what you built. You can edit this after you ship.\n                </p>\n                <div className={styles.field}>\n                  <label htmlFor=\"projName\">Project name</label>\n                  <input\n                    id=\"projName\"\n                    type=\"text\"\n                    placeholder=\"e.g. Pixel Battle Sim\"\n                    value={projName}\n                    onChange={(e) => setProjName(e.target.value)}\n                  />\n                </div>\n                <div className={styles.field}>\n                  <label htmlFor=\"projLink\">Repo or demo link</label>\n                  <input\n                    id=\"projLink\"\n                    type=\"text\"\n                    placeholder=\"https://github.com/you/project\"\n                    value={projLink}\n                    onChange={(e) => setProjLink(e.target.value)}\n                  />\n                </div>\n                <div className={styles.field}>\n                  <label htmlFor=\"projDesc\">One-line description</label>\n                  <textarea\n                    id=\"projDesc\"\n                    placeholder=\"What does it do?\"\n                    value={projDesc}\n                    onChange={(e) => setProjDesc(e.target.value)}\n                  />\n                </div>\n                <div className={styles.field}>\n                  <label>Project type</label>\n                  <div className={styles.tagRow}>\n                    {PROJECT_TYPES.map((tag) => (\n                      <button\n                        key={tag}\n                        type=\"button\"\n                        className={`${styles.tag} ${\n                          activeTags.includes(tag) ? styles.tagActive : \"\"\n                        }`}\n                        onClick={() => toggleTag(tag)}\n                      >\n                        {tag}\n                      </button>\n                    ))}\n                  </div>\n                </div>\n                <button\n                  className={styles.shipBtn}\n                  onClick={() => setShipped(true)}\n                >\n                  SHIP IT &rarr;\n                </button>\n              </div>\n            ) : (\n              <div className={styles.success}>\n                <div className={styles.successMark}>&#10003;</div>\n                <h4>PROJECT SHIPPED!</h4>\n                <p>\n                  It&apos;s in the tall grass, awaiting review. We&apos;ll be\n                  in touch soon.\n                </p>\n                <button className={styles.resetBtn} onClick={resetForm}>\n                  Submit another\n                </button>\n              </div>\n            )}\n          </div>\n        </div>\n\n        <div className={styles.prizes}>\n          <h2 className={styles.prizesTitle}>\n            prizes<span className={styles.bang}>!!</span>\n          </h2>\n          <div className={styles.prizeRow}>\n            {PRIZES.map((prize, i) => (\n              <Fragment key={prize.name}>\n                {i > 0 && <div className={styles.prizeArrow}>\u2b95</div>}\n                <div className={styles.prize}>\n                  {/* eslint-disable-next-line @next/next/no-img-element */}\n                  <img\n                    className={`${styles.prizeImg} ${styles[prize.tilt]}`}\n                    src={prize.img}\n                    alt={prize.name}\n                  />\n                  <div className={styles.prizeCaption}>\n                    {prize.name}\n                    <span className={styles.bang}>!</span>\n                  </div>\n                  <div className={styles.prizeHours}>{prize.hours}</div>\n                </div>\n              </Fragment>\n            ))}\n          </div>\n          <div className={styles.prizeTotals}>(total hours: 5, 15, 40)</div>\n        </div>\n\n        <footer className={styles.footer}>\n          hackachu \u00b7 Hack Club YSWS \u00b7 gotta ship &apos;em all\n        </footer>\n      </div>\n    </div>\n  );\n}\n",
+      "summary": "\"use client\";. Contains 1 function: TrainerDashboard.",
+      "file_hash": "9a7776e0"
+    },
+    {
+      "id": "src/components/TrainerDashboard.tsx::TrainerDashboard",
+      "kind": "symbol",
+      "path": "src/components/TrainerDashboard.tsx",
+      "ext": ".tsx",
+      "size": 268,
+      "keywords": [
+        "trainerdashboard",
+        "trainer",
+        "dashboard"
+      ],
+      "symbol_type": "use_case",
+      "name": "TrainerDashboard",
+      "line_start": 37,
+      "line_end": 304,
+      "body_hash": "94d87c7e",
+      "confidence": "medium",
+      "exported": true
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx",
+      "kind": "file",
+      "path": "src/components/OnboardingWizard.tsx",
+      "ext": ".tsx",
+      "size": 9997,
+      "keywords": [
+        "onboardingwizard",
+        "onboarding",
+        "wizard"
+      ],
+      "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\nimport Image from \"next/image\";\nimport Link from \"next/link\";\nimport styles from \"./OnboardingWizard.module.css\";\n\nconst SCREENS = [\"welcome\", \"loot\", \"rules\", \"start\"] as const;\ntype ScreenId = (typeof SCREENS)[number];\n\nconst SCREEN_LABELS: Record<ScreenId, string> = {\n  welcome: \"welcome\",\n  loot: \"the loot\",\n  rules: \"trainer rules\",\n  start: \"ready to start\",\n};\n\nconst JOIN_URL = \"https://auth.hackclub.com/join/hackachu\";\n\nconst LOOT_TIERS = [\n  {\n    tag: \"LVL 1\",\n    hours: \"5 HOURS\",\n    desc: \"Complete your first prototype and secure your deck foundations.\",\n    reward: \"4X BOOSTER PACKS\",\n    img: \"/prizes/decks.png\",\n  },\n  {\n    tag: \"LVL 2\",\n    hours: \"15 HOURS\",\n    desc: \"Show true dedication to your RPG or card mechanics.\",\n    reward: \"PLUSHIE OR MERCH\",\n    img: \"/prizes/plushie.png\",\n  },\n  {\n    tag: \"BOSS\",\n    hours: \"40 HOURS\",\n    desc: \"The ultimate grind. Legendary status achieved.\",\n    reward: \"BOOSTER BOX OR SICK WATCH\",\n    img: \"/prizes/booster.png\",\n  },\n] as const;\n\nconst QUESTS = [\n  {\n    title: \"QUEST 01: THE CREATOR\",\n    desc: \"Build a Card Game or RPG (any theme!). Let your imagination run wild in the tall grass.\",\n    exp: 85,\n  },\n  {\n    title: \"QUEST 02: AI SYNERGY\",\n    desc: \"AI is allowed, but keep it honest (no slop!). Use the machine, don't let it use you.\",\n    exp: 40,\n  },\n  {\n    title: \"QUEST 03: PURE CREATIVITY\",\n    desc: \"Projects must be creative. We want to see your unique spark. No two trainers are the same.\",\n    exp: 65,\n  },\n] as const;\n\nconst BOOSTER_PACKS = [\n  { name: \"Trick or Trade\", desc: \"Halloween Special Edition\" },\n  { name: \"Silver Tempest\", desc: \"Alolan Vulpix Art\" },\n  { name: \"Surging Sparks\", desc: \"Electric Type Focus\" },\n] as const;\n\ntype WizardProps = {\n  isButtonBigger: boolean;\n}\n\nexport default function OnboardingWizard(props: WizardProps) {\n  const [step, setStep] = useState<number | null>(null);\n  const [menuOpen, setMenuOpen] = useState(false);\n\n  const isOpen = step !== null;\n  const isLast = step === SCREENS.length - 1;\n\n  const open = () => {\n    setStep(0);\n    setMenuOpen(false);\n  };\n\n  const close = () => {\n    setStep(null);\n    setMenuOpen(false);\n  };\n\n  const goNext = () => {\n    setStep((s) => (s === null || s >= SCREENS.length - 1 ? s : s + 1));\n  };\n\n  const goBack = () => {\n    setStep((s) => {\n      if (s === null) return s;\n      if (s === 0) return null;\n      return s - 1;\n    });\n  };\n\n  const jumpTo = (index: number) => {\n    setStep(index);\n    setMenuOpen(false);\n  };\n\n  useEffect(() => {\n    if (!isOpen) return;\n\n    const handleKeyDown = (e: KeyboardEvent) => {\n      if (e.altKey && e.key.toLowerCase() === \"s\") {\n        e.preventDefault();\n        jumpTo(SCREENS.length - 1);\n        return;\n      }\n      if (e.key.toLowerCase() === \"a\") {\n        e.preventDefault();\n        goNext();\n      } else if (e.key.toLowerCase() === \"b\") {\n        e.preventDefault();\n        goBack();\n      }\n    };\n\n    window.addEventListener(\"keydown\", handleKeyDown);\n    return () => window.removeEventListener(\"keydown\", handleKeyDown);\n  }, [isOpen]);\n\n  return (\n    <div className={styles.launcher}>\n      <button type=\"button\" className={props.isButtonBigger ? `${styles.triggerButton} ${styles.btnLarger}` : styles.triggerButton} onClick={open}>\n        start adventure\n      </button>\n      <Link href=\"/dashboard\" className={styles.loginLink}>\n        already a trainer? login.\n      </Link>\n\n      {isOpen && (\n        <div className={styles.overlay} role=\"dialog\" aria-modal=\"true\">\n          <div className={styles.frame}>\n            <div className={styles.topBar}>\n              <span className={styles.topBarLogo}>HACKACHU</span>\n              <button\n                type=\"button\"\n                className={styles.closeButton}\n                onClick={close}\n                aria-label=\"close\"\n              >\n                &times;\n              </button>\n            </div>\n\n            <div className={styles.screenArea}>\n              {step === 0 && <WelcomeScreen key=\"welcome\" />}\n              {step === 1 && <LootScreen key=\"loot\" />}\n              {step === 2 && <RulesScreen key=\"rules\" />}\n              {step === 3 && <StartScreen key=\"start\" onStart={close} />}\n            </div>\n\n            <div className={styles.bottomBar}>\n              <button\n                type=\"button\"\n                className={styles.navButton}\n                onClick={goBack}\n              >\n                &larr; back [b]\n              </button>\n\n              <div className={styles.menuWrap}>\n                <button\n                  type=\"button\"\n                  className={styles.menuButton}\n                  onClick={() => setMenuOpen((v) => !v)}\n                  aria-haspopup=\"true\"\n                  aria-expanded={menuOpen}\n                >\n                  menu\n                </button>\n                {menuOpen && (\n                  <ul className={styles.menuList}>\n                    {SCREENS.map((id, i) => (\n                      <li key={id}>\n                        <button\n                          type=\"button\"\n                          className={styles.menuItem}\n                          onClick={() => jumpTo(i)}\n                          aria-current={step === i}\n                        >\n                          {SCREEN_LABELS[id]}\n                        </button>\n                      </li>\n                    ))}\n                  </ul>\n                )}\n              </div>\n\n              {!isLast ? (\n                <button\n                  type=\"button\"\n                  className={styles.navButtonPrimary}\n                  onClick={goNext}\n                >\n                  next [a] &rarr;\n                </button>\n              ) : (\n                <span className={styles.navSpacer} />\n              )}\n            </div>\n          </div>\n        </div>\n      )}\n    </div>\n  );\n}\n\nfunction WelcomeScreen() {\n  return (\n    <div className={styles.screen}>\n      <span className={styles.badge}>the legendary you-ship-we-ship</span>\n      <h2 className={styles.headline}>welcome to hackachu!</h2>\n\n      <div className={styles.welcomeArt}>\n        <Image\n          src=\"/trainer.png\"\n          alt=\"pokemon trainer seen from behind\"\n          width={200}\n          height={221}\n        />\n      </div>\n\n      <div className={styles.dialogueBox}>\n        <span className={styles.speakerTag}>prof. hacker</span>\n        <p className={styles.dialogueText}>\n          Welcome, Trainer! I&apos;m here to show you the rules of Hackachu, \n          the infamous Pokemon-themed YSWS. Ready to see what you can win?\n        </p>\n      </div>\n    </div>\n  );\n}\n\nfunction LootScreen() {\n  return (\n    <div className={`${styles.screen} ${styles.screenLoot}`}>\n      <h2 className={styles.headlineBanner}>the loot</h2>\n\n      <div className={styles.lootList}>\n        {LOOT_TIERS.map((tier) => (\n          <div className={styles.lootCard} key={tier.hours}>\n            <span className={styles.lootTag}>{tier.tag}</span>\n            <div className={styles.lootIcon}>\n              <Image src={tier.img} alt={tier.reward} width={72} height={72} />\n            </div>\n            <p className={styles.lootHours}>{tier.hours}</p>\n            <p className={styles.lootDesc}>{tier.desc}</p>\n            <p className={styles.lootReward}>\n              reward unlocked: <span>{tier.reward}</span>\n            </p>\n          </div>\n        ))}\n      </div>\n\n      <div className={styles.systemMessage}>\n        <strong>system message:</strong> the more you build, the better the\n        loot! prizes are cumulative \u2014 submit the same project across\n        milestones to stack rewards.\n      </div>\n    </div>\n  );\n}\n\nfunction RulesScreen() {\n  return (\n    <div className={styles.screen}>\n      <h2 className={styles.headlineBanner}>trainer rules</h2>\n\n      <div className={styles.questList}>\n        {QUESTS.map((quest) => (\n          <div className={styles.questCard} key={quest.title}>\n            <p className={styles.questTitle}>{quest.title}</p>\n            <p className={styles.questDesc}>{quest.desc}</p>\n            <div className={styles.expBar}>\n              <div\n                className={styles.expFill}\n                style={{ width: `${quest.exp}%` }}\n              />\n            </div>\n          </div>\n        ))}\n      </div>\n\n      <div className={styles.prizeSummary}>\n        <p>1st prize: 5h project = 4 booster packs.</p>\n        <p>2nd prize: 15h cumulative = plushie/merch.</p>\n        <p>3rd prize: 40h cumulative = booster box or sick watch.</p>\n      </div>\n    </div>\n  );\n}\n\nfunction StartScreen({ onStart }: { onStart: () => void }) {\n  return (\n    <div className={styles.screen}>\n      <h2 className={styles.headline}>ready to start?</h2>\n\n      <div className={styles.incomingMessage}>\n        <span className={styles.incomingTag}>incoming message</span>\n        <p>\n          Pick your path and start building. We can&apos;t wait to see what\n          you create, adventurer!\n        </p>\n      </div>\n\n      <a\n        href={JOIN_URL}\n        target=\"_blank\"\n        rel=\"noopener noreferrer\"\n        className={styles.startButton}\n        onClick={onStart}\n      >\n        start adventure\n      </a>\n\n      <div className={styles.boosterPreview}>\n        <div className={styles.boosterHeader}>\n          <span>booster packs</span>\n          <span className={styles.stockTag}>in stock</span>\n        </div>\n        <ul className={styles.boosterList}>\n          {BOOSTER_PACKS.map((pack) => (\n            <li key={pack.name} className={styles.boosterItem}>\n              <span className={styles.boosterName}>{pack.name}</span>\n              <span className={styles.boosterDesc}>{pack.desc}</span>\n            </li>\n          ))}\n        </ul>\n        <div className={styles.challengeTag}>\n          current challenge: build an rpg or card game in 15h+\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "summary": "\"use client\";. Contains 5 functions/classes: OnboardingWizard, WelcomeScreen, LootScreen, RulesScreen, ....",
+      "file_hash": "e5f4619d"
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx::OnboardingWizard",
+      "kind": "symbol",
+      "path": "src/components/OnboardingWizard.tsx",
+      "ext": ".tsx",
+      "size": 142,
+      "keywords": [
+        "onboardingwizard",
+        "onboarding",
+        "wizard"
+      ],
+      "symbol_type": "use_case",
+      "name": "OnboardingWizard",
+      "line_start": 71,
+      "line_end": 212,
+      "body_hash": "2ced2598",
+      "confidence": "medium",
+      "exported": true
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx::WelcomeScreen",
+      "kind": "symbol",
+      "path": "src/components/OnboardingWizard.tsx",
+      "ext": ".tsx",
+      "size": 25,
+      "keywords": [
+        "welcomescreen",
+        "welcome",
+        "screen"
+      ],
+      "symbol_type": "utility",
+      "name": "WelcomeScreen",
+      "line_start": 214,
+      "line_end": 238,
+      "body_hash": "fbc8fdc1",
+      "confidence": "medium",
+      "exported": false
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx::LootScreen",
+      "kind": "symbol",
+      "path": "src/components/OnboardingWizard.tsx",
+      "ext": ".tsx",
+      "size": 29,
+      "keywords": [
+        "lootscreen",
+        "loot",
+        "screen"
+      ],
+      "symbol_type": "utility",
+      "name": "LootScreen",
+      "line_start": 240,
+      "line_end": 268,
+      "body_hash": "f94c6136",
+      "confidence": "medium",
+      "exported": false
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx::RulesScreen",
+      "kind": "symbol",
+      "path": "src/components/OnboardingWizard.tsx",
+      "ext": ".tsx",
+      "size": 28,
+      "keywords": [
+        "rulesscreen",
+        "rules",
+        "screen"
+      ],
+      "symbol_type": "utility",
+      "name": "RulesScreen",
+      "line_start": 270,
+      "line_end": 297,
+      "body_hash": "587c47f5",
+      "confidence": "medium",
+      "exported": false
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx::StartScreen",
+      "kind": "symbol",
+      "path": "src/components/OnboardingWizard.tsx",
+      "ext": ".tsx",
+      "size": 43,
+      "keywords": [
+        "startscreen",
+        "start",
+        "screen"
+      ],
+      "symbol_type": "utility",
+      "name": "StartScreen",
+      "line_start": 299,
+      "line_end": 341,
+      "body_hash": "262a43c7",
+      "confidence": "medium",
+      "exported": false
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx::ScreenId",
+      "kind": "symbol",
+      "path": "src/components/OnboardingWizard.tsx",
+      "ext": ".tsx",
+      "size": 8,
+      "keywords": [
+        "screenid",
+        "screen"
+      ],
+      "symbol_type": "model",
+      "name": "ScreenId",
+      "line_start": 8,
+      "line_end": 15,
+      "body_hash": "d66afb61",
+      "confidence": "high",
+      "exported": false
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx::WizardProps",
+      "kind": "symbol",
+      "path": "src/components/OnboardingWizard.tsx",
+      "ext": ".tsx",
+      "size": 3,
+      "keywords": [
+        "wizardprops",
+        "wizard",
+        "props"
+      ],
+      "symbol_type": "model",
+      "name": "WizardProps",
+      "line_start": 67,
+      "line_end": 69,
+      "body_hash": "f5dc0ec7",
+      "confidence": "high",
+      "exported": false
+    },
+    {
+      "id": "src/components/ui/button.tsx",
+      "kind": "file",
+      "path": "src/components/ui/button.tsx",
+      "ext": ".tsx",
+      "size": 3240,
+      "keywords": [
+        "button",
+        "buttonvariants",
+        "variants"
+      ],
+      "content": "import { Button as ButtonPrimitive } from \"@base-ui/react/button\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/80\",\n        outline:\n          \"border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground\",\n        ghost:\n          \"hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50\",\n        destructive:\n          \"bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default:\n          \"h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2\",\n        xs: \"h-6 gap-1 rounded-[min(var(--radius-md),10px)] px-2 text-xs in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3\",\n        sm: \"h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5\",\n        lg: \"h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2\",\n        icon: \"size-8\",\n        \"icon-xs\":\n          \"size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-lg [&_svg:not([class*='size-'])]:size-3\",\n        \"icon-sm\":\n          \"size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg\",\n        \"icon-lg\": \"size-9\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  ...props\n}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {\n  return (\n    <ButtonPrimitive\n      data-slot=\"button\"\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "summary": "import { Button as ButtonPrimitive } from \"@base-ui/react/button\". Contains 1 function: Button.",
+      "file_hash": "e04ce525"
+    },
+    {
+      "id": "src/components/ui/button.tsx::Button",
+      "kind": "symbol",
+      "path": "src/components/ui/button.tsx",
+      "ext": ".tsx",
+      "size": 14,
+      "keywords": [
+        "button"
+      ],
+      "symbol_type": "utility",
+      "name": "Button",
+      "line_start": 42,
+      "line_end": 55,
+      "body_hash": "47525866",
+      "confidence": "medium",
+      "exported": false
+    },
+    {
+      "id": "src/components/fancy/physics/gravity.tsx",
+      "kind": "file",
+      "path": "src/components/fancy/physics/gravity.tsx",
+      "ext": ".tsx",
+      "size": 14778,
+      "keywords": [
+        "gravityref",
+        "gravity",
+        "ref",
+        "matterbody",
+        "matter",
+        "body"
+      ],
+      "content": "\"use client\"\n\nimport {\n  createContext,\n  forwardRef,\n  ReactNode,\n  useCallback,\n  useContext,\n  useEffect,\n  useImperativeHandle,\n  useMemo,\n  useRef,\n  useState,\n} from \"react\"\nimport { calculatePosition } from \"@/utils/calculate-position\"\nimport { parsePathToVertices } from \"@/utils/svg-path-to-vertices\"\nimport { debounce } from \"lodash\"\nimport Matter, {\n  Bodies,\n  Common,\n  Engine,\n  Events,\n  Mouse,\n  MouseConstraint,\n  Query,\n  Render,\n  Runner,\n  World,\n} from \"matter-js\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype GravityProps = {\n  children: ReactNode\n  debug?: boolean\n  gravity?: { x: number; y: number }\n  resetOnResize?: boolean\n  grabCursor?: boolean\n  addTopWall?: boolean\n  autoStart?: boolean\n  className?: string\n}\n\ntype PhysicsBody = {\n  element: HTMLElement\n  body: Matter.Body\n  props: MatterBodyProps\n}\n\ntype MatterBodyProps = {\n  children: ReactNode\n  matterBodyOptions?: Matter.IBodyDefinition\n  isDraggable?: boolean\n  bodyType?: \"rectangle\" | \"circle\" | \"svg\"\n  sampleLength?: number\n  x?: number | string\n  y?: number | string\n  angle?: number\n  className?: string\n}\n\nexport type GravityRef = {\n  start: () => void\n  stop: () => void\n  reset: () => void\n}\n\nconst GravityContext = createContext<{\n  registerElement: (\n    id: string,\n    element: HTMLElement,\n    props: MatterBodyProps\n  ) => void\n  unregisterElement: (id: string) => void\n} | null>(null)\n\nexport const MatterBody = ({\n  children,\n  className,\n  matterBodyOptions = {\n    friction: 0.1,\n    restitution: 0.1,\n    density: 0.001,\n    isStatic: false,\n  },\n  bodyType = \"rectangle\",\n  isDraggable = true,\n  sampleLength = 15,\n  x = 0,\n  y = 0,\n  angle = 0,\n  ...props\n}: MatterBodyProps) => {\n  const elementRef = useRef<HTMLDivElement>(null)\n  const idRef = useRef(Math.random().toString(36).substring(7))\n  const context = useContext(GravityContext)\n\n  useEffect(() => {\n    if (!elementRef.current || !context) return\n    context.registerElement(idRef.current, elementRef.current, {\n      children,\n      matterBodyOptions,\n      bodyType,\n      sampleLength,\n      isDraggable,\n      x,\n      y,\n      angle,\n      ...props,\n    })\n\n    return () => context.unregisterElement(idRef.current)\n    // Register once per physics world: the context identity only changes\n    // when the world resets (e.g. on resize). Depending on children/props\n    // objects here would despawn and respawn the body at its start position\n    // on every parent re-render.\n    // eslint-disable-next-line react-hooks/exhaustive-deps\n  }, [context, x, y, angle, bodyType])\n\n  return (\n    <div\n      ref={elementRef}\n      className={cn(\n        \"absolute\",\n        className,\n        isDraggable && \"pointer-events-none\"\n      )}\n    >\n      {children}\n    </div>\n  )\n}\n\nconst Gravity = forwardRef<GravityRef, GravityProps>(\n  (\n    {\n      children,\n      debug = false,\n      gravity = { x: 0, y: 1 },\n      grabCursor = true,\n      resetOnResize = true,\n      addTopWall = true,\n      autoStart = true,\n      className,\n      ...props\n    },\n    ref\n  ) => {\n    const canvas = useRef<HTMLDivElement>(null)\n    const engine = useRef(Engine.create())\n    const render = useRef<Render>(undefined)\n    const runner = useRef<Runner>(undefined)\n    const bodiesMap = useRef(new Map<string, PhysicsBody>())\n    const frameId = useRef<number>(undefined)\n    const mouseConstraint = useRef<Matter.MouseConstraint>(undefined)\n    const mouseDown = useRef(false)\n    const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 })\n\n    const isRunning = useRef(false)\n\n    // Register Matter.js body in the physics world\n    const registerElement = useCallback(\n      (id: string, element: HTMLElement, props: MatterBodyProps) => {\n        if (!canvas.current) return\n        const width = element.offsetWidth\n        const height = element.offsetHeight\n        const canvasRect = canvas.current!.getBoundingClientRect()\n\n        const angle = (props.angle || 0) * (Math.PI / 180)\n\n        const x = calculatePosition(props.x, canvasRect.width, width)\n        const y = calculatePosition(props.y, canvasRect.height, height)\n\n        let body\n        if (props.bodyType === \"circle\") {\n          const radius = Math.max(width, height) / 2\n          body = Bodies.circle(x, y, radius, {\n            ...props.matterBodyOptions,\n            angle: angle,\n            render: {\n              fillStyle: debug ? \"#888888\" : \"#00000000\",\n              strokeStyle: debug ? \"#333333\" : \"#00000000\",\n              lineWidth: debug ? 3 : 0,\n            },\n          })\n        } else if (props.bodyType === \"svg\") {\n          const paths = element.querySelectorAll(\"path\")\n          const vertexSets: Matter.Vector[][] = []\n\n          paths.forEach((path) => {\n            const d = path.getAttribute(\"d\")\n            const p = parsePathToVertices(d!, props.sampleLength)\n            vertexSets.push(p)\n          })\n\n          body = Bodies.fromVertices(x, y, vertexSets, {\n            ...props.matterBodyOptions,\n            angle: angle,\n            render: {\n              fillStyle: debug ? \"#888888\" : \"#00000000\",\n              strokeStyle: debug ? \"#333333\" : \"#00000000\",\n              lineWidth: debug ? 3 : 0,\n            },\n          })\n        } else {\n          body = Bodies.rectangle(x, y, width, height, {\n            ...props.matterBodyOptions,\n            angle: angle,\n            render: {\n              fillStyle: debug ? \"#888888\" : \"#00000000\",\n              strokeStyle: debug ? \"#333333\" : \"#00000000\",\n              lineWidth: debug ? 3 : 0,\n            },\n          })\n        }\n\n        if (body) {\n          World.add(engine.current.world, [body])\n          bodiesMap.current.set(id, { element, body, props })\n        }\n      },\n      [debug]\n    )\n\n    // Unregister Matter.js body from the physics world\n    const unregisterElement = useCallback((id: string) => {\n      const body = bodiesMap.current.get(id)\n      if (body) {\n        World.remove(engine.current.world, body.body)\n        bodiesMap.current.delete(id)\n      }\n    }, [])\n\n    // Keep react elements in sync with the physics world\n    const updateElements = useCallback(() => {\n      bodiesMap.current.forEach(({ element, body }) => {\n        const { x, y } = body.position\n        const rotation = body.angle * (180 / Math.PI)\n\n        element.style.transform = `translate(${\n          x - element.offsetWidth / 2\n        }px, ${y - element.offsetHeight / 2}px) rotate(${rotation}deg)`\n      })\n\n      frameId.current = requestAnimationFrame(updateElements)\n    }, [])\n\n    const initializeRenderer = useCallback(() => {\n      if (!canvas.current) return\n\n      const height = canvas.current.offsetHeight\n      const width = canvas.current.offsetWidth\n\n      Common.setDecomp(require(\"poly-decomp\"))\n\n      engine.current.gravity.x = gravity.x\n      engine.current.gravity.y = gravity.y\n\n      render.current = Render.create({\n        element: canvas.current,\n        engine: engine.current,\n        options: {\n          width,\n          height,\n          wireframes: false,\n          background: \"#00000000\",\n        },\n      })\n\n      // Listen for mouse events on the parent element instead of the canvas,\n      // so bodies stay draggable even when the overlay itself has\n      // pointer-events: none (clicks pass through to the page content).\n      const mouseElement = canvas.current.parentElement ?? render.current.canvas\n      const mouse = Mouse.create(mouseElement)\n\n      // Matter's wheel/touch handlers call preventDefault, which would block\n      // page scrolling now that the mouse target spans the whole page.\n      mouseElement.removeEventListener(\"wheel\", mouse.mousewheel)\n      mouseElement.removeEventListener(\"touchmove\", mouse.mousemove)\n      mouseElement.removeEventListener(\"touchstart\", mouse.mousedown)\n      mouseElement.removeEventListener(\"touchend\", mouse.mouseup)\n\n      mouseConstraint.current = MouseConstraint.create(engine.current, {\n        mouse: mouse,\n        constraint: {\n          stiffness: 0.2,\n          render: {\n            visible: debug,\n          },\n        },\n      })\n\n      // Add walls\n      const walls = [\n        // Floor\n        Bodies.rectangle(width / 2, height + 10, width, 20, {\n          isStatic: true,\n          friction: 1,\n          render: {\n            visible: debug,\n          },\n        }),\n\n        // Right wall\n        Bodies.rectangle(width + 10, height / 2, 20, height, {\n          isStatic: true,\n          friction: 1,\n          render: {\n            visible: debug,\n          },\n        }),\n\n        // Left wall\n        Bodies.rectangle(-10, height / 2, 20, height, {\n          isStatic: true,\n          friction: 1,\n          render: {\n            visible: debug,\n          },\n        }),\n      ]\n\n      const topWall = addTopWall\n        ? Bodies.rectangle(width / 2, -10, width, 20, {\n            isStatic: true,\n            friction: 1,\n            render: {\n              visible: debug,\n            },\n          })\n        : null\n\n      if (topWall) {\n        walls.push(topWall)\n      }\n\n      const touchingMouse = () =>\n        Query.point(\n          engine.current.world.bodies,\n          mouseConstraint.current?.mouse.position || { x: 0, y: 0 }\n        ).length > 0\n\n      if (grabCursor) {\n        Events.on(engine.current, \"beforeUpdate\", (event) => {\n          if (canvas.current) {\n            const dragging = mouseConstraint.current?.body != null\n            const over = touchingMouse()\n\n            // Only intercept the pointer while hovering or dragging a body,\n            // so the rest of the page stays clickable underneath the overlay.\n            canvas.current.style.pointerEvents =\n              over || dragging ? \"auto\" : \"none\"\n\n            if (!mouseDown.current && !over) {\n              canvas.current.style.cursor = \"default\"\n            } else if (over) {\n              canvas.current.style.cursor = mouseDown.current\n                ? \"grabbing\"\n                : \"grab\"\n            }\n          }\n        })\n\n        mouseElement.addEventListener(\"mousedown\", (event) => {\n          mouseDown.current = true\n\n          if (canvas.current) {\n            if (touchingMouse()) {\n              canvas.current.style.cursor = \"grabbing\"\n            } else {\n              canvas.current.style.cursor = \"default\"\n            }\n          }\n        })\n        mouseElement.addEventListener(\"mouseup\", (event) => {\n          mouseDown.current = false\n\n          if (canvas.current) {\n            if (touchingMouse()) {\n              canvas.current.style.cursor = \"grab\"\n            } else {\n              canvas.current.style.cursor = \"default\"\n            }\n          }\n        })\n      }\n\n      World.add(engine.current.world, [mouseConstraint.current, ...walls])\n\n      render.current.mouse = mouse\n\n      runner.current = Runner.create()\n      Render.run(render.current)\n      updateElements()\n      runner.current.enabled = false\n\n      if (autoStart) {\n        runner.current.enabled = true\n        startEngine()\n      }\n    }, [updateElements, debug, autoStart])\n\n    // Clear the Matter.js world\n    const clearRenderer = useCallback(() => {\n      if (frameId.current) {\n        cancelAnimationFrame(frameId.current)\n      }\n\n      if (mouseConstraint.current) {\n        World.remove(engine.current.world, mouseConstraint.current)\n      }\n\n      if (render.current) {\n        Mouse.clearSourceEvents(render.current.mouse)\n        Render.stop(render.current)\n        render.current.canvas.remove()\n      }\n\n      if (runner.current) {\n        Runner.stop(runner.current)\n      }\n\n      if (engine.current) {\n        World.clear(engine.current.world, false)\n        Engine.clear(engine.current)\n      }\n\n      bodiesMap.current.clear()\n    }, [])\n\n    const handleResize = useCallback(() => {\n      if (!canvas.current || !resetOnResize) return\n\n      const newWidth = canvas.current.offsetWidth\n      const newHeight = canvas.current.offsetHeight\n\n      setCanvasSize({ width: newWidth, height: newHeight })\n\n      // Clear and reinitialize\n      clearRenderer()\n      initializeRenderer()\n    }, [clearRenderer, initializeRenderer, resetOnResize])\n\n    const startEngine = useCallback(() => {\n      if (runner.current) {\n        runner.current.enabled = true\n\n        Runner.run(runner.current, engine.current)\n      }\n      if (render.current) {\n        Render.run(render.current)\n      }\n      frameId.current = requestAnimationFrame(updateElements)\n      isRunning.current = true\n    }, [updateElements, canvasSize])\n\n    const stopEngine = useCallback(() => {\n      if (!isRunning.current) return\n\n      if (runner.current) {\n        Runner.stop(runner.current)\n      }\n      if (render.current) {\n        Render.stop(render.current)\n      }\n      if (frameId.current) {\n        cancelAnimationFrame(frameId.current)\n      }\n      isRunning.current = false\n    }, [])\n\n    const reset = useCallback(() => {\n      stopEngine()\n      bodiesMap.current.forEach(({ element, body, props }) => {\n        body.angle = props.angle || 0\n\n        const x = calculatePosition(\n          props.x,\n          canvasSize.width,\n          element.offsetWidth\n        )\n        const y = calculatePosition(\n          props.y,\n          canvasSize.height,\n          element.offsetHeight\n        )\n        body.position.x = x\n        body.position.y = y\n      })\n      updateElements()\n      handleResize()\n    }, [])\n\n    useImperativeHandle(\n      ref,\n      () => ({\n        start: startEngine,\n        stop: stopEngine,\n        reset,\n      }),\n      [startEngine, stopEngine]\n    )\n\n    useEffect(() => {\n      if (!resetOnResize) return\n\n      const debouncedResize = debounce(handleResize, 500)\n      window.addEventListener(\"resize\", debouncedResize)\n\n      return () => {\n        window.removeEventListener(\"resize\", debouncedResize)\n        debouncedResize.cancel()\n      }\n    }, [handleResize, resetOnResize])\n\n    useEffect(() => {\n      initializeRenderer()\n      return clearRenderer\n    }, [initializeRenderer, clearRenderer])\n\n    // canvasSize is intentionally a dependency: handleResize clears the\n    // physics world, so the new context identity prompts MatterBody children\n    // to re-register their bodies into the fresh world.\n    // eslint-disable-next-line react-hooks/exhaustive-deps\n    const contextValue = useMemo(\n      () => ({ registerElement, unregisterElement }),\n      [registerElement, unregisterElement, canvasSize]\n    )\n\n    return (\n      <GravityContext.Provider value={contextValue}>\n        <div\n          ref={canvas}\n          className={cn(className, \"absolute top-0 left-0 w-full h-full\")}\n          {...props}\n        >\n          {children}\n        </div>\n      </GravityContext.Provider>\n    )\n  }\n)\n\nGravity.displayName = \"Gravity\"\nexport default Gravity\n",
+      "summary": "\"use client\".",
+      "file_hash": "ced7f8af"
+    },
+    {
+      "id": "src/components/fancy/physics/gravity.tsx::MatterBody",
+      "kind": "symbol",
+      "path": "src/components/fancy/physics/gravity.tsx",
+      "ext": ".tsx",
+      "size": 56,
+      "keywords": [
+        "matterbody",
+        "matter",
+        "body"
+      ],
+      "symbol_type": "use_case",
+      "name": "MatterBody",
+      "line_start": 76,
+      "line_end": 131,
+      "body_hash": "444c64d4",
+      "confidence": "medium",
+      "exported": true
+    },
+    {
+      "id": "src/components/fancy/physics/gravity.tsx::GravityProps",
+      "kind": "symbol",
+      "path": "src/components/fancy/physics/gravity.tsx",
+      "ext": ".tsx",
+      "size": 10,
+      "keywords": [
+        "gravityprops",
+        "gravity",
+        "props"
+      ],
+      "symbol_type": "model",
+      "name": "GravityProps",
+      "line_start": 32,
+      "line_end": 41,
+      "body_hash": "631a3fd6",
+      "confidence": "high",
+      "exported": false
+    },
+    {
+      "id": "src/components/fancy/physics/gravity.tsx::PhysicsBody",
+      "kind": "symbol",
+      "path": "src/components/fancy/physics/gravity.tsx",
+      "ext": ".tsx",
+      "size": 5,
+      "keywords": [
+        "physicsbody",
+        "physics",
+        "body"
+      ],
+      "symbol_type": "model",
+      "name": "PhysicsBody",
+      "line_start": 43,
+      "line_end": 47,
+      "body_hash": "f89f2433",
+      "confidence": "high",
+      "exported": false
+    },
+    {
+      "id": "src/components/fancy/physics/gravity.tsx::MatterBodyProps",
+      "kind": "symbol",
+      "path": "src/components/fancy/physics/gravity.tsx",
+      "ext": ".tsx",
+      "size": 11,
+      "keywords": [
+        "matterbodyprops",
+        "matter",
+        "body",
+        "props"
+      ],
+      "symbol_type": "model",
+      "name": "MatterBodyProps",
+      "line_start": 49,
+      "line_end": 59,
+      "body_hash": "651caa63",
+      "confidence": "high",
+      "exported": false
+    },
+    {
+      "id": "src/components/fancy/physics/gravity.tsx::GravityRef",
+      "kind": "symbol",
+      "path": "src/components/fancy/physics/gravity.tsx",
+      "ext": ".tsx",
+      "size": 5,
+      "keywords": [
+        "gravityref",
+        "gravity",
+        "ref"
+      ],
+      "symbol_type": "model",
+      "name": "GravityRef",
+      "line_start": 61,
+      "line_end": 65,
+      "body_hash": "48c52e91",
+      "confidence": "high",
+      "exported": true
+    },
+    {
+      "id": "src/utils/calculate-position.ts",
+      "kind": "file",
+      "path": "src/utils/calculate-position.ts",
+      "ext": ".ts",
+      "size": 504,
+      "keywords": [
+        "calculateposition",
+        "calculate",
+        "position"
+      ],
+      "content": "export function calculatePosition(\n  value: number | string | undefined,\n  containerSize: number,\n  elementSize: number\n): number {\n  // Handle percentage strings (e.g. \"50%\")\n  if (typeof value === \"string\" && value.endsWith(\"%\")) {\n    const percentage = parseFloat(value) / 100\n    return containerSize * percentage\n  }\n\n  // Handle direct pixel values\n  if (typeof value === \"number\") {\n    return value\n  }\n\n  // If no value provided, center the element\n  return (containerSize - elementSize) / 2\n}\n",
+      "summary": "export function calculatePosition(. Contains 1 function: calculatePosition.",
+      "file_hash": "c2a00289"
+    },
+    {
+      "id": "src/utils/calculate-position.ts::calculatePosition",
+      "kind": "symbol",
+      "path": "src/utils/calculate-position.ts",
+      "ext": ".ts",
+      "size": 19,
+      "keywords": [
+        "calculateposition",
+        "calculate",
+        "position"
+      ],
+      "symbol_type": "use_case",
+      "name": "calculatePosition",
+      "line_start": 0,
+      "line_end": 18,
+      "body_hash": "dfb3b64c",
+      "confidence": "high",
+      "exported": true
+    },
+    {
+      "id": "src/utils/svg-path-to-vertices.ts",
+      "kind": "file",
+      "path": "src/utils/svg-path-to-vertices.ts",
+      "ext": ".ts",
+      "size": 1095,
+      "keywords": [
+        "parsepathtovertices",
+        "parse",
+        "path",
+        "vertices"
+      ],
+      "content": "import SVGPathCommander from \"svg-path-commander\"\n\n// Function to convert SVG path `d` to vertices\nexport function parsePathToVertices(path: string, sampleLength = 15) {\n  // Convert path to absolute commands\n  const commander = new SVGPathCommander(path)\n\n  const points: { x: number; y: number }[] = []\n  let lastPoint: { x: number; y: number } | null = null\n\n  // Get total length of the path\n  const totalLength = commander.getTotalLength()\n  let length = 0\n\n  // Sample points along the path\n  while (length < totalLength) {\n    const point = commander.getPointAtLength(length)\n\n    // Only add point if it's different from the last one\n    if (!lastPoint || point.x !== lastPoint.x || point.y !== lastPoint.y) {\n      points.push({ x: point.x, y: point.y })\n      lastPoint = point\n    }\n\n    length += sampleLength\n  }\n\n  // Ensure we get the last point\n  const finalPoint = commander.getPointAtLength(totalLength)\n  if (\n    lastPoint &&\n    (finalPoint.x !== lastPoint.x || finalPoint.y !== lastPoint.y)\n  ) {\n    points.push({ x: finalPoint.x, y: finalPoint.y })\n  }\n\n  return points\n}",
+      "summary": "import SVGPathCommander from \"svg-path-commander\". Contains 1 function: parsePathToVertices.",
+      "file_hash": "72ac7680"
+    },
+    {
+      "id": "src/utils/svg-path-to-vertices.ts::parsePathToVertices",
+      "kind": "symbol",
+      "path": "src/utils/svg-path-to-vertices.ts",
+      "ext": ".ts",
+      "size": 35,
+      "keywords": [
+        "parsepathtovertices",
+        "parse",
+        "path",
+        "vertices"
+      ],
+      "symbol_type": "use_case",
+      "name": "parsePathToVertices",
+      "line_start": 3,
+      "line_end": 37,
+      "body_hash": "8f270fce",
+      "confidence": "high",
+      "exported": true
+    },
+    {
+      "id": "src/lib/utils.ts",
+      "kind": "file",
+      "path": "src/lib/utils.ts",
+      "ext": ".ts",
+      "size": 166,
+      "keywords": [],
+      "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "summary": "import { clsx, type ClassValue } from \"clsx\". Contains 1 function: cn.",
+      "file_hash": "5a6fd53f"
+    },
+    {
+      "id": "src/lib/utils.ts::cn",
+      "kind": "symbol",
+      "path": "src/lib/utils.ts",
+      "ext": ".ts",
+      "size": 3,
+      "keywords": [],
+      "symbol_type": "use_case",
+      "name": "cn",
+      "line_start": 3,
+      "line_end": 5,
+      "body_hash": "fb7b0125",
+      "confidence": "high",
       "exported": true
     }
   ],
   "edges": [
-    {
-      "from": "package-lock.json",
-      "to": "//opencollective.c",
-      "rel": "references"
-    },
-    {
-      "from": "package-lock.json",
-      "to": "bin/babel-parser.js",
-      "rel": "references"
-    },
-    {
-      "from": "package-lock.json",
-      "to": "//github.c",
-      "rel": "references"
-    },
-    {
-      "from": "package-lock.json",
-      "to": "bin/semver.js",
-      "rel": "references"
-    },
-    {
-      "from": "package-lock.json",
-      "to": "dist/cli.c",
-      "rel": "references"
-    },
-    {
-      "from": "package-lock.json",
-      "to": "//tidelift.c",
-      "rel": "references"
-    },
-    {
-      "from": "package-lock.json",
-      "to": "bin/eslint.js",
-      "rel": "references"
-    },
-    {
-      "from": "package-lock.json",
-      "to": "bin/js-yaml.js",
-      "rel": "references"
-    },
-    {
-      "from": "package-lock.json",
-      "to": "lib/cli.js",
-      "rel": "references"
-    },
-    {
-      "from": "package-lock.json",
-      "to": "bin/nanoid.c",
-      "rel": "references"
-    },
     {
       "from": "CLAUDE.md",
       "to": "src/auth.ts",
@@ -350,6 +832,16 @@
       "from": "next-env.d.ts",
       "to": "./.next/dev/types/routes.d.ts",
       "rel": "imports"
+    },
+    {
+      "from": "components.json",
+      "to": "om/schema.js",
+      "rel": "references"
+    },
+    {
+      "from": "components.json",
+      "to": "src/app/globals.cs",
+      "rel": "references"
     },
     {
       "from": "next.config.ts",
@@ -382,8 +874,58 @@
       "rel": "references"
     },
     {
+      "from": "openspec/changes/add-onboarding-wizard/tasks.md",
+      "to": "src/components/OnboardingWizard.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/tasks.md",
+      "to": "src/app/page.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/tasks.md",
+      "to": "//auth.h",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/design.md",
+      "to": "src/app/page.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/design.md",
+      "to": "//auth.h",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/design.md",
+      "to": "src/components/OnboardingWizard.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/proposal.md",
+      "to": "//auth.h",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/proposal.md",
+      "to": "src/app/page.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/specs/onboarding-wizard/spec.md",
+      "to": "//auth.h",
+      "rel": "references"
+    },
+    {
       "from": "src/app/page.tsx",
       "to": "next/image",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "next/link",
       "rel": "imports"
     },
     {
@@ -393,12 +935,37 @@
     },
     {
       "from": "src/app/page.tsx",
+      "to": "@/components/fancy/physics/gravity",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "@/components/OnboardingWizard",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
       "to": "Image",
       "rel": "imports"
     },
     {
       "from": "src/app/page.tsx",
+      "to": "Link",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
       "to": "styles",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "Gravity",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "OnboardingWizard",
       "rel": "imports"
     },
     {
@@ -433,6 +1000,16 @@
     },
     {
       "from": "src/app/layout.tsx",
+      "to": "next/font/google",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/layout.tsx",
+      "to": "@/lib/utils",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/layout.tsx",
       "to": "type",
       "rel": "imports"
     },
@@ -449,6 +1026,301 @@
     {
       "from": "src/app/layout.tsx",
       "to": "src/app/layout.tsx::RootLayout",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/dashboard/page.tsx",
+      "to": "next",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/dashboard/page.tsx",
+      "to": "next/font/google",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/dashboard/page.tsx",
+      "to": "@/components/TrainerDashboard",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/dashboard/page.tsx",
+      "to": "type",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/dashboard/page.tsx",
+      "to": "TrainerDashboard",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/dashboard/page.tsx",
+      "to": "src/app/dashboard/page.tsx::DashboardPage",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/Pokeball.tsx",
+      "to": "next/image",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/Pokeball.tsx",
+      "to": "react",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/Pokeball.tsx",
+      "to": "./Pokeball.module.css",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/Pokeball.tsx",
+      "to": "Image",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/Pokeball.tsx",
+      "to": "styles",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/Pokeball.tsx",
+      "to": "src/components/Pokeball.tsx::Pokeball",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "react",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "./TrainerDashboard.module.css",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "next/image",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "./fancy/physics/gravity",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "styles",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "Image",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "Gravity",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "//hackatime.h",
+      "rel": "references"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "//github.c",
+      "rel": "references"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "src/components/TrainerDashboard.tsx::TrainerDashboard",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "react",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "next/image",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "next/link",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "./OnboardingWizard.module.css",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "Image",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "Link",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "styles",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "//auth.h",
+      "rel": "references"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "src/components/OnboardingWizard.tsx::OnboardingWizard",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "src/components/OnboardingWizard.tsx::WelcomeScreen",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "src/components/OnboardingWizard.tsx::LootScreen",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "src/components/OnboardingWizard.tsx::RulesScreen",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "src/components/OnboardingWizard.tsx::StartScreen",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "src/components/OnboardingWizard.tsx::ScreenId",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "src/components/OnboardingWizard.tsx::WizardProps",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/ui/button.tsx",
+      "to": "@base-ui/react/button",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/ui/button.tsx",
+      "to": "class-variance-authority",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/ui/button.tsx",
+      "to": "@/lib/utils",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/ui/button.tsx",
+      "to": "src/components/ui/button.tsx::Button",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "@/utils/calculate-position",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "@/utils/svg-path-to-vertices",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "lodash",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "@/lib/utils",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "poly-decomp",
+      "rel": "requires"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "Matter",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "src/components/fancy/physics/gravity.tsx::MatterBody",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "src/components/fancy/physics/gravity.tsx::GravityProps",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "src/components/fancy/physics/gravity.tsx::PhysicsBody",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "src/components/fancy/physics/gravity.tsx::MatterBodyProps",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "src/components/fancy/physics/gravity.tsx::GravityRef",
+      "rel": "contains"
+    },
+    {
+      "from": "src/utils/calculate-position.ts",
+      "to": "src/utils/calculate-position.ts::calculatePosition",
+      "rel": "contains"
+    },
+    {
+      "from": "src/utils/svg-path-to-vertices.ts",
+      "to": "svg-path-commander",
+      "rel": "imports"
+    },
+    {
+      "from": "src/utils/svg-path-to-vertices.ts",
+      "to": "SVGPathCommander",
+      "rel": "imports"
+    },
+    {
+      "from": "src/utils/svg-path-to-vertices.ts",
+      "to": "src/utils/svg-path-to-vertices.ts::parsePathToVertices",
+      "rel": "contains"
+    },
+    {
+      "from": "src/lib/utils.ts",
+      "to": "clsx",
+      "rel": "imports"
+    },
+    {
+      "from": "src/lib/utils.ts",
+      "to": "tailwind-merge",
+      "rel": "imports"
+    },
+    {
+      "from": "src/lib/utils.ts",
+      "to": "src/lib/utils.ts::cn",
       "rel": "contains"
     }
   ]

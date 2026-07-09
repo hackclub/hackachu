@@ -219,7 +219,7 @@ export default function Home() {
         />
       </footer>
 
-      <OnboardingWizard />
+      <OnboardingWizard isButtonBigger={false} />
 
     </div>
   );
