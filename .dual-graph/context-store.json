@@ -1,1 +1,67 @@
-[]
+[
+  {
+    "id": "mem:1783692968390",
+    "kind": "edit_observation",
+    "content": "Edited during active session",
+    "tags": [
+      "added",
+      "plausible",
+      "analytics",
+      "via",
+      "two",
+      "script",
+      "components",
+      "src"
+    ],
+    "files": [
+      "src/app/layout.tsx::RootLayout"
+    ],
+    "file_path": "src/app/layout.tsx",
+    "symbol_id": "src/app/layout.tsx::RootLayout",
+    "symbol_hash": "87ffa23f",
+    "created_at": "2026-07-10T14:16:08.390694+00:00",
+    "created_epoch": 1783692968,
+    "updated_at": "2026-07-10T14:16:08.390699+00:00",
+    "stale": false,
+    "stale_reason": "",
+    "observed_queries": [],
+    "evidence": {
+      "source": "graph_register_edit",
+      "recent_action_kinds": [],
+      "recent_queries": [],
+      "edited": true
+    }
+  },
+  {
+    "id": "mem:1783692968390",
+    "kind": "decision",
+    "content": "Re-added Plausible analytics via two Script components (src loader + inline JS init) after user reverted prior HTML-in-JS version",
+    "tags": [
+      "added",
+      "plausible",
+      "analytics",
+      "via",
+      "two",
+      "script",
+      "components",
+      "src"
+    ],
+    "files": [
+      "src/app/layout.tsx::RootLayout"
+    ],
+    "file_path": "src/app/layout.tsx",
+    "symbol_id": "src/app/layout.tsx::RootLayout",
+    "symbol_hash": "87ffa23f",
+    "created_at": "2026-07-10T14:16:08.390335+00:00",
+    "created_epoch": 1783692968,
+    "updated_at": "2026-07-10T14:16:08.390339+00:00",
+    "stale": false,
+    "stale_reason": "",
+    "observed_queries": [],
+    "evidence": {
+      "window_sec": 120,
+      "recent_action_kinds": [],
+      "recent_queries": []
+    }
+  }
+]
