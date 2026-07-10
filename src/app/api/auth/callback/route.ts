@@ -3,7 +3,8 @@ import { cookies } from "next/headers"
 import { encryptSession } from "@/app/lib/session"
 
 
-const REDIRECT_URI = "http://localhost:3000/api/auth/callback"
+// must exactly match the redirect_uri sent in the authorize step (src/lib/utils.ts)
+const REDIRECT_URI = `${process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000"}/api/auth/callback`
 const BASE_URL = "https://auth.hackclub.com"
 
 export async function GET(request: NextRequest) {
