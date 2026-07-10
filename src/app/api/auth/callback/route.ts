@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 import { cookies } from "next/headers"
 import { encryptSession } from "@/app/lib/session"
-// shared with the authorize step — the two must match exactly
-import { REDIRECT_URI } from "@/lib/utils"
+// derived from the request, same as the authorize step — the two must match exactly
+import { getRedirectUri } from "@/app/lib/origin"
 
 const BASE_URL = "https://auth.hackclub.com"
 
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
       code,
       client_id: process.env.HACKCLUB_CLIENT_ID,
       client_secret: process.env.HACKCLUB_SECRET_ID,
-      redirect_uri: REDIRECT_URI,
+      redirect_uri: getRedirectUri(request),
       grant_type: "authorization_code",
     }),
   })
