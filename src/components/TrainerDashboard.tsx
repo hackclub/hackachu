@@ -156,16 +156,16 @@ export default function TrainerDashboard() {
             >
               {TIPS[tipIndex]}
             </div>
-            <a
+            {/* <a
               className={styles.hackatimeLink}
               href="https://hackatime.hackclub.com"
               target="_blank"
               rel="noopener"
             >
               &gt; connect your hackatime
-            </a>
+            </a> */}
 
-            <div className={styles.statGrid}>
+            {/* <div className={styles.statGrid}>
               <div className={styles.stat}>
                 <div className={styles.statNum}>0</div>
                 <div className={styles.statLabel}>Projects Shipped</div>
@@ -179,7 +179,7 @@ export default function TrainerDashboard() {
                 <div className={styles.statLabel}>Trainer Rank</div>
               </div>
               
-            </div>
+            </div> */}
           
         </div>
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import Gravity, { MatterBody } from "@/components/fancy/physics/gravity";
 import OnboardingWizard from "@/components/OnboardingWizard";
+import { AUTH_STRING } from "@/lib/utils";
 
 const ASSETS = "";
 
@@ -199,7 +200,7 @@ export default function Home() {
           <br />
           <a
             className={styles.link}
-            href="https://auth.hackclub.com/join/hackachu"
+            href={AUTH_STRING}
             target="_blank"
             rel="noopener noreferrer"
           >

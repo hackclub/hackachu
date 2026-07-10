@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./OnboardingWizard.module.css";
-
+import { AUTH_STRING } from "@/lib/utils";
 const SCREENS = ["welcome", "loot", "rules", "start"] as const;
 type ScreenId = (typeof SCREENS)[number];
 
@@ -15,7 +15,7 @@ const SCREEN_LABELS: Record<ScreenId, string> = {
   start: "ready to start",
 };
 
-const JOIN_URL = "https://auth.hackclub.com/join/hackachu";
+const JOIN_URL = AUTH_STRING;
 
 const LOOT_TIERS = [
   {
