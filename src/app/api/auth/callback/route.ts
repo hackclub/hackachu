@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server"
 import { cookies } from "next/headers"
 import { encryptSession } from "@/app/lib/session"
-// derived from the request, same as the authorize step — the two must match exactly
-import { getRedirectUri } from "@/app/lib/origin"
+// derived from forwarded headers, same as the authorize step — request.url is the
+// server's internal (localhost) address on this host, so never redirect relative to it
+import { getRedirectUri, getRequestOrigin } from "@/app/lib/origin"
 
 const BASE_URL = "https://auth.hackclub.com"
 
@@ -10,7 +11,7 @@ export async function GET(request: NextRequest) {
   const code = request.nextUrl.searchParams.get("code")
 
   if (!code) {
-    return NextResponse.redirect(new URL("/?error=missing_code", request.url))
+    return NextResponse.redirect(new URL("/?error=missing_code", getRequestOrigin(request)))
   }
 
   const tokenRes = await fetch(`${BASE_URL}/oauth/token`, {
@@ -28,7 +29,7 @@ export async function GET(request: NextRequest) {
   if (!tokenRes.ok) {
     const body = await tokenRes.text()
     console.error("Hack Club token exchange failed", tokenRes.status, body)
-    return NextResponse.redirect(new URL("/?error=token_exchange_failed", request.url))
+    return NextResponse.redirect(new URL("/?error=token_exchange_failed", getRequestOrigin(request)))
   }
 
   const { access_token, refresh_token, expires_in } = await tokenRes.json()
@@ -48,5 +49,5 @@ export async function GET(request: NextRequest) {
     maxAge: 60 * 60 * 24 * 7,
   })
 
-  return NextResponse.redirect(new URL("/dashboard", request.url))
+  return NextResponse.redirect(new URL("/dashboard", getRequestOrigin(request)))
 }

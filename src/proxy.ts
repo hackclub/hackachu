@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 import { decryptSession } from "@/app/lib/session"
+// request.url is the server's internal (localhost) address on this host —
+// build absolute redirects from forwarded headers instead
+import { getRequestOrigin } from "@/app/lib/origin"
 
 const protectedRoutes = ["/dashboard", "/submit"]
 
@@ -14,7 +17,7 @@ export async function proxy(request: NextRequest) {
   const session = await decryptSession(request.cookies.get("session")?.value)
 
   if (!session) {
-    return NextResponse.redirect(new URL("/", request.url))
+    return NextResponse.redirect(new URL("/", getRequestOrigin(request)))
   }
 
   const meRes = await fetch("https://auth.hackclub.com/api/v1/me", {
@@ -22,7 +25,7 @@ export async function proxy(request: NextRequest) {
   })
 
   if (!meRes.ok) {
-    return NextResponse.redirect(new URL("/", request.url))
+    return NextResponse.redirect(new URL("/", getRequestOrigin(request)))
   }
 
   return NextResponse.next()
