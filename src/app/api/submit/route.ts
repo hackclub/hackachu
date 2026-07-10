@@ -41,6 +41,7 @@ export async function POST(request: NextRequest) {
     "ZIP / Postal Code": address?.postal_code,
     "Birthday": identity.birthday,
     "Optional - Override Hours Spent": Number(formData.get("hoursSpent")),
+    "Prize": formData.get("prize"),
     // "Slack ID": identity?.slack_id,
   }
 

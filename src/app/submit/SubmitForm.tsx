@@ -51,6 +51,17 @@ export default function SubmitForm() {
         <input type="number" name="hoursSpent" required min={0} step="0.5" className="border rounded px-2 py-1" />
       </label>
 
+      <label className="flex flex-col gap-1">
+        Prize you want
+        <input
+          type="text"
+          name="prize"
+          required
+          placeholder="e.g. surging sparks booster pack, sick watch..."
+          className="border rounded px-2 py-1"
+        />
+      </label>
+
       <button type="submit" disabled={status === "submitting"} className="border rounded px-4 py-2 mt-4">
         {status === "submitting" ? "Submitting..." : "Submit"}
       </button>

@@ -47,6 +47,7 @@ export default function TrainerDashboard() {
   const [description, setDescription] = useState("");
   const [githubUsername, setGithubUsername] = useState("");
   const [hoursSpent, setHoursSpent] = useState("");
+  const [prize, setPrize] = useState("");
   const [screenshot, setScreenshot] = useState<File | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -77,6 +78,7 @@ export default function TrainerDashboard() {
     setDescription("");
     setGithubUsername("");
     setHoursSpent("");
+    setPrize("");
     setScreenshot(null);
   };
 
@@ -90,6 +92,7 @@ export default function TrainerDashboard() {
     formData.set("description", description);
     formData.set("githubUsername", githubUsername);
     formData.set("hoursSpent", hoursSpent);
+    formData.set("prize", prize);
     if (screenshot) {
       formData.set("screenshot", screenshot);
     }
@@ -278,6 +281,16 @@ export default function TrainerDashboard() {
                     placeholder="0"
                     value={hoursSpent}
                     onChange={(e) => setHoursSpent(e.target.value)}
+                  />
+                </div>
+                <div className={styles.field}>
+                  <label htmlFor="prize">Prize you want</label>
+                  <input
+                    id="prize"
+                    type="text"
+                    placeholder="e.g. surging sparks booster pack, sick watch..."
+                    value={prize}
+                    onChange={(e) => setPrize(e.target.value)}
                   />
                 </div>
                 <div className={styles.field}>

@@ -323,7 +323,8 @@ background-repeat: no-repeat;
   margin-bottom: 5px;
 }
 .field input,
-.field textarea {
+.field textarea,
+.field select {
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -331,9 +332,11 @@ background-repeat: no-repeat;
   font-family: var(--font-mono), monospace;
   font-size: 13px;
   color: var(--ink);
+  background: #fff;
 }
 .field input:focus,
-.field textarea:focus {
+.field textarea:focus,
+.field select:focus {
   outline: 2px solid var(--teal);
   outline-offset: 1px;
 }
