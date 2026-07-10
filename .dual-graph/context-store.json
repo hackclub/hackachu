@@ -1,1 +1,81 @@
-[]
+[
+  {
+    "id": "mem:1783692845142",
+    "kind": "edit_observation",
+    "content": "Edited after query: SyntaxError expected expression got '<' in Script tag src/app/layout.tsx line 39 plausible analytics script",
+    "tags": [
+      "fixed",
+      "plausible",
+      "script",
+      "was",
+      "html",
+      "markup",
+      "children",
+      "now"
+    ],
+    "files": [
+      "src/app/layout.tsx::RootLayout"
+    ],
+    "file_path": "src/app/layout.tsx",
+    "symbol_id": "src/app/layout.tsx::RootLayout",
+    "symbol_hash": "87ffa23f",
+    "created_at": "2026-07-10T14:14:05.142070+00:00",
+    "created_epoch": 1783692845,
+    "updated_at": "2026-07-10T14:14:05.142078+00:00",
+    "stale": false,
+    "stale_reason": "",
+    "observed_queries": [
+      "SyntaxError expected expression got '<' in Script tag src/app/layout.tsx line 39 plausible analytics script"
+    ],
+    "evidence": {
+      "source": "graph_register_edit",
+      "recent_action_kinds": [
+        "continue_retrieve",
+        "retrieve"
+      ],
+      "recent_queries": [
+        "SyntaxError expected expression got '<' in Script tag src/app/layout.tsx line 39 plausible analytics script"
+      ],
+      "edited": true
+    }
+  },
+  {
+    "id": "mem:1783692845141",
+    "kind": "decision",
+    "content": "Fixed Plausible Script: was HTML markup as JS children, now split into src loader + inline JS-only Script",
+    "tags": [
+      "fixed",
+      "plausible",
+      "script",
+      "was",
+      "html",
+      "markup",
+      "children",
+      "now"
+    ],
+    "files": [
+      "src/app/layout.tsx::RootLayout"
+    ],
+    "file_path": "src/app/layout.tsx",
+    "symbol_id": "src/app/layout.tsx::RootLayout",
+    "symbol_hash": "87ffa23f",
+    "created_at": "2026-07-10T14:14:05.141530+00:00",
+    "created_epoch": 1783692845,
+    "updated_at": "2026-07-10T14:14:05.141540+00:00",
+    "stale": false,
+    "stale_reason": "",
+    "observed_queries": [
+      "SyntaxError expected expression got '<' in Script tag src/app/layout.tsx line 39 plausible analytics script"
+    ],
+    "evidence": {
+      "window_sec": 120,
+      "recent_action_kinds": [
+        "continue_retrieve",
+        "retrieve"
+      ],
+      "recent_queries": [
+        "SyntaxError expected expression got '<' in Script tag src/app/layout.tsx line 39 plausible analytics script"
+      ]
+    }
+  }
+]
