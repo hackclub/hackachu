@@ -165,6 +165,7 @@
 
 .rowRight {
   justify-content: flex-end;
+  margin: 5% 0;
 }
 
 .rowLeft {
@@ -202,6 +203,8 @@
 .rowCenter {
   position: relative;
   justify-content: flex-start;
+  margin: 6.2% 0;
+  
   padding-left: clamp(232px, 36vw, 500px);
 }
 
