@@ -12,7 +12,6 @@ const TIPS = [
   "lock in"
 ];
 
-const PROJECT_TYPES = ["Game", "Web", "CLI", "Hardware", "Other"];
 const PIKAS = ["flying_pika.png", "magic_pika.png", "pika_with_cup.png"]
 const PRIZES = [
   {
@@ -41,10 +40,14 @@ export default function TrainerDashboard() {
   const [tipVisible, setTipVisible] = useState(true);
   const [panelOpen, setPanelOpen] = useState(false);
   const [shipped, setShipped] = useState(false);
-  const [projName, setProjName] = useState("");
-  const [projLink, setProjLink] = useState("");
-  const [projDesc, setProjDesc] = useState("");
-  const [activeTags, setActiveTags] = useState<string[]>([]);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [codeUrl, setCodeUrl] = useState("");
+  const [playableUrl, setPlayableUrl] = useState("");
+  const [description, setDescription] = useState("");
+  const [githubUsername, setGithubUsername] = useState("");
+  const [hoursSpent, setHoursSpent] = useState("");
+  const [screenshot, setScreenshot] = useState<File | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -66,18 +69,43 @@ export default function TrainerDashboard() {
     }
   };
 
-  const toggleTag = (tag: string) => {
-    setActiveTags((tags) =>
-      tags.includes(tag) ? tags.filter((t) => t !== tag) : [...tags, tag]
-    );
-  };
-
   const resetForm = () => {
     setShipped(false);
-    setProjName("");
-    setProjLink("");
-    setProjDesc("");
-    setActiveTags([]);
+    setSubmitError(null);
+    setCodeUrl("");
+    setPlayableUrl("");
+    setDescription("");
+    setGithubUsername("");
+    setHoursSpent("");
+    setScreenshot(null);
+  };
+
+  const shipProject = async () => {
+    setSubmitting(true);
+    setSubmitError(null);
+
+    const formData = new FormData();
+    formData.set("codeUrl", codeUrl);
+    formData.set("playableUrl", playableUrl);
+    formData.set("description", description);
+    formData.set("githubUsername", githubUsername);
+    formData.set("hoursSpent", hoursSpent);
+    if (screenshot) {
+      formData.set("screenshot", screenshot);
+    }
+
+    const res = await fetch("/api/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    setSubmitting(false);
+
+    if (res.ok) {
+      setShipped(true);
+    } else {
+      setSubmitError("Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -105,12 +133,12 @@ export default function TrainerDashboard() {
         </MatterBody>
           )
 })}
-        
+
       </Gravity>
       <div className={styles.wrap}>
         <div className={styles.nav}>
           <div className={styles.brand}>
-            
+
             <div className={styles.brandText}>
               <span className={styles.brandEyebrow}>Hack Club · YSWS</span>
               <Image
@@ -122,14 +150,14 @@ export default function TrainerDashboard() {
               />
             </div>
           </div>
-       
+
         </div>
 
-        
+
 
         <div className={styles.dex}>
-          
-        
+
+
             <div className={styles.scanlines} />
             <div className={styles.screenGlow} />
             <div className={styles.greet}>
@@ -178,9 +206,9 @@ export default function TrainerDashboard() {
                 <div className={styles.statNum}>I</div>
                 <div className={styles.statLabel}>Trainer Rank</div>
               </div>
-              
+
             </div> */}
-          
+
         </div>
 
         <div className={styles.ctaRow}>
@@ -198,59 +226,76 @@ export default function TrainerDashboard() {
               <div>
                 <h3 className={styles.panelTitle}>Log your catch</h3>
                 <p className={styles.panelSub}>
-                  Tell us what you built. You can edit this after you ship.
+                  Tell us what you built. Your name, email, birthday, and
+                  address are pulled from your Hack Club account automatically.
                 </p>
                 <div className={styles.field}>
-                  <label htmlFor="projName">Project name</label>
+                  <label htmlFor="codeUrl">Code URL</label>
                   <input
-                    id="projName"
-                    type="text"
-                    placeholder="e.g. Pixel Battle Sim"
-                    value={projName}
-                    onChange={(e) => setProjName(e.target.value)}
-                  />
-                </div>
-                <div className={styles.field}>
-                  <label htmlFor="projLink">Repo or demo link</label>
-                  <input
-                    id="projLink"
-                    type="text"
+                    id="codeUrl"
+                    type="url"
                     placeholder="https://github.com/you/project"
-                    value={projLink}
-                    onChange={(e) => setProjLink(e.target.value)}
+                    value={codeUrl}
+                    onChange={(e) => setCodeUrl(e.target.value)}
                   />
                 </div>
                 <div className={styles.field}>
-                  <label htmlFor="projDesc">One-line description</label>
+                  <label htmlFor="playableUrl">Playable URL</label>
+                  <input
+                    id="playableUrl"
+                    type="url"
+                    placeholder="https://your-project.com"
+                    value={playableUrl}
+                    onChange={(e) => setPlayableUrl(e.target.value)}
+                  />
+                </div>
+                <div className={styles.field}>
+                  <label htmlFor="description">Description</label>
                   <textarea
-                    id="projDesc"
+                    id="description"
                     placeholder="What does it do?"
-                    value={projDesc}
-                    onChange={(e) => setProjDesc(e.target.value)}
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                   />
                 </div>
                 <div className={styles.field}>
-                  <label>Project type</label>
-                  <div className={styles.tagRow}>
-                    {PROJECT_TYPES.map((tag) => (
-                      <button
-                        key={tag}
-                        type="button"
-                        className={`${styles.tag} ${
-                          activeTags.includes(tag) ? styles.tagActive : ""
-                        }`}
-                        onClick={() => toggleTag(tag)}
-                      >
-                        {tag}
-                      </button>
-                    ))}
-                  </div>
+                  <label htmlFor="githubUsername">GitHub username</label>
+                  <input
+                    id="githubUsername"
+                    type="text"
+                    placeholder="yourusername"
+                    value={githubUsername}
+                    onChange={(e) => setGithubUsername(e.target.value)}
+                  />
                 </div>
+                <div className={styles.field}>
+                  <label htmlFor="hoursSpent">Hours spent</label>
+                  <input
+                    id="hoursSpent"
+                    type="number"
+                    min={0}
+                    step="0.5"
+                    placeholder="0"
+                    value={hoursSpent}
+                    onChange={(e) => setHoursSpent(e.target.value)}
+                  />
+                </div>
+                <div className={styles.field}>
+                  <label htmlFor="screenshot">Screenshot</label>
+                  <input
+                    id="screenshot"
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setScreenshot(e.target.files?.[0] ?? null)}
+                  />
+                </div>
+                {submitError && <p>{submitError}</p>}
                 <button
                   className={styles.shipBtn}
-                  onClick={() => setShipped(true)}
+                  onClick={shipProject}
+                  disabled={submitting}
                 >
-                  SHIP IT &rarr;
+                  {submitting ? "Shipping..." : "SHIP IT →"}
                 </button>
               </div>
             ) : (

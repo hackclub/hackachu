@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { decryptSession } from "@/app/lib/session"
 
-const protectedRoutes = ["/dashboard"]
+const protectedRoutes = ["/dashboard", "/submit"]
 
 export async function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname
