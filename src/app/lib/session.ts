@@ -1,7 +1,7 @@
 import "server-only"
 import { EncryptJWT, jwtDecrypt } from "jose"
 
-const encodedKey = new TextEncoder().encode(process.env.SESSION_SECRET)
+const encodedKey = Buffer.from(process.env.SESSION_SECRET!, "hex")
 
 type SessionPayload = {
   access_token: string

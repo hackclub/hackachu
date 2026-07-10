@@ -2,8 +2,9 @@ import { NextRequest, NextResponse } from "next/server"
 import { cookies } from "next/headers"
 import { encryptSession } from "@/app/lib/session"
 
+
+const REDIRECT_URI = "http://localhost:3000/api/auth/callback"
 const BASE_URL = "https://auth.hackclub.com"
-const REDIRECT_URI = "http://localhost:3000/auth/callback"
 
 export async function GET(request: NextRequest) {
   const code = request.nextUrl.searchParams.get("code")
@@ -25,6 +26,8 @@ export async function GET(request: NextRequest) {
   })
 
   if (!tokenRes.ok) {
+    const body = await tokenRes.text()
+    console.error("Hack Club token exchange failed", tokenRes.status, body)
     return NextResponse.redirect(new URL("/?error=token_exchange_failed", request.url))
   }
 
