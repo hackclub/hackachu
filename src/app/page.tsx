@@ -1,23 +1,28 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./page.module.css";
+import Gravity, { MatterBody } from "@/components/fancy/physics/gravity";
+import OnboardingWizard from "@/components/OnboardingWizard";
+import { AUTH_STRING } from "@/lib/utils";
 
 const ASSETS = "";
 
 export default function Home() {
   return (
     <div className={styles.page}>
+      
       <header className={styles.hero}>
         <p className={styles.presents}>lola &amp; seba at hack club hq present...</p>
-        <h1 className={styles.title}>
-          <Image
-            className={styles.titleImage}
-            src={`${ASSETS}/hackachu.png`}
-            alt="hackachu"
-            width={923}
-            height={230}
-            priority
-          />
-        </h1>
+
+        <Image
+          className={styles.titleImage}
+          src={`${ASSETS}/hackachu.png`}
+          alt="hackachu"
+          width={923}
+          height={230}
+          priority
+        />
+
         <div className={styles.heroDialog}>
           <span className={styles.heroDialogText}>
             build a card game, gamble with pokemon cards.
@@ -31,6 +36,8 @@ export default function Home() {
           height={361}
           priority
         />
+
+        <OnboardingWizard isButtonBigger={true} />
         <Image
           className={styles.pokeball}
           src={`${ASSETS}/pokeball.gif`}
@@ -42,7 +49,7 @@ export default function Home() {
       </header>
 
       <main className={styles.main}>
-        <section className={`${styles.row} ${styles.rowRight}`}>
+        <section className={`${styles.row} ${styles.rowRight} ${styles.rowPullIn}`}>
           <div className={styles.gbBox}>
             a card game?
             <br />
@@ -100,7 +107,14 @@ export default function Home() {
           />
         </section>
 
-        <section className={`${styles.row} ${styles.rowLeft}`}>
+        <section className={`${styles.row} ${styles.rowCenter}`}>
+          <Image
+            className={styles.prizes}
+            src={`${ASSETS}/prizes.png`}
+            alt="prizes! pokemon booster packs, decks and plushies"
+            width={481}
+            height={297}
+          />
           <Image
             className={styles.flyingPika}
             src={`${ASSETS}/flying_pika.png`}
@@ -142,15 +156,15 @@ export default function Home() {
           />
         </section>
 
-        <section className={`${styles.row} ${styles.rowLeft}`}>
+        <section className={`${styles.row} ${styles.rowLeft} ${styles.rowIndent}`}>
           <Image
-            className={styles.flyingPika}
+            className={`${styles.flyingPika} ${styles.pikaDrop}`}
             src={`${ASSETS}/flying_pika.png`}
             alt="pikachu floating with balloons"
             width={244}
             height={285}
           />
-          <div className={styles.gbBox}>
+          <div className={`${styles.gbBox} ${styles.tiltLeft}`}>
             oh yeah. you&apos;ll
             <br />
             always get cards,
@@ -165,7 +179,7 @@ export default function Home() {
         </section>
 
         <section className={`${styles.row} ${styles.rowRight}`}>
-          <div className={`${styles.gbBox} ${styles.cryBox}`}>
+          <div className={`${styles.gbBox} ${styles.cryBox} ${styles.tiltRight}`}>
             <Image
               className={styles.cryImg}
               src={`${ASSETS}/crying_emojis.png`}
@@ -193,12 +207,16 @@ export default function Home() {
           <br />
           <a
             className={styles.link}
-            href="https://auth.hackclub.com/join/hackachu"
+            href={AUTH_STRING}
             target="_blank"
             rel="noopener noreferrer"
           >
-            join now.
+            join the slack...
           </a>
+          <br />
+          <Link className={styles.link} href="/dashboard">
+            and start here.
+          </Link>
         </p>
         <Image
           className={styles.footerPika}
@@ -208,6 +226,10 @@ export default function Home() {
           height={285}
         />
       </footer>
+
+      <OnboardingWizard isButtonBigger={false} />
+
     </div>
   );
 }
+

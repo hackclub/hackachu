@@ -1,0 +1,201 @@
+{
+  "entries": {
+    "where backend located project how create first api|tf=5|te=12": {
+      "created_epoch": 1783637172,
+      "files": [
+        "src/utils/calculate-position.ts::calculatePosition",
+        "src/utils/svg-path-to-vertices.ts::parsePathToVertices",
+        "src/components/OnboardingWizard.tsx::ScreenId",
+        "src/components/fancy/physics/gravity.tsx::GravityProps",
+        "src/lib/utils.ts::cn"
+      ],
+      "mtimes_ns": {
+        "src/utils/calculate-position.ts::calculatePosition": 1783621976660101851,
+        "src/utils/svg-path-to-vertices.ts::parsePathToVertices": 1783621976661475463,
+        "src/components/OnboardingWizard.tsx::ScreenId": 1783624698002726277,
+        "src/components/fancy/physics/gravity.tsx::GravityProps": 1783621976659273974,
+        "src/lib/utils.ts::cn": 1783621976660101851
+      },
+      "result": {
+        "ok": true,
+        "query": "where is the backend located in this project, how to create first API route",
+        "graph_files": [
+          {
+            "id": "src/utils/calculate-position.ts::calculatePosition",
+            "kind": "symbol",
+            "path": "src/utils/calculate-position.ts",
+            "ext": ".ts",
+            "size": 19,
+            "keywords": [
+              "calculateposition",
+              "calculate",
+              "position"
+            ],
+            "symbol_type": "use_case",
+            "name": "calculatePosition",
+            "line_start": 0,
+            "line_end": 18,
+            "body_hash": "dfb3b64c",
+            "confidence": "high",
+            "exported": true,
+            "_score": 13,
+            "_role": "logic",
+            "_intent": "feature"
+          },
+          {
+            "id": "src/utils/svg-path-to-vertices.ts::parsePathToVertices",
+            "kind": "symbol",
+            "path": "src/utils/svg-path-to-vertices.ts",
+            "ext": ".ts",
+            "size": 35,
+            "keywords": [
+              "parsepathtovertices",
+              "parse",
+              "path",
+              "vertices"
+            ],
+            "symbol_type": "use_case",
+            "name": "parsePathToVertices",
+            "line_start": 3,
+            "line_end": 37,
+            "body_hash": "8f270fce",
+            "confidence": "high",
+            "exported": true,
+            "_score": 13,
+            "_role": "logic",
+            "_intent": "feature"
+          },
+          {
+            "id": "src/components/OnboardingWizard.tsx::ScreenId",
+            "kind": "symbol",
+            "path": "src/components/OnboardingWizard.tsx",
+            "ext": ".tsx",
+            "size": 8,
+            "keywords": [
+              "screenid",
+              "screen"
+            ],
+            "symbol_type": "model",
+            "name": "ScreenId",
+            "line_start": 8,
+            "line_end": 15,
+            "body_hash": "d66afb61",
+            "confidence": "high",
+            "exported": false,
+            "_score": 11,
+            "_role": "code",
+            "_intent": "feature"
+          },
+          {
+            "id": "src/components/fancy/physics/gravity.tsx::GravityProps",
+            "kind": "symbol",
+            "path": "src/components/fancy/physics/gravity.tsx",
+            "ext": ".tsx",
+            "size": 10,
+            "keywords": [
+              "gravityprops",
+              "gravity",
+              "props"
+            ],
+            "symbol_type": "model",
+            "name": "GravityProps",
+            "line_start": 32,
+            "line_end": 41,
+            "body_hash": "631a3fd6",
+            "confidence": "high",
+            "exported": false,
+            "_score": 11,
+            "_role": "code",
+            "_intent": "feature"
+          },
+          {
+            "id": "src/lib/utils.ts::cn",
+            "kind": "symbol",
+            "path": "src/lib/utils.ts",
+            "ext": ".ts",
+            "size": 3,
+            "keywords": [],
+            "symbol_type": "use_case",
+            "name": "cn",
+            "line_start": 3,
+            "line_end": 5,
+            "body_hash": "fb7b0125",
+            "confidence": "high",
+            "exported": true,
+            "_score": 11,
+            "_role": "code",
+            "_intent": "feature"
+          }
+        ],
+        "graph_edges": [
+          {
+            "from": "src/components/OnboardingWizard.tsx",
+            "to": "src/components/OnboardingWizard.tsx::ScreenId",
+            "rel": "contains"
+          },
+          {
+            "from": "src/components/fancy/physics/gravity.tsx",
+            "to": "src/components/fancy/physics/gravity.tsx::GravityProps",
+            "rel": "contains"
+          },
+          {
+            "from": "src/lib/utils.ts",
+            "to": "src/lib/utils.ts::cn",
+            "rel": "contains"
+          },
+          {
+            "from": "src/utils/calculate-position.ts",
+            "to": "src/utils/calculate-position.ts::calculatePosition",
+            "rel": "contains"
+          },
+          {
+            "from": "src/utils/svg-path-to-vertices.ts",
+            "to": "src/utils/svg-path-to-vertices.ts::parsePathToVertices",
+            "rel": "contains"
+          },
+          {
+            "from": "next-env.d.ts",
+            "to": "./.next/dev/types/routes.d.ts",
+            "rel": "imports"
+          },
+          {
+            "from": "next.config.ts",
+            "to": "next",
+            "rel": "imports"
+          },
+          {
+            "from": "next.config.ts",
+            "to": "type",
+            "rel": "imports"
+          },
+          {
+            "from": "src/app/dashboard/page.tsx",
+            "to": "@/components/TrainerDashboard",
+            "rel": "imports"
+          },
+          {
+            "from": "src/app/dashboard/page.tsx",
+            "to": "TrainerDashboard",
+            "rel": "imports"
+          },
+          {
+            "from": "src/app/dashboard/page.tsx",
+            "to": "next",
+            "rel": "imports"
+          },
+          {
+            "from": "src/app/dashboard/page.tsx",
+            "to": "next/font/google",
+            "rel": "imports"
+          }
+        ],
+        "grep_hits": [],
+        "reuse_candidates": [],
+        "read_budget": {
+          "remaining_chars": 60000,
+          "reuse_gate_candidates": []
+        }
+      }
+    }
+  }
+}

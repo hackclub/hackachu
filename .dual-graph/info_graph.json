@@ -1,0 +1,1327 @@
+{
+  "root": "/home/plastuchino/code/hackachu-codebase/hackachu",
+  "node_count": 55,
+  "edge_count": 102,
+  "file_count": 34,
+  "symbol_count": 21,
+  "nodes": [
+    {
+      "id": "CLAUDE.md",
+      "kind": "file",
+      "path": "CLAUDE.md",
+      "ext": ".md",
+      "size": 4032,
+      "keywords": [],
+      "content": "@AGENTS.md\n\n<!-- dgc-policy-v11 -->\n# Dual-Graph Context Policy\n\nThis project uses a local dual-graph MCP server for efficient context retrieval.\n\n## MANDATORY: Always follow this order\n\n1. **Call `graph_continue` first** \u2014 before any file exploration, grep, or code reading.\n\n2. **If `graph_continue` returns `needs_project=true`**: call `graph_scan` with the\n   current project directory (`pwd`). Do NOT ask the user.\n\n3. **If `graph_continue` returns `skip=true`**: project has fewer than 5 files.\n   Do NOT do broad or recursive exploration. Read only specific files if their names\n   are mentioned, or ask the user what to work on.\n\n4. **Read `recommended_files`** using `graph_read` \u2014 **one call per file**.\n   - `graph_read` accepts a single `file` parameter (string). Call it separately for each\n     recommended file. Do NOT pass an array or batch multiple files into one call.\n   - `recommended_files` may contain `file::symbol` entries (e.g. `src/auth.ts::handleLogin`).\n     Pass them verbatim to `graph_read(file: \"src/auth.ts::handleLogin\")` \u2014 it reads only\n     that symbol's lines, not the full file.\n   - Example: if `recommended_files` is `[\"src/auth.ts::handleLogin\", \"src/db.ts\"]`,\n     call `graph_read(file: \"src/auth.ts::handleLogin\")` and `graph_read(file: \"src/db.ts\")`\n     as two separate calls (they can be parallel).\n\n5. **Check `confidence` and obey the caps strictly:**\n   - `confidence=high` -> Stop. Do NOT grep or explore further.\n   - `confidence=medium` -> If recommended files are insufficient, call `fallback_rg`\n     at most `max_supplementary_greps` time(s) with specific terms, then `graph_read`\n     at most `max_supplementary_files` additional file(s). Then stop.\n   - `confidence=low` -> Call `fallback_rg` at most `max_supplementary_greps` time(s),\n     then `graph_read` at most `max_supplementary_files` file(s). Then stop.\n\n## Token Usage\n\nA `token-counter` MCP is available for tracking live token usage.\n\n- To check how many tokens a large file or text will cost **before** reading it:\n  `count_tokens({text: \"<content>\"})`\n- To log actual usage after a task completes (if the user asks):\n  `log_usage({input_tokens: <est>, output_tokens: <est>, description: \"<task>\"})`\n- To show the user their running session cost:\n  `get_session_stats()`\n\nLive dashboard URL is printed at startup next to \"Token usage\".\n\n## Rules\n\n- Do NOT use `rg`, `grep`, or bash file exploration before calling `graph_continue`.\n- Do NOT do broad/recursive exploration at any confidence level.\n- `max_supplementary_greps` and `max_supplementary_files` are hard caps - never exceed them.\n- Do NOT dump full chat history.\n- Do NOT call `graph_retrieve` more than once per turn.\n- After edits, call `graph_register_edit` with the changed files. Use `file::symbol` notation (e.g. `src/auth.ts::handleLogin`) when the edit targets a specific function, class, or hook.\n\n## Context Store\n\nWhenever you make a decision, identify a task, note a next step, fact, or blocker during a conversation, call `graph_add_memory`.\n\n**To add an entry:**\n```\ngraph_add_memory(type=\"decision|task|next|fact|blocker\", content=\"one sentence max 15 words\", tags=[\"topic\"], files=[\"relevant/file.ts\"])\n```\n\n**Do NOT write context-store.json directly** \u2014 always use `graph_add_memory`. It applies pruning and keeps the store healthy.\n\n**Rules:**\n- Only log things worth remembering across sessions (not every minor detail)\n- `content` must be under 15 words\n- `files` lists the files this decision/task relates to (can be empty)\n- Log immediately when the item arises \u2014 not at session end\n\n## Session End\n\nWhen the user signals they are done (e.g. \"bye\", \"done\", \"wrap up\", \"end session\"), proactively update `CONTEXT.md` in the project root with:\n- **Current Task**: one sentence on what was being worked on\n- **Key Decisions**: bullet list, max 3 items\n- **Next Steps**: bullet list, max 3 items\n\nKeep `CONTEXT.md` under 20 lines total. Do NOT summarize the full conversation \u2014 only what's needed to resume next session.\n",
+      "summary": "@AGENTS.md.",
+      "file_hash": "adb15b1e"
+    },
+    {
+      "id": "next-env.d.ts",
+      "kind": "file",
+      "path": "next-env.d.ts",
+      "ext": ".ts",
+      "size": 251,
+      "keywords": [],
+      "content": "/// <reference types=\"next\" />\n/// <reference types=\"next/image-types/global\" />\nimport \"./.next/dev/types/routes.d.ts\";\n\n// NOTE: This file should not be edited\n// see https://nextjs.org/docs/app/api-reference/config/typescript for more information.\n",
+      "summary": "<reference types=\"next\" />.",
+      "file_hash": "d0f8375a"
+    },
+    {
+      "id": "tsconfig.json",
+      "kind": "file",
+      "path": "tsconfig.json",
+      "ext": ".json",
+      "size": 670,
+      "keywords": [],
+      "content": "{\n  \"compilerOptions\": {\n    \"target\": \"ES2017\",\n    \"lib\": [\"dom\", \"dom.iterable\", \"esnext\"],\n    \"allowJs\": true,\n    \"skipLibCheck\": true,\n    \"strict\": true,\n    \"noEmit\": true,\n    \"esModuleInterop\": true,\n    \"module\": \"esnext\",\n    \"moduleResolution\": \"bundler\",\n    \"resolveJsonModule\": true,\n    \"isolatedModules\": true,\n    \"jsx\": \"react-jsx\",\n    \"incremental\": true,\n    \"plugins\": [\n      {\n        \"name\": \"next\"\n      }\n    ],\n    \"paths\": {\n      \"@/*\": [\"./src/*\"]\n    }\n  },\n  \"include\": [\n    \"next-env.d.ts\",\n    \"**/*.ts\",\n    \"**/*.tsx\",\n    \".next/types/**/*.ts\",\n    \".next/dev/types/**/*.ts\",\n    \"**/*.mts\"\n  ],\n  \"exclude\": [\"node_modules\"]\n}\n",
+      "summary": "\"compilerOptions\": {.",
+      "file_hash": "ee17fd1c"
+    },
+    {
+      "id": "README.md",
+      "kind": "file",
+      "path": "README.md",
+      "ext": ".md",
+      "size": 21,
+      "keywords": [],
+      "content": "hackachu website! wip",
+      "summary": "hackachu website! wip.",
+      "file_hash": "104542a1"
+    },
+    {
+      "id": "components.json",
+      "kind": "file",
+      "path": "components.json",
+      "ext": ".json",
+      "size": 580,
+      "keywords": [],
+      "content": "{\n  \"$schema\": \"https://ui.shadcn.com/schema.json\",\n  \"style\": \"base-nova\",\n  \"rsc\": true,\n  \"tsx\": true,\n  \"tailwind\": {\n    \"config\": \"\",\n    \"css\": \"src/app/globals.css\",\n    \"baseColor\": \"neutral\",\n    \"cssVariables\": true,\n    \"prefix\": \"\"\n  },\n  \"iconLibrary\": \"lucide\",\n  \"rtl\": false,\n  \"aliases\": {\n    \"components\": \"@/components\",\n    \"utils\": \"@/lib/utils\",\n    \"ui\": \"@/components/ui\",\n    \"lib\": \"@/lib\",\n    \"hooks\": \"@/hooks\"\n  },\n  \"menuColor\": \"default\",\n  \"menuAccent\": \"subtle\",\n  \"registries\": {\n    \"@fancy\": \"https://fancycomponents.dev/r/{name}.json\"\n  }\n}",
+      "summary": "\"$schema\": \"https://ui.shadcn.com/schema.json\",.",
+      "file_hash": "85e90e11"
+    },
+    {
+      "id": "next.config.ts",
+      "kind": "file",
+      "path": "next.config.ts",
+      "ext": ".ts",
+      "size": 133,
+      "keywords": [],
+      "content": "import type { NextConfig } from \"next\";\n\nconst nextConfig: NextConfig = {\n  /* config options here */\n};\n\nexport default nextConfig;\n",
+      "summary": "import type { NextConfig } from \"next\";.",
+      "file_hash": "9b77af18"
+    },
+    {
+      "id": "package.json",
+      "kind": "file",
+      "path": "package.json",
+      "ext": ".json",
+      "size": 961,
+      "keywords": [],
+      "content": "{\n  \"name\": \"hackachu\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"lint\": \"eslint\"\n  },\n  \"dependencies\": {\n    \"@base-ui/react\": \"^1.6.0\",\n    \"@tailwindcss/postcss\": \"^4.3.2\",\n    \"@types/matter-js\": \"^0.20.2\",\n    \"class-variance-authority\": \"^0.7.1\",\n    \"clsx\": \"^2.1.1\",\n    \"lodash\": \"^4.18.1\",\n    \"lucide-react\": \"^1.24.0\",\n    \"matter-js\": \"^0.20.0\",\n    \"motion\": \"^12.42.2\",\n    \"next\": \"16.2.10\",\n    \"poly-decomp\": \"^0.3.0\",\n    \"postcss\": \"^8.5.16\",\n    \"react\": \"19.2.4\",\n    \"react-dom\": \"19.2.4\",\n    \"shadcn\": \"^4.13.0\",\n    \"svg-path-commander\": \"^2.2.1\",\n    \"tailwind-merge\": \"^3.6.0\",\n    \"tailwindcss\": \"^4.3.2\",\n    \"tw-animate-css\": \"^1.4.0\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"^20\",\n    \"@types/react\": \"^19\",\n    \"@types/react-dom\": \"^19\",\n    \"eslint\": \"^9\",\n    \"eslint-config-next\": \"16.2.10\",\n    \"typescript\": \"^5\"\n  }\n}\n",
+      "summary": "\"name\": \"hackachu\",.",
+      "file_hash": "fd2916ba"
+    },
+    {
+      "id": "AGENTS.md",
+      "kind": "file",
+      "path": "AGENTS.md",
+      "ext": ".md",
+      "size": 327,
+      "keywords": [],
+      "content": "<!-- BEGIN:nextjs-agent-rules -->\n# This is NOT the Next.js you know\n\nThis version has breaking changes \u2014 APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.\n<!-- END:nextjs-agent-rules -->\n",
+      "summary": "<!-- BEGIN:nextjs-agent-rules -->.",
+      "file_hash": "9e092417"
+    },
+    {
+      "id": ".claude/settings.local.json",
+      "kind": "file",
+      "path": ".claude/settings.local.json",
+      "ext": ".json",
+      "size": 1788,
+      "keywords": [],
+      "content": "{\n  \"permissions\": {\n    \"allow\": [\n      \"mcp__dual-graph__graph_read\",\n      \"Bash(openspec list *)\",\n      \"Bash(openspec new *)\",\n      \"Bash(openspec status *)\",\n      \"Bash(openspec instructions *)\",\n      \"Bash(npx next *)\",\n      \"Bash(npx eslint *)\",\n      \"Skill(run)\",\n      \"Bash(find / -iname \\\"*chromium-cli*\\\" -maxdepth 6)\",\n      \"Bash(npm ls *)\",\n      \"Bash(timeout 20 npx --yes playwright --version 2>&1)\",\n      \"Read(//tmp/wizard-check/**)\",\n      \"Bash(npx playwright *)\",\n      \"Bash(echo \\\"exit: $?\\\")\",\n      \"Read(//tmp/**)\",\n      \"Bash(node check.js)\",\n      \"Bash(node *)\"\n    ]\n  },\n  \"hooks\": {\n    \"SessionStart\": [\n      {\n        \"matcher\": \"\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"/bin/bash \\\"/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph/prime.sh\\\"\"\n          }\n        ]\n      }\n    ],\n    \"PreCompact\": [\n      {\n        \"matcher\": \"\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"/bin/bash \\\"/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph/prime.sh\\\"\"\n          }\n        ]\n      }\n    ],\n    \"Stop\": [\n      {\n        \"matcher\": \"\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"/bin/bash \\\"/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph/stop.sh\\\"\"\n          }\n        ]\n      }\n    ],\n    \"PreToolUse\": [\n      {\n        \"matcher\": \"Write|Edit|Bash|NotebookEdit\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"DG_DATA_DIR=\\\"/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph\\\" /home/plastuchino/.dual-graph/venv/bin/python3 -c \\\"from graperoot.undo_shield import main; main()\\\"\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
+      "summary": "\"permissions\": {.",
+      "file_hash": "cf161ecf"
+    },
+    {
+      "id": ".claude/commands/opsx/propose.md",
+      "kind": "file",
+      "path": ".claude/commands/opsx/propose.md",
+      "ext": ".md",
+      "size": 5205,
+      "keywords": [],
+      "content": "---\nname: \"OPSX: Propose\"\ndescription: Propose a new change - create it and generate all artifacts in one step\ncategory: Workflow\ntags: [workflow, artifacts, experimental]\n---\n\nPropose a new change - create the change and generate all artifacts in one step.\n\nI'll create a change with artifacts:\n- proposal.md (what & why)\n- design.md (how)\n- tasks.md (implementation steps)\n\nWhen ready to implement, run /opsx:apply\n\n---\n\n**Store selection:** If the user names a store (a store is a standalone OpenSpec repo registered on this machine) or the work lives in one, run `openspec store list --json` to discover registered store ids, then pass `--store <id>` on the commands that read or write specs and changes (`new change`, `status`, `instructions`, `list`, `show`, `validate`, `archive`, `doctor`, `context`). Other commands do not take the flag. Hints printed by commands already carry the flag; keep it on follow-ups. Without a store, commands act on the nearest local `openspec/` root.\n\n**Input**: The argument after `/opsx:propose` is the change name (kebab-case), OR a description of what the user wants to build.\n\n**Steps**\n\n1. **If no input provided, ask what they want to build**\n\n   Use the **AskUserQuestion tool** (open-ended, no preset options) to ask:\n   > \"What change do you want to work on? Describe what you want to build or fix.\"\n\n   From their description, derive a kebab-case name (e.g., \"add user authentication\" \u2192 `add-user-auth`).\n\n   **IMPORTANT**: Do NOT proceed without understanding what the user wants to build.\n\n2. **Create the change directory**\n   ```bash\n   openspec new change \"<name>\"\n   ```\n   This creates a scaffolded change in the planning home resolved by the CLI with `.openspec.yaml`.\n\n3. **Get the artifact build order**\n   ```bash\n   openspec status --change \"<name>\" --json\n   ```\n   Parse the JSON to get:\n   - `applyRequires`: array of artifact IDs needed before implementation (e.g., `[\"tasks\"]`)\n   - `artifacts`: list of all artifacts with their status and dependencies\n   - `planningHome`, `changeRoot`, `artifactPaths`, and `actionContext`: path and scope context. Use these instead of assuming repo-local paths.\n\n4. **Create artifacts in sequence until apply-ready**\n\n   Use the **TodoWrite tool** to track progress through the artifacts.\n\n   Loop through artifacts in dependency order (artifacts with no pending dependencies first):\n\n   a. **For each artifact that is `ready` (dependencies satisfied)**:\n      - Get instructions:\n        ```bash\n        openspec instructions <artifact-id> --change \"<name>\" --json\n        ```\n      - The instructions JSON includes:\n        - `context`: Project background (constraints for you - do NOT include in output)\n        - `rules`: Artifact-specific rules (constraints for you - do NOT include in output)\n        - `template`: The structure to use for your output file\n        - `instruction`: Schema-specific guidance for this artifact type\n        - `resolvedOutputPath`: Resolved path or pattern to write the artifact\n        - `dependencies`: Completed artifacts to read for context\n      - Read any completed dependency files for context\n      - Create the artifact file using `template` as the structure and write it to `resolvedOutputPath`\n      - Apply `context` and `rules` as constraints - but do NOT copy them into the file\n      - Show brief progress: \"Created <artifact-id>\"\n\n   b. **Continue until all `applyRequires` artifacts are complete**\n      - After creating each artifact, re-run `openspec status --change \"<name>\" --json`\n      - Check if every artifact ID in `applyRequires` has `status: \"done\"` in the artifacts array\n      - Stop when all `applyRequires` artifacts are done\n\n   c. **If an artifact requires user input** (unclear context):\n      - Use **AskUserQuestion tool** to clarify\n      - Then continue with creation\n\n5. **Show final status**\n   ```bash\n   openspec status --change \"<name>\"\n   ```\n\n**Output**\n\nAfter completing all artifacts, summarize:\n- Change name and location\n- List of artifacts created with brief descriptions\n- What's ready: \"All artifacts created! Ready for implementation.\"\n- Prompt: \"Run `/opsx:apply` to start implementing.\"\n\n**Artifact Creation Guidelines**\n\n- Follow the `instruction` field from `openspec instructions` for each artifact type\n- The schema defines what each artifact should contain - follow it\n- Read dependency artifacts for context before creating new ones\n- Use `template` as the structure for your output file - fill in its sections\n- **IMPORTANT**: `context` and `rules` are constraints for YOU, not content for the file\n  - Do NOT copy `<context>`, `<rules>`, `<project_context>` blocks into the artifact\n  - These guide what you write, but should never appear in the output\n\n**Guardrails**\n- Create ALL artifacts needed for implementation (as defined by schema's `apply.requires`)\n- Always read dependency artifacts before creating a new one\n- If context is critically unclear, ask the user - but prefer making reasonable decisions to keep momentum\n- If a change with that name already exists, ask if user wants to continue it or create a new one\n- Verify each artifact file exists after writing before proceeding to next\n",
+      "summary": "name: \"OPSX: Propose\".",
+      "file_hash": "c43a0741"
+    },
+    {
+      "id": ".claude/commands/opsx/explore.md",
+      "kind": "file",
+      "path": ".claude/commands/opsx/explore.md",
+      "ext": ".md",
+      "size": 7418,
+      "keywords": [],
+      "content": "---\nname: \"OPSX: Explore\"\ndescription: \"Enter explore mode - think through ideas, investigate problems, clarify requirements\"\ncategory: Workflow\ntags: [workflow, explore, experimental, thinking]\n---\n\nEnter explore mode. Think deeply. Visualize freely. Follow the conversation wherever it goes.\n\n**IMPORTANT: Explore mode is for thinking, not implementing.** You may read files, search code, and investigate the codebase, but you must NEVER write code or implement features. If the user asks you to implement something, remind them to exit explore mode first and create a change proposal. You MAY create OpenSpec artifacts (proposals, designs, specs) if the user asks\u2014that's capturing thinking, not implementing.\n\n**This is a stance, not a workflow.** There are no fixed steps, no required sequence, no mandatory outputs. You're a thinking partner helping the user explore.\n\n**Store selection:** If the user names a store (a store is a standalone OpenSpec repo registered on this machine) or the work lives in one, run `openspec store list --json` to discover registered store ids, then pass `--store <id>` on the commands that read or write specs and changes (`new change`, `status`, `instructions`, `list`, `show`, `validate`, `archive`, `doctor`, `context`). Other commands do not take the flag. Hints printed by commands already carry the flag; keep it on follow-ups. Without a store, commands act on the nearest local `openspec/` root.\n\n**Input**: The argument after `/opsx:explore` is whatever the user wants to think about. Could be:\n- A vague idea: \"real-time collaboration\"\n- A specific problem: \"the auth system is getting unwieldy\"\n- A change name: \"add-dark-mode\" (to explore in context of that change)\n- A comparison: \"postgres vs sqlite for this\"\n- Nothing (just enter explore mode)\n\n---\n\n## The Stance\n\n- **Curious, not prescriptive** - Ask questions that emerge naturally, don't follow a script\n- **Open threads, not interrogations** - Surface multiple interesting directions and let the user follow what resonates. Don't funnel them through a single path of questions.\n- **Visual** - Use ASCII diagrams liberally when they'd help clarify thinking\n- **Adaptive** - Follow interesting threads, pivot when new information emerges\n- **Patient** - Don't rush to conclusions, let the shape of the problem emerge\n- **Grounded** - Explore the actual codebase when relevant, don't just theorize\n\n---\n\n## What You Might Do\n\nDepending on what the user brings, you might:\n\n**Explore the problem space**\n- Ask clarifying questions that emerge from what they said\n- Challenge assumptions\n- Reframe the problem\n- Find analogies\n\n**Investigate the codebase**\n- Map existing architecture relevant to the discussion\n- Find integration points\n- Identify patterns already in use\n- Surface hidden complexity\n\n**Compare options**\n- Brainstorm multiple approaches\n- Build comparison tables\n- Sketch tradeoffs\n- Recommend a path (if asked)\n\n**Visualize**\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502     Use ASCII diagrams liberally        \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502                                         \u2502\n\u2502      \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510         \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510      \u2502\n\u2502      \u2502 State  \u2502\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25b6\u2502 State  \u2502      \u2502\n\u2502      \u2502   A    \u2502         \u2502   B    \u2502      \u2502\n\u2502      \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518         \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518      \u2502\n\u2502                                         \u2502\n\u2502   System diagrams, state machines,      \u2502\n\u2502   data flows, architecture sketches,    \u2502\n\u2502   dependency graphs, comparison tables  \u2502\n\u2502                                         \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n**Surface risks and unknowns**\n- Identify what could go wrong\n- Find gaps in understanding\n- Suggest spikes or investigations\n\n---\n\n## OpenSpec Awareness\n\nYou have full context of the OpenSpec system. Use it naturally, don't force it.\n\n### Check for context\n\nAt the start, quickly check what exists:\n```bash\nopenspec list --json\n```\n\nThis tells you:\n- If there are active changes\n- Their names, schemas, and status\n- What the user might be working on\n\nIf the user mentioned a specific change name, read its artifacts for context.\n\n### When no change exists\n\nThink freely. When insights crystallize, you might offer:\n\n- \"This feels solid enough to start a change. Want me to create a proposal?\"\n- Or keep exploring - no pressure to formalize\n\n### When a change exists\n\nIf the user mentions a change or you detect one is relevant:\n\n1. **Resolve and read existing artifacts for context**\n   - Run `openspec status --change \"<name>\" --json`.\n   - Use `changeRoot`, `artifactPaths`, and `actionContext` from the status JSON.\n   - Read existing files from `artifactPaths.<artifact>.existingOutputPaths`.\n\n2. **Reference them naturally in conversation**\n   - \"Your design mentions using Redis, but we just realized SQLite fits better...\"\n   - \"The proposal scopes this to premium users, but we're now thinking everyone...\"\n\n3. **Offer to capture when decisions are made**\n\n    | Insight Type               | Where to Capture               |\n    |----------------------------|--------------------------------|\n    | New requirement discovered | `specs/<capability>/spec.md` |\n    | Requirement changed        | `specs/<capability>/spec.md` |\n    | Design decision made       | `design.md`                  |\n    | Scope changed              | `proposal.md`                |\n    | New work identified        | `tasks.md`                   |\n    | Assumption invalidated     | Relevant artifact              |\n\n   Example offers:\n   - \"That's a design decision. Capture it in design.md?\"\n   - \"This is a new requirement. Add it to specs?\"\n   - \"This changes scope. Update the proposal?\"\n\n4. **The user decides** - Offer and move on. Don't pressure. Don't auto-capture.\n\n---\n\n## What You Don't Have To Do\n\n- Follow a script\n- Ask the same questions every time\n- Produce a specific artifact\n- Reach a conclusion\n- Stay on topic if a tangent is valuable\n- Be brief (this is thinking time)\n\n---\n\n## Ending Discovery\n\nThere's no required ending. Discovery might:\n\n- **Flow into a proposal**: \"Ready to start? I can create a change proposal.\"\n- **Result in artifact updates**: \"Updated design.md with these decisions\"\n- **Just provide clarity**: User has what they need, moves on\n- **Continue later**: \"We can pick this up anytime\"\n\nWhen things crystallize, you might offer a summary - but it's optional. Sometimes the thinking IS the value.\n\n---\n\n## Guardrails\n\n- **Don't implement** - Never write code or implement features. Creating OpenSpec artifacts is fine, writing application code is not.\n- **Don't fake understanding** - If something is unclear, dig deeper\n- **Don't rush** - Discovery is thinking time, not task time\n- **Don't force structure** - Let patterns emerge naturally\n- **Don't auto-capture** - Offer to save insights, don't just do it\n- **Do visualize** - A good diagram is worth many paragraphs\n- **Do explore the codebase** - Ground discussions in reality\n- **Do question assumptions** - Including the user's and your own\n",
+      "summary": "name: \"OPSX: Explore\".",
+      "file_hash": "cee4bfba"
+    },
+    {
+      "id": ".claude/commands/opsx/archive.md",
+      "kind": "file",
+      "path": ".claude/commands/opsx/archive.md",
+      "ext": ".md",
+      "size": 5884,
+      "keywords": [],
+      "content": "---\nname: \"OPSX: Archive\"\ndescription: Archive a completed change in the experimental workflow\ncategory: Workflow\ntags: [workflow, archive, experimental]\n---\n\nArchive a completed change in the experimental workflow.\n\n**Store selection:** If the user names a store (a store is a standalone OpenSpec repo registered on this machine) or the work lives in one, run `openspec store list --json` to discover registered store ids, then pass `--store <id>` on the commands that read or write specs and changes (`new change`, `status`, `instructions`, `list`, `show`, `validate`, `archive`, `doctor`, `context`). Other commands do not take the flag. Hints printed by commands already carry the flag; keep it on follow-ups. Without a store, commands act on the nearest local `openspec/` root.\n\n**Input**: Optionally specify a change name after `/opsx:archive` (e.g., `/opsx:archive add-auth`). If omitted, check if it can be inferred from conversation context. If vague or ambiguous you MUST prompt for available changes.\n\n**Steps**\n\n1. **If no change name provided, prompt for selection**\n\n   Run `openspec list --json` to get available changes. Use the **AskUserQuestion tool** to let the user select.\n\n   Show only active changes (not already archived).\n   Include the schema used for each change if available.\n\n   **IMPORTANT**: Do NOT guess or auto-select a change. Always let the user choose.\n\n2. **Check artifact completion status**\n\n   Run `openspec status --change \"<name>\" --json` to check artifact completion.\n\n   Parse the JSON to understand:\n   - `schemaName`: The workflow being used\n   - `planningHome`, `changeRoot`, `artifactPaths`, and `actionContext`: path and scope context\n   - `artifacts`: List of artifacts with their status (`done` or other)\n\n   **If any artifacts are not `done`:**\n   - Display warning listing incomplete artifacts\n   - Prompt user for confirmation to continue\n   - Proceed if user confirms\n\n3. **Check task completion status**\n\n   Read the tasks file (typically `tasks.md`) to check for incomplete tasks.\n\n   Count tasks marked with `- [ ]` (incomplete) vs `- [x]` (complete).\n\n   **If incomplete tasks found:**\n   - Display warning showing count of incomplete tasks\n   - Prompt user for confirmation to continue\n   - Proceed if user confirms\n\n   **If no tasks file exists:** Proceed without task-related warning.\n\n4. **Assess delta spec sync state**\n\n   Use `artifactPaths.specs.existingOutputPaths` from status JSON to check for delta specs. If none exist, proceed without sync prompt.\n\n   **If delta specs exist:**\n   - Compare each delta spec with its corresponding main spec at `openspec/specs/<capability>/spec.md`\n   - Determine what changes would be applied (adds, modifications, removals, renames)\n   - Show a combined summary before prompting\n\n   **Prompt options:**\n   - If changes needed: \"Sync now (recommended)\", \"Archive without syncing\"\n   - If already synced: \"Archive now\", \"Sync anyway\", \"Cancel\"\n\n   If user chooses sync, use Task tool (subagent_type: \"general-purpose\", prompt: \"Use Skill tool to invoke openspec-sync-specs for change '<name>'. Delta spec analysis: <include the analyzed delta spec summary>\"). Proceed to archive regardless of choice.\n\n5. **Perform the archive**\n\n   Create an `archive` directory under `planningHome.changesDir` if it doesn't exist:\n   ```bash\n   mkdir -p \"<planningHome.changesDir>/archive\"\n   ```\n\n   Generate target name using current date: `YYYY-MM-DD-<change-name>`\n\n   **Check if target already exists:**\n   - If yes: Fail with error, suggest renaming existing archive or using different date\n   - If no: Move `changeRoot` to the archive directory\n\n   ```bash\n   mv \"<changeRoot>\" \"<planningHome.changesDir>/archive/YYYY-MM-DD-<name>\"\n   ```\n\n6. **Display summary**\n\n   Show archive completion summary including:\n   - Change name\n   - Schema that was used\n   - Archive location\n   - Spec sync status (synced / sync skipped / no delta specs)\n   - Note about any warnings (incomplete artifacts/tasks)\n\n**Output On Success**\n\n```\n## Archive Complete\n\n**Change:** <change-name>\n**Schema:** <schema-name>\n**Archived to:** the archive path derived from `planningHome.changesDir`/YYYY-MM-DD-<name>/\n**Specs:** \u2713 Synced to main specs\n\nAll artifacts complete. All tasks complete.\n```\n\n**Output On Success (No Delta Specs)**\n\n```\n## Archive Complete\n\n**Change:** <change-name>\n**Schema:** <schema-name>\n**Archived to:** the archive path derived from `planningHome.changesDir`/YYYY-MM-DD-<name>/\n**Specs:** No delta specs\n\nAll artifacts complete. All tasks complete.\n```\n\n**Output On Success With Warnings**\n\n```\n## Archive Complete (with warnings)\n\n**Change:** <change-name>\n**Schema:** <schema-name>\n**Archived to:** the archive path derived from `planningHome.changesDir`/YYYY-MM-DD-<name>/\n**Specs:** Sync skipped (user chose to skip)\n\n**Warnings:**\n- Archived with 2 incomplete artifacts\n- Archived with 3 incomplete tasks\n- Delta spec sync was skipped (user chose to skip)\n\nReview the archive if this was not intentional.\n```\n\n**Output On Error (Archive Exists)**\n\n```\n## Archive Failed\n\n**Change:** <change-name>\n**Target:** the archive path derived from `planningHome.changesDir`/YYYY-MM-DD-<name>/\n\nTarget archive directory already exists.\n\n**Options:**\n1. Rename the existing archive\n2. Delete the existing archive if it's a duplicate\n3. Wait until a different date to archive\n```\n\n**Guardrails**\n- Always prompt for change selection if not provided\n- Use artifact graph (openspec status --json) for completion checking\n- Don't block archive on warnings - just inform and confirm\n- Preserve .openspec.yaml when moving to archive (it moves with the directory)\n- Show clear summary of what happened\n- If sync is requested, use the Skill tool to invoke `openspec-sync-specs` (agent-driven)\n- If delta specs exist, always run the sync assessment and show the combined summary before prompting\n",
+      "summary": "name: \"OPSX: Archive\".",
+      "file_hash": "ae42a147"
+    },
+    {
+      "id": ".claude/commands/opsx/apply.md",
+      "kind": "file",
+      "path": ".claude/commands/opsx/apply.md",
+      "ext": ".md",
+      "size": 5255,
+      "keywords": [],
+      "content": "---\nname: \"OPSX: Apply\"\ndescription: Implement tasks from an OpenSpec change (Experimental)\ncategory: Workflow\ntags: [workflow, artifacts, experimental]\n---\n\nImplement tasks from an OpenSpec change.\n\n**Store selection:** If the user names a store (a store is a standalone OpenSpec repo registered on this machine) or the work lives in one, run `openspec store list --json` to discover registered store ids, then pass `--store <id>` on the commands that read or write specs and changes (`new change`, `status`, `instructions`, `list`, `show`, `validate`, `archive`, `doctor`, `context`). Other commands do not take the flag. Hints printed by commands already carry the flag; keep it on follow-ups. Without a store, commands act on the nearest local `openspec/` root.\n\n**Input**: Optionally specify a change name (e.g., `/opsx:apply add-auth`). If omitted, check if it can be inferred from conversation context. If vague or ambiguous you MUST prompt for available changes.\n\n**Steps**\n\n1. **Select the change**\n\n   If a name is provided, use it. Otherwise:\n   - Infer from conversation context if the user mentioned a change\n   - Auto-select if only one active change exists\n   - If ambiguous, run `openspec list --json` to get available changes and use the **AskUserQuestion tool** to let the user select\n\n   Always announce: \"Using change: <name>\" and how to override (e.g., `/opsx:apply <other>`).\n\n2. **Check status to understand the schema**\n   ```bash\n   openspec status --change \"<name>\" --json\n   ```\n   Parse the JSON to understand:\n   - `schemaName`: The workflow being used (e.g., \"spec-driven\")\n   - `planningHome`, `changeRoot`, and `actionContext`: planning scope and edit constraints\n   - Which artifact contains the tasks (typically \"tasks\" for spec-driven, check status for others)\n\n3. **Get apply instructions**\n\n   ```bash\n   openspec instructions apply --change \"<name>\" --json\n   ```\n\n   This returns:\n   - `contextFiles`: artifact ID -> array of concrete file paths (varies by schema)\n   - Progress (total, complete, remaining)\n   - Task list with status\n   - Dynamic instruction based on current state\n\n   **Handle states:**\n   - If `state: \"blocked\"` (missing artifacts): show message, suggest using `/opsx:continue`\n   - If `state: \"all_done\"`: congratulate, suggest archive\n   - Otherwise: proceed to implementation\n\n4. **Read context files**\n\n   Read every file path listed under `contextFiles` from the apply instructions output.\n   The files depend on the schema being used:\n   - **spec-driven**: proposal, specs, design, tasks\n   - Other schemas: follow the contextFiles from CLI output\n\n5. **Show current progress**\n\n   Display:\n   - Schema being used\n   - Progress: \"N/M tasks complete\"\n   - Remaining tasks overview\n   - Dynamic instruction from CLI\n\n6. **Implement tasks (loop until done or blocked)**\n\n   For each pending task:\n   - Show which task is being worked on\n   - Make the code changes required\n   - Keep changes minimal and focused\n   - Mark task complete in the tasks file: `- [ ]` \u2192 `- [x]`\n   - Continue to next task\n\n   **Pause if:**\n   - Task is unclear \u2192 ask for clarification\n   - Implementation reveals a design issue \u2192 suggest updating artifacts\n   - Error or blocker encountered \u2192 report and wait for guidance\n   - User interrupts\n\n7. **On completion or pause, show status**\n\n   Display:\n   - Tasks completed this session\n   - Overall progress: \"N/M tasks complete\"\n   - If all done: suggest archive\n   - If paused: explain why and wait for guidance\n\n**Output During Implementation**\n\n```\n## Implementing: <change-name> (schema: <schema-name>)\n\nWorking on task 3/7: <task description>\n[...implementation happening...]\n\u2713 Task complete\n\nWorking on task 4/7: <task description>\n[...implementation happening...]\n\u2713 Task complete\n```\n\n**Output On Completion**\n\n```\n## Implementation Complete\n\n**Change:** <change-name>\n**Schema:** <schema-name>\n**Progress:** 7/7 tasks complete \u2713\n\n### Completed This Session\n- [x] Task 1\n- [x] Task 2\n...\n\nAll tasks complete! You can archive this change with `/opsx:archive`.\n```\n\n**Output On Pause (Issue Encountered)**\n\n```\n## Implementation Paused\n\n**Change:** <change-name>\n**Schema:** <schema-name>\n**Progress:** 4/7 tasks complete\n\n### Issue Encountered\n<description of the issue>\n\n**Options:**\n1. <option 1>\n2. <option 2>\n3. Other approach\n\nWhat would you like to do?\n```\n\n**Guardrails**\n- Keep going through tasks until done or blocked\n- Always read context files before starting (from the apply instructions output)\n- If task is ambiguous, pause and ask before implementing\n- If implementation reveals issues, pause and suggest artifact updates\n- Keep code changes minimal and scoped to each task\n- Update task checkbox immediately after completing each task\n- Pause on errors, blockers, or unclear requirements - don't guess\n- Use contextFiles from CLI output, don't assume specific file names\n\n**Fluid Workflow Integration**\n\nThis skill supports the \"actions on a change\" model:\n\n- **Can be invoked anytime**: Before all artifacts are done (if tasks exist), after partial implementation, interleaved with other actions\n- **Allows artifact updates**: If implementation reveals design issues, suggest updating artifacts - not phase-locked, work fluidly\n",
+      "summary": "name: \"OPSX: Apply\".",
+      "file_hash": "0db6d3f2"
+    },
+    {
+      "id": ".claude/skills/openspec-explore/SKILL.md",
+      "kind": "file",
+      "path": ".claude/skills/openspec-explore/SKILL.md",
+      "ext": ".md",
+      "size": 11396,
+      "keywords": [],
+      "content": "---\nname: openspec-explore\ndescription: Enter explore mode - a thinking partner for exploring ideas, investigating problems, and clarifying requirements. Use when the user wants to think through something before or during a change.\nlicense: MIT\ncompatibility: Requires openspec CLI.\nmetadata:\n  author: openspec\n  version: \"1.0\"\n  generatedBy: \"1.5.0\"\n---\n\nEnter explore mode. Think deeply. Visualize freely. Follow the conversation wherever it goes.\n\n**IMPORTANT: Explore mode is for thinking, not implementing.** You may read files, search code, and investigate the codebase, but you must NEVER write code or implement features. If the user asks you to implement something, remind them to exit explore mode first and create a change proposal. You MAY create OpenSpec artifacts (proposals, designs, specs) if the user asks\u2014that's capturing thinking, not implementing.\n\n**This is a stance, not a workflow.** There are no fixed steps, no required sequence, no mandatory outputs. You're a thinking partner helping the user explore.\n\n**Store selection:** If the user names a store (a store is a standalone OpenSpec repo registered on this machine) or the work lives in one, run `openspec store list --json` to discover registered store ids, then pass `--store <id>` on the commands that read or write specs and changes (`new change`, `status`, `instructions`, `list`, `show`, `validate`, `archive`, `doctor`, `context`). Other commands do not take the flag. Hints printed by commands already carry the flag; keep it on follow-ups. Without a store, commands act on the nearest local `openspec/` root.\n\n---\n\n## The Stance\n\n- **Curious, not prescriptive** - Ask questions that emerge naturally, don't follow a script\n- **Open threads, not interrogations** - Surface multiple interesting directions and let the user follow what resonates. Don't funnel them through a single path of questions.\n- **Visual** - Use ASCII diagrams liberally when they'd help clarify thinking\n- **Adaptive** - Follow interesting threads, pivot when new information emerges\n- **Patient** - Don't rush to conclusions, let the shape of the problem emerge\n- **Grounded** - Explore the actual codebase when relevant, don't just theorize\n\n---\n\n## What You Might Do\n\nDepending on what the user brings, you might:\n\n**Explore the problem space**\n- Ask clarifying questions that emerge from what they said\n- Challenge assumptions\n- Reframe the problem\n- Find analogies\n\n**Investigate the codebase**\n- Map existing architecture relevant to the discussion\n- Find integration points\n- Identify patterns already in use\n- Surface hidden complexity\n\n**Compare options**\n- Brainstorm multiple approaches\n- Build comparison tables\n- Sketch tradeoffs\n- Recommend a path (if asked)\n\n**Visualize**\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502     Use ASCII diagrams liberally        \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502                                         \u2502\n\u2502      \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510         \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510      \u2502\n\u2502      \u2502 State  \u2502\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25b6\u2502 State  \u2502      \u2502\n\u2502      \u2502   A    \u2502         \u2502   B    \u2502      \u2502\n\u2502      \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518         \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518      \u2502\n\u2502                                         \u2502\n\u2502   System diagrams, state machines,      \u2502\n\u2502   data flows, architecture sketches,    \u2502\n\u2502   dependency graphs, comparison tables  \u2502\n\u2502                                         \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n**Surface risks and unknowns**\n- Identify what could go wrong\n- Find gaps in understanding\n- Suggest spikes or investigations\n\n---\n\n## OpenSpec Awareness\n\nYou have full context of the OpenSpec system. Use it naturally, don't force it.\n\n### Check for context\n\nAt the start, quickly check what exists:\n```bash\nopenspec list --json\n```\n\nThis tells you:\n- If there are active changes\n- Their names, schemas, and status\n- What the user might be working on\n\n### When no change exists\n\nThink freely. When insights crystallize, you might offer:\n\n- \"This feels solid enough to start a change. Want me to create a proposal?\"\n- Or keep exploring - no pressure to formalize\n\n### When a change exists\n\nIf the user mentions a change or you detect one is relevant:\n\n1. **Resolve and read existing artifacts for context**\n   - Run `openspec status --change \"<name>\" --json`.\n   - Use `changeRoot`, `artifactPaths`, and `actionContext` from the status JSON.\n   - Read existing files from `artifactPaths.<artifact>.existingOutputPaths`.\n\n2. **Reference them naturally in conversation**\n   - \"Your design mentions using Redis, but we just realized SQLite fits better...\"\n   - \"The proposal scopes this to premium users, but we're now thinking everyone...\"\n\n3. **Offer to capture when decisions are made**\n\n    | Insight Type               | Where to Capture               |\n    |----------------------------|--------------------------------|\n    | New requirement discovered | `specs/<capability>/spec.md` |\n    | Requirement changed        | `specs/<capability>/spec.md` |\n    | Design decision made       | `design.md`                  |\n    | Scope changed              | `proposal.md`                |\n    | New work identified        | `tasks.md`                   |\n    | Assumption invalidated     | Relevant artifact              |\n\n   Example offers:\n   - \"That's a design decision. Capture it in design.md?\"\n   - \"This is a new requirement. Add it to specs?\"\n   - \"This changes scope. Update the proposal?\"\n\n4. **The user decides** - Offer and move on. Don't pressure. Don't auto-capture.\n\n---\n\n## What You Don't Have To Do\n\n- Follow a script\n- Ask the same questions every time\n- Produce a specific artifact\n- Reach a conclusion\n- Stay on topic if a tangent is valuable\n- Be brief (this is thinking time)\n\n---\n\n## Handling Different Entry Points\n\n**User brings a vague idea:**\n```\nUser: I'm thinking about adding real-time collaboration\n\nYou: Real-time collab is a big space. Let me think about this...\n\n      COLLABORATION SPECTRUM\n      \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\n      Awareness          Coordination         Sync\n          \u2502                   \u2502                 \u2502\n          \u25bc                   \u25bc                 \u25bc\n      \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510         \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510        \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n      \u2502Presence\u2502         \u2502Cursors \u2502        \u2502  CRDT  \u2502\n      \u2502  \"3    \u2502         \u2502 Multi  \u2502        \u2502Conflict\u2502\n      \u2502online\" \u2502         \u2502 select \u2502        \u2502  free  \u2502\n      \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518         \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518        \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n          \u2502                   \u2502                 \u2502\n       trivial            moderate           complex\n\n      Where's your head at?\n```\n\n**User brings a specific problem:**\n```\nUser: The auth system is a mess\n\nYou: [reads codebase]\n\n     \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n     \u2502              CURRENT AUTH FLOW              \u2502\n     \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                        \u2502\n          \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n          \u25bc             \u25bc             \u25bc\n     \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n     \u2502 Google  \u2502  \u2502  GitHub \u2502  \u2502  Email  \u2502\n     \u2502  OAuth  \u2502  \u2502  OAuth  \u2502  \u2502  Magic  \u2502\n     \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2518  \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2518  \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2518\n          \u2502             \u2502             \u2502\n          \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                        \u25bc\n                  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n                  \u2502  Session  \u2502\n                  \u2514\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2518\n                        \u2502\n                        \u25bc\n                  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n                  \u2502   Perms   \u2502\n                  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\n     I see three tangles. Which one's burning?\n```\n\n**User is stuck mid-implementation:**\n```\nUser: /opsx:explore add-auth-system\n      The OAuth integration is more complex than expected\n\nYou: [reads change artifacts]\n\n     You're on task 4: \"Implement OAuth flow\"\n\n     Let me trace what's involved...\n\n     [draws diagram, explores options, suggests paths]\n\n     Want to update the design to reflect this?\n     Or add a spike task to investigate?\n```\n\n**User wants to compare options:**\n```\nUser: Should we use Postgres or SQLite?\n\nYou: Generic answer is boring. What's the context?\n\nUser: A CLI tool that tracks local dev environments\n\nYou: That changes everything.\n\n     \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n     \u2502          CLI TOOL DATA STORAGE                  \u2502\n     \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\n     Key constraints:\n     \u2022 No daemon running\n     \u2022 Must work offline\n     \u2022 Single user\n\n                  SQLite          Postgres\n     Deployment   embedded \u2713      needs server \u2717\n     Offline      yes \u2713           no \u2717\n     Single file  yes \u2713           no \u2717\n\n     SQLite. Not even close.\n\n     Unless... is there a sync component?\n```\n\n---\n\n## Ending Discovery\n\nThere's no required ending. Discovery might:\n\n- **Flow into a proposal**: \"Ready to start? I can create a change proposal.\"\n- **Result in artifact updates**: \"Updated design.md with these decisions\"\n- **Just provide clarity**: User has what they need, moves on\n- **Continue later**: \"We can pick this up anytime\"\n\nWhen it feels like things are crystallizing, you might summarize:\n\n```\n## What We Figured Out\n\n**The problem**: [crystallized understanding]\n\n**The approach**: [if one emerged]\n\n**Open questions**: [if any remain]\n\n**Next steps** (if ready):\n- Create a change proposal\n- Keep exploring: just keep talking\n```\n\nBut this summary is optional. Sometimes the thinking IS the value.\n\n---\n\n## Guardrails\n\n- **Don't implement** - Never write code or implement features. Creating OpenSpec artifacts is fine, writing application code is not.\n- **Don't fake understanding** - If something is unclear, dig deeper\n- **Don't rush** - Discovery is thinking time, not task time\n- **Don't force structure** - Let patterns emerge naturally\n- **Don't auto-capture** - Offer to save insights, don't just do it\n- **Do visualize** - A good diagram is worth many paragraphs\n- **Do explore the codebase** - Ground discussions in reality\n- **Do question assumptions** - Including the user's and your own\n",
+      "summary": "name: openspec-explore.",
+      "file_hash": "67744ad8"
+    },
+    {
+      "id": ".claude/skills/openspec-archive-change/SKILL.md",
+      "kind": "file",
+      "path": ".claude/skills/openspec-archive-change/SKILL.md",
+      "ext": ".md",
+      "size": 4933,
+      "keywords": [],
+      "content": "---\nname: openspec-archive-change\ndescription: Archive a completed change in the experimental workflow. Use when the user wants to finalize and archive a change after implementation is complete.\nlicense: MIT\ncompatibility: Requires openspec CLI.\nmetadata:\n  author: openspec\n  version: \"1.0\"\n  generatedBy: \"1.5.0\"\n---\n\nArchive a completed change in the experimental workflow.\n\n**Store selection:** If the user names a store (a store is a standalone OpenSpec repo registered on this machine) or the work lives in one, run `openspec store list --json` to discover registered store ids, then pass `--store <id>` on the commands that read or write specs and changes (`new change`, `status`, `instructions`, `list`, `show`, `validate`, `archive`, `doctor`, `context`). Other commands do not take the flag. Hints printed by commands already carry the flag; keep it on follow-ups. Without a store, commands act on the nearest local `openspec/` root.\n\n**Input**: Optionally specify a change name. If omitted, check if it can be inferred from conversation context. If vague or ambiguous you MUST prompt for available changes.\n\n**Steps**\n\n1. **If no change name provided, prompt for selection**\n\n   Run `openspec list --json` to get available changes. Use the **AskUserQuestion tool** to let the user select.\n\n   Show only active changes (not already archived).\n   Include the schema used for each change if available.\n\n   **IMPORTANT**: Do NOT guess or auto-select a change. Always let the user choose.\n\n2. **Check artifact completion status**\n\n   Run `openspec status --change \"<name>\" --json` to check artifact completion.\n\n   Parse the JSON to understand:\n   - `schemaName`: The workflow being used\n   - `planningHome`, `changeRoot`, `artifactPaths`, and `actionContext`: path and scope context\n   - `artifacts`: List of artifacts with their status (`done` or other)\n\n   **If any artifacts are not `done`:**\n   - Display warning listing incomplete artifacts\n   - Use **AskUserQuestion tool** to confirm user wants to proceed\n   - Proceed if user confirms\n\n3. **Check task completion status**\n\n   Read the tasks file (typically `tasks.md`) to check for incomplete tasks.\n\n   Count tasks marked with `- [ ]` (incomplete) vs `- [x]` (complete).\n\n   **If incomplete tasks found:**\n   - Display warning showing count of incomplete tasks\n   - Use **AskUserQuestion tool** to confirm user wants to proceed\n   - Proceed if user confirms\n\n   **If no tasks file exists:** Proceed without task-related warning.\n\n4. **Assess delta spec sync state**\n\n   Use `artifactPaths.specs.existingOutputPaths` from status JSON to check for delta specs. If none exist, proceed without sync prompt.\n\n   **If delta specs exist:**\n   - Compare each delta spec with its corresponding main spec at `openspec/specs/<capability>/spec.md`\n   - Determine what changes would be applied (adds, modifications, removals, renames)\n   - Show a combined summary before prompting\n\n   **Prompt options:**\n   - If changes needed: \"Sync now (recommended)\", \"Archive without syncing\"\n   - If already synced: \"Archive now\", \"Sync anyway\", \"Cancel\"\n\n   If user chooses sync, use Task tool (subagent_type: \"general-purpose\", prompt: \"Use Skill tool to invoke openspec-sync-specs for change '<name>'. Delta spec analysis: <include the analyzed delta spec summary>\"). Proceed to archive regardless of choice.\n\n5. **Perform the archive**\n\n   Create an `archive` directory under `planningHome.changesDir` if it doesn't exist:\n   ```bash\n   mkdir -p \"<planningHome.changesDir>/archive\"\n   ```\n\n   Generate target name using current date: `YYYY-MM-DD-<change-name>`\n\n   **Check if target already exists:**\n   - If yes: Fail with error, suggest renaming existing archive or using different date\n   - If no: Move `changeRoot` to the archive directory\n\n   ```bash\n   mv \"<changeRoot>\" \"<planningHome.changesDir>/archive/YYYY-MM-DD-<name>\"\n   ```\n\n6. **Display summary**\n\n   Show archive completion summary including:\n   - Change name\n   - Schema that was used\n   - Archive location\n   - Whether specs were synced (if applicable)\n   - Note about any warnings (incomplete artifacts/tasks)\n\n**Output On Success**\n\n```\n## Archive Complete\n\n**Change:** <change-name>\n**Schema:** <schema-name>\n**Archived to:** the archive path derived from `planningHome.changesDir`/YYYY-MM-DD-<name>/\n**Specs:** \u2713 Synced to main specs (or \"No delta specs\" or \"Sync skipped\")\n\nAll artifacts complete. All tasks complete.\n```\n\n**Guardrails**\n- Always prompt for change selection if not provided\n- Use artifact graph (openspec status --json) for completion checking\n- Don't block archive on warnings - just inform and confirm\n- Preserve .openspec.yaml when moving to archive (it moves with the directory)\n- Show clear summary of what happened\n- If sync is requested, use openspec-sync-specs approach (agent-driven)\n- If delta specs exist, always run the sync assessment and show the combined summary before prompting\n",
+      "summary": "name: openspec-archive-change.",
+      "file_hash": "2a1969d2"
+    },
+    {
+      "id": ".claude/skills/openspec-apply-change/SKILL.md",
+      "kind": "file",
+      "path": ".claude/skills/openspec-apply-change/SKILL.md",
+      "ext": ".md",
+      "size": 5433,
+      "keywords": [],
+      "content": "---\nname: openspec-apply-change\ndescription: Implement tasks from an OpenSpec change. Use when the user wants to start implementing, continue implementation, or work through tasks.\nlicense: MIT\ncompatibility: Requires openspec CLI.\nmetadata:\n  author: openspec\n  version: \"1.0\"\n  generatedBy: \"1.5.0\"\n---\n\nImplement tasks from an OpenSpec change.\n\n**Store selection:** If the user names a store (a store is a standalone OpenSpec repo registered on this machine) or the work lives in one, run `openspec store list --json` to discover registered store ids, then pass `--store <id>` on the commands that read or write specs and changes (`new change`, `status`, `instructions`, `list`, `show`, `validate`, `archive`, `doctor`, `context`). Other commands do not take the flag. Hints printed by commands already carry the flag; keep it on follow-ups. Without a store, commands act on the nearest local `openspec/` root.\n\n**Input**: Optionally specify a change name. If omitted, check if it can be inferred from conversation context. If vague or ambiguous you MUST prompt for available changes.\n\n**Steps**\n\n1. **Select the change**\n\n   If a name is provided, use it. Otherwise:\n   - Infer from conversation context if the user mentioned a change\n   - Auto-select if only one active change exists\n   - If ambiguous, run `openspec list --json` to get available changes and use the **AskUserQuestion tool** to let the user select\n\n   Always announce: \"Using change: <name>\" and how to override (e.g., `/opsx:apply <other>`).\n\n2. **Check status to understand the schema**\n   ```bash\n   openspec status --change \"<name>\" --json\n   ```\n   Parse the JSON to understand:\n   - `schemaName`: The workflow being used (e.g., \"spec-driven\")\n   - `planningHome`, `changeRoot`, and `actionContext`: planning scope and edit constraints\n   - Which artifact contains the tasks (typically \"tasks\" for spec-driven, check status for others)\n\n3. **Get apply instructions**\n\n   ```bash\n   openspec instructions apply --change \"<name>\" --json\n   ```\n\n   This returns:\n   - `contextFiles`: artifact ID -> array of concrete file paths (varies by schema - could be proposal/specs/design/tasks or spec/tests/implementation/docs)\n   - Progress (total, complete, remaining)\n   - Task list with status\n   - Dynamic instruction based on current state\n\n   **Handle states:**\n   - If `state: \"blocked\"` (missing artifacts): show message, suggest using openspec-continue-change\n   - If `state: \"all_done\"`: congratulate, suggest archive\n   - Otherwise: proceed to implementation\n\n4. **Read context files**\n\n   Read every file path listed under `contextFiles` from the apply instructions output.\n   The files depend on the schema being used:\n   - **spec-driven**: proposal, specs, design, tasks\n   - Other schemas: follow the contextFiles from CLI output\n\n5. **Show current progress**\n\n   Display:\n   - Schema being used\n   - Progress: \"N/M tasks complete\"\n   - Remaining tasks overview\n   - Dynamic instruction from CLI\n\n6. **Implement tasks (loop until done or blocked)**\n\n   For each pending task:\n   - Show which task is being worked on\n   - Make the code changes required\n   - Keep changes minimal and focused\n   - Mark task complete in the tasks file: `- [ ]` \u2192 `- [x]`\n   - Continue to next task\n\n   **Pause if:**\n   - Task is unclear \u2192 ask for clarification\n   - Implementation reveals a design issue \u2192 suggest updating artifacts\n   - Error or blocker encountered \u2192 report and wait for guidance\n   - User interrupts\n\n7. **On completion or pause, show status**\n\n   Display:\n   - Tasks completed this session\n   - Overall progress: \"N/M tasks complete\"\n   - If all done: suggest archive\n   - If paused: explain why and wait for guidance\n\n**Output During Implementation**\n\n```\n## Implementing: <change-name> (schema: <schema-name>)\n\nWorking on task 3/7: <task description>\n[...implementation happening...]\n\u2713 Task complete\n\nWorking on task 4/7: <task description>\n[...implementation happening...]\n\u2713 Task complete\n```\n\n**Output On Completion**\n\n```\n## Implementation Complete\n\n**Change:** <change-name>\n**Schema:** <schema-name>\n**Progress:** 7/7 tasks complete \u2713\n\n### Completed This Session\n- [x] Task 1\n- [x] Task 2\n...\n\nAll tasks complete! Ready to archive this change.\n```\n\n**Output On Pause (Issue Encountered)**\n\n```\n## Implementation Paused\n\n**Change:** <change-name>\n**Schema:** <schema-name>\n**Progress:** 4/7 tasks complete\n\n### Issue Encountered\n<description of the issue>\n\n**Options:**\n1. <option 1>\n2. <option 2>\n3. Other approach\n\nWhat would you like to do?\n```\n\n**Guardrails**\n- Keep going through tasks until done or blocked\n- Always read context files before starting (from the apply instructions output)\n- If task is ambiguous, pause and ask before implementing\n- If implementation reveals issues, pause and suggest artifact updates\n- Keep code changes minimal and scoped to each task\n- Update task checkbox immediately after completing each task\n- Pause on errors, blockers, or unclear requirements - don't guess\n- Use contextFiles from CLI output, don't assume specific file names\n\n**Fluid Workflow Integration**\n\nThis skill supports the \"actions on a change\" model:\n\n- **Can be invoked anytime**: Before all artifacts are done (if tasks exist), after partial implementation, interleaved with other actions\n- **Allows artifact updates**: If implementation reveals design issues, suggest updating artifacts - not phase-locked, work fluidly\n",
+      "summary": "name: openspec-apply-change.",
+      "file_hash": "9ceecda0"
+    },
+    {
+      "id": ".claude/skills/openspec-propose/SKILL.md",
+      "kind": "file",
+      "path": ".claude/skills/openspec-propose/SKILL.md",
+      "ext": ".md",
+      "size": 5433,
+      "keywords": [],
+      "content": "---\nname: openspec-propose\ndescription: Propose a new change with all artifacts generated in one step. Use when the user wants to quickly describe what they want to build and get a complete proposal with design, specs, and tasks ready for implementation.\nlicense: MIT\ncompatibility: Requires openspec CLI.\nmetadata:\n  author: openspec\n  version: \"1.0\"\n  generatedBy: \"1.5.0\"\n---\n\nPropose a new change - create the change and generate all artifacts in one step.\n\nI'll create a change with artifacts:\n- proposal.md (what & why)\n- design.md (how)\n- tasks.md (implementation steps)\n\nWhen ready to implement, run /opsx:apply\n\n---\n\n**Store selection:** If the user names a store (a store is a standalone OpenSpec repo registered on this machine) or the work lives in one, run `openspec store list --json` to discover registered store ids, then pass `--store <id>` on the commands that read or write specs and changes (`new change`, `status`, `instructions`, `list`, `show`, `validate`, `archive`, `doctor`, `context`). Other commands do not take the flag. Hints printed by commands already carry the flag; keep it on follow-ups. Without a store, commands act on the nearest local `openspec/` root.\n\n**Input**: The user's request should include a change name (kebab-case) OR a description of what they want to build.\n\n**Steps**\n\n1. **If no clear input provided, ask what they want to build**\n\n   Use the **AskUserQuestion tool** (open-ended, no preset options) to ask:\n   > \"What change do you want to work on? Describe what you want to build or fix.\"\n\n   From their description, derive a kebab-case name (e.g., \"add user authentication\" \u2192 `add-user-auth`).\n\n   **IMPORTANT**: Do NOT proceed without understanding what the user wants to build.\n\n2. **Create the change directory**\n   ```bash\n   openspec new change \"<name>\"\n   ```\n   This creates a scaffolded change in the planning home resolved by the CLI with `.openspec.yaml`.\n\n3. **Get the artifact build order**\n   ```bash\n   openspec status --change \"<name>\" --json\n   ```\n   Parse the JSON to get:\n   - `applyRequires`: array of artifact IDs needed before implementation (e.g., `[\"tasks\"]`)\n   - `artifacts`: list of all artifacts with their status and dependencies\n   - `planningHome`, `changeRoot`, `artifactPaths`, and `actionContext`: path and scope context. Use these instead of assuming repo-local paths.\n\n4. **Create artifacts in sequence until apply-ready**\n\n   Use the **TodoWrite tool** to track progress through the artifacts.\n\n   Loop through artifacts in dependency order (artifacts with no pending dependencies first):\n\n   a. **For each artifact that is `ready` (dependencies satisfied)**:\n      - Get instructions:\n        ```bash\n        openspec instructions <artifact-id> --change \"<name>\" --json\n        ```\n      - The instructions JSON includes:\n        - `context`: Project background (constraints for you - do NOT include in output)\n        - `rules`: Artifact-specific rules (constraints for you - do NOT include in output)\n        - `template`: The structure to use for your output file\n        - `instruction`: Schema-specific guidance for this artifact type\n        - `resolvedOutputPath`: Resolved path or pattern to write the artifact\n        - `dependencies`: Completed artifacts to read for context\n      - Read any completed dependency files for context\n      - Create the artifact file using `template` as the structure and write it to `resolvedOutputPath`\n      - Apply `context` and `rules` as constraints - but do NOT copy them into the file\n      - Show brief progress: \"Created <artifact-id>\"\n\n   b. **Continue until all `applyRequires` artifacts are complete**\n      - After creating each artifact, re-run `openspec status --change \"<name>\" --json`\n      - Check if every artifact ID in `applyRequires` has `status: \"done\"` in the artifacts array\n      - Stop when all `applyRequires` artifacts are done\n\n   c. **If an artifact requires user input** (unclear context):\n      - Use **AskUserQuestion tool** to clarify\n      - Then continue with creation\n\n5. **Show final status**\n   ```bash\n   openspec status --change \"<name>\"\n   ```\n\n**Output**\n\nAfter completing all artifacts, summarize:\n- Change name and location\n- List of artifacts created with brief descriptions\n- What's ready: \"All artifacts created! Ready for implementation.\"\n- Prompt: \"Run `/opsx:apply` or ask me to implement to start working on the tasks.\"\n\n**Artifact Creation Guidelines**\n\n- Follow the `instruction` field from `openspec instructions` for each artifact type\n- The schema defines what each artifact should contain - follow it\n- Read dependency artifacts for context before creating new ones\n- Use `template` as the structure for your output file - fill in its sections\n- **IMPORTANT**: `context` and `rules` are constraints for YOU, not content for the file\n  - Do NOT copy `<context>`, `<rules>`, `<project_context>` blocks into the artifact\n  - These guide what you write, but should never appear in the output\n\n**Guardrails**\n- Create ALL artifacts needed for implementation (as defined by schema's `apply.requires`)\n- Always read dependency artifacts before creating a new one\n- If context is critically unclear, ask the user - but prefer making reasonable decisions to keep momentum\n- If a change with that name already exists, ask if user wants to continue it or create a new one\n- Verify each artifact file exists after writing before proceeding to next\n",
+      "summary": "name: openspec-propose.",
+      "file_hash": "a6be597a"
+    },
+    {
+      "id": "openspec/config.yaml",
+      "kind": "file",
+      "path": "openspec/config.yaml",
+      "ext": ".yaml",
+      "size": 573,
+      "keywords": [],
+      "content": "schema: spec-driven\n\n# Project context (optional)\n# This is shown to AI when creating artifacts.\n# Add your tech stack, conventions, style guides, domain knowledge, etc.\n# Example:\n#   context: |\n#     Tech stack: TypeScript, React, Node.js\n#     We use conventional commits\n#     Domain: e-commerce platform\n\n# Per-artifact rules (optional)\n# Add custom rules for specific artifacts.\n# Example:\n#   rules:\n#     proposal:\n#       - Keep proposals under 500 words\n#       - Always include a \"Non-goals\" section\n#     tasks:\n#       - Break tasks into chunks of max 2 hours\n",
+      "summary": "schema: spec-driven.",
+      "file_hash": "9e3e7672"
+    },
+    {
+      "id": "openspec/changes/add-onboarding-wizard/.openspec.yaml",
+      "kind": "file",
+      "path": "openspec/changes/add-onboarding-wizard/.openspec.yaml",
+      "ext": ".yaml",
+      "size": 40,
+      "keywords": [],
+      "content": "schema: spec-driven\ncreated: 2026-07-09\n",
+      "summary": "schema: spec-driven.",
+      "file_hash": "aa7d11c7"
+    },
+    {
+      "id": "openspec/changes/add-onboarding-wizard/tasks.md",
+      "kind": "file",
+      "path": "openspec/changes/add-onboarding-wizard/tasks.md",
+      "ext": ".md",
+      "size": 3971,
+      "keywords": [],
+      "content": "## 1. Component scaffolding\n\n- [x] 1.1 Create `src/components/OnboardingWizard.tsx` with a closed/open state (`step: 0 | 1 | 2 | 3 | null`) and screen sequence array `[\"welcome\", \"loot\", \"rules\", \"start\"]`\n- [x] 1.2 Create `src/components/OnboardingWizard.module.css` establishing the new visual system (slab-serif headline styles, hard black drop-shadow utility, red/cream/olive color values, game-menu chrome primitives: dialogue box, quest card, EXP bar)\n- [x] 1.3 Add the wizard trigger CTA button and the login button (linking to `/dashboard`) to `src/app/page.tsx` \u2014 implemented as a self-contained `<OnboardingWizard />` launcher; note: a second trigger was added directly in the hero section (see deviation note below), which the original task text did not anticipate\n- [x] 1.4 Mount `<OnboardingWizard />` in `page.tsx`, controlled by the trigger button's open state\n\n## 2. Screen content\n\n- [x] 2.1 Build the \"Welcome\" screen: Prof. Hacker dialogue intro inviting the visitor to view the rules, with Next control\n- [x] 2.2 Build \"The Loot\" screen: three cumulative prize tier cards (5hrs \u2192 4 booster packs, 15hrs \u2192 plushie/merch, 40hrs \u2192 booster box or watch) plus a \"prizes are cumulative\" note\n- [x] 2.3 Build \"Trainer Rules\" screen: quest cards for card-game-or-RPG (any theme), AI-allowed-no-slop, and original/creative-work requirements, plus a restated summary of the three prize tiers\n- [x] 2.4 Build \"Ready to Start\" screen: booster pack preview list and final \"Start Adventure\" CTA linking to `https://auth.hackclub.com/join/hackachu`\n\n## 3. Navigation and controls\n\n- [x] 3.1 Implement Next/Back button behavior per screen, including closing the wizard when Back is pressed on the \"Welcome\" screen\n- [x] 3.2 Implement the menu control for jumping directly to any of the four screens\n- [x] 3.3 Implement animated transitions between screens using CSS keyframes (opacity/translate), matching the existing homepage's `fadeIn`/`dropIn`/`riseIn`/`popIn` pattern, and respect `prefers-reduced-motion`\n- [x] 3.4 Implement keyboard shortcuts while the wizard is open (`A` = next, `B` = back, `Option+S` = jump to \"Ready to Start\"), attaching/detaching the listener on open/close\n\n## 4. Replay behavior\n\n- [x] 4.1 Verify no state (localStorage, cookies, query params) persists wizard progress or completion across page loads\n- [x] 4.2 Verify reopening the wizard \u2014 whether after a full completion or an early close \u2014 always starts at the \"Welcome\" screen\n\n## 5. Verification\n\n- [x] 5.1 Manually walk through the full screen sequence (Welcome \u2192 Loot \u2192 Rules \u2192 Start) via mouse and via keyboard shortcuts (verified headless via Playwright)\n- [x] 5.2 Verify the login button navigates to `/dashboard` without opening the wizard\n- [x] 5.3 Verify the final \"Start Adventure\" CTA links to `https://auth.hackclub.com/join/hackachu`\n- [x] 5.4 Verify existing homepage comic-strip/footer are visually and functionally unchanged \u2014 **deviation**: the hero section was directly edited (outside this task flow) to add a second, larger wizard trigger between the trainer and pokeball images; verified it renders without layout overlap, but this contradicts the original \"hero unchanged\" requirement (see note below)\n- [x] 5.5 Check responsive behavior on small screens (mirroring the homepage's existing `@media (max-width: 700px)` handling)\n\n## Deviation note\n\nThe homepage now has **two** wizard entry points instead of the one originally specced:\n- A larger `<OnboardingWizard isButtonBigger={true} />` inside the hero section (added directly in the editor, not through this task list)\n- The original `<OnboardingWizard />` below the footer\n\nBoth were confirmed working and visually non-overlapping. The `onboarding-wizard` spec's \"Homepage wizard trigger\" requirement (single CTA, hero/comic-strip/footer unchanged) is now stale relative to the implementation and should be updated to describe both entry points if this is the intended final design.\n",
+      "summary": "1. Component scaffolding.",
+      "file_hash": "a1d25aae"
+    },
+    {
+      "id": "openspec/changes/add-onboarding-wizard/design.md",
+      "kind": "file",
+      "path": "openspec/changes/add-onboarding-wizard/design.md",
+      "ext": ".md",
+      "size": 5593,
+      "keywords": [],
+      "content": "## Context\n\nThe homepage (`src/app/page.tsx` + `src/app/page.module.css`) is a single static page: hero \u2192 7 comic-strip dialogue boxes \u2192 footer with a \"join now.\" link to `https://auth.hackclub.com/join/hackachu`, a \"trainer dashboard.\" link to `/dashboard`, and static release-date text. It uses a pastel pixel-art aesthetic (`--font-gb`, `#fff`/`#131313`, gameboy dialog boxes).\n\nThis change adds a self-contained onboarding wizard beneath that content, on the same route, with its own distinct visual language (bold slab-serif, hard drop-shadows, red/cream/olive palette, game-menu chrome). It does not touch the existing hero/comic-strip/footer markup or styling.\n\n## Goals / Non-Goals\n\n**Goals:**\n- Explain the program's real rules (prize tiers, hour thresholds, game/AI requirements) before a visitor reaches the external Hack Club auth link.\n- Keep the wizard on the homepage \u2014 no new route, no page navigation \u2014 driven entirely by client-side state and CSS/JS animation.\n- Give returning trainers a fast, wizard-free path to `/dashboard` via a dedicated login button.\n- Support both pointer and keyboard navigation (Next/Back/Start shortcuts) to match the \"game menu\" framing.\n\n**Non-Goals:**\n- No backend, auth, or data-persistence work. No API calls, no database, no session tracking.\n- No \"seen it\" skip logic \u2014 replay-every-visit is the explicit, deliberate behavior.\n- No changes to `/dashboard`, `TrainerDashboard`, or the existing homepage hero/comic-strip/footer.\n- No real user progress data feeding the wizard (e.g. EXP bars are static/decorative, not tied to an authenticated user's actual hours).\n\n## Decisions\n\n**1. Wizard lives in a new client component (`src/components/OnboardingWizard.tsx` + module CSS), mounted at the bottom of `page.tsx`.**\nKeeps `page.tsx` changes minimal (append a trigger button + login button + `<OnboardingWizard />`), isolates the new visual system from the existing homepage CSS, and matches the existing project pattern of one component + one `*.module.css` per unit (see `TrainerDashboard`, `Pokeball`).\n\n**2. State machine: local `useState` for `step: 0 | 1 | 2 | 3 | null`, `null` = closed/not started.**\nFour fixed screens, no branching logic, no need for a router or global state library. Alternative considered: encode step in the URL (`?step=`) for shareability/back-button support \u2014 rejected because the spec explicitly treats this as a homepage animation, not a navigable set of pages, and \"always replay\" already means there's nothing durable to bookmark.\n\n**3. Screen sequence is a fixed array: `[\"welcome\", \"loot\", \"rules\", \"start\"]`.**\nNext/Back move the index by 1 and clamp at bounds; the menu control jumps directly to an index. `Option+S` on any step jumps straight to the final \"start\" screen (matches the mockup's global shortcut, acting as a \"skip to CTA\" affordance) \u2014 Back (`B`) on step 0 closes the wizard back to the homepage trigger button.\n\n**4. Transitions are CSS-driven (opacity/translate keyframes per step), consistent with the existing homepage's own `fadeIn`/`dropIn`/`riseIn`/`popIn` keyframe pattern in `page.module.css`.**\nNo animation library needed; matches project convention (`prefers-reduced-motion` handling already exists on the homepage and should be mirrored here).\n\n**5. Keyboard shortcuts are bound only while the wizard is open** (`A` = next, `B` = back, `Option+S` = jump to start screen), removed on close/unmount to avoid intercepting keys elsewhere on the homepage.\n\n**6. Content (copy, prize numbers, quest text) is hardcoded in the component**, not fetched or CMS-driven \u2014 same approach as the existing homepage's hardcoded dialogue strings.\n\n**7. \"Always replay\" means no `localStorage`/cookie/skip-state of any kind is written or read for this feature.**\nEvery homepage load starts with the wizard closed (as today) and, when the trigger button is clicked, always opens at step 0. This is a deliberate product decision from the proposal, not an oversight.\n\n**8. Login button placement: rendered directly below the wizard trigger CTA, always visible (not conditional on wizard state), linking to `/dashboard` via existing `next/link`.**\nConsistent with how the current footer already links to `/dashboard` \u2014 this change relocates/adds that entry point near the new CTA rather than removing the footer's existing link.\n\n## Risks / Trade-offs\n\n- **Visual inconsistency between homepage and wizard** (pastel pixel-art vs. bold slab-serif/red-cream-olive) \u2192 Mitigated by intentionally scoping the new palette/typography to the wizard's own CSS module so it reads as a distinct \"opening a menu\" moment rather than a broken mismatch, matching the reference mockups.\n- **Keyboard shortcuts could conflict with browser/OS shortcuts** (e.g. some `Option+` combos) \u2192 Mitigated by scoping the listener to only fire while the wizard is mounted/open, and treating shortcuts as an enhancement on top of always-clickable Back/Next/Start buttons.\n- **\"Always replay\" may frustrate repeat visitors who just want to log in** \u2192 Mitigated by the dedicated login button sitting right next to the trigger, giving returning trainers a one-click bypass.\n- **Static EXP bars/quest progress in \"Trainer Rules\" screen could be misread as real per-user data** \u2192 Mitigated by treating them purely as decorative game-menu chrome per Goals/Non-Goals; copy should avoid implying personalized tracking.\n\n## Open Questions\n\n- Final visual asset needs (fonts, icons for quest cards, booster-pack art) aren't specified \u2014 implementation may need placeholder assets until final art is provided.\n",
+      "summary": "The homepage (`src/app/page.tsx` + `src/app/page.module.css`) is a single static page: hero \u2192 7 comic-strip dialogue box.",
+      "file_hash": "ec28b3a8"
+    },
+    {
+      "id": "openspec/changes/add-onboarding-wizard/proposal.md",
+      "kind": "file",
+      "path": "openspec/changes/add-onboarding-wizard/proposal.md",
+      "ext": ".md",
+      "size": 2991,
+      "keywords": [],
+      "content": "## Why\n\nNew visitors currently see the homepage's whimsical comic-strip pitch and then hit a single \"join now.\" link straight to Hack Club's external auth \u2014 with no explanation of the actual program rules (prize tiers, hour thresholds, game requirements, AI policy) anywhere on the site. That information only exists in a Slack thread, making the jump from \"vibes\" to \"sign up\" feel abrupt and leaving prospective trainers to commit before they understand what they're committing to.\n\n## What Changes\n\n- Add a new animated, stateful onboarding wizard to the homepage, triggered by a new CTA button at the bottom of the existing page (hero, comic strip, and footer are untouched).\n- The wizard is a 4-screen, single-page sequence driven by client-side state/animation (no new route): **Welcome** \u2192 **The Loot** (prize tiers) \u2192 **Trainer Rules** (quest cards) \u2192 **Ready to Start** (booster catalog + final CTA).\n- Prize tiers are finalized as 5 / 15 / 40 cumulative hours (4 booster packs / plushie-merch / booster box or watch), superseding the earlier 5 / 10 / 25 figures from the original Slack announcement.\n- Navigation: Back / Next controls with keyboard shortcuts (`A` = next, `B` = back, `Option+S` = start), plus a menu control to jump between screens.\n- The wizard **always replays in full** on every homepage visit \u2014 no \"seen it\" skip state is persisted.\n- The final screen's \"Start Adventure\" CTA links out to `https://auth.hackclub.com/join/hackachu`, same destination as today's \"join now.\" link.\n- A new **login** button is added directly below the wizard's trigger CTA, linking straight to `/dashboard` for trainers who are already part of the program, bypassing the wizard entirely.\n- New visual language scoped only to the wizard: bold slab-serif headlines, hard black drop-shadows, red/cream/olive block palette, and game-menu chrome (EXP bars, quest-card layout, speaker-tagged dialogue boxes) \u2014 distinct from the homepage's existing pastel pixel-art styling.\n- Frontend only. No backend, auth, or data-persistence changes.\n\n## Capabilities\n\n### New Capabilities\n- `onboarding-wizard`: The 4-screen animated onboarding sequence living on the homepage \u2014 its screens, content, navigation/keyboard controls, and always-replay behavior.\n\n### Modified Capabilities\n- None. The existing homepage content and behavior are unchanged; this only adds new elements (trigger button, login button, wizard) alongside it.\n\n## Impact\n\n- Affected code: `src/app/page.tsx` and `src/app/page.module.css` (new trigger + login buttons appended at the bottom), plus new component(s) for the wizard itself (e.g. under `src/components/`).\n- No changes to `/dashboard`, `TrainerDashboard`, backend routes, or auth flow \u2014 the login button and final CTA both link to existing external/internal destinations.\n- No new dependencies expected beyond what's already used for animation in the codebase (e.g. existing `fancy/physics` or CSS animations already present in `page.module.css`).\n",
+      "summary": "New visitors currently see the homepage's whimsical comic-strip pitch and then hit a single \"join now.\" link straight to.",
+      "file_hash": "3bc6bab7"
+    },
+    {
+      "id": "openspec/changes/add-onboarding-wizard/specs/onboarding-wizard/spec.md",
+      "kind": "file",
+      "path": "openspec/changes/add-onboarding-wizard/specs/onboarding-wizard/spec.md",
+      "ext": ".md",
+      "size": 5592,
+      "keywords": [],
+      "content": "## ADDED Requirements\n\n### Requirement: Homepage wizard trigger\nThe homepage SHALL display a CTA button at the bottom of the page, below the existing footer content, that opens the onboarding wizard. The existing hero, comic-strip, and footer content SHALL remain unchanged.\n\n#### Scenario: Visitor opens the wizard\n- **WHEN** a visitor clicks the \"start adventure\" / onboarding CTA button on the homepage\n- **THEN** the onboarding wizard opens on the same page (no navigation to a new URL) and displays the first screen (\"Welcome\")\n\n### Requirement: Homepage login shortcut\nThe homepage SHALL display a login button directly below the wizard trigger CTA, always visible regardless of wizard state, that links to `/dashboard`.\n\n#### Scenario: Returning trainer bypasses the wizard\n- **WHEN** a visitor clicks the \"login\" button on the homepage\n- **THEN** the browser navigates to `/dashboard` without opening or requiring interaction with the onboarding wizard\n\n### Requirement: Four-screen wizard sequence\nThe onboarding wizard SHALL consist of exactly four screens presented in a fixed order: Welcome, The Loot, Trainer Rules, and Ready to Start.\n\n#### Scenario: Screen order\n- **WHEN** the wizard is opened and the visitor repeatedly triggers \"next\"\n- **THEN** the screens are shown in the order Welcome \u2192 The Loot \u2192 Trainer Rules \u2192 Ready to Start, and no further \"next\" action is available past the final screen\n\n#### Scenario: Welcome screen content\n- **WHEN** the \"Welcome\" screen is displayed\n- **THEN** it shows a Prof. Hacker dialogue introduction inviting the trainer to view the rules\n\n#### Scenario: The Loot screen content\n- **WHEN** the \"The Loot\" screen is displayed\n- **THEN** it shows three cumulative prize tiers: 5 hours (4x booster packs), 15 hours (plushie or merch), and 40 hours (booster box or sick watch), each labeled with its hour threshold and reward, and a note that prizes are cumulative across milestones\n\n#### Scenario: Trainer Rules screen content\n- **WHEN** the \"Trainer Rules\" screen is displayed\n- **THEN** it shows quest cards covering: building a card game or RPG of any theme, AI being allowed but requiring honest/non-slop use, and a requirement for original/creative work, alongside a restatement of the three prize tiers from \"The Loot\"\n\n#### Scenario: Ready to Start screen content\n- **WHEN** the \"Ready to Start\" screen is displayed\n- **THEN** it shows a preview of available booster packs and a final \"Start Adventure\" call-to-action\n\n### Requirement: Wizard navigation controls\nThe wizard SHALL support moving between screens via visible Back and Next controls, and closing back to the homepage from the first screen via Back.\n\n#### Scenario: Advancing screens\n- **WHEN** the visitor activates \"Next\" on any screen except the last\n- **THEN** the wizard advances to the next screen in the sequence with an animated transition\n\n#### Scenario: Returning to a previous screen\n- **WHEN** the visitor activates \"Back\" on any screen except the first\n- **THEN** the wizard returns to the previous screen in the sequence with an animated transition\n\n#### Scenario: Closing the wizard from the first screen\n- **WHEN** the visitor activates \"Back\" on the \"Welcome\" screen\n- **THEN** the wizard closes and the homepage returns to its pre-wizard state (trigger CTA visible)\n\n### Requirement: Wizard keyboard shortcuts\nWhile the wizard is open, the wizard SHALL respond to keyboard shortcuts equivalent to its Back, Next, and Start controls, and SHALL stop responding to those shortcuts once closed.\n\n#### Scenario: Keyboard next/back\n- **WHEN** the wizard is open and the visitor presses the designated \"next\" key or the designated \"back\" key\n- **THEN** the wizard performs the same action as clicking the corresponding Next or Back button\n\n#### Scenario: Keyboard jump to start\n- **WHEN** the wizard is open and the visitor presses the designated \"start\" shortcut\n- **THEN** the wizard jumps directly to the \"Ready to Start\" screen\n\n#### Scenario: Shortcuts inactive when closed\n- **WHEN** the wizard is closed\n- **THEN** pressing the wizard's designated keyboard shortcuts has no effect on the page\n\n### Requirement: Wizard screen jump menu\nThe wizard SHALL provide a menu control that allows jumping directly to any of the four screens.\n\n#### Scenario: Jumping via menu\n- **WHEN** the visitor opens the menu control and selects a screen\n- **THEN** the wizard displays the selected screen directly, without requiring sequential Next/Back navigation\n\n### Requirement: Wizard final call-to-action\nThe \"Ready to Start\" screen's primary action SHALL link out to the Hack Club join URL.\n\n#### Scenario: Starting the adventure\n- **WHEN** the visitor activates \"Start Adventure\" on the final wizard screen\n- **THEN** the browser navigates to `https://auth.hackclub.com/join/hackachu`\n\n### Requirement: Wizard always replays\nThe wizard SHALL NOT persist any \"seen\" or \"completed\" state across page loads or sessions. Every time the wizard is opened, it SHALL start at the \"Welcome\" screen.\n\n#### Scenario: Repeat visit after completing the wizard\n- **WHEN** a visitor has previously opened and closed or completed the wizard, and then reloads or revisits the homepage\n- **THEN** the homepage shows the wizard trigger CTA in its default (closed) state, with no skip or \"already seen\" behavior\n\n#### Scenario: Reopening after closing mid-sequence\n- **WHEN** a visitor closes the wizard partway through (e.g. from \"Trainer Rules\") and then reopens it via the trigger CTA\n- **THEN** the wizard opens starting from the \"Welcome\" screen, not from where it was left\n",
+      "summary": "ADDED Requirements.",
+      "file_hash": "5c495ce8"
+    },
+    {
+      "id": "src/app/page.tsx",
+      "kind": "file",
+      "path": "src/app/page.tsx",
+      "ext": ".tsx",
+      "size": 6397,
+      "keywords": [
+        "home"
+      ],
+      "content": "import Image from \"next/image\";\nimport Link from \"next/link\";\nimport styles from \"./page.module.css\";\nimport Gravity, { MatterBody } from \"@/components/fancy/physics/gravity\";\nimport OnboardingWizard from \"@/components/OnboardingWizard\";\n\nconst ASSETS = \"\";\n\nexport default function Home() {\n  return (\n    <div className={styles.page}>\n      \n      <header className={styles.hero}>\n        <p className={styles.presents}>lola &amp; seba at hack club hq present...</p>\n\n        <Image\n          className={styles.titleImage}\n          src={`${ASSETS}/hackachu.png`}\n          alt=\"hackachu\"\n          width={923}\n          height={230}\n          priority\n        />\n\n        <div className={styles.heroDialog}>\n          <span className={styles.heroDialogText}>\n            build a card game, gamble with pokemon cards.\n          </span>\n        </div>\n        <Image\n          className={styles.trainer}\n          src={`${ASSETS}/trainer.png`}\n          alt=\"pokemon trainer seen from behind\"\n          width={327}\n          height={361}\n          priority\n        />\n\n        <OnboardingWizard isButtonBigger={true} />\n        <Image\n          className={styles.pokeball}\n          src={`${ASSETS}/pokeball.gif`}\n          alt=\"spinning pokeball\"\n          width={1024}\n          height={1024}\n          unoptimized\n        />\n      </header>\n\n      <main className={styles.main}>\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={styles.gbBox}>\n            a card game?\n            <br />\n            what does\n            <br />\n            that mean?\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n\n        <section className={`${styles.row} ${styles.rowLeft}`}>\n          <Image\n            className={styles.flyingPika}\n            src={`${ASSETS}/flying_pika.png`}\n            alt=\"pikachu floating with balloons\"\n            width={244}\n            height={285}\n          />\n          <div className={styles.gbBox}>\n            any game that\n            <br />\n            involves\n            <br />\n            playing with\n            <br />\n            cards!\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n        </section>\n\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={styles.gbBox}>\n            and i get\n            <br />\n            POKEMON\n            <br />\n            CARDS?? for\n            <br />\n            FREE?????\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n\n        <section className={`${styles.row} ${styles.rowLeft}`}>\n          <Image\n            className={styles.flyingPika}\n            src={`${ASSETS}/flying_pika.png`}\n            alt=\"pikachu floating with balloons\"\n            width={244}\n            height={285}\n          />\n          <div className={styles.gbBox}>\n            yep.{\" \"}\n            <a\n              className={styles.link}\n              href=\"https://hackclub.com\"\n              target=\"_blank\"\n              rel=\"noopener noreferrer\"\n            >\n              hack club.\n            </a>\n            <br />\n            the longer you code,\n            <br />\n            the more chances you\n            <br />\n            get.\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n        </section>\n\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={`${styles.gbBox} ${styles.tallBox}`}>\n            chances????\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n\n        <section className={`${styles.row} ${styles.rowLeft}`}>\n          <Image\n            className={styles.flyingPika}\n            src={`${ASSETS}/flying_pika.png`}\n            alt=\"pikachu floating with balloons\"\n            width={244}\n            height={285}\n          />\n          <div className={styles.gbBox}>\n            oh yeah. you&apos;ll\n            <br />\n            always get cards,\n            <br />\n            but the cards you\n            <br />\n            get are up to the\n            <br />\n            fates...\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n        </section>\n\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={`${styles.gbBox} ${styles.cryBox}`}>\n            <Image\n              className={styles.cryImg}\n              src={`${ASSETS}/crying_emojis.png`}\n              alt=\"two crying emojis\"\n              width={153}\n              height={82}\n            />\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n      </main>\n\n      <footer className={styles.footer}>\n        <p className={styles.footerText}>\n          start now. #hackachu on slack.\n          <br />\n          releases thursday, july 9th.\n          <br />\n          <a\n            className={styles.link}\n            href=\"https://auth.hackclub.com/join/hackachu\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n          >\n            join now.\n          </a>\n          <br />\n          <Link className={styles.link} href=\"/dashboard\">\n            trainer dashboard.\n          </Link>\n        </p>\n        <Image\n          className={styles.footerPika}\n          src={`/pika_with_cup.png`}\n          alt=\"pikachu floating with balloons\"\n          width={244}\n          height={285}\n        />\n      </footer>\n\n      <OnboardingWizard />\n\n    </div>\n  );\n}\n\n",
+      "summary": "import Image from \"next/image\";. Contains 1 function: Home.",
+      "file_hash": "77b750e1"
+    },
+    {
+      "id": "src/app/page.tsx::Home",
+      "kind": "symbol",
+      "path": "src/app/page.tsx",
+      "ext": ".tsx",
+      "size": 218,
+      "keywords": [
+        "home"
+      ],
+      "symbol_type": "use_case",
+      "name": "Home",
+      "line_start": 8,
+      "line_end": 225,
+      "body_hash": "a3b1fd56",
+      "confidence": "medium",
+      "exported": true
+    },
+    {
+      "id": "src/app/layout.tsx",
+      "kind": "file",
+      "path": "src/app/layout.tsx",
+      "ext": ".tsx",
+      "size": 1006,
+      "keywords": [
+        "metadata",
+        "rootlayout",
+        "root",
+        "layout"
+      ],
+      "content": "import type { Metadata } from \"next\";\nimport localFont from \"next/font/local\";\nimport \"./globals.css\";\nimport { Geist, Bitter, IBM_Plex_Mono } from \"next/font/google\";\nimport { cn } from \"@/lib/utils\";\n\nconst geist = Geist({subsets:['latin'],variable:'--font-sans'});\n\nconst pokemonGb = localFont({\n  src: \"../../public/PokemonGb-RAeo.ttf\",\n  variable: \"--font-gb\",\n});\n\nconst bitter = Bitter({\n  subsets: [\"latin\"],\n  weight: [\"700\", \"900\"],\n  variable: \"--font-slab\",\n});\n\nconst plexMono = IBM_Plex_Mono({\n  subsets: [\"latin\"],\n  weight: [\"400\", \"500\", \"600\", \"700\"],\n  variable: \"--font-mono\",\n});\n\nexport const metadata: Metadata = {\n  title: \"hackachu\",\n  description: \"build a card game, gamble with pokemon cards.\",\n};\n\nexport default function RootLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return (\n    <html lang=\"en\" className={cn(\"font-sans\", geist.variable, pokemonGb.variable, bitter.variable, plexMono.variable)}>\n      <body>{children}</body>\n    </html>\n  );\n}\n",
+      "summary": "import type { Metadata } from \"next\";. Contains 1 function: RootLayout.",
+      "file_hash": "7a4fb0f8"
+    },
+    {
+      "id": "src/app/layout.tsx::RootLayout",
+      "kind": "symbol",
+      "path": "src/app/layout.tsx",
+      "ext": ".tsx",
+      "size": 11,
+      "keywords": [
+        "rootlayout",
+        "root",
+        "layout"
+      ],
+      "symbol_type": "use_case",
+      "name": "RootLayout",
+      "line_start": 30,
+      "line_end": 40,
+      "body_hash": "87ffa23f",
+      "confidence": "medium",
+      "exported": true
+    },
+    {
+      "id": "src/app/dashboard/page.tsx",
+      "kind": "file",
+      "path": "src/app/dashboard/page.tsx",
+      "ext": ".tsx",
+      "size": 727,
+      "keywords": [
+        "metadata",
+        "dashboardpage",
+        "dashboard",
+        "page"
+      ],
+      "content": "import type { Metadata } from \"next\";\nimport { IBM_Plex_Mono, Press_Start_2P } from \"next/font/google\";\nimport TrainerDashboard from \"@/components/TrainerDashboard\";\n\nconst pressStart = Press_Start_2P({\n  weight: \"400\",\n  subsets: [\"latin\"],\n  variable: \"--font-pixel\",\n});\n\nconst plexMono = IBM_Plex_Mono({\n  weight: [\"400\", \"500\", \"600\", \"700\"],\n  subsets: [\"latin\"],\n  variable: \"--font-mono\",\n});\n\nexport const metadata: Metadata = {\n  title: \"hackachu \u00b7 Trainer Dashboard\",\n  description: \"your trainer dashboard. ship projects, evolve your prizes.\",\n};\n\nexport default function DashboardPage() {\n  return (\n    <div className={`${pressStart.variable} ${plexMono.variable}`}>\n      <TrainerDashboard />\n    </div>\n  );\n}\n",
+      "summary": "import type { Metadata } from \"next\";. Contains 1 function: DashboardPage.",
+      "file_hash": "f33e7cd5"
+    },
+    {
+      "id": "src/app/dashboard/page.tsx::DashboardPage",
+      "kind": "symbol",
+      "path": "src/app/dashboard/page.tsx",
+      "ext": ".tsx",
+      "size": 7,
+      "keywords": [
+        "dashboardpage",
+        "dashboard",
+        "page"
+      ],
+      "symbol_type": "use_case",
+      "name": "DashboardPage",
+      "line_start": 21,
+      "line_end": 27,
+      "body_hash": "0e484353",
+      "confidence": "medium",
+      "exported": true
+    },
+    {
+      "id": "src/components/Pokeball.tsx",
+      "kind": "file",
+      "path": "src/components/Pokeball.tsx",
+      "ext": ".tsx",
+      "size": 1522,
+      "keywords": [
+        "pokeball"
+      ],
+      "content": "\"use client\";\n\nimport Image from \"next/image\";\nimport { useEffect, useRef } from \"react\";\nimport styles from \"./Pokeball.module.css\";\n\nconst GRAVITY = 3600; // px/s^2\nconst LAUNCH_V = -950; // px/s, upward\nconst RESTITUTION = 0.58; // energy kept per bounce\nconst REST_V = 60; // settle when rebound is slower than this\n\nexport default function Pokeball({ size = 48 }: { size?: number }) {\n  const ref = useRef<HTMLSpanElement | null>(null);\n  const sim = useRef({ y: 0, v: 0, raf: 0, last: 0 });\n\n  useEffect(() => {\n    const s = sim.current;\n    return () => cancelAnimationFrame(s.raf);\n  }, []);\n\n  const step = (now: number) => {\n    const s = sim.current;\n    const dt = Math.min((now - s.last) / 1000, 0.032);\n    s.last = now;\n    s.v += GRAVITY * dt;\n    s.y += s.v * dt;\n    if (s.y >= 0) {\n      // hit the floor: rebound with damping\n      s.y = 0;\n      s.v = -s.v * RESTITUTION;\n      if (-s.v < REST_V) {\n        s.v = 0;\n        s.raf = 0;\n        if (ref.current) ref.current.style.transform = \"\";\n        return;\n      }\n    }\n    if (ref.current) ref.current.style.transform = `translateY(${s.y}px)`;\n    s.raf = requestAnimationFrame(step);\n  };\n\n  const launch = () => {\n    const s = sim.current;\n    s.v = LAUNCH_V;\n    if (!s.raf) {\n      s.last = performance.now();\n      s.raf = requestAnimationFrame(step);\n    }\n  };\n\n  return (\n    <span ref={ref} className={styles.pokeball} onClick={launch}>\n      <Image src=\"/pokeball.webp\" alt=\"pokeball\" width={size} height={size} />\n    </span>\n  );\n}\n",
+      "summary": "\"use client\";. Contains 1 function: Pokeball.",
+      "file_hash": "f4ebd5e5"
+    },
+    {
+      "id": "src/components/Pokeball.tsx::Pokeball",
+      "kind": "symbol",
+      "path": "src/components/Pokeball.tsx",
+      "ext": ".tsx",
+      "size": 45,
+      "keywords": [
+        "pokeball"
+      ],
+      "symbol_type": "use_case",
+      "name": "Pokeball",
+      "line_start": 11,
+      "line_end": 55,
+      "body_hash": "20452d56",
+      "confidence": "medium",
+      "exported": true
+    },
+    {
+      "id": "src/components/TrainerDashboard.tsx",
+      "kind": "file",
+      "path": "src/components/TrainerDashboard.tsx",
+      "ext": ".tsx",
+      "size": 9637,
+      "keywords": [
+        "trainerdashboard",
+        "trainer",
+        "dashboard"
+      ],
+      "content": "\"use client\";\n\nimport { Fragment, useEffect, useRef, useState } from \"react\";\nimport styles from \"./TrainerDashboard.module.css\";\nimport Image from \"next/image\";\nimport Gravity, { MatterBody } from \"./fancy/physics/gravity\";\nconst TIPS = [\n  \"join #hackachu!\",\n  \"pikapika\",\n  \"hack club loves you\",\n  \"your prizes are waiting....\",\n  \"lock in\"\n];\n\nconst PROJECT_TYPES = [\"Game\", \"Web\", \"CLI\", \"Hardware\", \"Other\"];\nconst PIKAS = [\"flying_pika.png\", \"magic_pika.png\", \"pika_with_cup.png\"]\nconst PRIZES = [\n  {\n    name: \"5 decks\",\n    hours: \"+5 hours\",\n    img: \"/prizes/decks.png\",\n    tilt: \"tiltA\",\n  },\n  {\n    name: \"awesome plushies\",\n    hours: \"+10 hours\",\n    img: \"/prizes/plushie.png\",\n    tilt: \"tiltB\",\n  },\n  {\n    name: \"watch or booster pack\",\n    hours: \"+30 hours\",\n    img: \"/prizes/booster.png\",\n    tilt: \"tiltC\",\n  },\n] as const;\n\nexport default function TrainerDashboard() {\n  const [trainerName, setTrainerName] = useState(\"\");\n  const [tipIndex, setTipIndex] = useState(0);\n  const [tipVisible, setTipVisible] = useState(true);\n  const [panelOpen, setPanelOpen] = useState(false);\n  const [shipped, setShipped] = useState(false);\n  const [projName, setProjName] = useState(\"\");\n  const [projLink, setProjLink] = useState(\"\");\n  const [projDesc, setProjDesc] = useState(\"\");\n  const [activeTags, setActiveTags] = useState<string[]>([]);\n  const panelRef = useRef<HTMLDivElement>(null);\n\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setTipVisible(false);\n      setTimeout(() => {\n        setTipIndex((i) => (i + 1) % TIPS.length);\n        setTipVisible(true);\n      }, 250);\n    }, 5000);\n    return () => clearInterval(interval);\n  }, []);\n\n  const togglePanel = () => {\n    const opening = !panelOpen;\n    setPanelOpen(opening);\n    if (opening) {\n      panelRef.current?.scrollIntoView({ behavior: \"smooth\", block: \"center\" });\n    }\n  };\n\n  const toggleTag = (tag: string) => {\n    setActiveTags((tags) =>\n      tags.includes(tag) ? tags.filter((t) => t !== tag) : [...tags, tag]\n    );\n  };\n\n  const resetForm = () => {\n    setShipped(false);\n    setProjName(\"\");\n    setProjLink(\"\");\n    setProjDesc(\"\");\n    setActiveTags([]);\n  };\n\n  return (\n    <div className={styles.page}>\n      <Gravity className={styles.gravityLayer}>\n        {PIKAS.map((pika, i) => {\n          return (\n        <MatterBody\n          x=\"20%\"\n          y=\"5%\"\n          matterBodyOptions={{\n            friction: 0.5,\n            restitution: 0.7,\n            density: 0.001,\n            isStatic: false,\n          }}\n          key={i}\n        >\n          <Image\n            src={`/${pika}`}\n            alt=\"pikachu\"\n            width={150}\n            height={175}\n          />\n        </MatterBody>\n          )\n})}\n        \n      </Gravity>\n      <div className={styles.wrap}>\n        <div className={styles.nav}>\n          <div className={styles.brand}>\n            \n            <div className={styles.brandText}>\n              <span className={styles.brandEyebrow}>Hack Club \u00b7 YSWS</span>\n              <Image\n              src=\"/hackachu.png\"\n              alt=\"Hackachu logo\"\n              width={200}\n              height={48}\n              className={styles.brandLogo}\n              />\n            </div>\n          </div>\n       \n        </div>\n\n        \n\n        <div className={styles.dex}>\n          \n        \n            <div className={styles.scanlines} />\n            <div className={styles.screenGlow} />\n            <div className={styles.greet}>\n              WELCOME TRAINER,\n              <br />\n              <input\n                className={styles.nameField}\n                placeholder=\"YOU\"\n                maxLength={14}\n                aria-label=\"Enter your trainer name\"\n                value={trainerName}\n                onChange={(e) => setTrainerName(e.target.value)}\n                style={\n                  trainerName\n                    ? { width: `${Math.max(3, trainerName.length + 1)}ch` }\n                    : undefined\n                }\n              />\n              .\n            </div>\n            <div\n              className={styles.tip}\n              style={{ opacity: tipVisible ? 1 : 0 }}\n            >\n              {TIPS[tipIndex]}\n            </div>\n            <a\n              className={styles.hackatimeLink}\n              href=\"https://hackatime.hackclub.com\"\n              target=\"_blank\"\n              rel=\"noopener\"\n            >\n              &gt; connect your hackatime\n            </a>\n\n            <div className={styles.statGrid}>\n              <div className={styles.stat}>\n                <div className={styles.statNum}>0</div>\n                <div className={styles.statLabel}>Projects Shipped</div>\n              </div>\n              <div className={styles.stat}>\n                <div className={styles.statNum}>0h</div>\n                <div className={styles.statLabel}>Hours Logged</div>\n              </div>\n              <div className={styles.stat}>\n                <div className={styles.statNum}>I</div>\n                <div className={styles.statLabel}>Trainer Rank</div>\n              </div>\n              \n            </div>\n          \n        </div>\n\n        <div className={styles.ctaRow}>\n          <button className={styles.cta} onClick={togglePanel}>\n            &gt; SUBMIT YOUR PROJECT\n          </button>\n        </div>\n\n        <div\n          ref={panelRef}\n          className={`${styles.panel} ${panelOpen ? styles.panelOpen : \"\"}`}\n        >\n          <div className={styles.panelInner}>\n            {!shipped ? (\n              <div>\n                <h3 className={styles.panelTitle}>Log your catch</h3>\n                <p className={styles.panelSub}>\n                  Tell us what you built. You can edit this after you ship.\n                </p>\n                <div className={styles.field}>\n                  <label htmlFor=\"projName\">Project name</label>\n                  <input\n                    id=\"projName\"\n                    type=\"text\"\n                    placeholder=\"e.g. Pixel Battle Sim\"\n                    value={projName}\n                    onChange={(e) => setProjName(e.target.value)}\n                  />\n                </div>\n                <div className={styles.field}>\n                  <label htmlFor=\"projLink\">Repo or demo link</label>\n                  <input\n                    id=\"projLink\"\n                    type=\"text\"\n                    placeholder=\"https://github.com/you/project\"\n                    value={projLink}\n                    onChange={(e) => setProjLink(e.target.value)}\n                  />\n                </div>\n                <div className={styles.field}>\n                  <label htmlFor=\"projDesc\">One-line description</label>\n                  <textarea\n                    id=\"projDesc\"\n                    placeholder=\"What does it do?\"\n                    value={projDesc}\n                    onChange={(e) => setProjDesc(e.target.value)}\n                  />\n                </div>\n                <div className={styles.field}>\n                  <label>Project type</label>\n                  <div className={styles.tagRow}>\n                    {PROJECT_TYPES.map((tag) => (\n                      <button\n                        key={tag}\n                        type=\"button\"\n                        className={`${styles.tag} ${\n                          activeTags.includes(tag) ? styles.tagActive : \"\"\n                        }`}\n                        onClick={() => toggleTag(tag)}\n                      >\n                        {tag}\n                      </button>\n                    ))}\n                  </div>\n                </div>\n                <button\n                  className={styles.shipBtn}\n                  onClick={() => setShipped(true)}\n                >\n                  SHIP IT &rarr;\n                </button>\n              </div>\n            ) : (\n              <div className={styles.success}>\n                <div className={styles.successMark}>&#10003;</div>\n                <h4>PROJECT SHIPPED!</h4>\n                <p>\n                  It&apos;s in the tall grass, awaiting review. We&apos;ll be\n                  in touch soon.\n                </p>\n                <button className={styles.resetBtn} onClick={resetForm}>\n                  Submit another\n                </button>\n              </div>\n            )}\n          </div>\n        </div>\n\n        <div className={styles.prizes}>\n          <h2 className={styles.prizesTitle}>\n            prizes<span className={styles.bang}>!!</span>\n          </h2>\n          <div className={styles.prizeRow}>\n            {PRIZES.map((prize, i) => (\n              <Fragment key={prize.name}>\n                {i > 0 && <div className={styles.prizeArrow}>\u2b95</div>}\n                <div className={styles.prize}>\n                  {/* eslint-disable-next-line @next/next/no-img-element */}\n                  <img\n                    className={`${styles.prizeImg} ${styles[prize.tilt]}`}\n                    src={prize.img}\n                    alt={prize.name}\n                  />\n                  <div className={styles.prizeCaption}>\n                    {prize.name}\n                    <span className={styles.bang}>!</span>\n                  </div>\n                  <div className={styles.prizeHours}>{prize.hours}</div>\n                </div>\n              </Fragment>\n            ))}\n          </div>\n          <div className={styles.prizeTotals}>(total hours: 5, 15, 40)</div>\n        </div>\n\n        <footer className={styles.footer}>\n          hackachu \u00b7 Hack Club YSWS \u00b7 gotta ship &apos;em all\n        </footer>\n      </div>\n    </div>\n  );\n}\n",
+      "summary": "\"use client\";. Contains 1 function: TrainerDashboard.",
+      "file_hash": "9a7776e0"
+    },
+    {
+      "id": "src/components/TrainerDashboard.tsx::TrainerDashboard",
+      "kind": "symbol",
+      "path": "src/components/TrainerDashboard.tsx",
+      "ext": ".tsx",
+      "size": 268,
+      "keywords": [
+        "trainerdashboard",
+        "trainer",
+        "dashboard"
+      ],
+      "symbol_type": "use_case",
+      "name": "TrainerDashboard",
+      "line_start": 37,
+      "line_end": 304,
+      "body_hash": "94d87c7e",
+      "confidence": "medium",
+      "exported": true
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx",
+      "kind": "file",
+      "path": "src/components/OnboardingWizard.tsx",
+      "ext": ".tsx",
+      "size": 9997,
+      "keywords": [
+        "onboardingwizard",
+        "onboarding",
+        "wizard"
+      ],
+      "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\nimport Image from \"next/image\";\nimport Link from \"next/link\";\nimport styles from \"./OnboardingWizard.module.css\";\n\nconst SCREENS = [\"welcome\", \"loot\", \"rules\", \"start\"] as const;\ntype ScreenId = (typeof SCREENS)[number];\n\nconst SCREEN_LABELS: Record<ScreenId, string> = {\n  welcome: \"welcome\",\n  loot: \"the loot\",\n  rules: \"trainer rules\",\n  start: \"ready to start\",\n};\n\nconst JOIN_URL = \"https://auth.hackclub.com/join/hackachu\";\n\nconst LOOT_TIERS = [\n  {\n    tag: \"LVL 1\",\n    hours: \"5 HOURS\",\n    desc: \"Complete your first prototype and secure your deck foundations.\",\n    reward: \"4X BOOSTER PACKS\",\n    img: \"/prizes/decks.png\",\n  },\n  {\n    tag: \"LVL 2\",\n    hours: \"15 HOURS\",\n    desc: \"Show true dedication to your RPG or card mechanics.\",\n    reward: \"PLUSHIE OR MERCH\",\n    img: \"/prizes/plushie.png\",\n  },\n  {\n    tag: \"BOSS\",\n    hours: \"40 HOURS\",\n    desc: \"The ultimate grind. Legendary status achieved.\",\n    reward: \"BOOSTER BOX OR SICK WATCH\",\n    img: \"/prizes/booster.png\",\n  },\n] as const;\n\nconst QUESTS = [\n  {\n    title: \"QUEST 01: THE CREATOR\",\n    desc: \"Build a Card Game or RPG (any theme!). Let your imagination run wild in the tall grass.\",\n    exp: 85,\n  },\n  {\n    title: \"QUEST 02: AI SYNERGY\",\n    desc: \"AI is allowed, but keep it honest (no slop!). Use the machine, don't let it use you.\",\n    exp: 40,\n  },\n  {\n    title: \"QUEST 03: PURE CREATIVITY\",\n    desc: \"Projects must be creative. We want to see your unique spark. No two trainers are the same.\",\n    exp: 65,\n  },\n] as const;\n\nconst BOOSTER_PACKS = [\n  { name: \"Trick or Trade\", desc: \"Halloween Special Edition\" },\n  { name: \"Silver Tempest\", desc: \"Alolan Vulpix Art\" },\n  { name: \"Surging Sparks\", desc: \"Electric Type Focus\" },\n] as const;\n\ntype WizardProps = {\n  isButtonBigger: boolean;\n}\n\nexport default function OnboardingWizard(props: WizardProps) {\n  const [step, setStep] = useState<number | null>(null);\n  const [menuOpen, setMenuOpen] = useState(false);\n\n  const isOpen = step !== null;\n  const isLast = step === SCREENS.length - 1;\n\n  const open = () => {\n    setStep(0);\n    setMenuOpen(false);\n  };\n\n  const close = () => {\n    setStep(null);\n    setMenuOpen(false);\n  };\n\n  const goNext = () => {\n    setStep((s) => (s === null || s >= SCREENS.length - 1 ? s : s + 1));\n  };\n\n  const goBack = () => {\n    setStep((s) => {\n      if (s === null) return s;\n      if (s === 0) return null;\n      return s - 1;\n    });\n  };\n\n  const jumpTo = (index: number) => {\n    setStep(index);\n    setMenuOpen(false);\n  };\n\n  useEffect(() => {\n    if (!isOpen) return;\n\n    const handleKeyDown = (e: KeyboardEvent) => {\n      if (e.altKey && e.key.toLowerCase() === \"s\") {\n        e.preventDefault();\n        jumpTo(SCREENS.length - 1);\n        return;\n      }\n      if (e.key.toLowerCase() === \"a\") {\n        e.preventDefault();\n        goNext();\n      } else if (e.key.toLowerCase() === \"b\") {\n        e.preventDefault();\n        goBack();\n      }\n    };\n\n    window.addEventListener(\"keydown\", handleKeyDown);\n    return () => window.removeEventListener(\"keydown\", handleKeyDown);\n  }, [isOpen]);\n\n  return (\n    <div className={styles.launcher}>\n      <button type=\"button\" className={props.isButtonBigger ? `${styles.triggerButton} ${styles.btnLarger}` : styles.triggerButton} onClick={open}>\n        start adventure\n      </button>\n      <Link href=\"/dashboard\" className={styles.loginLink}>\n        already a trainer? login.\n      </Link>\n\n      {isOpen && (\n        <div className={styles.overlay} role=\"dialog\" aria-modal=\"true\">\n          <div className={styles.frame}>\n            <div className={styles.topBar}>\n              <span className={styles.topBarLogo}>HACKACHU</span>\n              <button\n                type=\"button\"\n                className={styles.closeButton}\n                onClick={close}\n                aria-label=\"close\"\n              >\n                &times;\n              </button>\n            </div>\n\n            <div className={styles.screenArea}>\n              {step === 0 && <WelcomeScreen key=\"welcome\" />}\n              {step === 1 && <LootScreen key=\"loot\" />}\n              {step === 2 && <RulesScreen key=\"rules\" />}\n              {step === 3 && <StartScreen key=\"start\" onStart={close} />}\n            </div>\n\n            <div className={styles.bottomBar}>\n              <button\n                type=\"button\"\n                className={styles.navButton}\n                onClick={goBack}\n              >\n                &larr; back [b]\n              </button>\n\n              <div className={styles.menuWrap}>\n                <button\n                  type=\"button\"\n                  className={styles.menuButton}\n                  onClick={() => setMenuOpen((v) => !v)}\n                  aria-haspopup=\"true\"\n                  aria-expanded={menuOpen}\n                >\n                  menu\n                </button>\n                {menuOpen && (\n                  <ul className={styles.menuList}>\n                    {SCREENS.map((id, i) => (\n                      <li key={id}>\n                        <button\n                          type=\"button\"\n                          className={styles.menuItem}\n                          onClick={() => jumpTo(i)}\n                          aria-current={step === i}\n                        >\n                          {SCREEN_LABELS[id]}\n                        </button>\n                      </li>\n                    ))}\n                  </ul>\n                )}\n              </div>\n\n              {!isLast ? (\n                <button\n                  type=\"button\"\n                  className={styles.navButtonPrimary}\n                  onClick={goNext}\n                >\n                  next [a] &rarr;\n                </button>\n              ) : (\n                <span className={styles.navSpacer} />\n              )}\n            </div>\n          </div>\n        </div>\n      )}\n    </div>\n  );\n}\n\nfunction WelcomeScreen() {\n  return (\n    <div className={styles.screen}>\n      <span className={styles.badge}>the legendary you-ship-we-ship</span>\n      <h2 className={styles.headline}>welcome to hackachu!</h2>\n\n      <div className={styles.welcomeArt}>\n        <Image\n          src=\"/trainer.png\"\n          alt=\"pokemon trainer seen from behind\"\n          width={200}\n          height={221}\n        />\n      </div>\n\n      <div className={styles.dialogueBox}>\n        <span className={styles.speakerTag}>prof. hacker</span>\n        <p className={styles.dialogueText}>\n          Welcome, Trainer! I&apos;m here to show you the rules of Hackachu, \n          the infamous Pokemon-themed YSWS. Ready to see what you can win?\n        </p>\n      </div>\n    </div>\n  );\n}\n\nfunction LootScreen() {\n  return (\n    <div className={`${styles.screen} ${styles.screenLoot}`}>\n      <h2 className={styles.headlineBanner}>the loot</h2>\n\n      <div className={styles.lootList}>\n        {LOOT_TIERS.map((tier) => (\n          <div className={styles.lootCard} key={tier.hours}>\n            <span className={styles.lootTag}>{tier.tag}</span>\n            <div className={styles.lootIcon}>\n              <Image src={tier.img} alt={tier.reward} width={72} height={72} />\n            </div>\n            <p className={styles.lootHours}>{tier.hours}</p>\n            <p className={styles.lootDesc}>{tier.desc}</p>\n            <p className={styles.lootReward}>\n              reward unlocked: <span>{tier.reward}</span>\n            </p>\n          </div>\n        ))}\n      </div>\n\n      <div className={styles.systemMessage}>\n        <strong>system message:</strong> the more you build, the better the\n        loot! prizes are cumulative \u2014 submit the same project across\n        milestones to stack rewards.\n      </div>\n    </div>\n  );\n}\n\nfunction RulesScreen() {\n  return (\n    <div className={styles.screen}>\n      <h2 className={styles.headlineBanner}>trainer rules</h2>\n\n      <div className={styles.questList}>\n        {QUESTS.map((quest) => (\n          <div className={styles.questCard} key={quest.title}>\n            <p className={styles.questTitle}>{quest.title}</p>\n            <p className={styles.questDesc}>{quest.desc}</p>\n            <div className={styles.expBar}>\n              <div\n                className={styles.expFill}\n                style={{ width: `${quest.exp}%` }}\n              />\n            </div>\n          </div>\n        ))}\n      </div>\n\n      <div className={styles.prizeSummary}>\n        <p>1st prize: 5h project = 4 booster packs.</p>\n        <p>2nd prize: 15h cumulative = plushie/merch.</p>\n        <p>3rd prize: 40h cumulative = booster box or sick watch.</p>\n      </div>\n    </div>\n  );\n}\n\nfunction StartScreen({ onStart }: { onStart: () => void }) {\n  return (\n    <div className={styles.screen}>\n      <h2 className={styles.headline}>ready to start?</h2>\n\n      <div className={styles.incomingMessage}>\n        <span className={styles.incomingTag}>incoming message</span>\n        <p>\n          Pick your path and start building. We can&apos;t wait to see what\n          you create, adventurer!\n        </p>\n      </div>\n\n      <a\n        href={JOIN_URL}\n        target=\"_blank\"\n        rel=\"noopener noreferrer\"\n        className={styles.startButton}\n        onClick={onStart}\n      >\n        start adventure\n      </a>\n\n      <div className={styles.boosterPreview}>\n        <div className={styles.boosterHeader}>\n          <span>booster packs</span>\n          <span className={styles.stockTag}>in stock</span>\n        </div>\n        <ul className={styles.boosterList}>\n          {BOOSTER_PACKS.map((pack) => (\n            <li key={pack.name} className={styles.boosterItem}>\n              <span className={styles.boosterName}>{pack.name}</span>\n              <span className={styles.boosterDesc}>{pack.desc}</span>\n            </li>\n          ))}\n        </ul>\n        <div className={styles.challengeTag}>\n          current challenge: build an rpg or card game in 15h+\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "summary": "\"use client\";. Contains 5 functions/classes: OnboardingWizard, WelcomeScreen, LootScreen, RulesScreen, ....",
+      "file_hash": "e5f4619d"
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx::OnboardingWizard",
+      "kind": "symbol",
+      "path": "src/components/OnboardingWizard.tsx",
+      "ext": ".tsx",
+      "size": 142,
+      "keywords": [
+        "onboardingwizard",
+        "onboarding",
+        "wizard"
+      ],
+      "symbol_type": "use_case",
+      "name": "OnboardingWizard",
+      "line_start": 71,
+      "line_end": 212,
+      "body_hash": "2ced2598",
+      "confidence": "medium",
+      "exported": true
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx::WelcomeScreen",
+      "kind": "symbol",
+      "path": "src/components/OnboardingWizard.tsx",
+      "ext": ".tsx",
+      "size": 25,
+      "keywords": [
+        "welcomescreen",
+        "welcome",
+        "screen"
+      ],
+      "symbol_type": "utility",
+      "name": "WelcomeScreen",
+      "line_start": 214,
+      "line_end": 238,
+      "body_hash": "fbc8fdc1",
+      "confidence": "medium",
+      "exported": false
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx::LootScreen",
+      "kind": "symbol",
+      "path": "src/components/OnboardingWizard.tsx",
+      "ext": ".tsx",
+      "size": 29,
+      "keywords": [
+        "lootscreen",
+        "loot",
+        "screen"
+      ],
+      "symbol_type": "utility",
+      "name": "LootScreen",
+      "line_start": 240,
+      "line_end": 268,
+      "body_hash": "f94c6136",
+      "confidence": "medium",
+      "exported": false
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx::RulesScreen",
+      "kind": "symbol",
+      "path": "src/components/OnboardingWizard.tsx",
+      "ext": ".tsx",
+      "size": 28,
+      "keywords": [
+        "rulesscreen",
+        "rules",
+        "screen"
+      ],
+      "symbol_type": "utility",
+      "name": "RulesScreen",
+      "line_start": 270,
+      "line_end": 297,
+      "body_hash": "587c47f5",
+      "confidence": "medium",
+      "exported": false
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx::StartScreen",
+      "kind": "symbol",
+      "path": "src/components/OnboardingWizard.tsx",
+      "ext": ".tsx",
+      "size": 43,
+      "keywords": [
+        "startscreen",
+        "start",
+        "screen"
+      ],
+      "symbol_type": "utility",
+      "name": "StartScreen",
+      "line_start": 299,
+      "line_end": 341,
+      "body_hash": "262a43c7",
+      "confidence": "medium",
+      "exported": false
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx::ScreenId",
+      "kind": "symbol",
+      "path": "src/components/OnboardingWizard.tsx",
+      "ext": ".tsx",
+      "size": 8,
+      "keywords": [
+        "screenid",
+        "screen"
+      ],
+      "symbol_type": "model",
+      "name": "ScreenId",
+      "line_start": 8,
+      "line_end": 15,
+      "body_hash": "d66afb61",
+      "confidence": "high",
+      "exported": false
+    },
+    {
+      "id": "src/components/OnboardingWizard.tsx::WizardProps",
+      "kind": "symbol",
+      "path": "src/components/OnboardingWizard.tsx",
+      "ext": ".tsx",
+      "size": 3,
+      "keywords": [
+        "wizardprops",
+        "wizard",
+        "props"
+      ],
+      "symbol_type": "model",
+      "name": "WizardProps",
+      "line_start": 67,
+      "line_end": 69,
+      "body_hash": "f5dc0ec7",
+      "confidence": "high",
+      "exported": false
+    },
+    {
+      "id": "src/components/ui/button.tsx",
+      "kind": "file",
+      "path": "src/components/ui/button.tsx",
+      "ext": ".tsx",
+      "size": 3240,
+      "keywords": [
+        "button",
+        "buttonvariants",
+        "variants"
+      ],
+      "content": "import { Button as ButtonPrimitive } from \"@base-ui/react/button\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/80\",\n        outline:\n          \"border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground\",\n        ghost:\n          \"hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50\",\n        destructive:\n          \"bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default:\n          \"h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2\",\n        xs: \"h-6 gap-1 rounded-[min(var(--radius-md),10px)] px-2 text-xs in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3\",\n        sm: \"h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5\",\n        lg: \"h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2\",\n        icon: \"size-8\",\n        \"icon-xs\":\n          \"size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-lg [&_svg:not([class*='size-'])]:size-3\",\n        \"icon-sm\":\n          \"size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg\",\n        \"icon-lg\": \"size-9\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Button({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  ...props\n}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {\n  return (\n    <ButtonPrimitive\n      data-slot=\"button\"\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Button, buttonVariants }\n",
+      "summary": "import { Button as ButtonPrimitive } from \"@base-ui/react/button\". Contains 1 function: Button.",
+      "file_hash": "e04ce525"
+    },
+    {
+      "id": "src/components/ui/button.tsx::Button",
+      "kind": "symbol",
+      "path": "src/components/ui/button.tsx",
+      "ext": ".tsx",
+      "size": 14,
+      "keywords": [
+        "button"
+      ],
+      "symbol_type": "utility",
+      "name": "Button",
+      "line_start": 42,
+      "line_end": 55,
+      "body_hash": "47525866",
+      "confidence": "medium",
+      "exported": false
+    },
+    {
+      "id": "src/components/fancy/physics/gravity.tsx",
+      "kind": "file",
+      "path": "src/components/fancy/physics/gravity.tsx",
+      "ext": ".tsx",
+      "size": 14778,
+      "keywords": [
+        "gravityref",
+        "gravity",
+        "ref",
+        "matterbody",
+        "matter",
+        "body"
+      ],
+      "content": "\"use client\"\n\nimport {\n  createContext,\n  forwardRef,\n  ReactNode,\n  useCallback,\n  useContext,\n  useEffect,\n  useImperativeHandle,\n  useMemo,\n  useRef,\n  useState,\n} from \"react\"\nimport { calculatePosition } from \"@/utils/calculate-position\"\nimport { parsePathToVertices } from \"@/utils/svg-path-to-vertices\"\nimport { debounce } from \"lodash\"\nimport Matter, {\n  Bodies,\n  Common,\n  Engine,\n  Events,\n  Mouse,\n  MouseConstraint,\n  Query,\n  Render,\n  Runner,\n  World,\n} from \"matter-js\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype GravityProps = {\n  children: ReactNode\n  debug?: boolean\n  gravity?: { x: number; y: number }\n  resetOnResize?: boolean\n  grabCursor?: boolean\n  addTopWall?: boolean\n  autoStart?: boolean\n  className?: string\n}\n\ntype PhysicsBody = {\n  element: HTMLElement\n  body: Matter.Body\n  props: MatterBodyProps\n}\n\ntype MatterBodyProps = {\n  children: ReactNode\n  matterBodyOptions?: Matter.IBodyDefinition\n  isDraggable?: boolean\n  bodyType?: \"rectangle\" | \"circle\" | \"svg\"\n  sampleLength?: number\n  x?: number | string\n  y?: number | string\n  angle?: number\n  className?: string\n}\n\nexport type GravityRef = {\n  start: () => void\n  stop: () => void\n  reset: () => void\n}\n\nconst GravityContext = createContext<{\n  registerElement: (\n    id: string,\n    element: HTMLElement,\n    props: MatterBodyProps\n  ) => void\n  unregisterElement: (id: string) => void\n} | null>(null)\n\nexport const MatterBody = ({\n  children,\n  className,\n  matterBodyOptions = {\n    friction: 0.1,\n    restitution: 0.1,\n    density: 0.001,\n    isStatic: false,\n  },\n  bodyType = \"rectangle\",\n  isDraggable = true,\n  sampleLength = 15,\n  x = 0,\n  y = 0,\n  angle = 0,\n  ...props\n}: MatterBodyProps) => {\n  const elementRef = useRef<HTMLDivElement>(null)\n  const idRef = useRef(Math.random().toString(36).substring(7))\n  const context = useContext(GravityContext)\n\n  useEffect(() => {\n    if (!elementRef.current || !context) return\n    context.registerElement(idRef.current, elementRef.current, {\n      children,\n      matterBodyOptions,\n      bodyType,\n      sampleLength,\n      isDraggable,\n      x,\n      y,\n      angle,\n      ...props,\n    })\n\n    return () => context.unregisterElement(idRef.current)\n    // Register once per physics world: the context identity only changes\n    // when the world resets (e.g. on resize). Depending on children/props\n    // objects here would despawn and respawn the body at its start position\n    // on every parent re-render.\n    // eslint-disable-next-line react-hooks/exhaustive-deps\n  }, [context, x, y, angle, bodyType])\n\n  return (\n    <div\n      ref={elementRef}\n      className={cn(\n        \"absolute\",\n        className,\n        isDraggable && \"pointer-events-none\"\n      )}\n    >\n      {children}\n    </div>\n  )\n}\n\nconst Gravity = forwardRef<GravityRef, GravityProps>(\n  (\n    {\n      children,\n      debug = false,\n      gravity = { x: 0, y: 1 },\n      grabCursor = true,\n      resetOnResize = true,\n      addTopWall = true,\n      autoStart = true,\n      className,\n      ...props\n    },\n    ref\n  ) => {\n    const canvas = useRef<HTMLDivElement>(null)\n    const engine = useRef(Engine.create())\n    const render = useRef<Render>(undefined)\n    const runner = useRef<Runner>(undefined)\n    const bodiesMap = useRef(new Map<string, PhysicsBody>())\n    const frameId = useRef<number>(undefined)\n    const mouseConstraint = useRef<Matter.MouseConstraint>(undefined)\n    const mouseDown = useRef(false)\n    const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 })\n\n    const isRunning = useRef(false)\n\n    // Register Matter.js body in the physics world\n    const registerElement = useCallback(\n      (id: string, element: HTMLElement, props: MatterBodyProps) => {\n        if (!canvas.current) return\n        const width = element.offsetWidth\n        const height = element.offsetHeight\n        const canvasRect = canvas.current!.getBoundingClientRect()\n\n        const angle = (props.angle || 0) * (Math.PI / 180)\n\n        const x = calculatePosition(props.x, canvasRect.width, width)\n        const y = calculatePosition(props.y, canvasRect.height, height)\n\n        let body\n        if (props.bodyType === \"circle\") {\n          const radius = Math.max(width, height) / 2\n          body = Bodies.circle(x, y, radius, {\n            ...props.matterBodyOptions,\n            angle: angle,\n            render: {\n              fillStyle: debug ? \"#888888\" : \"#00000000\",\n              strokeStyle: debug ? \"#333333\" : \"#00000000\",\n              lineWidth: debug ? 3 : 0,\n            },\n          })\n        } else if (props.bodyType === \"svg\") {\n          const paths = element.querySelectorAll(\"path\")\n          const vertexSets: Matter.Vector[][] = []\n\n          paths.forEach((path) => {\n            const d = path.getAttribute(\"d\")\n            const p = parsePathToVertices(d!, props.sampleLength)\n            vertexSets.push(p)\n          })\n\n          body = Bodies.fromVertices(x, y, vertexSets, {\n            ...props.matterBodyOptions,\n            angle: angle,\n            render: {\n              fillStyle: debug ? \"#888888\" : \"#00000000\",\n              strokeStyle: debug ? \"#333333\" : \"#00000000\",\n              lineWidth: debug ? 3 : 0,\n            },\n          })\n        } else {\n          body = Bodies.rectangle(x, y, width, height, {\n            ...props.matterBodyOptions,\n            angle: angle,\n            render: {\n              fillStyle: debug ? \"#888888\" : \"#00000000\",\n              strokeStyle: debug ? \"#333333\" : \"#00000000\",\n              lineWidth: debug ? 3 : 0,\n            },\n          })\n        }\n\n        if (body) {\n          World.add(engine.current.world, [body])\n          bodiesMap.current.set(id, { element, body, props })\n        }\n      },\n      [debug]\n    )\n\n    // Unregister Matter.js body from the physics world\n    const unregisterElement = useCallback((id: string) => {\n      const body = bodiesMap.current.get(id)\n      if (body) {\n        World.remove(engine.current.world, body.body)\n        bodiesMap.current.delete(id)\n      }\n    }, [])\n\n    // Keep react elements in sync with the physics world\n    const updateElements = useCallback(() => {\n      bodiesMap.current.forEach(({ element, body }) => {\n        const { x, y } = body.position\n        const rotation = body.angle * (180 / Math.PI)\n\n        element.style.transform = `translate(${\n          x - element.offsetWidth / 2\n        }px, ${y - element.offsetHeight / 2}px) rotate(${rotation}deg)`\n      })\n\n      frameId.current = requestAnimationFrame(updateElements)\n    }, [])\n\n    const initializeRenderer = useCallback(() => {\n      if (!canvas.current) return\n\n      const height = canvas.current.offsetHeight\n      const width = canvas.current.offsetWidth\n\n      Common.setDecomp(require(\"poly-decomp\"))\n\n      engine.current.gravity.x = gravity.x\n      engine.current.gravity.y = gravity.y\n\n      render.current = Render.create({\n        element: canvas.current,\n        engine: engine.current,\n        options: {\n          width,\n          height,\n          wireframes: false,\n          background: \"#00000000\",\n        },\n      })\n\n      // Listen for mouse events on the parent element instead of the canvas,\n      // so bodies stay draggable even when the overlay itself has\n      // pointer-events: none (clicks pass through to the page content).\n      const mouseElement = canvas.current.parentElement ?? render.current.canvas\n      const mouse = Mouse.create(mouseElement)\n\n      // Matter's wheel/touch handlers call preventDefault, which would block\n      // page scrolling now that the mouse target spans the whole page.\n      mouseElement.removeEventListener(\"wheel\", mouse.mousewheel)\n      mouseElement.removeEventListener(\"touchmove\", mouse.mousemove)\n      mouseElement.removeEventListener(\"touchstart\", mouse.mousedown)\n      mouseElement.removeEventListener(\"touchend\", mouse.mouseup)\n\n      mouseConstraint.current = MouseConstraint.create(engine.current, {\n        mouse: mouse,\n        constraint: {\n          stiffness: 0.2,\n          render: {\n            visible: debug,\n          },\n        },\n      })\n\n      // Add walls\n      const walls = [\n        // Floor\n        Bodies.rectangle(width / 2, height + 10, width, 20, {\n          isStatic: true,\n          friction: 1,\n          render: {\n            visible: debug,\n          },\n        }),\n\n        // Right wall\n        Bodies.rectangle(width + 10, height / 2, 20, height, {\n          isStatic: true,\n          friction: 1,\n          render: {\n            visible: debug,\n          },\n        }),\n\n        // Left wall\n        Bodies.rectangle(-10, height / 2, 20, height, {\n          isStatic: true,\n          friction: 1,\n          render: {\n            visible: debug,\n          },\n        }),\n      ]\n\n      const topWall = addTopWall\n        ? Bodies.rectangle(width / 2, -10, width, 20, {\n            isStatic: true,\n            friction: 1,\n            render: {\n              visible: debug,\n            },\n          })\n        : null\n\n      if (topWall) {\n        walls.push(topWall)\n      }\n\n      const touchingMouse = () =>\n        Query.point(\n          engine.current.world.bodies,\n          mouseConstraint.current?.mouse.position || { x: 0, y: 0 }\n        ).length > 0\n\n      if (grabCursor) {\n        Events.on(engine.current, \"beforeUpdate\", (event) => {\n          if (canvas.current) {\n            const dragging = mouseConstraint.current?.body != null\n            const over = touchingMouse()\n\n            // Only intercept the pointer while hovering or dragging a body,\n            // so the rest of the page stays clickable underneath the overlay.\n            canvas.current.style.pointerEvents =\n              over || dragging ? \"auto\" : \"none\"\n\n            if (!mouseDown.current && !over) {\n              canvas.current.style.cursor = \"default\"\n            } else if (over) {\n              canvas.current.style.cursor = mouseDown.current\n                ? \"grabbing\"\n                : \"grab\"\n            }\n          }\n        })\n\n        mouseElement.addEventListener(\"mousedown\", (event) => {\n          mouseDown.current = true\n\n          if (canvas.current) {\n            if (touchingMouse()) {\n              canvas.current.style.cursor = \"grabbing\"\n            } else {\n              canvas.current.style.cursor = \"default\"\n            }\n          }\n        })\n        mouseElement.addEventListener(\"mouseup\", (event) => {\n          mouseDown.current = false\n\n          if (canvas.current) {\n            if (touchingMouse()) {\n              canvas.current.style.cursor = \"grab\"\n            } else {\n              canvas.current.style.cursor = \"default\"\n            }\n          }\n        })\n      }\n\n      World.add(engine.current.world, [mouseConstraint.current, ...walls])\n\n      render.current.mouse = mouse\n\n      runner.current = Runner.create()\n      Render.run(render.current)\n      updateElements()\n      runner.current.enabled = false\n\n      if (autoStart) {\n        runner.current.enabled = true\n        startEngine()\n      }\n    }, [updateElements, debug, autoStart])\n\n    // Clear the Matter.js world\n    const clearRenderer = useCallback(() => {\n      if (frameId.current) {\n        cancelAnimationFrame(frameId.current)\n      }\n\n      if (mouseConstraint.current) {\n        World.remove(engine.current.world, mouseConstraint.current)\n      }\n\n      if (render.current) {\n        Mouse.clearSourceEvents(render.current.mouse)\n        Render.stop(render.current)\n        render.current.canvas.remove()\n      }\n\n      if (runner.current) {\n        Runner.stop(runner.current)\n      }\n\n      if (engine.current) {\n        World.clear(engine.current.world, false)\n        Engine.clear(engine.current)\n      }\n\n      bodiesMap.current.clear()\n    }, [])\n\n    const handleResize = useCallback(() => {\n      if (!canvas.current || !resetOnResize) return\n\n      const newWidth = canvas.current.offsetWidth\n      const newHeight = canvas.current.offsetHeight\n\n      setCanvasSize({ width: newWidth, height: newHeight })\n\n      // Clear and reinitialize\n      clearRenderer()\n      initializeRenderer()\n    }, [clearRenderer, initializeRenderer, resetOnResize])\n\n    const startEngine = useCallback(() => {\n      if (runner.current) {\n        runner.current.enabled = true\n\n        Runner.run(runner.current, engine.current)\n      }\n      if (render.current) {\n        Render.run(render.current)\n      }\n      frameId.current = requestAnimationFrame(updateElements)\n      isRunning.current = true\n    }, [updateElements, canvasSize])\n\n    const stopEngine = useCallback(() => {\n      if (!isRunning.current) return\n\n      if (runner.current) {\n        Runner.stop(runner.current)\n      }\n      if (render.current) {\n        Render.stop(render.current)\n      }\n      if (frameId.current) {\n        cancelAnimationFrame(frameId.current)\n      }\n      isRunning.current = false\n    }, [])\n\n    const reset = useCallback(() => {\n      stopEngine()\n      bodiesMap.current.forEach(({ element, body, props }) => {\n        body.angle = props.angle || 0\n\n        const x = calculatePosition(\n          props.x,\n          canvasSize.width,\n          element.offsetWidth\n        )\n        const y = calculatePosition(\n          props.y,\n          canvasSize.height,\n          element.offsetHeight\n        )\n        body.position.x = x\n        body.position.y = y\n      })\n      updateElements()\n      handleResize()\n    }, [])\n\n    useImperativeHandle(\n      ref,\n      () => ({\n        start: startEngine,\n        stop: stopEngine,\n        reset,\n      }),\n      [startEngine, stopEngine]\n    )\n\n    useEffect(() => {\n      if (!resetOnResize) return\n\n      const debouncedResize = debounce(handleResize, 500)\n      window.addEventListener(\"resize\", debouncedResize)\n\n      return () => {\n        window.removeEventListener(\"resize\", debouncedResize)\n        debouncedResize.cancel()\n      }\n    }, [handleResize, resetOnResize])\n\n    useEffect(() => {\n      initializeRenderer()\n      return clearRenderer\n    }, [initializeRenderer, clearRenderer])\n\n    // canvasSize is intentionally a dependency: handleResize clears the\n    // physics world, so the new context identity prompts MatterBody children\n    // to re-register their bodies into the fresh world.\n    // eslint-disable-next-line react-hooks/exhaustive-deps\n    const contextValue = useMemo(\n      () => ({ registerElement, unregisterElement }),\n      [registerElement, unregisterElement, canvasSize]\n    )\n\n    return (\n      <GravityContext.Provider value={contextValue}>\n        <div\n          ref={canvas}\n          className={cn(className, \"absolute top-0 left-0 w-full h-full\")}\n          {...props}\n        >\n          {children}\n        </div>\n      </GravityContext.Provider>\n    )\n  }\n)\n\nGravity.displayName = \"Gravity\"\nexport default Gravity\n",
+      "summary": "\"use client\".",
+      "file_hash": "ced7f8af"
+    },
+    {
+      "id": "src/components/fancy/physics/gravity.tsx::MatterBody",
+      "kind": "symbol",
+      "path": "src/components/fancy/physics/gravity.tsx",
+      "ext": ".tsx",
+      "size": 56,
+      "keywords": [
+        "matterbody",
+        "matter",
+        "body"
+      ],
+      "symbol_type": "use_case",
+      "name": "MatterBody",
+      "line_start": 76,
+      "line_end": 131,
+      "body_hash": "444c64d4",
+      "confidence": "medium",
+      "exported": true
+    },
+    {
+      "id": "src/components/fancy/physics/gravity.tsx::GravityProps",
+      "kind": "symbol",
+      "path": "src/components/fancy/physics/gravity.tsx",
+      "ext": ".tsx",
+      "size": 10,
+      "keywords": [
+        "gravityprops",
+        "gravity",
+        "props"
+      ],
+      "symbol_type": "model",
+      "name": "GravityProps",
+      "line_start": 32,
+      "line_end": 41,
+      "body_hash": "631a3fd6",
+      "confidence": "high",
+      "exported": false
+    },
+    {
+      "id": "src/components/fancy/physics/gravity.tsx::PhysicsBody",
+      "kind": "symbol",
+      "path": "src/components/fancy/physics/gravity.tsx",
+      "ext": ".tsx",
+      "size": 5,
+      "keywords": [
+        "physicsbody",
+        "physics",
+        "body"
+      ],
+      "symbol_type": "model",
+      "name": "PhysicsBody",
+      "line_start": 43,
+      "line_end": 47,
+      "body_hash": "f89f2433",
+      "confidence": "high",
+      "exported": false
+    },
+    {
+      "id": "src/components/fancy/physics/gravity.tsx::MatterBodyProps",
+      "kind": "symbol",
+      "path": "src/components/fancy/physics/gravity.tsx",
+      "ext": ".tsx",
+      "size": 11,
+      "keywords": [
+        "matterbodyprops",
+        "matter",
+        "body",
+        "props"
+      ],
+      "symbol_type": "model",
+      "name": "MatterBodyProps",
+      "line_start": 49,
+      "line_end": 59,
+      "body_hash": "651caa63",
+      "confidence": "high",
+      "exported": false
+    },
+    {
+      "id": "src/components/fancy/physics/gravity.tsx::GravityRef",
+      "kind": "symbol",
+      "path": "src/components/fancy/physics/gravity.tsx",
+      "ext": ".tsx",
+      "size": 5,
+      "keywords": [
+        "gravityref",
+        "gravity",
+        "ref"
+      ],
+      "symbol_type": "model",
+      "name": "GravityRef",
+      "line_start": 61,
+      "line_end": 65,
+      "body_hash": "48c52e91",
+      "confidence": "high",
+      "exported": true
+    },
+    {
+      "id": "src/utils/calculate-position.ts",
+      "kind": "file",
+      "path": "src/utils/calculate-position.ts",
+      "ext": ".ts",
+      "size": 504,
+      "keywords": [
+        "calculateposition",
+        "calculate",
+        "position"
+      ],
+      "content": "export function calculatePosition(\n  value: number | string | undefined,\n  containerSize: number,\n  elementSize: number\n): number {\n  // Handle percentage strings (e.g. \"50%\")\n  if (typeof value === \"string\" && value.endsWith(\"%\")) {\n    const percentage = parseFloat(value) / 100\n    return containerSize * percentage\n  }\n\n  // Handle direct pixel values\n  if (typeof value === \"number\") {\n    return value\n  }\n\n  // If no value provided, center the element\n  return (containerSize - elementSize) / 2\n}\n",
+      "summary": "export function calculatePosition(. Contains 1 function: calculatePosition.",
+      "file_hash": "c2a00289"
+    },
+    {
+      "id": "src/utils/calculate-position.ts::calculatePosition",
+      "kind": "symbol",
+      "path": "src/utils/calculate-position.ts",
+      "ext": ".ts",
+      "size": 19,
+      "keywords": [
+        "calculateposition",
+        "calculate",
+        "position"
+      ],
+      "symbol_type": "use_case",
+      "name": "calculatePosition",
+      "line_start": 0,
+      "line_end": 18,
+      "body_hash": "dfb3b64c",
+      "confidence": "high",
+      "exported": true
+    },
+    {
+      "id": "src/utils/svg-path-to-vertices.ts",
+      "kind": "file",
+      "path": "src/utils/svg-path-to-vertices.ts",
+      "ext": ".ts",
+      "size": 1095,
+      "keywords": [
+        "parsepathtovertices",
+        "parse",
+        "path",
+        "vertices"
+      ],
+      "content": "import SVGPathCommander from \"svg-path-commander\"\n\n// Function to convert SVG path `d` to vertices\nexport function parsePathToVertices(path: string, sampleLength = 15) {\n  // Convert path to absolute commands\n  const commander = new SVGPathCommander(path)\n\n  const points: { x: number; y: number }[] = []\n  let lastPoint: { x: number; y: number } | null = null\n\n  // Get total length of the path\n  const totalLength = commander.getTotalLength()\n  let length = 0\n\n  // Sample points along the path\n  while (length < totalLength) {\n    const point = commander.getPointAtLength(length)\n\n    // Only add point if it's different from the last one\n    if (!lastPoint || point.x !== lastPoint.x || point.y !== lastPoint.y) {\n      points.push({ x: point.x, y: point.y })\n      lastPoint = point\n    }\n\n    length += sampleLength\n  }\n\n  // Ensure we get the last point\n  const finalPoint = commander.getPointAtLength(totalLength)\n  if (\n    lastPoint &&\n    (finalPoint.x !== lastPoint.x || finalPoint.y !== lastPoint.y)\n  ) {\n    points.push({ x: finalPoint.x, y: finalPoint.y })\n  }\n\n  return points\n}",
+      "summary": "import SVGPathCommander from \"svg-path-commander\". Contains 1 function: parsePathToVertices.",
+      "file_hash": "72ac7680"
+    },
+    {
+      "id": "src/utils/svg-path-to-vertices.ts::parsePathToVertices",
+      "kind": "symbol",
+      "path": "src/utils/svg-path-to-vertices.ts",
+      "ext": ".ts",
+      "size": 35,
+      "keywords": [
+        "parsepathtovertices",
+        "parse",
+        "path",
+        "vertices"
+      ],
+      "symbol_type": "use_case",
+      "name": "parsePathToVertices",
+      "line_start": 3,
+      "line_end": 37,
+      "body_hash": "8f270fce",
+      "confidence": "high",
+      "exported": true
+    },
+    {
+      "id": "src/lib/utils.ts",
+      "kind": "file",
+      "path": "src/lib/utils.ts",
+      "ext": ".ts",
+      "size": 166,
+      "keywords": [],
+      "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "summary": "import { clsx, type ClassValue } from \"clsx\". Contains 1 function: cn.",
+      "file_hash": "5a6fd53f"
+    },
+    {
+      "id": "src/lib/utils.ts::cn",
+      "kind": "symbol",
+      "path": "src/lib/utils.ts",
+      "ext": ".ts",
+      "size": 3,
+      "keywords": [],
+      "symbol_type": "use_case",
+      "name": "cn",
+      "line_start": 3,
+      "line_end": 5,
+      "body_hash": "fb7b0125",
+      "confidence": "high",
+      "exported": true
+    }
+  ],
+  "edges": [
+    {
+      "from": "CLAUDE.md",
+      "to": "src/auth.ts",
+      "rel": "references"
+    },
+    {
+      "from": "CLAUDE.md",
+      "to": "src/db.ts",
+      "rel": "references"
+    },
+    {
+      "from": "CLAUDE.md",
+      "to": "relevant/file.ts",
+      "rel": "references"
+    },
+    {
+      "from": "next-env.d.ts",
+      "to": "./.next/dev/types/routes.d.ts",
+      "rel": "imports"
+    },
+    {
+      "from": "components.json",
+      "to": "om/schema.js",
+      "rel": "references"
+    },
+    {
+      "from": "components.json",
+      "to": "src/app/globals.cs",
+      "rel": "references"
+    },
+    {
+      "from": "next.config.ts",
+      "to": "next",
+      "rel": "imports"
+    },
+    {
+      "from": "next.config.ts",
+      "to": "type",
+      "rel": "imports"
+    },
+    {
+      "from": ".claude/commands/opsx/explore.md",
+      "to": "/spec.md",
+      "rel": "references"
+    },
+    {
+      "from": ".claude/commands/opsx/archive.md",
+      "to": "/spec.md",
+      "rel": "references"
+    },
+    {
+      "from": ".claude/skills/openspec-explore/SKILL.md",
+      "to": "/spec.md",
+      "rel": "references"
+    },
+    {
+      "from": ".claude/skills/openspec-archive-change/SKILL.md",
+      "to": "/spec.md",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/tasks.md",
+      "to": "src/components/OnboardingWizard.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/tasks.md",
+      "to": "src/app/page.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/tasks.md",
+      "to": "//auth.h",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/design.md",
+      "to": "src/app/page.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/design.md",
+      "to": "//auth.h",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/design.md",
+      "to": "src/components/OnboardingWizard.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/proposal.md",
+      "to": "//auth.h",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/proposal.md",
+      "to": "src/app/page.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/add-onboarding-wizard/specs/onboarding-wizard/spec.md",
+      "to": "//auth.h",
+      "rel": "references"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "next/image",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "next/link",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "./page.module.css",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "@/components/fancy/physics/gravity",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "@/components/OnboardingWizard",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "Image",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "Link",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "styles",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "Gravity",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "OnboardingWizard",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "//hackclub.c",
+      "rel": "references"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "//auth.h",
+      "rel": "references"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "src/app/page.tsx::Home",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/layout.tsx",
+      "to": "./globals.css",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/layout.tsx",
+      "to": "next",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/layout.tsx",
+      "to": "next/font/local",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/layout.tsx",
+      "to": "next/font/google",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/layout.tsx",
+      "to": "@/lib/utils",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/layout.tsx",
+      "to": "type",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/layout.tsx",
+      "to": "localFont",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/layout.tsx",
+      "to": "/globals.cs",
+      "rel": "references"
+    },
+    {
+      "from": "src/app/layout.tsx",
+      "to": "src/app/layout.tsx::RootLayout",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/dashboard/page.tsx",
+      "to": "next",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/dashboard/page.tsx",
+      "to": "next/font/google",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/dashboard/page.tsx",
+      "to": "@/components/TrainerDashboard",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/dashboard/page.tsx",
+      "to": "type",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/dashboard/page.tsx",
+      "to": "TrainerDashboard",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/dashboard/page.tsx",
+      "to": "src/app/dashboard/page.tsx::DashboardPage",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/Pokeball.tsx",
+      "to": "next/image",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/Pokeball.tsx",
+      "to": "react",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/Pokeball.tsx",
+      "to": "./Pokeball.module.css",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/Pokeball.tsx",
+      "to": "Image",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/Pokeball.tsx",
+      "to": "styles",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/Pokeball.tsx",
+      "to": "src/components/Pokeball.tsx::Pokeball",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "react",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "./TrainerDashboard.module.css",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "next/image",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "./fancy/physics/gravity",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "styles",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "Image",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "Gravity",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "//hackatime.h",
+      "rel": "references"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "//github.c",
+      "rel": "references"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
+      "to": "src/components/TrainerDashboard.tsx::TrainerDashboard",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "react",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "next/image",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "next/link",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "./OnboardingWizard.module.css",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "Image",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "Link",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "styles",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "//auth.h",
+      "rel": "references"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "src/components/OnboardingWizard.tsx::OnboardingWizard",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "src/components/OnboardingWizard.tsx::WelcomeScreen",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "src/components/OnboardingWizard.tsx::LootScreen",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "src/components/OnboardingWizard.tsx::RulesScreen",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "src/components/OnboardingWizard.tsx::StartScreen",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "src/components/OnboardingWizard.tsx::ScreenId",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
+      "to": "src/components/OnboardingWizard.tsx::WizardProps",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/ui/button.tsx",
+      "to": "@base-ui/react/button",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/ui/button.tsx",
+      "to": "class-variance-authority",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/ui/button.tsx",
+      "to": "@/lib/utils",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/ui/button.tsx",
+      "to": "src/components/ui/button.tsx::Button",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "@/utils/calculate-position",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "@/utils/svg-path-to-vertices",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "lodash",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "@/lib/utils",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "poly-decomp",
+      "rel": "requires"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "Matter",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "src/components/fancy/physics/gravity.tsx::MatterBody",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "src/components/fancy/physics/gravity.tsx::GravityProps",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "src/components/fancy/physics/gravity.tsx::PhysicsBody",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "src/components/fancy/physics/gravity.tsx::MatterBodyProps",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/fancy/physics/gravity.tsx",
+      "to": "src/components/fancy/physics/gravity.tsx::GravityRef",
+      "rel": "contains"
+    },
+    {
+      "from": "src/utils/calculate-position.ts",
+      "to": "src/utils/calculate-position.ts::calculatePosition",
+      "rel": "contains"
+    },
+    {
+      "from": "src/utils/svg-path-to-vertices.ts",
+      "to": "svg-path-commander",
+      "rel": "imports"
+    },
+    {
+      "from": "src/utils/svg-path-to-vertices.ts",
+      "to": "SVGPathCommander",
+      "rel": "imports"
+    },
+    {
+      "from": "src/utils/svg-path-to-vertices.ts",
+      "to": "src/utils/svg-path-to-vertices.ts::parsePathToVertices",
+      "rel": "contains"
+    },
+    {
+      "from": "src/lib/utils.ts",
+      "to": "clsx",
+      "rel": "imports"
+    },
+    {
+      "from": "src/lib/utils.ts",
+      "to": "tailwind-merge",
+      "rel": "imports"
+    },
+    {
+      "from": "src/lib/utils.ts",
+      "to": "src/lib/utils.ts::cn",
+      "rel": "contains"
+    }
+  ]
+}
