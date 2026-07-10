@@ -205,6 +205,8 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
         } else {
           body = Bodies.rectangle(x, y, width, height, {
             ...props.matterBodyOptions,
+            // IBodyDefinition allows chamfer: null, IChamferableBodyDefinition doesn't
+            chamfer: props.matterBodyOptions?.chamfer ?? undefined,
             angle: angle,
             render: {
               fillStyle: debug ? "#888888" : "#00000000",
@@ -275,10 +277,17 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
 
       // Matter's wheel/touch handlers call preventDefault, which would block
       // page scrolling now that the mouse target spans the whole page.
-      mouseElement.removeEventListener("wheel", mouse.mousewheel)
-      mouseElement.removeEventListener("touchmove", mouse.mousemove)
-      mouseElement.removeEventListener("touchstart", mouse.mousedown)
-      mouseElement.removeEventListener("touchend", mouse.mouseup)
+      // internal handlers that @types/matter-js doesn't declare on Mouse
+      const mouseHandlers = mouse as unknown as {
+        mousewheel: EventListener
+        mousemove: EventListener
+        mousedown: EventListener
+        mouseup: EventListener
+      }
+      mouseElement.removeEventListener("wheel", mouseHandlers.mousewheel)
+      mouseElement.removeEventListener("touchmove", mouseHandlers.mousemove)
+      mouseElement.removeEventListener("touchstart", mouseHandlers.mousedown)
+      mouseElement.removeEventListener("touchend", mouseHandlers.mouseup)
 
       mouseConstraint.current = MouseConstraint.create(engine.current, {
         mouse: mouse,
