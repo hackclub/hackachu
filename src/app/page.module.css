@@ -183,6 +183,58 @@
   margin-top: -4%;
 }
 
+/* scattered positions from the canva design */
+
+.rowPullIn {
+  padding-right: 22%;
+}
+
+.rowIndent {
+  padding-left: 16%;
+}
+
+/*
+ * prizes box hugs the left edge; row content starts just past it.
+ * padding-left must stay >= the .prizes width at every viewport
+ * so the pikachu in this row can never slide under the prizes box
+ * or toward the right-edge pikachu in the row above.
+ */
+.rowCenter {
+  position: relative;
+  justify-content: flex-start;
+  padding-left: clamp(232px, 36vw, 500px);
+}
+
+.rowRight + .rowCenter {
+  margin-top: -7%;
+}
+
+.rowCenter + .rowRight {
+  margin-top: -4%;
+}
+
+.tiltLeft {
+  transform: rotate(-6deg);
+}
+
+.tiltRight {
+  transform: rotate(6deg);
+}
+
+.pikaDrop {
+  margin-top: clamp(40px, 9vw, 130px);
+}
+
+/* prizes box bleeding off the left edge (image is pre-cropped flush left) */
+.prizes {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: clamp(220px, 34vw, 480px);
+  height: auto;
+  z-index: 2;
+}
+
 .magicPika {
   width: clamp(90px, 13vw, 178px);
   height: auto;
@@ -243,6 +295,7 @@
 
 .footer {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: clamp(16px, 2.5vw, 36px);
@@ -280,8 +333,33 @@
   }
 
   .main .rowRight,
-  .main .rowLeft {
+  .main .rowLeft,
+  .main .rowCenter {
     margin-top: 14px;
+  }
+
+  .rowPullIn {
+    padding-right: 4%;
+  }
+
+  .rowIndent {
+    padding-left: 4%;
+  }
+
+  .rowCenter {
+    padding-left: 4%;
+    flex-wrap: wrap;
+  }
+
+  .pikaDrop {
+    margin-top: 0;
+  }
+
+  .prizes {
+    position: static;
+    order: -1;
+    width: min(420px, 84vw);
+    margin: 0 auto 10px;
   }
 
   .gbBox {

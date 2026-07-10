@@ -49,7 +49,7 @@ export default function Home() {
       </header>
 
       <main className={styles.main}>
-        <section className={`${styles.row} ${styles.rowRight}`}>
+        <section className={`${styles.row} ${styles.rowRight} ${styles.rowPullIn}`}>
           <div className={styles.gbBox}>
             a card game?
             <br />
@@ -107,7 +107,14 @@ export default function Home() {
           />
         </section>
 
-        <section className={`${styles.row} ${styles.rowLeft}`}>
+        <section className={`${styles.row} ${styles.rowCenter}`}>
+          <Image
+            className={styles.prizes}
+            src={`${ASSETS}/prizes.png`}
+            alt="prizes! pokemon booster packs, decks and plushies"
+            width={481}
+            height={297}
+          />
           <Image
             className={styles.flyingPika}
             src={`${ASSETS}/flying_pika.png`}
@@ -149,15 +156,15 @@ export default function Home() {
           />
         </section>
 
-        <section className={`${styles.row} ${styles.rowLeft}`}>
+        <section className={`${styles.row} ${styles.rowLeft} ${styles.rowIndent}`}>
           <Image
-            className={styles.flyingPika}
+            className={`${styles.flyingPika} ${styles.pikaDrop}`}
             src={`${ASSETS}/flying_pika.png`}
             alt="pikachu floating with balloons"
             width={244}
             height={285}
           />
-          <div className={styles.gbBox}>
+          <div className={`${styles.gbBox} ${styles.tiltLeft}`}>
             oh yeah. you&apos;ll
             <br />
             always get cards,
@@ -172,7 +179,7 @@ export default function Home() {
         </section>
 
         <section className={`${styles.row} ${styles.rowRight}`}>
-          <div className={`${styles.gbBox} ${styles.cryBox}`}>
+          <div className={`${styles.gbBox} ${styles.cryBox} ${styles.tiltRight}`}>
             <Image
               className={styles.cryImg}
               src={`${ASSETS}/crying_emojis.png`}
@@ -204,11 +211,11 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            join now.
+            join the slack...
           </a>
           <br />
           <Link className={styles.link} href="/dashboard">
-            trainer dashboard.
+            and start here.
           </Link>
         </p>
         <Image
