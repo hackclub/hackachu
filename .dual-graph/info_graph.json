@@ -1,9 +1,9 @@
 {
   "root": "/home/plastuchino/code/hackachu-codebase/hackachu",
-  "node_count": 55,
-  "edge_count": 102,
-  "file_count": 34,
-  "symbol_count": 21,
+  "node_count": 86,
+  "edge_count": 157,
+  "file_count": 49,
+  "symbol_count": 37,
   "nodes": [
     {
       "id": "CLAUDE.md",
@@ -76,11 +76,11 @@
       "kind": "file",
       "path": "package.json",
       "ext": ".json",
-      "size": 961,
+      "size": 1048,
       "keywords": [],
-      "content": "{\n  \"name\": \"hackachu\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"lint\": \"eslint\"\n  },\n  \"dependencies\": {\n    \"@base-ui/react\": \"^1.6.0\",\n    \"@tailwindcss/postcss\": \"^4.3.2\",\n    \"@types/matter-js\": \"^0.20.2\",\n    \"class-variance-authority\": \"^0.7.1\",\n    \"clsx\": \"^2.1.1\",\n    \"lodash\": \"^4.18.1\",\n    \"lucide-react\": \"^1.24.0\",\n    \"matter-js\": \"^0.20.0\",\n    \"motion\": \"^12.42.2\",\n    \"next\": \"16.2.10\",\n    \"poly-decomp\": \"^0.3.0\",\n    \"postcss\": \"^8.5.16\",\n    \"react\": \"19.2.4\",\n    \"react-dom\": \"19.2.4\",\n    \"shadcn\": \"^4.13.0\",\n    \"svg-path-commander\": \"^2.2.1\",\n    \"tailwind-merge\": \"^3.6.0\",\n    \"tailwindcss\": \"^4.3.2\",\n    \"tw-animate-css\": \"^1.4.0\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"^20\",\n    \"@types/react\": \"^19\",\n    \"@types/react-dom\": \"^19\",\n    \"eslint\": \"^9\",\n    \"eslint-config-next\": \"16.2.10\",\n    \"typescript\": \"^5\"\n  }\n}\n",
+      "content": "{\n  \"name\": \"hackachu\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"lint\": \"eslint\"\n  },\n  \"dependencies\": {\n    \"@base-ui/react\": \"^1.6.0\",\n    \"@fillout/react\": \"^3.1.2\",\n    \"@tailwindcss/postcss\": \"^4.3.2\",\n    \"@types/matter-js\": \"^0.20.2\",\n    \"class-variance-authority\": \"^0.7.1\",\n    \"clsx\": \"^2.1.1\",\n    \"jose\": \"^6.2.3\",\n    \"lodash\": \"^4.18.1\",\n    \"lucide-react\": \"^1.24.0\",\n    \"matter-js\": \"^0.20.0\",\n    \"motion\": \"^12.42.2\",\n    \"next\": \"16.2.10\",\n    \"poly-decomp\": \"^0.3.0\",\n    \"postcss\": \"^8.5.16\",\n    \"react\": \"19.2.4\",\n    \"react-dom\": \"19.2.4\",\n    \"shadcn\": \"^4.13.0\",\n    \"svg-path-commander\": \"^2.2.1\",\n    \"tailwind-merge\": \"^3.6.0\",\n    \"tailwindcss\": \"^4.3.2\",\n    \"tw-animate-css\": \"^1.4.0\"\n  },\n  \"devDependencies\": {\n    \"@types/lodash\": \"^4.17.24\",\n    \"@types/node\": \"^20\",\n    \"@types/react\": \"^19\",\n    \"@types/react-dom\": \"^19\",\n    \"eslint\": \"^9\",\n    \"eslint-config-next\": \"16.2.10\",\n    \"typescript\": \"^5\"\n  }\n}\n",
       "summary": "\"name\": \"hackachu\",.",
-      "file_hash": "fd2916ba"
+      "file_hash": "b92be32f"
     },
     {
       "id": "AGENTS.md",
@@ -98,11 +98,11 @@
       "kind": "file",
       "path": ".claude/settings.local.json",
       "ext": ".json",
-      "size": 1788,
+      "size": 3289,
       "keywords": [],
-      "content": "{\n  \"permissions\": {\n    \"allow\": [\n      \"mcp__dual-graph__graph_read\",\n      \"Bash(openspec list *)\",\n      \"Bash(openspec new *)\",\n      \"Bash(openspec status *)\",\n      \"Bash(openspec instructions *)\",\n      \"Bash(npx next *)\",\n      \"Bash(npx eslint *)\",\n      \"Skill(run)\",\n      \"Bash(find / -iname \\\"*chromium-cli*\\\" -maxdepth 6)\",\n      \"Bash(npm ls *)\",\n      \"Bash(timeout 20 npx --yes playwright --version 2>&1)\",\n      \"Read(//tmp/wizard-check/**)\",\n      \"Bash(npx playwright *)\",\n      \"Bash(echo \\\"exit: $?\\\")\",\n      \"Read(//tmp/**)\",\n      \"Bash(node check.js)\",\n      \"Bash(node *)\"\n    ]\n  },\n  \"hooks\": {\n    \"SessionStart\": [\n      {\n        \"matcher\": \"\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"/bin/bash \\\"/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph/prime.sh\\\"\"\n          }\n        ]\n      }\n    ],\n    \"PreCompact\": [\n      {\n        \"matcher\": \"\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"/bin/bash \\\"/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph/prime.sh\\\"\"\n          }\n        ]\n      }\n    ],\n    \"Stop\": [\n      {\n        \"matcher\": \"\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"/bin/bash \\\"/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph/stop.sh\\\"\"\n          }\n        ]\n      }\n    ],\n    \"PreToolUse\": [\n      {\n        \"matcher\": \"Write|Edit|Bash|NotebookEdit\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"DG_DATA_DIR=\\\"/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph\\\" /home/plastuchino/.dual-graph/venv/bin/python3 -c \\\"from graperoot.undo_shield import main; main()\\\"\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
+      "content": "{\n  \"permissions\": {\n    \"allow\": [\n      \"mcp__dual-graph__graph_read\",\n      \"Bash(openspec list *)\",\n      \"Bash(openspec new *)\",\n      \"Bash(openspec status *)\",\n      \"Bash(openspec instructions *)\",\n      \"Bash(npx next *)\",\n      \"Bash(npx eslint *)\",\n      \"Skill(run)\",\n      \"Bash(find / -iname \\\"*chromium-cli*\\\" -maxdepth 6)\",\n      \"Bash(npm ls *)\",\n      \"Bash(timeout 20 npx --yes playwright --version 2>&1)\",\n      \"Read(//tmp/wizard-check/**)\",\n      \"Bash(npx playwright *)\",\n      \"Bash(echo \\\"exit: $?\\\")\",\n      \"Read(//tmp/**)\",\n      \"Bash(node check.js)\",\n      \"Bash(node *)\",\n      \"mcp__dual-graph__graph_continue\",\n      \"mcp__gitbook-documentation__searchDocumentation\",\n      \"mcp__gitbook-documentation__getPage\",\n      \"Bash(gh api *)\",\n      \"WebFetch(domain:raw.githubusercontent.com)\",\n      \"Bash(npm install *)\",\n      \"Bash(git status *)\",\n      \"Bash(pkill -f \\\"next dev\\\")\",\n      \"Bash(curl -sS -o /dev/null -w \\\"%{http_code}\\\\\\\\n\\\" http://localhost:3000/ --max-time 3)\",\n      \"Bash(nohup npm run dev)\",\n      \"Bash(disown)\",\n      \"Bash(curl -sS -o /dev/null -w \\\"%{http_code}\\\\\\\\n\\\" http://localhost:3000/ --max-time 5)\",\n      \"Bash(curl -sS -o /dev/null -w \\\"%{http_code}\\\\\\\\n\\\" http://localhost:3000/submit --max-time 5)\",\n      \"WebFetch(domain:github.com)\",\n      \"Bash(curl -sS -o /dev/null -w \\\"%{http_code}\\\\\\\\n\\\" http://localhost:3000/dashboard --max-time 5)\",\n      \"Bash(curl -sS -o /dev/null -w \\\"%{http_code}\\\\\\\\n\\\" -X POST http://localhost:3000/api/submit --max-time 5)\",\n      \"Bash(python3 -c ' *)\",\n      \"Bash(curl -sS -o /dev/null -w \\\"dashboard: %{http_code}\\\\\\\\n\\\" http://localhost:3000/dashboard --max-time 5)\",\n      \"Bash(curl -sS -o /dev/null -w \\\"submit: %{http_code}\\\\\\\\n\\\" http://localhost:3000/submit --max-time 5)\",\n      \"Bash(curl -sS -o /dev/null -w \\\"api/submit: %{http_code}\\\\\\\\n\\\" -X POST http://localhost:3000/api/submit --max-time 5)\",\n      \"mcp__dual-graph__graph_register_edit\",\n      \"mcp__dual-graph__fallback_rg\",\n      \"WebSearch\",\n      \"WebFetch(domain:www.fillout.com)\",\n      \"WebFetch(domain:www.npmjs.com)\"\n    ]\n  },\n  \"hooks\": {\n    \"SessionStart\": [\n      {\n        \"matcher\": \"\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"/bin/bash \\\"/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph/prime.sh\\\"\"\n          }\n        ]\n      }\n    ],\n    \"PreCompact\": [\n      {\n        \"matcher\": \"\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"/bin/bash \\\"/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph/prime.sh\\\"\"\n          }\n        ]\n      }\n    ],\n    \"Stop\": [\n      {\n        \"matcher\": \"\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"/bin/bash \\\"/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph/stop.sh\\\"\"\n          }\n        ]\n      }\n    ],\n    \"PreToolUse\": [\n      {\n        \"matcher\": \"Write|Edit|Bash|NotebookEdit\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"DG_DATA_DIR=\\\"/home/plastuchino/code/hackachu-codebase/hackachu/.dual-graph\\\" /home/plastuchino/.dual-graph/venv/bin/python3 -c \\\"from graperoot.undo_shield import main; main()\\\"\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
       "summary": "\"permissions\": {.",
-      "file_hash": "cf161ecf"
+      "file_hash": "dc589c39"
     },
     {
       "id": ".claude/commands/opsx/propose.md",
@@ -204,6 +204,61 @@
       "file_hash": "9e3e7672"
     },
     {
+      "id": "openspec/changes/replace-submit-form-with-fillout/.openspec.yaml",
+      "kind": "file",
+      "path": "openspec/changes/replace-submit-form-with-fillout/.openspec.yaml",
+      "ext": ".yaml",
+      "size": 40,
+      "keywords": [],
+      "content": "schema: spec-driven\ncreated: 2026-07-14\n",
+      "summary": "schema: spec-driven.",
+      "file_hash": "b1aba589"
+    },
+    {
+      "id": "openspec/changes/replace-submit-form-with-fillout/tasks.md",
+      "kind": "file",
+      "path": "openspec/changes/replace-submit-form-with-fillout/tasks.md",
+      "ext": ".md",
+      "size": 2113,
+      "keywords": [],
+      "content": "## 1. Dependency\n\n- [ ] 1.1 Add `@fillout/react` to `package.json` and install\n- [ ] 1.2 Check Fillout's current docs for the popup/slider embed component name, props, and how it accepts prefill parameters (do not assume from memory)\n\n## 2. Identity prefill plumbing\n\n- [ ] 2.1 In `/submit/page.tsx` (server component), read the session cookie and redirect unauthenticated visitors to the OAuth login flow\n- [ ] 2.2 Call `getIdentity()` for authenticated visitors and pass the relevant fields (name, email, address, birthday) as props into the client component\n- [ ] 2.3 Confirm with whoever owns the Fillout form configuration which parameter names map to which fields, and build the parameter map accordingly\n\n## 3. Rewrite the submit UI\n\n- [ ] 3.1 Rewrite `SubmitForm.tsx` to accept identity props and render a \"Submit Project\" trigger button instead of a native `<form>`\n- [ ] 3.2 Wire the button to open the Fillout popup/slider embed (form id `g5DGvPB1GPus`, domain `forms.hackclub.com`) with the identity parameters applied\n- [ ] 3.3 Remove the now-unused form-state logic (status tracking, FormData construction, fetch to `/api/submit`)\n\n## 4. Remove the old backend\n\n- [ ] 4.1 Delete `src/app/api/submit/route.ts`\n- [ ] 4.2 Confirm `getIdentity()` in `src/app/lib/hackclub.ts` is still referenced (by the new `/submit/page.tsx` call site) and not orphaned\n- [ ] 4.3 Flag `AIRTABLE_BASE_ID`, `AIRTABLE_TABLE_NAME`, `AIRTABLE_PAT` as unused by this app going forward; leave a note for whoever manages deployment env config to confirm and remove them (do not remove env config from this task \u2014 out of scope/no access from this repo)\n\n## 5. Verification\n\n- [ ] 5.1 Run the app locally, log in via Hack Club OAuth, land on `/submit`\n- [ ] 5.2 Confirm unauthenticated access to `/submit` redirects to login\n- [ ] 5.3 Click \"Submit Project\" and confirm the Fillout popup/slider opens\n- [ ] 5.4 Confirm identity fields (name, email, address, birthday) appear prefilled in the opened Fillout form\n- [ ] 5.5 Submit a test entry through Fillout and confirm it lands in Airtable without touching this app's server\n",
+      "summary": "1. Dependency.",
+      "file_hash": "b45a6f6d"
+    },
+    {
+      "id": "openspec/changes/replace-submit-form-with-fillout/design.md",
+      "kind": "file",
+      "path": "openspec/changes/replace-submit-form-with-fillout/design.md",
+      "ext": ".md",
+      "size": 5754,
+      "keywords": [],
+      "content": "## Context\n\n`/submit` currently renders `SubmitForm.tsx`, a client-side `<form>` that POSTs `FormData` to `/api/submit/route.ts`. That route reads the session cookie, calls `getIdentity()` (Hack Club OAuth) to fetch name/email/address/birthday, merges it with the submitted fields, writes a record to Airtable, then separately base64-uploads the screenshot as an Airtable attachment.\n\nFillout (`forms.hackclub.com`, form id `g5DGvPB1GPus`) is being adopted to own the entire submission surface \u2014 its own field validation, file upload, and a native Airtable write \u2014 configured on Fillout's side, out of scope here. This app's job shrinks to: gate access behind login, open the Fillout embed on click, and hand it prefill data.\n\n## Goals / Non-Goals\n\n**Goals:**\n- Replace the custom form UI with a button that opens the Fillout form in a popup/slider overlay.\n- Prefill the Fillout form with Hack Club identity data already available via the existing OAuth session.\n- Remove the now-redundant submission backend and its direct Airtable credential usage.\n- Keep `/submit` gated behind an authenticated session, consistent with today's behavior (unauthenticated POSTs currently 401).\n\n**Non-Goals:**\n- Configuring the Fillout form itself (fields, Airtable mapping, file upload field) \u2014 that's managed in Fillout's dashboard, not this repo.\n- Preserving a server-side record of submissions in this app (Fillout/Airtable is the source of truth going forward).\n- Building a webhook receiver for Fillout submissions \u2014 explicitly ruled out per proposal (\"Fillout owns submission end-to-end\").\n\n## Decisions\n\n**1. Popup/slider embed via `@fillout/react`, not the raw `standard` snippet.**\nThe pasted snippet (`data-fillout-embed-type=\"standard\"`) is an always-visible inline iframe. The desired UX is click-to-open, so implementation uses `@fillout/react`'s popup or slider embed component instead. The exact component/prop names should be confirmed against Fillout's current docs at implementation time rather than assumed \u2014 API surface for these libraries isn't reliably stable across versions.\n\n**2. Identity prefill happens server-side, then passed to the client as plain props.**\n`page.tsx` (a server component) checks the session, calls `getIdentity()`, and passes the relevant fields (name, email, address, birthday) as props into the client component that renders the Fillout trigger button. The client component builds the parameter map Fillout expects (`data-fillout-inherit-parameters` reads from the URL, so parameters are appended to the page's own URL or passed via the embed component's parameter prop, whichever `@fillout/react` supports) \u2014 this keeps the OAuth access token itself off the client.\n\n**3. `getIdentity()` and `src/app/lib/hackclub.ts` are kept, not deleted.**\nThe proposal's impact section flagged this as conditional. Confirmed: `getIdentity` currently has exactly one caller (`/api/submit/route.ts`, being deleted), but the new design adds a new caller (`/submit/page.tsx`, for prefill data) \u2014 so the helper survives, just with its call site moved.\n\n**4. `/api/submit/route.ts` is deleted outright, not stubbed or redirected.**\nNo other code references it (confirmed via grep \u2014 only self-references within the file). `AIRTABLE_BASE_ID`, `AIRTABLE_TABLE_NAME`, `AIRTABLE_PAT` become unused by this app; flag for removal from deployment env config in a separate, non-code step (out of scope for this change \u2014 a human should confirm nothing else reads them before removing them from the hosting platform).\n\n**5. Login gating: redirect, not conditional render.**\n`/submit/page.tsx` redirects unauthenticated visitors to `/api/auth/login` (mirroring the existing OAuth flow) rather than rendering an unprefilled button. Matches today's implicit requirement (the old route hard-401'd without a session) and avoids a confusing partially-functional state.\n\n## Risks / Trade-offs\n\n- **Fillout's popup/slider component API is unverified from here** \u2192 Mitigation: implementer checks `@fillout/react`'s current docs before wiring the embed; this design doesn't hardcode a prop name.\n- **Losing server-side visibility into submissions** (this app no longer sees who submitted or when) \u2192 Accepted trade-off per explicit user direction; Airtable via Fillout remains the system of record.\n- **Prefill parameter names must match Fillout's configured field mapping exactly**, and that mapping lives outside this repo \u2192 Mitigation: implementer coordinates with whoever owns the Fillout form to confirm parameter names before wiring them up; mismatched names silently fail to prefill rather than erroring.\n- **Removing env vars from deployment config is a manual, out-of-band step** \u2192 Mitigation: called out explicitly in tasks so it isn't silently forgotten, but not automated here since this repo doesn't manage deployment config.\n\n## Migration Plan\n\n1. Add `@fillout/react` dependency.\n2. Rewrite `SubmitForm.tsx` to render the trigger button + Fillout embed, accepting identity props.\n3. Update `/submit/page.tsx` to fetch identity server-side and redirect unauthenticated visitors.\n4. Delete `/api/submit/route.ts`.\n5. Manually verify end-to-end in dev: log in, land on `/submit`, click button, confirm Fillout form opens with prefilled fields.\n6. Coordinate with whoever manages hosting env vars to remove `AIRTABLE_*` if confirmed unused elsewhere.\n\nNo rollback complexity beyond standard git revert \u2014 no data migration involved since Fillout/Airtable state is independent of this app's deploy.\n\n## Open Questions\n\n- Exact `@fillout/react` component and prop names for popup/slider embed + parameter passing.\n- Exact Fillout field parameter names for identity prefill (owned by whoever configured the Fillout form).\n",
+      "summary": "`/submit` currently renders `SubmitForm.tsx`, a client-side `<form>` that POSTs `FormData` to `/api/submit/route.ts`. Th.",
+      "file_hash": "5a072dbf"
+    },
+    {
+      "id": "openspec/changes/replace-submit-form-with-fillout/proposal.md",
+      "kind": "file",
+      "path": "openspec/changes/replace-submit-form-with-fillout/proposal.md",
+      "ext": ".md",
+      "size": 2544,
+      "keywords": [],
+      "content": "## Why\n\nThe custom submission form (`SubmitForm.tsx` + `/api/submit/route.ts`) duplicates validation, file upload, and Airtable-write logic that Fillout already handles natively. Hack Club's own Fillout form (`g5DGvPB1GPus` on `forms.hackclub.com`) can own the entire submission end-to-end \u2014 validation, screenshot upload, and the Airtable write \u2014 eliminating a maintenance surface and a code path that touches Airtable credentials directly.\n\n## What Changes\n\n- Replace `SubmitForm.tsx`'s inline HTML form with a \"Submit Project\" button that opens the Fillout form in a popup/slider overlay (via `@fillout/react`), rather than embedding Fillout inline/always-visible.\n- Prefill the Fillout form with Hack Club OAuth identity (name, email, address, birthday) by passing them as inherited URL parameters when opening the embed.\n- **BREAKING**: Remove `/api/submit/route.ts` entirely \u2014 Fillout submits directly to Airtable, so this app no longer receives or processes submission data.\n- **BREAKING**: Remove the custom form fields (screenshot, code URL, playable URL, description, GitHub username, hours spent, prize) from this app's UI \u2014 those now live in the Fillout form itself, configured on Fillout's side (out of scope for this change).\n- Gate the `/submit` page/button behind an active OAuth session, since prefill data depends on it \u2014 unauthenticated visitors are redirected to login rather than seeing an unprefilled button.\n- Add `@fillout/react` as a new dependency.\n\n## Capabilities\n\n### New Capabilities\n- `project-submission`: Covers how a logged-in user submits their hackathon project \u2014 the click-to-open Fillout embed, identity prefill, and login gating. Replaces the previous (unspecced) custom-form behavior.\n\n### Modified Capabilities\n(none \u2014 no existing specs exist for the prior custom-form behavior)\n\n## Impact\n\n- **Removed**: `src/app/api/submit/route.ts` (and its Airtable POST/attachment-upload logic).\n- **Modified**: `src/app/submit/SubmitForm.tsx` (rewritten to render a trigger button + Fillout embed instead of a native `<form>`), `src/app/submit/page.tsx` (adds session check/redirect).\n- **Possibly modified**: `src/app/lib/hackclub.ts` (`getIdentity`) \u2014 retained only if still used elsewhere (e.g. dashboard); otherwise its only caller disappears with the deleted route.\n- **New dependency**: `@fillout/react`.\n- **Env vars no longer read by this route**: `AIRTABLE_BASE_ID`, `AIRTABLE_TABLE_NAME`, `AIRTABLE_PAT` (may still be needed elsewhere \u2014 verify before removing from deployment config).\n",
+      "summary": "The custom submission form (`SubmitForm.tsx` + `/api/submit/route.ts`) duplicates validation, file upload, and Airtable-.",
+      "file_hash": "1234eae8"
+    },
+    {
+      "id": "openspec/changes/replace-submit-form-with-fillout/specs/project-submission/spec.md",
+      "kind": "file",
+      "path": "openspec/changes/replace-submit-form-with-fillout/specs/project-submission/spec.md",
+      "ext": ".md",
+      "size": 2144,
+      "keywords": [],
+      "content": "## ADDED Requirements\n\n### Requirement: Login-gated access to the submit page\nThe `/submit` page SHALL require an active Hack Club OAuth session to be viewed. Visitors without a valid session SHALL be redirected to the login flow instead of seeing the submission button.\n\n#### Scenario: Authenticated visitor\n- **WHEN** a user with a valid session cookie navigates to `/submit`\n- **THEN** the page renders the \"Submit Project\" button\n\n#### Scenario: Unauthenticated visitor\n- **WHEN** a user without a valid session cookie navigates to `/submit`\n- **THEN** the user is redirected to the OAuth login flow instead of seeing the submission button\n\n### Requirement: Click-to-open Fillout embed\nThe `/submit` page SHALL display a \"Submit Project\" button that opens the Fillout form (`g5DGvPB1GPus` on `forms.hackclub.com`) in a popup or slider overlay when clicked, rather than embedding the form inline and always-visible.\n\n#### Scenario: Opening the embed\n- **WHEN** an authenticated user clicks the \"Submit Project\" button\n- **THEN** the Fillout form opens in a popup/slider overlay on top of the current page\n\n### Requirement: Identity prefill\nWhen opening the Fillout embed, the system SHALL pass the authenticated user's Hack Club identity (name, email, address, birthday) as prefill parameters, sourced from the existing OAuth session server-side.\n\n#### Scenario: Prefilled fields\n- **WHEN** an authenticated user opens the Fillout embed\n- **THEN** the Fillout form's corresponding fields are pre-populated with the user's name, email, address, and birthday from their Hack Club identity\n\n### Requirement: No server-side submission handling\nThe system SHALL NOT receive, process, or store submission data (screenshot, code URL, playable URL, description, GitHub username, hours spent, prize) on this application's backend. Fillout SHALL handle validation, file upload, and the Airtable write directly.\n\n#### Scenario: Submission bypasses this app's backend\n- **WHEN** a user completes and submits the Fillout form\n- **THEN** the submission data is sent directly from Fillout to Airtable, without passing through any route in this application\n",
+      "summary": "ADDED Requirements.",
+      "file_hash": "5b43e7a7"
+    },
+    {
       "id": "openspec/changes/add-onboarding-wizard/.openspec.yaml",
       "kind": "file",
       "path": "openspec/changes/add-onboarding-wizard/.openspec.yaml",
@@ -259,32 +314,65 @@
       "file_hash": "5c495ce8"
     },
     {
+      "id": "src/proxy.ts",
+      "kind": "file",
+      "path": "src/proxy.ts",
+      "ext": ".ts",
+      "size": 1123,
+      "keywords": [
+        "proxy",
+        "config",
+        "auth",
+        "api"
+      ],
+      "content": "import { NextRequest, NextResponse } from \"next/server\"\nimport { decryptSession } from \"@/app/lib/session\"\n// request.url is the server's internal (localhost) address on this host \u2014\n// build absolute redirects from forwarded headers instead\nimport { getRequestOrigin } from \"@/app/lib/origin\"\n\nconst protectedRoutes = [\"/dashboard\", \"/submit\"]\n\nexport async function proxy(request: NextRequest) {\n  const path = request.nextUrl.pathname\n  const isProtectedRoute = protectedRoutes.some((route) => path.startsWith(route))\n\n  if (!isProtectedRoute) {\n    return NextResponse.next()\n  }\n\n  const session = await decryptSession(request.cookies.get(\"session\")?.value)\n\n  if (!session) {\n    return NextResponse.redirect(new URL(\"/\", getRequestOrigin(request)))\n  }\n\n  const meRes = await fetch(\"https://auth.hackclub.com/api/v1/me\", {\n    headers: { Authorization: `Bearer ${session.access_token}` },\n  })\n\n  if (!meRes.ok) {\n    return NextResponse.redirect(new URL(\"/\", getRequestOrigin(request)))\n  }\n\n  return NextResponse.next()\n}\n\nexport const config = {\n  matcher: [\"/((?!api|_next/static|_next/image|.*\\\\.png$).*)\"],\n}\n",
+      "summary": "import { NextRequest, NextResponse } from \"next/server\". Contains 1 function: proxy.",
+      "file_hash": "1a5657aa"
+    },
+    {
+      "id": "src/proxy.ts::proxy",
+      "kind": "symbol",
+      "path": "src/proxy.ts",
+      "ext": ".ts",
+      "size": 24,
+      "keywords": [
+        "proxy"
+      ],
+      "symbol_type": "use_case",
+      "name": "proxy",
+      "line_start": 8,
+      "line_end": 31,
+      "body_hash": "80e96c13",
+      "confidence": "high",
+      "exported": true
+    },
+    {
       "id": "src/app/page.tsx",
       "kind": "file",
       "path": "src/app/page.tsx",
       "ext": ".tsx",
-      "size": 6397,
+      "size": 6776,
       "keywords": [
         "home"
       ],
-      "content": "import Image from \"next/image\";\nimport Link from \"next/link\";\nimport styles from \"./page.module.css\";\nimport Gravity, { MatterBody } from \"@/components/fancy/physics/gravity\";\nimport OnboardingWizard from \"@/components/OnboardingWizard\";\n\nconst ASSETS = \"\";\n\nexport default function Home() {\n  return (\n    <div className={styles.page}>\n      \n      <header className={styles.hero}>\n        <p className={styles.presents}>lola &amp; seba at hack club hq present...</p>\n\n        <Image\n          className={styles.titleImage}\n          src={`${ASSETS}/hackachu.png`}\n          alt=\"hackachu\"\n          width={923}\n          height={230}\n          priority\n        />\n\n        <div className={styles.heroDialog}>\n          <span className={styles.heroDialogText}>\n            build a card game, gamble with pokemon cards.\n          </span>\n        </div>\n        <Image\n          className={styles.trainer}\n          src={`${ASSETS}/trainer.png`}\n          alt=\"pokemon trainer seen from behind\"\n          width={327}\n          height={361}\n          priority\n        />\n\n        <OnboardingWizard isButtonBigger={true} />\n        <Image\n          className={styles.pokeball}\n          src={`${ASSETS}/pokeball.gif`}\n          alt=\"spinning pokeball\"\n          width={1024}\n          height={1024}\n          unoptimized\n        />\n      </header>\n\n      <main className={styles.main}>\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={styles.gbBox}>\n            a card game?\n            <br />\n            what does\n            <br />\n            that mean?\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n\n        <section className={`${styles.row} ${styles.rowLeft}`}>\n          <Image\n            className={styles.flyingPika}\n            src={`${ASSETS}/flying_pika.png`}\n            alt=\"pikachu floating with balloons\"\n            width={244}\n            height={285}\n          />\n          <div className={styles.gbBox}>\n            any game that\n            <br />\n            involves\n            <br />\n            playing with\n            <br />\n            cards!\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n        </section>\n\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={styles.gbBox}>\n            and i get\n            <br />\n            POKEMON\n            <br />\n            CARDS?? for\n            <br />\n            FREE?????\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n\n        <section className={`${styles.row} ${styles.rowLeft}`}>\n          <Image\n            className={styles.flyingPika}\n            src={`${ASSETS}/flying_pika.png`}\n            alt=\"pikachu floating with balloons\"\n            width={244}\n            height={285}\n          />\n          <div className={styles.gbBox}>\n            yep.{\" \"}\n            <a\n              className={styles.link}\n              href=\"https://hackclub.com\"\n              target=\"_blank\"\n              rel=\"noopener noreferrer\"\n            >\n              hack club.\n            </a>\n            <br />\n            the longer you code,\n            <br />\n            the more chances you\n            <br />\n            get.\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n        </section>\n\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={`${styles.gbBox} ${styles.tallBox}`}>\n            chances????\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n\n        <section className={`${styles.row} ${styles.rowLeft}`}>\n          <Image\n            className={styles.flyingPika}\n            src={`${ASSETS}/flying_pika.png`}\n            alt=\"pikachu floating with balloons\"\n            width={244}\n            height={285}\n          />\n          <div className={styles.gbBox}>\n            oh yeah. you&apos;ll\n            <br />\n            always get cards,\n            <br />\n            but the cards you\n            <br />\n            get are up to the\n            <br />\n            fates...\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n        </section>\n\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={`${styles.gbBox} ${styles.cryBox}`}>\n            <Image\n              className={styles.cryImg}\n              src={`${ASSETS}/crying_emojis.png`}\n              alt=\"two crying emojis\"\n              width={153}\n              height={82}\n            />\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n      </main>\n\n      <footer className={styles.footer}>\n        <p className={styles.footerText}>\n          start now. #hackachu on slack.\n          <br />\n          releases thursday, july 9th.\n          <br />\n          <a\n            className={styles.link}\n            href=\"https://auth.hackclub.com/join/hackachu\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n          >\n            join now.\n          </a>\n          <br />\n          <Link className={styles.link} href=\"/dashboard\">\n            trainer dashboard.\n          </Link>\n        </p>\n        <Image\n          className={styles.footerPika}\n          src={`/pika_with_cup.png`}\n          alt=\"pikachu floating with balloons\"\n          width={244}\n          height={285}\n        />\n      </footer>\n\n      <OnboardingWizard />\n\n    </div>\n  );\n}\n\n",
+      "content": "import Image from \"next/image\";\nimport Link from \"next/link\";\nimport styles from \"./page.module.css\";\nimport Gravity, { MatterBody } from \"@/components/fancy/physics/gravity\";\nimport OnboardingWizard from \"@/components/OnboardingWizard\";\nimport { AUTH_STRING } from \"@/lib/utils\";\n\nconst ASSETS = \"\";\n\nexport default function Home() {\n  return (\n    <div className={styles.page}>\n      \n      <header className={styles.hero}>\n        <p className={styles.presents}>lola &amp; seba at hack club hq present...</p>\n\n        <Image\n          className={styles.titleImage}\n          src={`${ASSETS}/hackachu.png`}\n          alt=\"hackachu\"\n          width={923}\n          height={230}\n          priority\n        />\n\n        <div className={styles.heroDialog}>\n          <span className={styles.heroDialogText}>\n            build a card game, gamble with pokemon cards.\n          </span>\n        </div>\n        <Image\n          className={styles.trainer}\n          src={`${ASSETS}/trainer.png`}\n          alt=\"pokemon trainer seen from behind\"\n          width={327}\n          height={361}\n          priority\n        />\n\n        <OnboardingWizard isButtonBigger={true} />\n        <Image\n          className={styles.pokeball}\n          src={`${ASSETS}/pokeball.gif`}\n          alt=\"spinning pokeball\"\n          width={1024}\n          height={1024}\n          unoptimized\n        />\n      </header>\n\n      <main className={styles.main}>\n        <section className={`${styles.row} ${styles.rowRight} ${styles.rowPullIn}`}>\n          <div className={styles.gbBox}>\n            a card game?\n            <br />\n            what does\n            <br />\n            that mean?\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n\n        <section className={`${styles.row} ${styles.rowLeft}`}>\n          <Image\n            className={styles.flyingPika}\n            src={`${ASSETS}/flying_pika.png`}\n            alt=\"pikachu floating with balloons\"\n            width={244}\n            height={285}\n          />\n          <div className={styles.gbBox}>\n            any game that\n            <br />\n            involves\n            <br />\n            playing with\n            <br />\n            cards!\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n        </section>\n\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={styles.gbBox}>\n            and i get\n            <br />\n            POKEMON\n            <br />\n            CARDS?? for\n            <br />\n            FREE?????\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n\n        <section className={`${styles.row} ${styles.rowCenter}`}>\n          <Image\n            className={styles.prizes}\n            src={`${ASSETS}/prizes.png`}\n            alt=\"prizes! pokemon booster packs, decks and plushies\"\n            width={481}\n            height={297}\n          />\n          <Image\n            className={styles.flyingPika}\n            src={`${ASSETS}/flying_pika.png`}\n            alt=\"pikachu floating with balloons\"\n            width={244}\n            height={285}\n          />\n          <div className={styles.gbBox}>\n            yep.{\" \"}\n            <a\n              className={styles.link}\n              href=\"https://hackclub.com\"\n              target=\"_blank\"\n              rel=\"noopener noreferrer\"\n            >\n              hack club.\n            </a>\n            <br />\n            the longer you code,\n            <br />\n            the more chances you\n            <br />\n            get.\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n        </section>\n\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={`${styles.gbBox} ${styles.tallBox}`}>\n            chances????\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n\n        <section className={`${styles.row} ${styles.rowLeft} ${styles.rowIndent}`}>\n          <Image\n            className={`${styles.flyingPika} ${styles.pikaDrop}`}\n            src={`${ASSETS}/flying_pika.png`}\n            alt=\"pikachu floating with balloons\"\n            width={244}\n            height={285}\n          />\n          <div className={`${styles.gbBox} ${styles.tiltLeft}`}>\n            oh yeah. you&apos;ll\n            <br />\n            always get cards,\n            <br />\n            but the cards you\n            <br />\n            get are up to the\n            <br />\n            fates...\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n        </section>\n\n        <section className={`${styles.row} ${styles.rowRight}`}>\n          <div className={`${styles.gbBox} ${styles.cryBox} ${styles.tiltRight}`}>\n            <Image\n              className={styles.cryImg}\n              src={`${ASSETS}/crying_emojis.png`}\n              alt=\"two crying emojis\"\n              width={153}\n              height={82}\n            />\n            <span className={styles.arrow}>&#9660;</span>\n          </div>\n          <Image\n            className={styles.magicPika}\n            src={`${ASSETS}/magic_pika.png`}\n            alt=\"pikachu wearing a party hat\"\n            width={198}\n            height={228}\n          />\n        </section>\n      </main>\n\n      <footer className={styles.footer}>\n        <p className={styles.footerText}>\n          start now. #hackachu on slack.\n          <br />\n          releases thursday, july 9th.\n          <br />\n          <a\n            className={styles.link}\n            href={AUTH_STRING}\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n          >\n            join the slack...\n          </a>\n          <br />\n          <Link className={styles.link} href=\"/dashboard\">\n            and start here.\n          </Link>\n        </p>\n        <Image\n          className={styles.footerPika}\n          src={`/pika_with_cup.png`}\n          alt=\"pikachu floating with balloons\"\n          width={244}\n          height={285}\n        />\n      </footer>\n\n      <OnboardingWizard isButtonBigger={false} />\n\n    </div>\n  );\n}\n\n",
       "summary": "import Image from \"next/image\";. Contains 1 function: Home.",
-      "file_hash": "77b750e1"
+      "file_hash": "d8f060c7"
     },
     {
       "id": "src/app/page.tsx::Home",
       "kind": "symbol",
       "path": "src/app/page.tsx",
       "ext": ".tsx",
-      "size": 218,
+      "size": 225,
       "keywords": [
         "home"
       ],
       "symbol_type": "use_case",
       "name": "Home",
-      "line_start": 8,
-      "line_end": 225,
-      "body_hash": "a3b1fd56",
+      "line_start": 9,
+      "line_end": 233,
+      "body_hash": "f1d26276",
       "confidence": "medium",
       "exported": true
     },
@@ -293,23 +381,23 @@
       "kind": "file",
       "path": "src/app/layout.tsx",
       "ext": ".tsx",
-      "size": 1006,
+      "size": 1443,
       "keywords": [
         "metadata",
         "rootlayout",
         "root",
         "layout"
       ],
-      "content": "import type { Metadata } from \"next\";\nimport localFont from \"next/font/local\";\nimport \"./globals.css\";\nimport { Geist, Bitter, IBM_Plex_Mono } from \"next/font/google\";\nimport { cn } from \"@/lib/utils\";\n\nconst geist = Geist({subsets:['latin'],variable:'--font-sans'});\n\nconst pokemonGb = localFont({\n  src: \"../../public/PokemonGb-RAeo.ttf\",\n  variable: \"--font-gb\",\n});\n\nconst bitter = Bitter({\n  subsets: [\"latin\"],\n  weight: [\"700\", \"900\"],\n  variable: \"--font-slab\",\n});\n\nconst plexMono = IBM_Plex_Mono({\n  subsets: [\"latin\"],\n  weight: [\"400\", \"500\", \"600\", \"700\"],\n  variable: \"--font-mono\",\n});\n\nexport const metadata: Metadata = {\n  title: \"hackachu\",\n  description: \"build a card game, gamble with pokemon cards.\",\n};\n\nexport default function RootLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return (\n    <html lang=\"en\" className={cn(\"font-sans\", geist.variable, pokemonGb.variable, bitter.variable, plexMono.variable)}>\n      <body>{children}</body>\n    </html>\n  );\n}\n",
+      "content": "import type { Metadata } from \"next\";\nimport localFont from \"next/font/local\";\nimport \"./globals.css\";\nimport { Geist, Bitter, IBM_Plex_Mono } from \"next/font/google\";\nimport { cn } from \"@/lib/utils\";\nimport Script from \"next/script\";\n\nconst geist = Geist({subsets:['latin'],variable:'--font-sans'});\n\nconst pokemonGb = localFont({\n  src: \"../../public/PokemonGb-RAeo.ttf\",\n  variable: \"--font-gb\",\n});\n\nconst bitter = Bitter({\n  subsets: [\"latin\"],\n  weight: [\"700\", \"900\"],\n  variable: \"--font-slab\",\n});\n\nconst plexMono = IBM_Plex_Mono({\n  subsets: [\"latin\"],\n  weight: [\"400\", \"500\", \"600\", \"700\"],\n  variable: \"--font-mono\",\n});\n\nexport const metadata: Metadata = {\n  title: \"hackachu\",\n  description: \"build a card game, gamble with pokemon cards.\",\n};\n\nexport default function RootLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return (\n    <html lang=\"en\" className={cn(\"font-sans\", geist.variable, pokemonGb.variable, bitter.variable, plexMono.variable)}>\n      <Script\n        async\n        src=\"https://plausible.io/js/pa-o2dvlSmqC19Ct88HeQWXU.js\"\n        strategy=\"afterInteractive\"\n      />\n      <Script id=\"plausible-init\" strategy=\"afterInteractive\">\n        {`window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};\nplausible.init()`}\n      </Script>\n      <body>{children}</body>\n    </html>\n  );\n}\n",
       "summary": "import type { Metadata } from \"next\";. Contains 1 function: RootLayout.",
-      "file_hash": "7a4fb0f8"
+      "file_hash": "e7749407"
     },
     {
       "id": "src/app/layout.tsx::RootLayout",
       "kind": "symbol",
       "path": "src/app/layout.tsx",
       "ext": ".tsx",
-      "size": 11,
+      "size": 20,
       "keywords": [
         "rootlayout",
         "root",
@@ -317,11 +405,99 @@
       ],
       "symbol_type": "use_case",
       "name": "RootLayout",
-      "line_start": 30,
-      "line_end": 40,
-      "body_hash": "87ffa23f",
+      "line_start": 31,
+      "line_end": 50,
+      "body_hash": "c3f96e8b",
       "confidence": "medium",
       "exported": true
+    },
+    {
+      "id": "src/app/submit/page.tsx",
+      "kind": "file",
+      "path": "src/app/submit/page.tsx",
+      "ext": ".tsx",
+      "size": 1132,
+      "keywords": [
+        "submitpage",
+        "submit",
+        "page"
+      ],
+      "content": "import { redirect } from \"next/navigation\"\nimport { cookies } from \"next/headers\"\nimport { decryptSession } from \"@/app/lib/session\"\nimport { getIdentity } from \"@/app/lib/hackclub\"\nimport SubmitForm from \"./SubmitForm\"\n\nexport default async function SubmitPage() {\n  const cookieStore = await cookies()\n  const session = await decryptSession(cookieStore.get(\"session\")?.value)\n\n  if (!session) {\n    redirect(\"/api/auth/login\")\n  }\n\n  const identity = await getIdentity(session.access_token)\n  const address = identity?.addresses?.find((a) => a.primary) ?? identity?.addresses?.[0]\n\n  return (\n    <main className=\"mx-auto max-w-xl p-8\">\n      <h1 className=\"mb-6 text-2xl font-semibold\">Submit your project</h1>\n      <SubmitForm\n        firstName={identity?.first_name}\n        lastName={identity?.last_name}\n        email={identity?.primary_email}\n        birthday={identity?.birthday}\n        addressLine1={address?.line_1}\n        addressLine2={address?.line_2}\n        city={address?.city}\n        state={address?.state}\n        postalCode={address?.postal_code}\n        country={address?.country}\n      />\n    </main>\n  )\n}\n",
+      "summary": "import { redirect } from \"next/navigation\". Contains 1 function: SubmitPage.",
+      "file_hash": "eb69d4ed"
+    },
+    {
+      "id": "src/app/submit/page.tsx::SubmitPage",
+      "kind": "symbol",
+      "path": "src/app/submit/page.tsx",
+      "ext": ".tsx",
+      "size": 29,
+      "keywords": [
+        "submitpage",
+        "submit",
+        "page"
+      ],
+      "symbol_type": "use_case",
+      "name": "SubmitPage",
+      "line_start": 6,
+      "line_end": 34,
+      "body_hash": "bde7e1ee",
+      "confidence": "medium",
+      "exported": true
+    },
+    {
+      "id": "src/app/submit/SubmitForm.tsx",
+      "kind": "file",
+      "path": "src/app/submit/SubmitForm.tsx",
+      "ext": ".tsx",
+      "size": 891,
+      "keywords": [
+        "submitform",
+        "submit",
+        "form"
+      ],
+      "content": "\"use client\"\n\nimport { FilloutSliderEmbedButton } from \"@fillout/react\"\n\ntype SubmitFormProps = {\n  firstName?: string\n  lastName?: string\n  email?: string\n  birthday?: string\n  addressLine1?: string\n  addressLine2?: string\n  city?: string\n  state?: string\n  postalCode?: string\n  country?: string\n}\n\nexport default function SubmitForm(props: SubmitFormProps) {\n  // Parameter names must match the field mapping configured in the Fillout\n  // form builder (form g5DGvPB1GPus) \u2014 confirm with whoever owns that config.\n  const parameters = Object.fromEntries(\n    Object.entries(props).filter(([, value]) => value !== undefined)\n  ) as Record<string, string>\n\n  return (\n    <FilloutSliderEmbedButton\n      filloutId=\"g5DGvPB1GPus\"\n      domain=\"forms.hackclub.com\"\n      inheritParameters\n      parameters={parameters}\n      sliderDirection=\"right\"\n      text=\"Submit Project\"\n    />\n  )\n}\n",
+      "summary": "\"use client\". Contains 1 function: SubmitForm.",
+      "file_hash": "55e5e39d"
+    },
+    {
+      "id": "src/app/submit/SubmitForm.tsx::SubmitForm",
+      "kind": "symbol",
+      "path": "src/app/submit/SubmitForm.tsx",
+      "ext": ".tsx",
+      "size": 18,
+      "keywords": [
+        "submitform",
+        "submit",
+        "form"
+      ],
+      "symbol_type": "use_case",
+      "name": "SubmitForm",
+      "line_start": 17,
+      "line_end": 34,
+      "body_hash": "0496f8b5",
+      "confidence": "medium",
+      "exported": true
+    },
+    {
+      "id": "src/app/submit/SubmitForm.tsx::SubmitFormProps",
+      "kind": "symbol",
+      "path": "src/app/submit/SubmitForm.tsx",
+      "ext": ".tsx",
+      "size": 12,
+      "keywords": [
+        "submitformprops",
+        "submit",
+        "form",
+        "props"
+      ],
+      "symbol_type": "model",
+      "name": "SubmitFormProps",
+      "line_start": 4,
+      "line_end": 15,
+      "body_hash": "d34f72b9",
+      "confidence": "high",
+      "exported": false
     },
     {
       "id": "src/app/dashboard/page.tsx",
@@ -359,6 +535,299 @@
       "exported": true
     },
     {
+      "id": "src/app/lib/session.ts",
+      "kind": "file",
+      "path": "src/app/lib/session.ts",
+      "ext": ".ts",
+      "size": 673,
+      "keywords": [
+        "encryptsession",
+        "encrypt",
+        "session",
+        "decryptsession",
+        "decrypt"
+      ],
+      "content": "import \"server-only\"\nimport { EncryptJWT, jwtDecrypt } from \"jose\"\n\nconst encodedKey = Buffer.from(process.env.SESSION_SECRET!, \"hex\")\n\ntype SessionPayload = {\n  access_token: string\n  refresh_token?: string\n  expires_at: number\n}\n\nexport async function encryptSession(payload: SessionPayload) {\n  return new EncryptJWT(payload)\n    .setProtectedHeader({ alg: \"dir\", enc: \"A256GCM\" })\n    .setIssuedAt()\n    .setExpirationTime(\"7d\")\n    .encrypt(encodedKey)\n}\n\nexport async function decryptSession(session: string | undefined = \"\") {\n  try {\n    const { payload } = await jwtDecrypt<SessionPayload>(session, encodedKey)\n    return payload\n  } catch {\n    return null\n  }\n}\n",
+      "summary": "import \"server-only\". Contains 2 functions/classes: encryptSession, decryptSession.",
+      "file_hash": "827b4980"
+    },
+    {
+      "id": "src/app/lib/session.ts::encryptSession",
+      "kind": "symbol",
+      "path": "src/app/lib/session.ts",
+      "ext": ".ts",
+      "size": 7,
+      "keywords": [
+        "encryptsession",
+        "encrypt",
+        "session"
+      ],
+      "symbol_type": "use_case",
+      "name": "encryptSession",
+      "line_start": 11,
+      "line_end": 17,
+      "body_hash": "2791fa4c",
+      "confidence": "high",
+      "exported": true
+    },
+    {
+      "id": "src/app/lib/session.ts::decryptSession",
+      "kind": "symbol",
+      "path": "src/app/lib/session.ts",
+      "ext": ".ts",
+      "size": 8,
+      "keywords": [
+        "decryptsession",
+        "decrypt",
+        "session"
+      ],
+      "symbol_type": "use_case",
+      "name": "decryptSession",
+      "line_start": 19,
+      "line_end": 26,
+      "body_hash": "29a98158",
+      "confidence": "high",
+      "exported": true
+    },
+    {
+      "id": "src/app/lib/session.ts::SessionPayload",
+      "kind": "symbol",
+      "path": "src/app/lib/session.ts",
+      "ext": ".ts",
+      "size": 5,
+      "keywords": [
+        "sessionpayload",
+        "session",
+        "payload"
+      ],
+      "symbol_type": "model",
+      "name": "SessionPayload",
+      "line_start": 5,
+      "line_end": 9,
+      "body_hash": "e91d18bb",
+      "confidence": "high",
+      "exported": false
+    },
+    {
+      "id": "src/app/lib/origin.ts",
+      "kind": "file",
+      "path": "src/app/lib/origin.ts",
+      "ext": ".ts",
+      "size": 678,
+      "keywords": [
+        "getrequestorigin",
+        "get",
+        "request",
+        "origin",
+        "getredirecturi",
+        "redirect",
+        "uri"
+      ],
+      "content": "import { NextRequest } from \"next/server\"\n\n// Derive the site origin from the incoming request instead of an env var,\n// so the OAuth redirect always targets the domain the user is actually on.\nexport function getRequestOrigin(request: NextRequest): string {\n  const host =\n    request.headers.get(\"x-forwarded-host\") ??\n    request.headers.get(\"host\") ??\n    \"localhost:3000\"\n  const proto =\n    request.headers.get(\"x-forwarded-proto\") ??\n    (host.startsWith(\"localhost\") || host.startsWith(\"127.\") ? \"http\" : \"https\")\n  return `${proto}://${host}`\n}\n\nexport function getRedirectUri(request: NextRequest): string {\n  return `${getRequestOrigin(request)}/api/auth/callback`\n}\n",
+      "summary": "import { NextRequest } from \"next/server\". Contains 2 functions/classes: getRequestOrigin, getRedirectUri.",
+      "file_hash": "ea274b4f"
+    },
+    {
+      "id": "src/app/lib/origin.ts::getRequestOrigin",
+      "kind": "symbol",
+      "path": "src/app/lib/origin.ts",
+      "ext": ".ts",
+      "size": 10,
+      "keywords": [
+        "getrequestorigin",
+        "get",
+        "request",
+        "origin"
+      ],
+      "symbol_type": "use_case",
+      "name": "getRequestOrigin",
+      "line_start": 4,
+      "line_end": 13,
+      "body_hash": "91fdbab8",
+      "confidence": "high",
+      "exported": true
+    },
+    {
+      "id": "src/app/lib/origin.ts::getRedirectUri",
+      "kind": "symbol",
+      "path": "src/app/lib/origin.ts",
+      "ext": ".ts",
+      "size": 3,
+      "keywords": [
+        "getredirecturi",
+        "get",
+        "redirect",
+        "uri"
+      ],
+      "symbol_type": "use_case",
+      "name": "getRedirectUri",
+      "line_start": 15,
+      "line_end": 17,
+      "body_hash": "6736672d",
+      "confidence": "high",
+      "exported": true
+    },
+    {
+      "id": "src/app/lib/hackclub.ts",
+      "kind": "file",
+      "path": "src/app/lib/hackclub.ts",
+      "ext": ".ts",
+      "size": 650,
+      "keywords": [
+        "getidentity",
+        "get",
+        "identity",
+        "auth",
+        "api"
+      ],
+      "content": "import \"server-only\"\n\ntype Address = {\n  line_1?: string\n  line_2?: string\n  city?: string\n  state?: string\n  postal_code?: string\n  country?: string\n  primary?: boolean\n}\n\ntype Identity = {\n  id: string\n  first_name?: string\n  last_name?: string\n  primary_email?: string\n  birthday?: string\n  slack_id?: string\n  addresses?: Address[]\n}\n\nexport async function getIdentity(accessToken: string): Promise<Identity | null> {\n  const res = await fetch(\"https://auth.hackclub.com/api/v1/me\", {\n    headers: { Authorization: `Bearer ${accessToken}` },\n  })\n\n  if (!res.ok) {\n    return null\n  }\n\n  const { identity } = await res.json()\n  return identity\n}\n",
+      "summary": "import \"server-only\". Contains 1 function: getIdentity.",
+      "file_hash": "7be32e80"
+    },
+    {
+      "id": "src/app/lib/hackclub.ts::getIdentity",
+      "kind": "symbol",
+      "path": "src/app/lib/hackclub.ts",
+      "ext": ".ts",
+      "size": 12,
+      "keywords": [
+        "getidentity",
+        "get",
+        "identity"
+      ],
+      "symbol_type": "use_case",
+      "name": "getIdentity",
+      "line_start": 22,
+      "line_end": 33,
+      "body_hash": "cba7d97e",
+      "confidence": "high",
+      "exported": true
+    },
+    {
+      "id": "src/app/lib/hackclub.ts::Address",
+      "kind": "symbol",
+      "path": "src/app/lib/hackclub.ts",
+      "ext": ".ts",
+      "size": 9,
+      "keywords": [
+        "address"
+      ],
+      "symbol_type": "model",
+      "name": "Address",
+      "line_start": 2,
+      "line_end": 10,
+      "body_hash": "b030c162",
+      "confidence": "high",
+      "exported": false
+    },
+    {
+      "id": "src/app/lib/hackclub.ts::Identity",
+      "kind": "symbol",
+      "path": "src/app/lib/hackclub.ts",
+      "ext": ".ts",
+      "size": 9,
+      "keywords": [
+        "identity"
+      ],
+      "symbol_type": "model",
+      "name": "Identity",
+      "line_start": 12,
+      "line_end": 20,
+      "body_hash": "544e5e35",
+      "confidence": "high",
+      "exported": false
+    },
+    {
+      "id": "src/app/api/auth/callback/route.ts",
+      "kind": "file",
+      "path": "src/app/api/auth/callback/route.ts",
+      "ext": ".ts",
+      "size": 1751,
+      "keywords": [
+        "get"
+      ],
+      "content": "import { NextRequest, NextResponse } from \"next/server\"\nimport { cookies } from \"next/headers\"\nimport { encryptSession } from \"@/app/lib/session\"\n// derived from forwarded headers, same as the authorize step \u2014 request.url is the\n// server's internal (localhost) address on this host, so never redirect relative to it\nimport { getRedirectUri, getRequestOrigin } from \"@/app/lib/origin\"\n\nconst BASE_URL = \"https://auth.hackclub.com\"\n\nexport async function GET(request: NextRequest) {\n  const code = request.nextUrl.searchParams.get(\"code\")\n\n  if (!code) {\n    return NextResponse.redirect(new URL(\"/?error=missing_code\", getRequestOrigin(request)))\n  }\n\n  const tokenRes = await fetch(`${BASE_URL}/oauth/token`, {\n    method: \"POST\",\n    headers: { \"Content-Type\": \"application/json\" },\n    body: JSON.stringify({\n      code,\n      client_id: process.env.HACKCLUB_CLIENT_ID,\n      client_secret: process.env.HACKCLUB_SECRET_ID,\n      redirect_uri: getRedirectUri(request),\n      grant_type: \"authorization_code\",\n    }),\n  })\n\n  if (!tokenRes.ok) {\n    const body = await tokenRes.text()\n    console.error(\"Hack Club token exchange failed\", tokenRes.status, body)\n    return NextResponse.redirect(new URL(\"/?error=token_exchange_failed\", getRequestOrigin(request)))\n  }\n\n  const { access_token, refresh_token, expires_in } = await tokenRes.json()\n\n  const session = await encryptSession({\n    access_token,\n    refresh_token,\n    expires_at: Date.now() + expires_in * 1000,\n  })\n\n  const cookieStore = await cookies()\n  cookieStore.set(\"session\", session, {\n    httpOnly: true,\n    secure: true,\n    sameSite: \"lax\",\n    path: \"/\",\n    maxAge: 60 * 60 * 24 * 7,\n  })\n\n  return NextResponse.redirect(new URL(\"/dashboard\", getRequestOrigin(request)))\n}\n",
+      "summary": "import { NextRequest, NextResponse } from \"next/server\". Contains 1 function: GET.",
+      "file_hash": "6fb60f9e"
+    },
+    {
+      "id": "src/app/api/auth/callback/route.ts::GET",
+      "kind": "symbol",
+      "path": "src/app/api/auth/callback/route.ts",
+      "ext": ".ts",
+      "size": 44,
+      "keywords": [
+        "get"
+      ],
+      "symbol_type": "api_route",
+      "name": "GET",
+      "line_start": 9,
+      "line_end": 52,
+      "body_hash": "0b65a426",
+      "confidence": "high",
+      "exported": true
+    },
+    {
+      "id": "src/app/api/auth/login/route.ts",
+      "kind": "file",
+      "path": "src/app/api/auth/login/route.ts",
+      "ext": ".ts",
+      "size": 473,
+      "keywords": [
+        "get"
+      ],
+      "content": "import { NextRequest, NextResponse } from \"next/server\"\nimport { getRedirectUri } from \"@/app/lib/origin\"\n\nexport function GET(request: NextRequest) {\n  const params = new URLSearchParams({\n    client_id: process.env.HACKCLUB_CLIENT_ID!,\n    redirect_uri: getRedirectUri(request),\n    response_type: \"code\",\n    scope: \"name email birthdate address verification_status\",\n  })\n\n  return NextResponse.redirect(\n    `https://auth.hackclub.com/oauth/authorize?${params}`\n  )\n}\n",
+      "summary": "import { NextRequest, NextResponse } from \"next/server\". Contains 1 function: GET.",
+      "file_hash": "99de95b2"
+    },
+    {
+      "id": "src/app/api/auth/login/route.ts::GET",
+      "kind": "symbol",
+      "path": "src/app/api/auth/login/route.ts",
+      "ext": ".ts",
+      "size": 12,
+      "keywords": [
+        "get"
+      ],
+      "symbol_type": "api_route",
+      "name": "GET",
+      "line_start": 3,
+      "line_end": 14,
+      "body_hash": "4c372355",
+      "confidence": "high",
+      "exported": true
+    },
+    {
+      "id": "src/app/api/home/route.ts",
+      "kind": "file",
+      "path": "src/app/api/home/route.ts",
+      "ext": ".ts",
+      "size": 104,
+      "keywords": [
+        "get"
+      ],
+      "content": "\n\n\n\n\n\nexport async function GET(request: Request) {\n    return Response.json({message: \"hello world\"})\n}",
+      "summary": "Handles home route. Contains 1 function: GET.",
+      "file_hash": "08d1dd3a"
+    },
+    {
+      "id": "src/app/api/home/route.ts::GET",
+      "kind": "symbol",
+      "path": "src/app/api/home/route.ts",
+      "ext": ".ts",
+      "size": 3,
+      "keywords": [
+        "get"
+      ],
+      "symbol_type": "api_route",
+      "name": "GET",
+      "line_start": 6,
+      "line_end": 8,
+      "body_hash": "f753cfeb",
+      "confidence": "high",
+      "exported": true
+    },
+    {
       "id": "src/components/Pokeball.tsx",
       "kind": "file",
       "path": "src/components/Pokeball.tsx",
@@ -393,22 +862,24 @@
       "kind": "file",
       "path": "src/components/TrainerDashboard.tsx",
       "ext": ".tsx",
-      "size": 9637,
+      "size": 11665,
       "keywords": [
         "trainerdashboard",
         "trainer",
-        "dashboard"
+        "dashboard",
+        "api",
+        "submit"
       ],
-      "content": "\"use client\";\n\nimport { Fragment, useEffect, useRef, useState } from \"react\";\nimport styles from \"./TrainerDashboard.module.css\";\nimport Image from \"next/image\";\nimport Gravity, { MatterBody } from \"./fancy/physics/gravity\";\nconst TIPS = [\n  \"join #hackachu!\",\n  \"pikapika\",\n  \"hack club loves you\",\n  \"your prizes are waiting....\",\n  \"lock in\"\n];\n\nconst PROJECT_TYPES = [\"Game\", \"Web\", \"CLI\", \"Hardware\", \"Other\"];\nconst PIKAS = [\"flying_pika.png\", \"magic_pika.png\", \"pika_with_cup.png\"]\nconst PRIZES = [\n  {\n    name: \"5 decks\",\n    hours: \"+5 hours\",\n    img: \"/prizes/decks.png\",\n    tilt: \"tiltA\",\n  },\n  {\n    name: \"awesome plushies\",\n    hours: \"+10 hours\",\n    img: \"/prizes/plushie.png\",\n    tilt: \"tiltB\",\n  },\n  {\n    name: \"watch or booster pack\",\n    hours: \"+30 hours\",\n    img: \"/prizes/booster.png\",\n    tilt: \"tiltC\",\n  },\n] as const;\n\nexport default function TrainerDashboard() {\n  const [trainerName, setTrainerName] = useState(\"\");\n  const [tipIndex, setTipIndex] = useState(0);\n  const [tipVisible, setTipVisible] = useState(true);\n  const [panelOpen, setPanelOpen] = useState(false);\n  const [shipped, setShipped] = useState(false);\n  const [projName, setProjName] = useState(\"\");\n  const [projLink, setProjLink] = useState(\"\");\n  const [projDesc, setProjDesc] = useState(\"\");\n  const [activeTags, setActiveTags] = useState<string[]>([]);\n  const panelRef = useRef<HTMLDivElement>(null);\n\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setTipVisible(false);\n      setTimeout(() => {\n        setTipIndex((i) => (i + 1) % TIPS.length);\n        setTipVisible(true);\n      }, 250);\n    }, 5000);\n    return () => clearInterval(interval);\n  }, []);\n\n  const togglePanel = () => {\n    const opening = !panelOpen;\n    setPanelOpen(opening);\n    if (opening) {\n      panelRef.current?.scrollIntoView({ behavior: \"smooth\", block: \"center\" });\n    }\n  };\n\n  const toggleTag = (tag: string) => {\n    setActiveTags((tags) =>\n      tags.includes(tag) ? tags.filter((t) => t !== tag) : [...tags, tag]\n    );\n  };\n\n  const resetForm = () => {\n    setShipped(false);\n    setProjName(\"\");\n    setProjLink(\"\");\n    setProjDesc(\"\");\n    setActiveTags([]);\n  };\n\n  return (\n    <div className={styles.page}>\n      <Gravity className={styles.gravityLayer}>\n        {PIKAS.map((pika, i) => {\n          return (\n        <MatterBody\n          x=\"20%\"\n          y=\"5%\"\n          matterBodyOptions={{\n            friction: 0.5,\n            restitution: 0.7,\n            density: 0.001,\n            isStatic: false,\n          }}\n          key={i}\n        >\n          <Image\n            src={`/${pika}`}\n            alt=\"pikachu\"\n            width={150}\n            height={175}\n          />\n        </MatterBody>\n          )\n})}\n        \n      </Gravity>\n      <div className={styles.wrap}>\n        <div className={styles.nav}>\n          <div className={styles.brand}>\n            \n            <div className={styles.brandText}>\n              <span className={styles.brandEyebrow}>Hack Club \u00b7 YSWS</span>\n              <Image\n              src=\"/hackachu.png\"\n              alt=\"Hackachu logo\"\n              width={200}\n              height={48}\n              className={styles.brandLogo}\n              />\n            </div>\n          </div>\n       \n        </div>\n\n        \n\n        <div className={styles.dex}>\n          \n        \n            <div className={styles.scanlines} />\n            <div className={styles.screenGlow} />\n            <div className={styles.greet}>\n              WELCOME TRAINER,\n              <br />\n              <input\n                className={styles.nameField}\n                placeholder=\"YOU\"\n                maxLength={14}\n                aria-label=\"Enter your trainer name\"\n                value={trainerName}\n                onChange={(e) => setTrainerName(e.target.value)}\n                style={\n                  trainerName\n                    ? { width: `${Math.max(3, trainerName.length + 1)}ch` }\n                    : undefined\n                }\n              />\n              .\n            </div>\n            <div\n              className={styles.tip}\n              style={{ opacity: tipVisible ? 1 : 0 }}\n            >\n              {TIPS[tipIndex]}\n            </div>\n            <a\n              className={styles.hackatimeLink}\n              href=\"https://hackatime.hackclub.com\"\n              target=\"_blank\"\n              rel=\"noopener\"\n            >\n              &gt; connect your hackatime\n            </a>\n\n            <div className={styles.statGrid}>\n              <div className={styles.stat}>\n                <div className={styles.statNum}>0</div>\n                <div className={styles.statLabel}>Projects Shipped</div>\n              </div>\n              <div className={styles.stat}>\n                <div className={styles.statNum}>0h</div>\n                <div className={styles.statLabel}>Hours Logged</div>\n              </div>\n              <div className={styles.stat}>\n                <div className={styles.statNum}>I</div>\n                <div className={styles.statLabel}>Trainer Rank</div>\n              </div>\n              \n            </div>\n          \n        </div>\n\n        <div className={styles.ctaRow}>\n          <button className={styles.cta} onClick={togglePanel}>\n            &gt; SUBMIT YOUR PROJECT\n          </button>\n        </div>\n\n        <div\n          ref={panelRef}\n          className={`${styles.panel} ${panelOpen ? styles.panelOpen : \"\"}`}\n        >\n          <div className={styles.panelInner}>\n            {!shipped ? (\n              <div>\n                <h3 className={styles.panelTitle}>Log your catch</h3>\n                <p className={styles.panelSub}>\n                  Tell us what you built. You can edit this after you ship.\n                </p>\n                <div className={styles.field}>\n                  <label htmlFor=\"projName\">Project name</label>\n                  <input\n                    id=\"projName\"\n                    type=\"text\"\n                    placeholder=\"e.g. Pixel Battle Sim\"\n                    value={projName}\n                    onChange={(e) => setProjName(e.target.value)}\n                  />\n                </div>\n                <div className={styles.field}>\n                  <label htmlFor=\"projLink\">Repo or demo link</label>\n                  <input\n                    id=\"projLink\"\n                    type=\"text\"\n                    placeholder=\"https://github.com/you/project\"\n                    value={projLink}\n                    onChange={(e) => setProjLink(e.target.value)}\n                  />\n                </div>\n                <div className={styles.field}>\n                  <label htmlFor=\"projDesc\">One-line description</label>\n                  <textarea\n                    id=\"projDesc\"\n                    placeholder=\"What does it do?\"\n                    value={projDesc}\n                    onChange={(e) => setProjDesc(e.target.value)}\n                  />\n                </div>\n                <div className={styles.field}>\n                  <label>Project type</label>\n                  <div className={styles.tagRow}>\n                    {PROJECT_TYPES.map((tag) => (\n                      <button\n                        key={tag}\n                        type=\"button\"\n                        className={`${styles.tag} ${\n                          activeTags.includes(tag) ? styles.tagActive : \"\"\n                        }`}\n                        onClick={() => toggleTag(tag)}\n                      >\n                        {tag}\n                      </button>\n                    ))}\n                  </div>\n                </div>\n                <button\n                  className={styles.shipBtn}\n                  onClick={() => setShipped(true)}\n                >\n                  SHIP IT &rarr;\n                </button>\n              </div>\n            ) : (\n              <div className={styles.success}>\n                <div className={styles.successMark}>&#10003;</div>\n                <h4>PROJECT SHIPPED!</h4>\n                <p>\n                  It&apos;s in the tall grass, awaiting review. We&apos;ll be\n                  in touch soon.\n                </p>\n                <button className={styles.resetBtn} onClick={resetForm}>\n                  Submit another\n                </button>\n              </div>\n            )}\n          </div>\n        </div>\n\n        <div className={styles.prizes}>\n          <h2 className={styles.prizesTitle}>\n            prizes<span className={styles.bang}>!!</span>\n          </h2>\n          <div className={styles.prizeRow}>\n            {PRIZES.map((prize, i) => (\n              <Fragment key={prize.name}>\n                {i > 0 && <div className={styles.prizeArrow}>\u2b95</div>}\n                <div className={styles.prize}>\n                  {/* eslint-disable-next-line @next/next/no-img-element */}\n                  <img\n                    className={`${styles.prizeImg} ${styles[prize.tilt]}`}\n                    src={prize.img}\n                    alt={prize.name}\n                  />\n                  <div className={styles.prizeCaption}>\n                    {prize.name}\n                    <span className={styles.bang}>!</span>\n                  </div>\n                  <div className={styles.prizeHours}>{prize.hours}</div>\n                </div>\n              </Fragment>\n            ))}\n          </div>\n          <div className={styles.prizeTotals}>(total hours: 5, 15, 40)</div>\n        </div>\n\n        <footer className={styles.footer}>\n          hackachu \u00b7 Hack Club YSWS \u00b7 gotta ship &apos;em all\n        </footer>\n      </div>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { Fragment, useEffect, useRef, useState } from \"react\";\nimport styles from \"./TrainerDashboard.module.css\";\nimport Image from \"next/image\";\nimport Gravity, { MatterBody } from \"./fancy/physics/gravity\";\nconst TIPS = [\n  \"join #hackachu!\",\n  \"pikapika\",\n  \"hack club loves you\",\n  \"your prizes are waiting....\",\n  \"lock in\"\n];\n\nconst PIKAS = [\"flying_pika.png\", \"magic_pika.png\", \"pika_with_cup.png\"]\nconst PRIZES = [\n  {\n    name: \"5 decks\",\n    hours: \"+5 hours\",\n    img: \"/prizes/decks.png\",\n    tilt: \"tiltA\",\n  },\n  {\n    name: \"awesome plushies\",\n    hours: \"+10 hours\",\n    img: \"/prizes/plushie.png\",\n    tilt: \"tiltB\",\n  },\n  {\n    name: \"watch or booster pack\",\n    hours: \"+30 hours\",\n    img: \"/prizes/booster.png\",\n    tilt: \"tiltC\",\n  },\n] as const;\n\nexport default function TrainerDashboard() {\n  const [trainerName, setTrainerName] = useState(\"\");\n  const [tipIndex, setTipIndex] = useState(0);\n  const [tipVisible, setTipVisible] = useState(true);\n  const [panelOpen, setPanelOpen] = useState(false);\n  const [shipped, setShipped] = useState(false);\n  const [submitting, setSubmitting] = useState(false);\n  const [submitError, setSubmitError] = useState<string | null>(null);\n  const [codeUrl, setCodeUrl] = useState(\"\");\n  const [playableUrl, setPlayableUrl] = useState(\"\");\n  const [description, setDescription] = useState(\"\");\n  const [githubUsername, setGithubUsername] = useState(\"\");\n  const [hoursSpent, setHoursSpent] = useState(\"\");\n  const [prize, setPrize] = useState(\"\");\n  const [screenshot, setScreenshot] = useState<File | null>(null);\n  const panelRef = useRef<HTMLDivElement>(null);\n\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setTipVisible(false);\n      setTimeout(() => {\n        setTipIndex((i) => (i + 1) % TIPS.length);\n        setTipVisible(true);\n      }, 250);\n    }, 5000);\n    return () => clearInterval(interval);\n  }, []);\n\n  const togglePanel = () => {\n    const opening = !panelOpen;\n    setPanelOpen(opening);\n    if (opening) {\n      panelRef.current?.scrollIntoView({ behavior: \"smooth\", block: \"center\" });\n    }\n  };\n\n  const resetForm = () => {\n    setShipped(false);\n    setSubmitError(null);\n    setCodeUrl(\"\");\n    setPlayableUrl(\"\");\n    setDescription(\"\");\n    setGithubUsername(\"\");\n    setHoursSpent(\"\");\n    setPrize(\"\");\n    setScreenshot(null);\n  };\n\n  const shipProject = async () => {\n    setSubmitting(true);\n    setSubmitError(null);\n\n    const formData = new FormData();\n    formData.set(\"codeUrl\", codeUrl);\n    formData.set(\"playableUrl\", playableUrl);\n    formData.set(\"description\", description);\n    formData.set(\"githubUsername\", githubUsername);\n    formData.set(\"hoursSpent\", hoursSpent);\n    formData.set(\"prize\", prize);\n    if (screenshot) {\n      formData.set(\"screenshot\", screenshot);\n    }\n\n    const res = await fetch(\"/api/submit\", {\n      method: \"POST\",\n      body: formData,\n    });\n\n    setSubmitting(false);\n\n    if (res.ok) {\n      setShipped(true);\n    } else {\n      setSubmitError(\"Something went wrong. Please try again.\");\n    }\n  };\n\n  return (\n    <div className={styles.page}>\n      <Gravity className={styles.gravityLayer}>\n        {PIKAS.map((pika, i) => {\n          return (\n        <MatterBody\n          x=\"20%\"\n          y=\"5%\"\n          matterBodyOptions={{\n            friction: 0.5,\n            restitution: 0.7,\n            density: 0.001,\n            isStatic: false,\n          }}\n          key={i}\n        >\n          <Image\n            src={`/${pika}`}\n            alt=\"pikachu\"\n            width={150}\n            height={175}\n          />\n        </MatterBody>\n          )\n})}\n\n      </Gravity>\n      <div className={styles.wrap}>\n        <div className={styles.nav}>\n          <div className={styles.brand}>\n\n            <div className={styles.brandText}>\n              <span className={styles.brandEyebrow}>Hack Club \u00b7 YSWS</span>\n              <Image\n              src=\"/hackachu.png\"\n              alt=\"Hackachu logo\"\n              width={200}\n              height={48}\n              className={styles.brandLogo}\n              />\n            </div>\n          </div>\n\n        </div>\n\n\n\n        <div className={styles.dex}>\n\n\n            <div className={styles.scanlines} />\n            <div className={styles.screenGlow} />\n            <div className={styles.greet}>\n              WELCOME TRAINER,\n              <br />\n              <input\n                className={styles.nameField}\n                placeholder=\"YOU\"\n                maxLength={14}\n                aria-label=\"Enter your trainer name\"\n                value={trainerName}\n                onChange={(e) => setTrainerName(e.target.value)}\n                style={\n                  trainerName\n                    ? { width: `${Math.max(3, trainerName.length + 1)}ch` }\n                    : undefined\n                }\n              />\n              .\n            </div>\n            <div\n              className={styles.tip}\n              style={{ opacity: tipVisible ? 1 : 0 }}\n            >\n              {TIPS[tipIndex]}\n            </div>\n            {/* <a\n              className={styles.hackatimeLink}\n              href=\"https://hackatime.hackclub.com\"\n              target=\"_blank\"\n              rel=\"noopener\"\n            >\n              &gt; connect your hackatime\n            </a> */}\n\n            {/* <div className={styles.statGrid}>\n              <div className={styles.stat}>\n                <div className={styles.statNum}>0</div>\n                <div className={styles.statLabel}>Projects Shipped</div>\n              </div>\n              <div className={styles.stat}>\n                <div className={styles.statNum}>0h</div>\n                <div className={styles.statLabel}>Hours Logged</div>\n              </div>\n              <div className={styles.stat}>\n                <div className={styles.statNum}>I</div>\n                <div className={styles.statLabel}>Trainer Rank</div>\n              </div>\n\n            </div> */}\n\n        </div>\n\n        <div className={styles.ctaRow}>\n          <button className={styles.cta} onClick={togglePanel}>\n            &gt; SUBMIT YOUR PROJECT\n          </button>\n        </div>\n\n        <div\n          ref={panelRef}\n          className={`${styles.panel} ${panelOpen ? styles.panelOpen : \"\"}`}\n        >\n          <div className={styles.panelInner}>\n            {!shipped ? (\n              <div>\n                <h3 className={styles.panelTitle}>Log your catch</h3>\n                <p className={styles.panelSub}>\n                  Tell us what you built. Your name, email, birthday, and\n                  address are pulled from your Hack Club account automatically.\n                </p>\n                <div className={styles.field}>\n                  <label htmlFor=\"codeUrl\">Code URL</label>\n                  <input\n                    id=\"codeUrl\"\n                    type=\"url\"\n                    placeholder=\"https://github.com/you/project\"\n                    value={codeUrl}\n                    onChange={(e) => setCodeUrl(e.target.value)}\n                  />\n                </div>\n                <div className={styles.field}>\n                  <label htmlFor=\"playableUrl\">Playable URL</label>\n                  <input\n                    id=\"playableUrl\"\n                    type=\"url\"\n                    placeholder=\"https://your-project.com\"\n                    value={playableUrl}\n                    onChange={(e) => setPlayableUrl(e.target.value)}\n                  />\n                </div>\n                <div className={styles.field}>\n                  <label htmlFor=\"description\">Description</label>\n                  <textarea\n                    id=\"description\"\n                    placeholder=\"What does it do?\"\n                    value={description}\n                    onChange={(e) => setDescription(e.target.value)}\n                  />\n                </div>\n                <div className={styles.field}>\n                  <label htmlFor=\"githubUsername\">GitHub username</label>\n                  <input\n                    id=\"githubUsername\"\n                    type=\"text\"\n                    placeholder=\"yourusername\"\n                    value={githubUsername}\n                    onChange={(e) => setGithubUsername(e.target.value)}\n                  />\n                </div>\n                <div className={styles.field}>\n                  <label htmlFor=\"hoursSpent\">Hours spent</label>\n                  <input\n                    id=\"hoursSpent\"\n                    type=\"number\"\n                    min={0}\n                    step=\"0.5\"\n                    placeholder=\"0\"\n                    value={hoursSpent}\n                    onChange={(e) => setHoursSpent(e.target.value)}\n                  />\n                </div>\n                <div className={styles.field}>\n                  <label htmlFor=\"prize\">Prize you want</label>\n                  <input\n                    id=\"prize\"\n                    type=\"text\"\n                    placeholder=\"e.g. surging sparks booster pack, sick watch...\"\n                    value={prize}\n                    onChange={(e) => setPrize(e.target.value)}\n                  />\n                </div>\n                <div className={styles.field}>\n                  <label htmlFor=\"screenshot\">Screenshot</label>\n                  <input\n                    id=\"screenshot\"\n                    type=\"file\"\n                    accept=\"image/*\"\n                    onChange={(e) => setScreenshot(e.target.files?.[0] ?? null)}\n                  />\n                </div>\n                {submitError && <p>{submitError}</p>}\n                <button\n                  className={styles.shipBtn}\n                  onClick={shipProject}\n                  disabled={submitting}\n                >\n                  {submitting ? \"Shipping...\" : \"SHIP IT \u2192\"}\n                </button>\n              </div>\n            ) : (\n              <div className={styles.success}>\n                <div className={styles.successMark}>&#10003;</div>\n                <h4>PROJECT SHIPPED!</h4>\n                <p>\n                  It&apos;s in the tall grass, awaiting review. We&apos;ll be\n                  in touch soon.\n                </p>\n                <button className={styles.resetBtn} onClick={resetForm}>\n                  Submit another\n                </button>\n              </div>\n            )}\n          </div>\n        </div>\n\n        <div className={styles.prizes}>\n          <h2 className={styles.prizesTitle}>\n            prizes<span className={styles.bang}>!!</span>\n          </h2>\n          <div className={styles.prizeRow}>\n            {PRIZES.map((prize, i) => (\n              <Fragment key={prize.name}>\n                {i > 0 && <div className={styles.prizeArrow}>\u2b95</div>}\n                <div className={styles.prize}>\n                  {/* eslint-disable-next-line @next/next/no-img-element */}\n                  <img\n                    className={`${styles.prizeImg} ${styles[prize.tilt]}`}\n                    src={prize.img}\n                    alt={prize.name}\n                  />\n                  <div className={styles.prizeCaption}>\n                    {prize.name}\n                    <span className={styles.bang}>!</span>\n                  </div>\n                  <div className={styles.prizeHours}>{prize.hours}</div>\n                </div>\n              </Fragment>\n            ))}\n          </div>\n          <div className={styles.prizeTotals}>(total hours: 5, 15, 40)</div>\n        </div>\n\n        <footer className={styles.footer}>\n          hackachu \u00b7 Hack Club YSWS \u00b7 gotta ship &apos;em all\n        </footer>\n      </div>\n    </div>\n  );\n}\n",
       "summary": "\"use client\";. Contains 1 function: TrainerDashboard.",
-      "file_hash": "9a7776e0"
+      "file_hash": "f79a5f85"
     },
     {
       "id": "src/components/TrainerDashboard.tsx::TrainerDashboard",
       "kind": "symbol",
       "path": "src/components/TrainerDashboard.tsx",
       "ext": ".tsx",
-      "size": 268,
+      "size": 327,
       "keywords": [
         "trainerdashboard",
         "trainer",
@@ -416,9 +887,9 @@
       ],
       "symbol_type": "use_case",
       "name": "TrainerDashboard",
-      "line_start": 37,
-      "line_end": 304,
-      "body_hash": "94d87c7e",
+      "line_start": 36,
+      "line_end": 362,
+      "body_hash": "bf878889",
       "confidence": "medium",
       "exported": true
     },
@@ -427,15 +898,15 @@
       "kind": "file",
       "path": "src/components/OnboardingWizard.tsx",
       "ext": ".tsx",
-      "size": 9997,
+      "size": 10009,
       "keywords": [
         "onboardingwizard",
         "onboarding",
         "wizard"
       ],
-      "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\nimport Image from \"next/image\";\nimport Link from \"next/link\";\nimport styles from \"./OnboardingWizard.module.css\";\n\nconst SCREENS = [\"welcome\", \"loot\", \"rules\", \"start\"] as const;\ntype ScreenId = (typeof SCREENS)[number];\n\nconst SCREEN_LABELS: Record<ScreenId, string> = {\n  welcome: \"welcome\",\n  loot: \"the loot\",\n  rules: \"trainer rules\",\n  start: \"ready to start\",\n};\n\nconst JOIN_URL = \"https://auth.hackclub.com/join/hackachu\";\n\nconst LOOT_TIERS = [\n  {\n    tag: \"LVL 1\",\n    hours: \"5 HOURS\",\n    desc: \"Complete your first prototype and secure your deck foundations.\",\n    reward: \"4X BOOSTER PACKS\",\n    img: \"/prizes/decks.png\",\n  },\n  {\n    tag: \"LVL 2\",\n    hours: \"15 HOURS\",\n    desc: \"Show true dedication to your RPG or card mechanics.\",\n    reward: \"PLUSHIE OR MERCH\",\n    img: \"/prizes/plushie.png\",\n  },\n  {\n    tag: \"BOSS\",\n    hours: \"40 HOURS\",\n    desc: \"The ultimate grind. Legendary status achieved.\",\n    reward: \"BOOSTER BOX OR SICK WATCH\",\n    img: \"/prizes/booster.png\",\n  },\n] as const;\n\nconst QUESTS = [\n  {\n    title: \"QUEST 01: THE CREATOR\",\n    desc: \"Build a Card Game or RPG (any theme!). Let your imagination run wild in the tall grass.\",\n    exp: 85,\n  },\n  {\n    title: \"QUEST 02: AI SYNERGY\",\n    desc: \"AI is allowed, but keep it honest (no slop!). Use the machine, don't let it use you.\",\n    exp: 40,\n  },\n  {\n    title: \"QUEST 03: PURE CREATIVITY\",\n    desc: \"Projects must be creative. We want to see your unique spark. No two trainers are the same.\",\n    exp: 65,\n  },\n] as const;\n\nconst BOOSTER_PACKS = [\n  { name: \"Trick or Trade\", desc: \"Halloween Special Edition\" },\n  { name: \"Silver Tempest\", desc: \"Alolan Vulpix Art\" },\n  { name: \"Surging Sparks\", desc: \"Electric Type Focus\" },\n] as const;\n\ntype WizardProps = {\n  isButtonBigger: boolean;\n}\n\nexport default function OnboardingWizard(props: WizardProps) {\n  const [step, setStep] = useState<number | null>(null);\n  const [menuOpen, setMenuOpen] = useState(false);\n\n  const isOpen = step !== null;\n  const isLast = step === SCREENS.length - 1;\n\n  const open = () => {\n    setStep(0);\n    setMenuOpen(false);\n  };\n\n  const close = () => {\n    setStep(null);\n    setMenuOpen(false);\n  };\n\n  const goNext = () => {\n    setStep((s) => (s === null || s >= SCREENS.length - 1 ? s : s + 1));\n  };\n\n  const goBack = () => {\n    setStep((s) => {\n      if (s === null) return s;\n      if (s === 0) return null;\n      return s - 1;\n    });\n  };\n\n  const jumpTo = (index: number) => {\n    setStep(index);\n    setMenuOpen(false);\n  };\n\n  useEffect(() => {\n    if (!isOpen) return;\n\n    const handleKeyDown = (e: KeyboardEvent) => {\n      if (e.altKey && e.key.toLowerCase() === \"s\") {\n        e.preventDefault();\n        jumpTo(SCREENS.length - 1);\n        return;\n      }\n      if (e.key.toLowerCase() === \"a\") {\n        e.preventDefault();\n        goNext();\n      } else if (e.key.toLowerCase() === \"b\") {\n        e.preventDefault();\n        goBack();\n      }\n    };\n\n    window.addEventListener(\"keydown\", handleKeyDown);\n    return () => window.removeEventListener(\"keydown\", handleKeyDown);\n  }, [isOpen]);\n\n  return (\n    <div className={styles.launcher}>\n      <button type=\"button\" className={props.isButtonBigger ? `${styles.triggerButton} ${styles.btnLarger}` : styles.triggerButton} onClick={open}>\n        start adventure\n      </button>\n      <Link href=\"/dashboard\" className={styles.loginLink}>\n        already a trainer? login.\n      </Link>\n\n      {isOpen && (\n        <div className={styles.overlay} role=\"dialog\" aria-modal=\"true\">\n          <div className={styles.frame}>\n            <div className={styles.topBar}>\n              <span className={styles.topBarLogo}>HACKACHU</span>\n              <button\n                type=\"button\"\n                className={styles.closeButton}\n                onClick={close}\n                aria-label=\"close\"\n              >\n                &times;\n              </button>\n            </div>\n\n            <div className={styles.screenArea}>\n              {step === 0 && <WelcomeScreen key=\"welcome\" />}\n              {step === 1 && <LootScreen key=\"loot\" />}\n              {step === 2 && <RulesScreen key=\"rules\" />}\n              {step === 3 && <StartScreen key=\"start\" onStart={close} />}\n            </div>\n\n            <div className={styles.bottomBar}>\n              <button\n                type=\"button\"\n                className={styles.navButton}\n                onClick={goBack}\n              >\n                &larr; back [b]\n              </button>\n\n              <div className={styles.menuWrap}>\n                <button\n                  type=\"button\"\n                  className={styles.menuButton}\n                  onClick={() => setMenuOpen((v) => !v)}\n                  aria-haspopup=\"true\"\n                  aria-expanded={menuOpen}\n                >\n                  menu\n                </button>\n                {menuOpen && (\n                  <ul className={styles.menuList}>\n                    {SCREENS.map((id, i) => (\n                      <li key={id}>\n                        <button\n                          type=\"button\"\n                          className={styles.menuItem}\n                          onClick={() => jumpTo(i)}\n                          aria-current={step === i}\n                        >\n                          {SCREEN_LABELS[id]}\n                        </button>\n                      </li>\n                    ))}\n                  </ul>\n                )}\n              </div>\n\n              {!isLast ? (\n                <button\n                  type=\"button\"\n                  className={styles.navButtonPrimary}\n                  onClick={goNext}\n                >\n                  next [a] &rarr;\n                </button>\n              ) : (\n                <span className={styles.navSpacer} />\n              )}\n            </div>\n          </div>\n        </div>\n      )}\n    </div>\n  );\n}\n\nfunction WelcomeScreen() {\n  return (\n    <div className={styles.screen}>\n      <span className={styles.badge}>the legendary you-ship-we-ship</span>\n      <h2 className={styles.headline}>welcome to hackachu!</h2>\n\n      <div className={styles.welcomeArt}>\n        <Image\n          src=\"/trainer.png\"\n          alt=\"pokemon trainer seen from behind\"\n          width={200}\n          height={221}\n        />\n      </div>\n\n      <div className={styles.dialogueBox}>\n        <span className={styles.speakerTag}>prof. hacker</span>\n        <p className={styles.dialogueText}>\n          Welcome, Trainer! I&apos;m here to show you the rules of Hackachu, \n          the infamous Pokemon-themed YSWS. Ready to see what you can win?\n        </p>\n      </div>\n    </div>\n  );\n}\n\nfunction LootScreen() {\n  return (\n    <div className={`${styles.screen} ${styles.screenLoot}`}>\n      <h2 className={styles.headlineBanner}>the loot</h2>\n\n      <div className={styles.lootList}>\n        {LOOT_TIERS.map((tier) => (\n          <div className={styles.lootCard} key={tier.hours}>\n            <span className={styles.lootTag}>{tier.tag}</span>\n            <div className={styles.lootIcon}>\n              <Image src={tier.img} alt={tier.reward} width={72} height={72} />\n            </div>\n            <p className={styles.lootHours}>{tier.hours}</p>\n            <p className={styles.lootDesc}>{tier.desc}</p>\n            <p className={styles.lootReward}>\n              reward unlocked: <span>{tier.reward}</span>\n            </p>\n          </div>\n        ))}\n      </div>\n\n      <div className={styles.systemMessage}>\n        <strong>system message:</strong> the more you build, the better the\n        loot! prizes are cumulative \u2014 submit the same project across\n        milestones to stack rewards.\n      </div>\n    </div>\n  );\n}\n\nfunction RulesScreen() {\n  return (\n    <div className={styles.screen}>\n      <h2 className={styles.headlineBanner}>trainer rules</h2>\n\n      <div className={styles.questList}>\n        {QUESTS.map((quest) => (\n          <div className={styles.questCard} key={quest.title}>\n            <p className={styles.questTitle}>{quest.title}</p>\n            <p className={styles.questDesc}>{quest.desc}</p>\n            <div className={styles.expBar}>\n              <div\n                className={styles.expFill}\n                style={{ width: `${quest.exp}%` }}\n              />\n            </div>\n          </div>\n        ))}\n      </div>\n\n      <div className={styles.prizeSummary}>\n        <p>1st prize: 5h project = 4 booster packs.</p>\n        <p>2nd prize: 15h cumulative = plushie/merch.</p>\n        <p>3rd prize: 40h cumulative = booster box or sick watch.</p>\n      </div>\n    </div>\n  );\n}\n\nfunction StartScreen({ onStart }: { onStart: () => void }) {\n  return (\n    <div className={styles.screen}>\n      <h2 className={styles.headline}>ready to start?</h2>\n\n      <div className={styles.incomingMessage}>\n        <span className={styles.incomingTag}>incoming message</span>\n        <p>\n          Pick your path and start building. We can&apos;t wait to see what\n          you create, adventurer!\n        </p>\n      </div>\n\n      <a\n        href={JOIN_URL}\n        target=\"_blank\"\n        rel=\"noopener noreferrer\"\n        className={styles.startButton}\n        onClick={onStart}\n      >\n        start adventure\n      </a>\n\n      <div className={styles.boosterPreview}>\n        <div className={styles.boosterHeader}>\n          <span>booster packs</span>\n          <span className={styles.stockTag}>in stock</span>\n        </div>\n        <ul className={styles.boosterList}>\n          {BOOSTER_PACKS.map((pack) => (\n            <li key={pack.name} className={styles.boosterItem}>\n              <span className={styles.boosterName}>{pack.name}</span>\n              <span className={styles.boosterDesc}>{pack.desc}</span>\n            </li>\n          ))}\n        </ul>\n        <div className={styles.challengeTag}>\n          current challenge: build an rpg or card game in 15h+\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\nimport Image from \"next/image\";\nimport Link from \"next/link\";\nimport styles from \"./OnboardingWizard.module.css\";\nimport { AUTH_STRING } from \"@/lib/utils\";\nconst SCREENS = [\"welcome\", \"loot\", \"rules\", \"start\"] as const;\ntype ScreenId = (typeof SCREENS)[number];\n\nconst SCREEN_LABELS: Record<ScreenId, string> = {\n  welcome: \"welcome\",\n  loot: \"the loot\",\n  rules: \"trainer rules\",\n  start: \"ready to start\",\n};\n\nconst JOIN_URL = AUTH_STRING;\n\nconst LOOT_TIERS = [\n  {\n    tag: \"LVL 1\",\n    hours: \"5 HOURS\",\n    desc: \"Complete your first prototype and secure your deck foundations.\",\n    reward: \"4X BOOSTER PACKS\",\n    img: \"/prizes/decks.png\",\n  },\n  {\n    tag: \"LVL 2\",\n    hours: \"15 HOURS\",\n    desc: \"Show true dedication to your RPG or card mechanics.\",\n    reward: \"PLUSHIE OR MERCH\",\n    img: \"/prizes/plushie.png\",\n  },\n  {\n    tag: \"BOSS\",\n    hours: \"40 HOURS\",\n    desc: \"The ultimate grind. Legendary status achieved.\",\n    reward: \"BOOSTER BOX OR SICK WATCH\",\n    img: \"/prizes/booster.png\",\n  },\n] as const;\n\nconst QUESTS = [\n  {\n    title: \"QUEST 01: THE CREATOR\",\n    desc: \"Build a Card Game or RPG (any theme!). Let your imagination run wild in the tall grass.\",\n    exp: 85,\n  },\n  {\n    title: \"QUEST 02: AI SYNERGY\",\n    desc: \"AI is allowed, but keep it honest (no slop!). Use the machine, don't let it use you.\",\n    exp: 40,\n  },\n  {\n    title: \"QUEST 03: PURE CREATIVITY\",\n    desc: \"Projects must be creative. We want to see your unique spark. No two trainers are the same.\",\n    exp: 65,\n  },\n] as const;\n\nconst BOOSTER_PACKS = [\n  { name: \"Trick or Trade\", desc: \"Halloween Special Edition\" },\n  { name: \"Silver Tempest\", desc: \"Alolan Vulpix Art\" },\n  { name: \"Surging Sparks\", desc: \"Electric Type Focus\" },\n] as const;\n\ntype WizardProps = {\n  isButtonBigger: boolean;\n}\n\nexport default function OnboardingWizard(props: WizardProps) {\n  const [step, setStep] = useState<number | null>(null);\n  const [menuOpen, setMenuOpen] = useState(false);\n\n  const isOpen = step !== null;\n  const isLast = step === SCREENS.length - 1;\n\n  const open = () => {\n    setStep(0);\n    setMenuOpen(false);\n  };\n\n  const close = () => {\n    setStep(null);\n    setMenuOpen(false);\n  };\n\n  const goNext = () => {\n    setStep((s) => (s === null || s >= SCREENS.length - 1 ? s : s + 1));\n  };\n\n  const goBack = () => {\n    setStep((s) => {\n      if (s === null) return s;\n      if (s === 0) return null;\n      return s - 1;\n    });\n  };\n\n  const jumpTo = (index: number) => {\n    setStep(index);\n    setMenuOpen(false);\n  };\n\n  useEffect(() => {\n    if (!isOpen) return;\n\n    const handleKeyDown = (e: KeyboardEvent) => {\n      if (e.altKey && e.key.toLowerCase() === \"s\") {\n        e.preventDefault();\n        jumpTo(SCREENS.length - 1);\n        return;\n      }\n      if (e.key.toLowerCase() === \"a\") {\n        e.preventDefault();\n        goNext();\n      } else if (e.key.toLowerCase() === \"b\") {\n        e.preventDefault();\n        goBack();\n      }\n    };\n\n    window.addEventListener(\"keydown\", handleKeyDown);\n    return () => window.removeEventListener(\"keydown\", handleKeyDown);\n  }, [isOpen]);\n\n  return (\n    <div className={styles.launcher}>\n      <button type=\"button\" className={props.isButtonBigger ? `${styles.triggerButton} ${styles.btnLarger}` : styles.triggerButton} onClick={open}>\n        start adventure\n      </button>\n      <Link href=\"/dashboard\" className={styles.loginLink}>\n        already a trainer? login.\n      </Link>\n\n      {isOpen && (\n        <div className={styles.overlay} role=\"dialog\" aria-modal=\"true\">\n          <div className={styles.frame}>\n            <div className={styles.topBar}>\n              <span className={styles.topBarLogo}>HACKACHU</span>\n              <button\n                type=\"button\"\n                className={styles.closeButton}\n                onClick={close}\n                aria-label=\"close\"\n              >\n                &times;\n              </button>\n            </div>\n\n            <div className={styles.screenArea}>\n              {step === 0 && <WelcomeScreen key=\"welcome\" />}\n              {step === 1 && <LootScreen key=\"loot\" />}\n              {step === 2 && <RulesScreen key=\"rules\" />}\n              {step === 3 && <StartScreen key=\"start\" onStart={close} />}\n            </div>\n\n            <div className={styles.bottomBar}>\n              <button\n                type=\"button\"\n                className={styles.navButton}\n                onClick={goBack}\n              >\n                &larr; back [b]\n              </button>\n\n              <div className={styles.menuWrap}>\n                <button\n                  type=\"button\"\n                  className={styles.menuButton}\n                  onClick={() => setMenuOpen((v) => !v)}\n                  aria-haspopup=\"true\"\n                  aria-expanded={menuOpen}\n                >\n                  menu\n                </button>\n                {menuOpen && (\n                  <ul className={styles.menuList}>\n                    {SCREENS.map((id, i) => (\n                      <li key={id}>\n                        <button\n                          type=\"button\"\n                          className={styles.menuItem}\n                          onClick={() => jumpTo(i)}\n                          aria-current={step === i}\n                        >\n                          {SCREEN_LABELS[id]}\n                        </button>\n                      </li>\n                    ))}\n                  </ul>\n                )}\n              </div>\n\n              {!isLast ? (\n                <button\n                  type=\"button\"\n                  className={styles.navButtonPrimary}\n                  onClick={goNext}\n                >\n                  next [a] &rarr;\n                </button>\n              ) : (\n                <span className={styles.navSpacer} />\n              )}\n            </div>\n          </div>\n        </div>\n      )}\n    </div>\n  );\n}\n\nfunction WelcomeScreen() {\n  return (\n    <div className={styles.screen}>\n      <span className={styles.badge}>the legendary you-ship-we-ship</span>\n      <h2 className={styles.headline}>welcome to hackachu!</h2>\n\n      <div className={styles.welcomeArt}>\n        <Image\n          src=\"/trainer.png\"\n          alt=\"pokemon trainer seen from behind\"\n          width={200}\n          height={221}\n        />\n      </div>\n\n      <div className={styles.dialogueBox}>\n        <span className={styles.speakerTag}>prof. hacker</span>\n        <p className={styles.dialogueText}>\n          Welcome, Trainer! I&apos;m here to show you the rules of Hackachu, \n          the infamous Pokemon-themed YSWS. Ready to see what you can win?\n        </p>\n      </div>\n    </div>\n  );\n}\n\nfunction LootScreen() {\n  return (\n    <div className={`${styles.screen} ${styles.screenLoot}`}>\n      <h2 className={styles.headlineBanner}>the loot</h2>\n\n      <div className={styles.lootList}>\n        {LOOT_TIERS.map((tier) => (\n          <div className={styles.lootCard} key={tier.hours}>\n            <span className={styles.lootTag}>{tier.tag}</span>\n            <div className={styles.lootIcon}>\n              <Image src={tier.img} alt={tier.reward} width={72} height={72} />\n            </div>\n            <p className={styles.lootHours}>{tier.hours}</p>\n            <p className={styles.lootDesc}>{tier.desc}</p>\n            <p className={styles.lootReward}>\n              reward unlocked: <span>{tier.reward}</span>\n            </p>\n          </div>\n        ))}\n      </div>\n\n      <div className={styles.systemMessage}>\n        <strong>system message:</strong> the more you build, the better the\n        loot! prizes are cumulative \u2014 submit the same project across\n        milestones to stack rewards.\n      </div>\n    </div>\n  );\n}\n\nfunction RulesScreen() {\n  return (\n    <div className={styles.screen}>\n      <h2 className={styles.headlineBanner}>trainer rules</h2>\n\n      <div className={styles.questList}>\n        {QUESTS.map((quest) => (\n          <div className={styles.questCard} key={quest.title}>\n            <p className={styles.questTitle}>{quest.title}</p>\n            <p className={styles.questDesc}>{quest.desc}</p>\n            <div className={styles.expBar}>\n              <div\n                className={styles.expFill}\n                style={{ width: `${quest.exp}%` }}\n              />\n            </div>\n          </div>\n        ))}\n      </div>\n\n      <div className={styles.prizeSummary}>\n        <p>1st prize: 5h project = 4 booster packs.</p>\n        <p>2nd prize: 15h cumulative = plushie/merch.</p>\n        <p>3rd prize: 40h cumulative = booster box or sick watch.</p>\n      </div>\n    </div>\n  );\n}\n\nfunction StartScreen({ onStart }: { onStart: () => void }) {\n  return (\n    <div className={styles.screen}>\n      <h2 className={styles.headline}>ready to start?</h2>\n\n      <div className={styles.incomingMessage}>\n        <span className={styles.incomingTag}>incoming message</span>\n        <p>\n          Pick your path and start building. We can&apos;t wait to see what\n          you create, adventurer!\n        </p>\n      </div>\n\n      <a\n        href={JOIN_URL}\n        target=\"_blank\"\n        rel=\"noopener noreferrer\"\n        className={styles.startButton}\n        onClick={onStart}\n      >\n        start adventure\n      </a>\n\n      <div className={styles.boosterPreview}>\n        <div className={styles.boosterHeader}>\n          <span>booster packs</span>\n          <span className={styles.stockTag}>in stock</span>\n        </div>\n        <ul className={styles.boosterList}>\n          {BOOSTER_PACKS.map((pack) => (\n            <li key={pack.name} className={styles.boosterItem}>\n              <span className={styles.boosterName}>{pack.name}</span>\n              <span className={styles.boosterDesc}>{pack.desc}</span>\n            </li>\n          ))}\n        </ul>\n        <div className={styles.challengeTag}>\n          current challenge: build an rpg or card game in 15h+\n        </div>\n      </div>\n    </div>\n  );\n}\n",
       "summary": "\"use client\";. Contains 5 functions/classes: OnboardingWizard, WelcomeScreen, LootScreen, RulesScreen, ....",
-      "file_hash": "e5f4619d"
+      "file_hash": "eeaf3dce"
     },
     {
       "id": "src/components/OnboardingWizard.tsx::OnboardingWizard",
@@ -570,6 +1041,40 @@
       "exported": false
     },
     {
+      "id": "src/components/SubmitForm.tsx",
+      "kind": "file",
+      "path": "src/components/SubmitForm.tsx",
+      "ext": ".tsx",
+      "size": 125,
+      "keywords": [
+        "submitform",
+        "submit",
+        "form"
+      ],
+      "content": "\"use client\"\n\n\n\n\nexport default function SubmitForm() {\n\n\n\n\n    return (\n\n        <div>\n            \n        </div>\n    )\n\n\n}",
+      "summary": "\"use client\". Contains 1 function: SubmitForm.",
+      "file_hash": "d09d5cdb"
+    },
+    {
+      "id": "src/components/SubmitForm.tsx::SubmitForm",
+      "kind": "symbol",
+      "path": "src/components/SubmitForm.tsx",
+      "ext": ".tsx",
+      "size": 14,
+      "keywords": [
+        "submitform",
+        "submit",
+        "form"
+      ],
+      "symbol_type": "use_case",
+      "name": "SubmitForm",
+      "line_start": 5,
+      "line_end": 18,
+      "body_hash": "6606281b",
+      "confidence": "medium",
+      "exported": true
+    },
+    {
       "id": "src/components/ui/button.tsx",
       "kind": "file",
       "path": "src/components/ui/button.tsx",
@@ -606,7 +1111,7 @@
       "kind": "file",
       "path": "src/components/fancy/physics/gravity.tsx",
       "ext": ".tsx",
-      "size": 14778,
+      "size": 15229,
       "keywords": [
         "gravityref",
         "gravity",
@@ -615,9 +1120,9 @@
         "matter",
         "body"
       ],
-      "content": "\"use client\"\n\nimport {\n  createContext,\n  forwardRef,\n  ReactNode,\n  useCallback,\n  useContext,\n  useEffect,\n  useImperativeHandle,\n  useMemo,\n  useRef,\n  useState,\n} from \"react\"\nimport { calculatePosition } from \"@/utils/calculate-position\"\nimport { parsePathToVertices } from \"@/utils/svg-path-to-vertices\"\nimport { debounce } from \"lodash\"\nimport Matter, {\n  Bodies,\n  Common,\n  Engine,\n  Events,\n  Mouse,\n  MouseConstraint,\n  Query,\n  Render,\n  Runner,\n  World,\n} from \"matter-js\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype GravityProps = {\n  children: ReactNode\n  debug?: boolean\n  gravity?: { x: number; y: number }\n  resetOnResize?: boolean\n  grabCursor?: boolean\n  addTopWall?: boolean\n  autoStart?: boolean\n  className?: string\n}\n\ntype PhysicsBody = {\n  element: HTMLElement\n  body: Matter.Body\n  props: MatterBodyProps\n}\n\ntype MatterBodyProps = {\n  children: ReactNode\n  matterBodyOptions?: Matter.IBodyDefinition\n  isDraggable?: boolean\n  bodyType?: \"rectangle\" | \"circle\" | \"svg\"\n  sampleLength?: number\n  x?: number | string\n  y?: number | string\n  angle?: number\n  className?: string\n}\n\nexport type GravityRef = {\n  start: () => void\n  stop: () => void\n  reset: () => void\n}\n\nconst GravityContext = createContext<{\n  registerElement: (\n    id: string,\n    element: HTMLElement,\n    props: MatterBodyProps\n  ) => void\n  unregisterElement: (id: string) => void\n} | null>(null)\n\nexport const MatterBody = ({\n  children,\n  className,\n  matterBodyOptions = {\n    friction: 0.1,\n    restitution: 0.1,\n    density: 0.001,\n    isStatic: false,\n  },\n  bodyType = \"rectangle\",\n  isDraggable = true,\n  sampleLength = 15,\n  x = 0,\n  y = 0,\n  angle = 0,\n  ...props\n}: MatterBodyProps) => {\n  const elementRef = useRef<HTMLDivElement>(null)\n  const idRef = useRef(Math.random().toString(36).substring(7))\n  const context = useContext(GravityContext)\n\n  useEffect(() => {\n    if (!elementRef.current || !context) return\n    context.registerElement(idRef.current, elementRef.current, {\n      children,\n      matterBodyOptions,\n      bodyType,\n      sampleLength,\n      isDraggable,\n      x,\n      y,\n      angle,\n      ...props,\n    })\n\n    return () => context.unregisterElement(idRef.current)\n    // Register once per physics world: the context identity only changes\n    // when the world resets (e.g. on resize). Depending on children/props\n    // objects here would despawn and respawn the body at its start position\n    // on every parent re-render.\n    // eslint-disable-next-line react-hooks/exhaustive-deps\n  }, [context, x, y, angle, bodyType])\n\n  return (\n    <div\n      ref={elementRef}\n      className={cn(\n        \"absolute\",\n        className,\n        isDraggable && \"pointer-events-none\"\n      )}\n    >\n      {children}\n    </div>\n  )\n}\n\nconst Gravity = forwardRef<GravityRef, GravityProps>(\n  (\n    {\n      children,\n      debug = false,\n      gravity = { x: 0, y: 1 },\n      grabCursor = true,\n      resetOnResize = true,\n      addTopWall = true,\n      autoStart = true,\n      className,\n      ...props\n    },\n    ref\n  ) => {\n    const canvas = useRef<HTMLDivElement>(null)\n    const engine = useRef(Engine.create())\n    const render = useRef<Render>(undefined)\n    const runner = useRef<Runner>(undefined)\n    const bodiesMap = useRef(new Map<string, PhysicsBody>())\n    const frameId = useRef<number>(undefined)\n    const mouseConstraint = useRef<Matter.MouseConstraint>(undefined)\n    const mouseDown = useRef(false)\n    const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 })\n\n    const isRunning = useRef(false)\n\n    // Register Matter.js body in the physics world\n    const registerElement = useCallback(\n      (id: string, element: HTMLElement, props: MatterBodyProps) => {\n        if (!canvas.current) return\n        const width = element.offsetWidth\n        const height = element.offsetHeight\n        const canvasRect = canvas.current!.getBoundingClientRect()\n\n        const angle = (props.angle || 0) * (Math.PI / 180)\n\n        const x = calculatePosition(props.x, canvasRect.width, width)\n        const y = calculatePosition(props.y, canvasRect.height, height)\n\n        let body\n        if (props.bodyType === \"circle\") {\n          const radius = Math.max(width, height) / 2\n          body = Bodies.circle(x, y, radius, {\n            ...props.matterBodyOptions,\n            angle: angle,\n            render: {\n              fillStyle: debug ? \"#888888\" : \"#00000000\",\n              strokeStyle: debug ? \"#333333\" : \"#00000000\",\n              lineWidth: debug ? 3 : 0,\n            },\n          })\n        } else if (props.bodyType === \"svg\") {\n          const paths = element.querySelectorAll(\"path\")\n          const vertexSets: Matter.Vector[][] = []\n\n          paths.forEach((path) => {\n            const d = path.getAttribute(\"d\")\n            const p = parsePathToVertices(d!, props.sampleLength)\n            vertexSets.push(p)\n          })\n\n          body = Bodies.fromVertices(x, y, vertexSets, {\n            ...props.matterBodyOptions,\n            angle: angle,\n            render: {\n              fillStyle: debug ? \"#888888\" : \"#00000000\",\n              strokeStyle: debug ? \"#333333\" : \"#00000000\",\n              lineWidth: debug ? 3 : 0,\n            },\n          })\n        } else {\n          body = Bodies.rectangle(x, y, width, height, {\n            ...props.matterBodyOptions,\n            angle: angle,\n            render: {\n              fillStyle: debug ? \"#888888\" : \"#00000000\",\n              strokeStyle: debug ? \"#333333\" : \"#00000000\",\n              lineWidth: debug ? 3 : 0,\n            },\n          })\n        }\n\n        if (body) {\n          World.add(engine.current.world, [body])\n          bodiesMap.current.set(id, { element, body, props })\n        }\n      },\n      [debug]\n    )\n\n    // Unregister Matter.js body from the physics world\n    const unregisterElement = useCallback((id: string) => {\n      const body = bodiesMap.current.get(id)\n      if (body) {\n        World.remove(engine.current.world, body.body)\n        bodiesMap.current.delete(id)\n      }\n    }, [])\n\n    // Keep react elements in sync with the physics world\n    const updateElements = useCallback(() => {\n      bodiesMap.current.forEach(({ element, body }) => {\n        const { x, y } = body.position\n        const rotation = body.angle * (180 / Math.PI)\n\n        element.style.transform = `translate(${\n          x - element.offsetWidth / 2\n        }px, ${y - element.offsetHeight / 2}px) rotate(${rotation}deg)`\n      })\n\n      frameId.current = requestAnimationFrame(updateElements)\n    }, [])\n\n    const initializeRenderer = useCallback(() => {\n      if (!canvas.current) return\n\n      const height = canvas.current.offsetHeight\n      const width = canvas.current.offsetWidth\n\n      Common.setDecomp(require(\"poly-decomp\"))\n\n      engine.current.gravity.x = gravity.x\n      engine.current.gravity.y = gravity.y\n\n      render.current = Render.create({\n        element: canvas.current,\n        engine: engine.current,\n        options: {\n          width,\n          height,\n          wireframes: false,\n          background: \"#00000000\",\n        },\n      })\n\n      // Listen for mouse events on the parent element instead of the canvas,\n      // so bodies stay draggable even when the overlay itself has\n      // pointer-events: none (clicks pass through to the page content).\n      const mouseElement = canvas.current.parentElement ?? render.current.canvas\n      const mouse = Mouse.create(mouseElement)\n\n      // Matter's wheel/touch handlers call preventDefault, which would block\n      // page scrolling now that the mouse target spans the whole page.\n      mouseElement.removeEventListener(\"wheel\", mouse.mousewheel)\n      mouseElement.removeEventListener(\"touchmove\", mouse.mousemove)\n      mouseElement.removeEventListener(\"touchstart\", mouse.mousedown)\n      mouseElement.removeEventListener(\"touchend\", mouse.mouseup)\n\n      mouseConstraint.current = MouseConstraint.create(engine.current, {\n        mouse: mouse,\n        constraint: {\n          stiffness: 0.2,\n          render: {\n            visible: debug,\n          },\n        },\n      })\n\n      // Add walls\n      const walls = [\n        // Floor\n        Bodies.rectangle(width / 2, height + 10, width, 20, {\n          isStatic: true,\n          friction: 1,\n          render: {\n            visible: debug,\n          },\n        }),\n\n        // Right wall\n        Bodies.rectangle(width + 10, height / 2, 20, height, {\n          isStatic: true,\n          friction: 1,\n          render: {\n            visible: debug,\n          },\n        }),\n\n        // Left wall\n        Bodies.rectangle(-10, height / 2, 20, height, {\n          isStatic: true,\n          friction: 1,\n          render: {\n            visible: debug,\n          },\n        }),\n      ]\n\n      const topWall = addTopWall\n        ? Bodies.rectangle(width / 2, -10, width, 20, {\n            isStatic: true,\n            friction: 1,\n            render: {\n              visible: debug,\n            },\n          })\n        : null\n\n      if (topWall) {\n        walls.push(topWall)\n      }\n\n      const touchingMouse = () =>\n        Query.point(\n          engine.current.world.bodies,\n          mouseConstraint.current?.mouse.position || { x: 0, y: 0 }\n        ).length > 0\n\n      if (grabCursor) {\n        Events.on(engine.current, \"beforeUpdate\", (event) => {\n          if (canvas.current) {\n            const dragging = mouseConstraint.current?.body != null\n            const over = touchingMouse()\n\n            // Only intercept the pointer while hovering or dragging a body,\n            // so the rest of the page stays clickable underneath the overlay.\n            canvas.current.style.pointerEvents =\n              over || dragging ? \"auto\" : \"none\"\n\n            if (!mouseDown.current && !over) {\n              canvas.current.style.cursor = \"default\"\n            } else if (over) {\n              canvas.current.style.cursor = mouseDown.current\n                ? \"grabbing\"\n                : \"grab\"\n            }\n          }\n        })\n\n        mouseElement.addEventListener(\"mousedown\", (event) => {\n          mouseDown.current = true\n\n          if (canvas.current) {\n            if (touchingMouse()) {\n              canvas.current.style.cursor = \"grabbing\"\n            } else {\n              canvas.current.style.cursor = \"default\"\n            }\n          }\n        })\n        mouseElement.addEventListener(\"mouseup\", (event) => {\n          mouseDown.current = false\n\n          if (canvas.current) {\n            if (touchingMouse()) {\n              canvas.current.style.cursor = \"grab\"\n            } else {\n              canvas.current.style.cursor = \"default\"\n            }\n          }\n        })\n      }\n\n      World.add(engine.current.world, [mouseConstraint.current, ...walls])\n\n      render.current.mouse = mouse\n\n      runner.current = Runner.create()\n      Render.run(render.current)\n      updateElements()\n      runner.current.enabled = false\n\n      if (autoStart) {\n        runner.current.enabled = true\n        startEngine()\n      }\n    }, [updateElements, debug, autoStart])\n\n    // Clear the Matter.js world\n    const clearRenderer = useCallback(() => {\n      if (frameId.current) {\n        cancelAnimationFrame(frameId.current)\n      }\n\n      if (mouseConstraint.current) {\n        World.remove(engine.current.world, mouseConstraint.current)\n      }\n\n      if (render.current) {\n        Mouse.clearSourceEvents(render.current.mouse)\n        Render.stop(render.current)\n        render.current.canvas.remove()\n      }\n\n      if (runner.current) {\n        Runner.stop(runner.current)\n      }\n\n      if (engine.current) {\n        World.clear(engine.current.world, false)\n        Engine.clear(engine.current)\n      }\n\n      bodiesMap.current.clear()\n    }, [])\n\n    const handleResize = useCallback(() => {\n      if (!canvas.current || !resetOnResize) return\n\n      const newWidth = canvas.current.offsetWidth\n      const newHeight = canvas.current.offsetHeight\n\n      setCanvasSize({ width: newWidth, height: newHeight })\n\n      // Clear and reinitialize\n      clearRenderer()\n      initializeRenderer()\n    }, [clearRenderer, initializeRenderer, resetOnResize])\n\n    const startEngine = useCallback(() => {\n      if (runner.current) {\n        runner.current.enabled = true\n\n        Runner.run(runner.current, engine.current)\n      }\n      if (render.current) {\n        Render.run(render.current)\n      }\n      frameId.current = requestAnimationFrame(updateElements)\n      isRunning.current = true\n    }, [updateElements, canvasSize])\n\n    const stopEngine = useCallback(() => {\n      if (!isRunning.current) return\n\n      if (runner.current) {\n        Runner.stop(runner.current)\n      }\n      if (render.current) {\n        Render.stop(render.current)\n      }\n      if (frameId.current) {\n        cancelAnimationFrame(frameId.current)\n      }\n      isRunning.current = false\n    }, [])\n\n    const reset = useCallback(() => {\n      stopEngine()\n      bodiesMap.current.forEach(({ element, body, props }) => {\n        body.angle = props.angle || 0\n\n        const x = calculatePosition(\n          props.x,\n          canvasSize.width,\n          element.offsetWidth\n        )\n        const y = calculatePosition(\n          props.y,\n          canvasSize.height,\n          element.offsetHeight\n        )\n        body.position.x = x\n        body.position.y = y\n      })\n      updateElements()\n      handleResize()\n    }, [])\n\n    useImperativeHandle(\n      ref,\n      () => ({\n        start: startEngine,\n        stop: stopEngine,\n        reset,\n      }),\n      [startEngine, stopEngine]\n    )\n\n    useEffect(() => {\n      if (!resetOnResize) return\n\n      const debouncedResize = debounce(handleResize, 500)\n      window.addEventListener(\"resize\", debouncedResize)\n\n      return () => {\n        window.removeEventListener(\"resize\", debouncedResize)\n        debouncedResize.cancel()\n      }\n    }, [handleResize, resetOnResize])\n\n    useEffect(() => {\n      initializeRenderer()\n      return clearRenderer\n    }, [initializeRenderer, clearRenderer])\n\n    // canvasSize is intentionally a dependency: handleResize clears the\n    // physics world, so the new context identity prompts MatterBody children\n    // to re-register their bodies into the fresh world.\n    // eslint-disable-next-line react-hooks/exhaustive-deps\n    const contextValue = useMemo(\n      () => ({ registerElement, unregisterElement }),\n      [registerElement, unregisterElement, canvasSize]\n    )\n\n    return (\n      <GravityContext.Provider value={contextValue}>\n        <div\n          ref={canvas}\n          className={cn(className, \"absolute top-0 left-0 w-full h-full\")}\n          {...props}\n        >\n          {children}\n        </div>\n      </GravityContext.Provider>\n    )\n  }\n)\n\nGravity.displayName = \"Gravity\"\nexport default Gravity\n",
+      "content": "\"use client\"\n\nimport {\n  createContext,\n  forwardRef,\n  ReactNode,\n  useCallback,\n  useContext,\n  useEffect,\n  useImperativeHandle,\n  useMemo,\n  useRef,\n  useState,\n} from \"react\"\nimport { calculatePosition } from \"@/utils/calculate-position\"\nimport { parsePathToVertices } from \"@/utils/svg-path-to-vertices\"\nimport { debounce } from \"lodash\"\nimport Matter, {\n  Bodies,\n  Common,\n  Engine,\n  Events,\n  Mouse,\n  MouseConstraint,\n  Query,\n  Render,\n  Runner,\n  World,\n} from \"matter-js\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype GravityProps = {\n  children: ReactNode\n  debug?: boolean\n  gravity?: { x: number; y: number }\n  resetOnResize?: boolean\n  grabCursor?: boolean\n  addTopWall?: boolean\n  autoStart?: boolean\n  className?: string\n}\n\ntype PhysicsBody = {\n  element: HTMLElement\n  body: Matter.Body\n  props: MatterBodyProps\n}\n\ntype MatterBodyProps = {\n  children: ReactNode\n  matterBodyOptions?: Matter.IBodyDefinition\n  isDraggable?: boolean\n  bodyType?: \"rectangle\" | \"circle\" | \"svg\"\n  sampleLength?: number\n  x?: number | string\n  y?: number | string\n  angle?: number\n  className?: string\n}\n\nexport type GravityRef = {\n  start: () => void\n  stop: () => void\n  reset: () => void\n}\n\nconst GravityContext = createContext<{\n  registerElement: (\n    id: string,\n    element: HTMLElement,\n    props: MatterBodyProps\n  ) => void\n  unregisterElement: (id: string) => void\n} | null>(null)\n\nexport const MatterBody = ({\n  children,\n  className,\n  matterBodyOptions = {\n    friction: 0.1,\n    restitution: 0.1,\n    density: 0.001,\n    isStatic: false,\n  },\n  bodyType = \"rectangle\",\n  isDraggable = true,\n  sampleLength = 15,\n  x = 0,\n  y = 0,\n  angle = 0,\n  ...props\n}: MatterBodyProps) => {\n  const elementRef = useRef<HTMLDivElement>(null)\n  const idRef = useRef(Math.random().toString(36).substring(7))\n  const context = useContext(GravityContext)\n\n  useEffect(() => {\n    if (!elementRef.current || !context) return\n    context.registerElement(idRef.current, elementRef.current, {\n      children,\n      matterBodyOptions,\n      bodyType,\n      sampleLength,\n      isDraggable,\n      x,\n      y,\n      angle,\n      ...props,\n    })\n\n    return () => context.unregisterElement(idRef.current)\n    // Register once per physics world: the context identity only changes\n    // when the world resets (e.g. on resize). Depending on children/props\n    // objects here would despawn and respawn the body at its start position\n    // on every parent re-render.\n    // eslint-disable-next-line react-hooks/exhaustive-deps\n  }, [context, x, y, angle, bodyType])\n\n  return (\n    <div\n      ref={elementRef}\n      className={cn(\n        \"absolute\",\n        className,\n        isDraggable && \"pointer-events-none\"\n      )}\n    >\n      {children}\n    </div>\n  )\n}\n\nconst Gravity = forwardRef<GravityRef, GravityProps>(\n  (\n    {\n      children,\n      debug = false,\n      gravity = { x: 0, y: 1 },\n      grabCursor = true,\n      resetOnResize = true,\n      addTopWall = true,\n      autoStart = true,\n      className,\n      ...props\n    },\n    ref\n  ) => {\n    const canvas = useRef<HTMLDivElement>(null)\n    const engine = useRef(Engine.create())\n    const render = useRef<Render>(undefined)\n    const runner = useRef<Runner>(undefined)\n    const bodiesMap = useRef(new Map<string, PhysicsBody>())\n    const frameId = useRef<number>(undefined)\n    const mouseConstraint = useRef<Matter.MouseConstraint>(undefined)\n    const mouseDown = useRef(false)\n    const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 })\n\n    const isRunning = useRef(false)\n\n    // Register Matter.js body in the physics world\n    const registerElement = useCallback(\n      (id: string, element: HTMLElement, props: MatterBodyProps) => {\n        if (!canvas.current) return\n        const width = element.offsetWidth\n        const height = element.offsetHeight\n        const canvasRect = canvas.current!.getBoundingClientRect()\n\n        const angle = (props.angle || 0) * (Math.PI / 180)\n\n        const x = calculatePosition(props.x, canvasRect.width, width)\n        const y = calculatePosition(props.y, canvasRect.height, height)\n\n        let body\n        if (props.bodyType === \"circle\") {\n          const radius = Math.max(width, height) / 2\n          body = Bodies.circle(x, y, radius, {\n            ...props.matterBodyOptions,\n            angle: angle,\n            render: {\n              fillStyle: debug ? \"#888888\" : \"#00000000\",\n              strokeStyle: debug ? \"#333333\" : \"#00000000\",\n              lineWidth: debug ? 3 : 0,\n            },\n          })\n        } else if (props.bodyType === \"svg\") {\n          const paths = element.querySelectorAll(\"path\")\n          const vertexSets: Matter.Vector[][] = []\n\n          paths.forEach((path) => {\n            const d = path.getAttribute(\"d\")\n            const p = parsePathToVertices(d!, props.sampleLength)\n            vertexSets.push(p)\n          })\n\n          body = Bodies.fromVertices(x, y, vertexSets, {\n            ...props.matterBodyOptions,\n            angle: angle,\n            render: {\n              fillStyle: debug ? \"#888888\" : \"#00000000\",\n              strokeStyle: debug ? \"#333333\" : \"#00000000\",\n              lineWidth: debug ? 3 : 0,\n            },\n          })\n        } else {\n          body = Bodies.rectangle(x, y, width, height, {\n            ...props.matterBodyOptions,\n            // IBodyDefinition allows chamfer: null, IChamferableBodyDefinition doesn't\n            chamfer: props.matterBodyOptions?.chamfer ?? undefined,\n            angle: angle,\n            render: {\n              fillStyle: debug ? \"#888888\" : \"#00000000\",\n              strokeStyle: debug ? \"#333333\" : \"#00000000\",\n              lineWidth: debug ? 3 : 0,\n            },\n          })\n        }\n\n        if (body) {\n          World.add(engine.current.world, [body])\n          bodiesMap.current.set(id, { element, body, props })\n        }\n      },\n      [debug]\n    )\n\n    // Unregister Matter.js body from the physics world\n    const unregisterElement = useCallback((id: string) => {\n      const body = bodiesMap.current.get(id)\n      if (body) {\n        World.remove(engine.current.world, body.body)\n        bodiesMap.current.delete(id)\n      }\n    }, [])\n\n    // Keep react elements in sync with the physics world\n    const updateElements = useCallback(() => {\n      bodiesMap.current.forEach(({ element, body }) => {\n        const { x, y } = body.position\n        const rotation = body.angle * (180 / Math.PI)\n\n        element.style.transform = `translate(${\n          x - element.offsetWidth / 2\n        }px, ${y - element.offsetHeight / 2}px) rotate(${rotation}deg)`\n      })\n\n      frameId.current = requestAnimationFrame(updateElements)\n    }, [])\n\n    const initializeRenderer = useCallback(() => {\n      if (!canvas.current) return\n\n      const height = canvas.current.offsetHeight\n      const width = canvas.current.offsetWidth\n\n      Common.setDecomp(require(\"poly-decomp\"))\n\n      engine.current.gravity.x = gravity.x\n      engine.current.gravity.y = gravity.y\n\n      render.current = Render.create({\n        element: canvas.current,\n        engine: engine.current,\n        options: {\n          width,\n          height,\n          wireframes: false,\n          background: \"#00000000\",\n        },\n      })\n\n      // Listen for mouse events on the parent element instead of the canvas,\n      // so bodies stay draggable even when the overlay itself has\n      // pointer-events: none (clicks pass through to the page content).\n      const mouseElement = canvas.current.parentElement ?? render.current.canvas\n      const mouse = Mouse.create(mouseElement)\n\n      // Matter's wheel/touch handlers call preventDefault, which would block\n      // page scrolling now that the mouse target spans the whole page.\n      // internal handlers that @types/matter-js doesn't declare on Mouse\n      const mouseHandlers = mouse as unknown as {\n        mousewheel: EventListener\n        mousemove: EventListener\n        mousedown: EventListener\n        mouseup: EventListener\n      }\n      mouseElement.removeEventListener(\"wheel\", mouseHandlers.mousewheel)\n      mouseElement.removeEventListener(\"touchmove\", mouseHandlers.mousemove)\n      mouseElement.removeEventListener(\"touchstart\", mouseHandlers.mousedown)\n      mouseElement.removeEventListener(\"touchend\", mouseHandlers.mouseup)\n\n      mouseConstraint.current = MouseConstraint.create(engine.current, {\n        mouse: mouse,\n        constraint: {\n          stiffness: 0.2,\n          render: {\n            visible: debug,\n          },\n        },\n      })\n\n      // Add walls\n      const walls = [\n        // Floor\n        Bodies.rectangle(width / 2, height + 10, width, 20, {\n          isStatic: true,\n          friction: 1,\n          render: {\n            visible: debug,\n          },\n        }),\n\n        // Right wall\n        Bodies.rectangle(width + 10, height / 2, 20, height, {\n          isStatic: true,\n          friction: 1,\n          render: {\n            visible: debug,\n          },\n        }),\n\n        // Left wall\n        Bodies.rectangle(-10, height / 2, 20, height, {\n          isStatic: true,\n          friction: 1,\n          render: {\n            visible: debug,\n          },\n        }),\n      ]\n\n      const topWall = addTopWall\n        ? Bodies.rectangle(width / 2, -10, width, 20, {\n            isStatic: true,\n            friction: 1,\n            render: {\n              visible: debug,\n            },\n          })\n        : null\n\n      if (topWall) {\n        walls.push(topWall)\n      }\n\n      const touchingMouse = () =>\n        Query.point(\n          engine.current.world.bodies,\n          mouseConstraint.current?.mouse.position || { x: 0, y: 0 }\n        ).length > 0\n\n      if (grabCursor) {\n        Events.on(engine.current, \"beforeUpdate\", (event) => {\n          if (canvas.current) {\n            const dragging = mouseConstraint.current?.body != null\n            const over = touchingMouse()\n\n            // Only intercept the pointer while hovering or dragging a body,\n            // so the rest of the page stays clickable underneath the overlay.\n            canvas.current.style.pointerEvents =\n              over || dragging ? \"auto\" : \"none\"\n\n            if (!mouseDown.current && !over) {\n              canvas.current.style.cursor = \"default\"\n            } else if (over) {\n              canvas.current.style.cursor = mouseDown.current\n                ? \"grabbing\"\n                : \"grab\"\n            }\n          }\n        })\n\n        mouseElement.addEventListener(\"mousedown\", (event) => {\n          mouseDown.current = true\n\n          if (canvas.current) {\n            if (touchingMouse()) {\n              canvas.current.style.cursor = \"grabbing\"\n            } else {\n              canvas.current.style.cursor = \"default\"\n            }\n          }\n        })\n        mouseElement.addEventListener(\"mouseup\", (event) => {\n          mouseDown.current = false\n\n          if (canvas.current) {\n            if (touchingMouse()) {\n              canvas.current.style.cursor = \"grab\"\n            } else {\n              canvas.current.style.cursor = \"default\"\n            }\n          }\n        })\n      }\n\n      World.add(engine.current.world, [mouseConstraint.current, ...walls])\n\n      render.current.mouse = mouse\n\n      runner.current = Runner.create()\n      Render.run(render.current)\n      updateElements()\n      runner.current.enabled = false\n\n      if (autoStart) {\n        runner.current.enabled = true\n        startEngine()\n      }\n    }, [updateElements, debug, autoStart])\n\n    // Clear the Matter.js world\n    const clearRenderer = useCallback(() => {\n      if (frameId.current) {\n        cancelAnimationFrame(frameId.current)\n      }\n\n      if (mouseConstraint.current) {\n        World.remove(engine.current.world, mouseConstraint.current)\n      }\n\n      if (render.current) {\n        Mouse.clearSourceEvents(render.current.mouse)\n        Render.stop(render.current)\n        render.current.canvas.remove()\n      }\n\n      if (runner.current) {\n        Runner.stop(runner.current)\n      }\n\n      if (engine.current) {\n        World.clear(engine.current.world, false)\n        Engine.clear(engine.current)\n      }\n\n      bodiesMap.current.clear()\n    }, [])\n\n    const handleResize = useCallback(() => {\n      if (!canvas.current || !resetOnResize) return\n\n      const newWidth = canvas.current.offsetWidth\n      const newHeight = canvas.current.offsetHeight\n\n      setCanvasSize({ width: newWidth, height: newHeight })\n\n      // Clear and reinitialize\n      clearRenderer()\n      initializeRenderer()\n    }, [clearRenderer, initializeRenderer, resetOnResize])\n\n    const startEngine = useCallback(() => {\n      if (runner.current) {\n        runner.current.enabled = true\n\n        Runner.run(runner.current, engine.current)\n      }\n      if (render.current) {\n        Render.run(render.current)\n      }\n      frameId.current = requestAnimationFrame(updateElements)\n      isRunning.current = true\n    }, [updateElements, canvasSize])\n\n    const stopEngine = useCallback(() => {\n      if (!isRunning.current) return\n\n      if (runner.current) {\n        Runner.stop(runner.current)\n      }\n      if (render.current) {\n        Render.stop(render.current)\n      }\n      if (frameId.current) {\n        cancelAnimationFrame(frameId.current)\n      }\n      isRunning.current = false\n    }, [])\n\n    const reset = useCallback(() => {\n      stopEngine()\n      bodiesMap.current.forEach(({ element, body, props }) => {\n        body.angle = props.angle || 0\n\n        const x = calculatePosition(\n          props.x,\n          canvasSize.width,\n          element.offsetWidth\n        )\n        const y = calculatePosition(\n          props.y,\n          canvasSize.height,\n          element.offsetHeight\n        )\n        body.position.x = x\n        body.position.y = y\n      })\n      updateElements()\n      handleResize()\n    }, [])\n\n    useImperativeHandle(\n      ref,\n      () => ({\n        start: startEngine,\n        stop: stopEngine,\n        reset,\n      }),\n      [startEngine, stopEngine]\n    )\n\n    useEffect(() => {\n      if (!resetOnResize) return\n\n      const debouncedResize = debounce(handleResize, 500)\n      window.addEventListener(\"resize\", debouncedResize)\n\n      return () => {\n        window.removeEventListener(\"resize\", debouncedResize)\n        debouncedResize.cancel()\n      }\n    }, [handleResize, resetOnResize])\n\n    useEffect(() => {\n      initializeRenderer()\n      return clearRenderer\n    }, [initializeRenderer, clearRenderer])\n\n    // canvasSize is intentionally a dependency: handleResize clears the\n    // physics world, so the new context identity prompts MatterBody children\n    // to re-register their bodies into the fresh world.\n    // eslint-disable-next-line react-hooks/exhaustive-deps\n    const contextValue = useMemo(\n      () => ({ registerElement, unregisterElement }),\n      [registerElement, unregisterElement, canvasSize]\n    )\n\n    return (\n      <GravityContext.Provider value={contextValue}>\n        <div\n          ref={canvas}\n          className={cn(className, \"absolute top-0 left-0 w-full h-full\")}\n          {...props}\n        >\n          {children}\n        </div>\n      </GravityContext.Provider>\n    )\n  }\n)\n\nGravity.displayName = \"Gravity\"\nexport default Gravity\n",
       "summary": "\"use client\".",
-      "file_hash": "ced7f8af"
+      "file_hash": "fb0497b8"
     },
     {
       "id": "src/components/fancy/physics/gravity.tsx::MatterBody",
@@ -790,11 +1295,13 @@
       "kind": "file",
       "path": "src/lib/utils.ts",
       "ext": ".ts",
-      "size": 166,
-      "keywords": [],
-      "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "size": 406,
+      "keywords": [
+        "auth_string"
+      ],
+      "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n\n// the login route builds the real authorize URL from the request's own\n// origin, so the redirect never depends on env vars (and can't point at\n// localhost unless you're actually on localhost)\nexport const AUTH_STRING = \"/api/auth/login\"",
       "summary": "import { clsx, type ClassValue } from \"clsx\". Contains 1 function: cn.",
-      "file_hash": "5a6fd53f"
+      "file_hash": "8a40c58a"
     },
     {
       "id": "src/lib/utils.ts::cn",
@@ -874,6 +1381,61 @@
       "rel": "references"
     },
     {
+      "from": "openspec/changes/replace-submit-form-with-fillout/tasks.md",
+      "to": "/submit/page.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/replace-submit-form-with-fillout/tasks.md",
+      "to": "src/app/api/submit/route.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/replace-submit-form-with-fillout/tasks.md",
+      "to": "src/app/lib/hackclub.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/replace-submit-form-with-fillout/design.md",
+      "to": "/api/submit/route.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/replace-submit-form-with-fillout/design.md",
+      "to": "src/app/lib/hackclub.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/replace-submit-form-with-fillout/design.md",
+      "to": "/submit/page.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/replace-submit-form-with-fillout/proposal.md",
+      "to": "/api/submit/route.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/replace-submit-form-with-fillout/proposal.md",
+      "to": "src/app/api/submit/route.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/replace-submit-form-with-fillout/proposal.md",
+      "to": "src/app/submit/SubmitForm.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/replace-submit-form-with-fillout/proposal.md",
+      "to": "src/app/submit/page.ts",
+      "rel": "references"
+    },
+    {
+      "from": "openspec/changes/replace-submit-form-with-fillout/proposal.md",
+      "to": "src/app/lib/hackclub.ts",
+      "rel": "references"
+    },
+    {
       "from": "openspec/changes/add-onboarding-wizard/tasks.md",
       "to": "src/components/OnboardingWizard.ts",
       "rel": "references"
@@ -919,6 +1481,31 @@
       "rel": "references"
     },
     {
+      "from": "src/proxy.ts",
+      "to": "next/server",
+      "rel": "imports"
+    },
+    {
+      "from": "src/proxy.ts",
+      "to": "@/app/lib/session",
+      "rel": "imports"
+    },
+    {
+      "from": "src/proxy.ts",
+      "to": "@/app/lib/origin",
+      "rel": "imports"
+    },
+    {
+      "from": "src/proxy.ts",
+      "to": "//auth.h",
+      "rel": "references"
+    },
+    {
+      "from": "src/proxy.ts",
+      "to": "src/proxy.ts::proxy",
+      "rel": "contains"
+    },
+    {
       "from": "src/app/page.tsx",
       "to": "next/image",
       "rel": "imports"
@@ -941,6 +1528,11 @@
     {
       "from": "src/app/page.tsx",
       "to": "@/components/OnboardingWizard",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/page.tsx",
+      "to": "@/lib/utils",
       "rel": "imports"
     },
     {
@@ -975,11 +1567,6 @@
     },
     {
       "from": "src/app/page.tsx",
-      "to": "//auth.h",
-      "rel": "references"
-    },
-    {
-      "from": "src/app/page.tsx",
       "to": "src/app/page.tsx::Home",
       "rel": "contains"
     },
@@ -1010,6 +1597,11 @@
     },
     {
       "from": "src/app/layout.tsx",
+      "to": "next/script",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/layout.tsx",
       "to": "type",
       "rel": "imports"
     },
@@ -1020,12 +1612,72 @@
     },
     {
       "from": "src/app/layout.tsx",
+      "to": "Script",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/layout.tsx",
       "to": "/globals.cs",
       "rel": "references"
     },
     {
       "from": "src/app/layout.tsx",
+      "to": "io/js/pa-o2dvlSmqC19Ct88HeQWXU.js",
+      "rel": "references"
+    },
+    {
+      "from": "src/app/layout.tsx",
       "to": "src/app/layout.tsx::RootLayout",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/submit/page.tsx",
+      "to": "next/navigation",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/submit/page.tsx",
+      "to": "next/headers",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/submit/page.tsx",
+      "to": "@/app/lib/session",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/submit/page.tsx",
+      "to": "@/app/lib/hackclub",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/submit/page.tsx",
+      "to": "./SubmitForm",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/submit/page.tsx",
+      "to": "SubmitForm",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/submit/page.tsx",
+      "to": "src/app/submit/page.tsx::SubmitPage",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/submit/SubmitForm.tsx",
+      "to": "@fillout/react",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/submit/SubmitForm.tsx",
+      "to": "src/app/submit/SubmitForm.tsx::SubmitForm",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/submit/SubmitForm.tsx",
+      "to": "src/app/submit/SubmitForm.tsx::SubmitFormProps",
       "rel": "contains"
     },
     {
@@ -1056,6 +1708,126 @@
     {
       "from": "src/app/dashboard/page.tsx",
       "to": "src/app/dashboard/page.tsx::DashboardPage",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/lib/session.ts",
+      "to": "server-only",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/lib/session.ts",
+      "to": "jose",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/lib/session.ts",
+      "to": "src/app/lib/session.ts::encryptSession",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/lib/session.ts",
+      "to": "src/app/lib/session.ts::decryptSession",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/lib/session.ts",
+      "to": "src/app/lib/session.ts::SessionPayload",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/lib/origin.ts",
+      "to": "next/server",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/lib/origin.ts",
+      "to": "src/app/lib/origin.ts::getRequestOrigin",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/lib/origin.ts",
+      "to": "src/app/lib/origin.ts::getRedirectUri",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/lib/hackclub.ts",
+      "to": "server-only",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/lib/hackclub.ts",
+      "to": "//auth.h",
+      "rel": "references"
+    },
+    {
+      "from": "src/app/lib/hackclub.ts",
+      "to": "src/app/lib/hackclub.ts::getIdentity",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/lib/hackclub.ts",
+      "to": "src/app/lib/hackclub.ts::Address",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/lib/hackclub.ts",
+      "to": "src/app/lib/hackclub.ts::Identity",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/api/auth/callback/route.ts",
+      "to": "next/server",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/api/auth/callback/route.ts",
+      "to": "next/headers",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/api/auth/callback/route.ts",
+      "to": "@/app/lib/session",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/api/auth/callback/route.ts",
+      "to": "@/app/lib/origin",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/api/auth/callback/route.ts",
+      "to": "//auth.h",
+      "rel": "references"
+    },
+    {
+      "from": "src/app/api/auth/callback/route.ts",
+      "to": "src/app/api/auth/callback/route.ts::GET",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/api/auth/login/route.ts",
+      "to": "next/server",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/api/auth/login/route.ts",
+      "to": "@/app/lib/origin",
+      "rel": "imports"
+    },
+    {
+      "from": "src/app/api/auth/login/route.ts",
+      "to": "//auth.h",
+      "rel": "references"
+    },
+    {
+      "from": "src/app/api/auth/login/route.ts",
+      "to": "src/app/api/auth/login/route.ts::GET",
+      "rel": "contains"
+    },
+    {
+      "from": "src/app/api/home/route.ts",
+      "to": "src/app/api/home/route.ts::GET",
       "rel": "contains"
     },
     {
@@ -1135,6 +1907,11 @@
     },
     {
       "from": "src/components/TrainerDashboard.tsx",
+      "to": "//your-project.c",
+      "rel": "references"
+    },
+    {
+      "from": "src/components/TrainerDashboard.tsx",
       "to": "src/components/TrainerDashboard.tsx::TrainerDashboard",
       "rel": "contains"
     },
@@ -1160,6 +1937,11 @@
     },
     {
       "from": "src/components/OnboardingWizard.tsx",
+      "to": "@/lib/utils",
+      "rel": "imports"
+    },
+    {
+      "from": "src/components/OnboardingWizard.tsx",
       "to": "Image",
       "rel": "imports"
     },
@@ -1172,11 +1954,6 @@
       "from": "src/components/OnboardingWizard.tsx",
       "to": "styles",
       "rel": "imports"
-    },
-    {
-      "from": "src/components/OnboardingWizard.tsx",
-      "to": "//auth.h",
-      "rel": "references"
     },
     {
       "from": "src/components/OnboardingWizard.tsx",
@@ -1211,6 +1988,11 @@
     {
       "from": "src/components/OnboardingWizard.tsx",
       "to": "src/components/OnboardingWizard.tsx::WizardProps",
+      "rel": "contains"
+    },
+    {
+      "from": "src/components/SubmitForm.tsx",
+      "to": "src/components/SubmitForm.tsx::SubmitForm",
       "rel": "contains"
     },
     {

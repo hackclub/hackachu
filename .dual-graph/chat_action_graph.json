@@ -74,6 +74,56 @@
       "meta": {
         "summary": "Re-added Plausible analytics via two Script components (src loader + inline JS init) after user reverted prior HTML-in-JS version"
       }
+    },
+    {
+      "id": "query:submission form fillout embed replace",
+      "type": "query",
+      "meta": {
+        "text": "submission form fillout embed replace"
+      }
+    },
+    {
+      "id": "src/app/api/auth/callback/route.ts::GET",
+      "type": "file"
+    },
+    {
+      "id": "src/app/api/auth/login/route.ts::GET",
+      "type": "file"
+    },
+    {
+      "id": "src/app/api/home/route.ts::GET",
+      "type": "file"
+    },
+    {
+      "id": "src/app/api/submit/route.ts::POST",
+      "type": "file"
+    },
+    {
+      "id": "src/app/submit/SubmitForm.tsx",
+      "type": "file"
+    },
+    {
+      "id": "query:remove submit page embed fillout form into dashboard",
+      "type": "query",
+      "meta": {
+        "text": "remove /submit page, embed fillout form into /dashboard page, show only after Submit Project button click"
+      }
+    },
+    {
+      "id": "src/app/dashboard/page.tsx",
+      "type": "file"
+    },
+    {
+      "id": "src/app/submit/page.tsx",
+      "type": "file"
+    },
+    {
+      "id": "src/components/SubmitForm.tsx",
+      "type": "file"
+    },
+    {
+      "id": "src/components/TrainerDashboard.tsx",
+      "type": "file"
     }
   ],
   "edges": [
@@ -217,6 +267,120 @@
       "to": "src/app/layout.tsx::RootLayout",
       "rel": "edited",
       "ts": 1783692968
+    },
+    {
+      "from": "query:submission form fillout embed replace",
+      "to": "src/app/api/auth/callback/route.ts::GET",
+      "rel": "retrieved",
+      "ts": 1784040098
+    },
+    {
+      "from": "query:submission form fillout embed replace",
+      "to": "src/app/api/auth/login/route.ts::GET",
+      "rel": "retrieved",
+      "ts": 1784040098
+    },
+    {
+      "from": "query:submission form fillout embed replace",
+      "to": "src/app/api/home/route.ts::GET",
+      "rel": "retrieved",
+      "ts": 1784040098
+    },
+    {
+      "from": "query:submission form fillout embed replace",
+      "to": "src/app/api/submit/route.ts::POST",
+      "rel": "retrieved",
+      "ts": 1784040098
+    },
+    {
+      "from": "query:submission form fillout embed replace",
+      "to": "src/app/submit/SubmitForm.tsx",
+      "rel": "retrieved",
+      "ts": 1784040098
+    },
+    {
+      "from": "query:(empty)",
+      "to": "src/app/api/home/route.ts::GET",
+      "rel": "read",
+      "ts": 1784040107,
+      "meta": {
+        "mode": "symbol_excerpt"
+      }
+    },
+    {
+      "from": "query:(empty)",
+      "to": "src/app/api/auth/callback/route.ts::GET",
+      "rel": "read",
+      "ts": 1784040107,
+      "meta": {
+        "mode": "symbol_excerpt"
+      }
+    },
+    {
+      "from": "query:(empty)",
+      "to": "src/app/api/auth/login/route.ts::GET",
+      "rel": "read",
+      "ts": 1784040107,
+      "meta": {
+        "mode": "symbol_excerpt"
+      }
+    },
+    {
+      "from": "query:remove submit page embed fillout form into dashboard",
+      "to": "src/app/dashboard/page.tsx",
+      "rel": "retrieved",
+      "ts": 1784042814
+    },
+    {
+      "from": "query:remove submit page embed fillout form into dashboard",
+      "to": "src/app/submit/page.tsx",
+      "rel": "retrieved",
+      "ts": 1784042814
+    },
+    {
+      "from": "query:remove submit page embed fillout form into dashboard",
+      "to": "src/app/submit/SubmitForm.tsx",
+      "rel": "retrieved",
+      "ts": 1784042814
+    },
+    {
+      "from": "query:remove submit page embed fillout form into dashboard",
+      "to": "src/components/SubmitForm.tsx",
+      "rel": "retrieved",
+      "ts": 1784042814
+    },
+    {
+      "from": "query:remove submit page embed fillout form into dashboard",
+      "to": "src/components/TrainerDashboard.tsx",
+      "rel": "retrieved",
+      "ts": 1784042814
+    },
+    {
+      "from": "query:(empty)",
+      "to": "src/app/dashboard/page.tsx",
+      "rel": "read",
+      "ts": 1784042816,
+      "meta": {
+        "mode": "full"
+      }
+    },
+    {
+      "from": "query:(empty)",
+      "to": "src/app/submit/page.tsx",
+      "rel": "read",
+      "ts": 1784042817,
+      "meta": {
+        "mode": "full"
+      }
+    },
+    {
+      "from": "query:(empty)",
+      "to": "src/app/submit/SubmitForm.tsx",
+      "rel": "read",
+      "ts": 1784042817,
+      "meta": {
+        "mode": "full"
+      }
     }
   ],
   "files": {
@@ -260,6 +424,54 @@
       "cached_tokens_est": 47,
       "last_action": "read",
       "last_ts": 1783637191
+    },
+    "src/app/api/home/route.ts::GET": {
+      "query_terms": [],
+      "cached_content": "export async function GET(request: Request) {\n    return Response.json({message: \"hello world\"})\n}",
+      "cached_chars": 98,
+      "cached_tokens_est": 24,
+      "last_action": "read",
+      "last_ts": 1784040107
+    },
+    "src/app/api/auth/callback/route.ts::GET": {
+      "query_terms": [],
+      "cached_content": "export async function GET(request: NextRequest) {\n  const code = request.nextUrl.searchParams.get(\"code\")\n\n  if (!code) {\n    return NextResponse.redirect(new URL(\"/?error=missing_code\", getRequestOrigin(request)))\n  }\n\n  const tokenRes = await fetch(`${BASE_URL}/oauth/token`, {\n    method: \"POST\",\n",
+      "cached_chars": 1316,
+      "cached_tokens_est": 329,
+      "last_action": "read",
+      "last_ts": 1784040107
+    },
+    "src/app/api/auth/login/route.ts::GET": {
+      "query_terms": [],
+      "cached_content": "export function GET(request: NextRequest) {\n  const params = new URLSearchParams({\n    client_id: process.env.HACKCLUB_CLIENT_ID!,\n    redirect_uri: getRedirectUri(request),\n    response_type: \"code\",\n    scope: \"name email birthdate address verification_status\",\n  })\n\n  return NextResponse.redirect",
+      "cached_chars": 365,
+      "cached_tokens_est": 91,
+      "last_action": "read",
+      "last_ts": 1784040107
+    },
+    "src/app/dashboard/page.tsx": {
+      "query_terms": [],
+      "cached_content": "import type { Metadata } from \"next\";\nimport { IBM_Plex_Mono, Press_Start_2P } from \"next/font/google\";\nimport TrainerDashboard from \"@/components/TrainerDashboard\";\n\nconst pressStart = Press_Start_2P({\n  weight: \"400\",\n  subsets: [\"latin\"],\n  variable: \"--font-pixel\",\n});\n\nconst plexMono = IBM_Plex",
+      "cached_chars": 726,
+      "cached_tokens_est": 181,
+      "last_action": "read",
+      "last_ts": 1784042816
+    },
+    "src/app/submit/page.tsx": {
+      "query_terms": [],
+      "cached_content": "import { redirect } from \"next/navigation\"\nimport { cookies } from \"next/headers\"\nimport { decryptSession } from \"@/app/lib/session\"\nimport { getIdentity } from \"@/app/lib/hackclub\"\nimport SubmitForm from \"./SubmitForm\"\n\nexport default async function SubmitPage() {\n  const cookieStore = await cookie",
+      "cached_chars": 1132,
+      "cached_tokens_est": 283,
+      "last_action": "read",
+      "last_ts": 1784042817
+    },
+    "src/app/submit/SubmitForm.tsx": {
+      "query_terms": [],
+      "cached_content": "\"use client\"\n\nimport { FilloutSliderEmbedButton } from \"@fillout/react\"\n\ntype SubmitFormProps = {\n  firstName?: string\n  lastName?: string\n  email?: string\n  birthday?: string\n  addressLine1?: string\n  addressLine2?: string\n  city?: string\n  state?: string\n  postalCode?: string\n  country?: string\n}\n",
+      "cached_chars": 889,
+      "cached_tokens_est": 222,
+      "last_action": "read",
+      "last_ts": 1784042817
     }
   },
   "actions": [
@@ -316,6 +528,38 @@
       "kind": "register_edit",
       "payload": {
         "kind": "register_edit"
+      }
+    },
+    {
+      "ts": 1784040098,
+      "kind": "retrieve",
+      "payload": {
+        "kind": "retrieve",
+        "query": "submission form fillout embed replace"
+      }
+    },
+    {
+      "ts": 1784040098,
+      "kind": "continue_retrieve",
+      "payload": {
+        "kind": "continue_retrieve",
+        "query": "submission form fillout embed replace"
+      }
+    },
+    {
+      "ts": 1784042814,
+      "kind": "retrieve",
+      "payload": {
+        "kind": "retrieve",
+        "query": "remove /submit page, embed fillout form into /dashboard page, show only after Submit Project button click"
+      }
+    },
+    {
+      "ts": 1784042814,
+      "kind": "continue_retrieve",
+      "payload": {
+        "kind": "continue_retrieve",
+        "query": "remove /submit page, embed fillout form into /dashboard page, show only after Submit Project button click"
       }
     }
   ],

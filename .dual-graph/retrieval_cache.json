@@ -1,3 +1,183 @@
 {
-  "entries": {}
+  "entries": {
+    "remove submit page embed fillout form into dashboard|tf=5|te=12": {
+      "created_epoch": 1784042814,
+      "files": [
+        "src/app/dashboard/page.tsx",
+        "src/app/submit/page.tsx",
+        "src/app/submit/SubmitForm.tsx",
+        "src/components/SubmitForm.tsx",
+        "src/components/TrainerDashboard.tsx"
+      ],
+      "mtimes_ns": {
+        "src/app/dashboard/page.tsx": 1783621976652101834,
+        "src/app/submit/page.tsx": 1784040727528303544,
+        "src/app/submit/SubmitForm.tsx": 1784040742403438174,
+        "src/components/SubmitForm.tsx": 1784042684165195534,
+        "src/components/TrainerDashboard.tsx": 1783692938716842346
+      },
+      "result": {
+        "ok": true,
+        "query": "remove /submit page, embed fillout form into /dashboard page, show only after Submit Project button click",
+        "graph_files": [
+          {
+            "id": "src/app/dashboard/page.tsx",
+            "kind": "file",
+            "path": "src/app/dashboard/page.tsx",
+            "ext": ".tsx",
+            "size": 727,
+            "keywords": [
+              "metadata",
+              "dashboardpage",
+              "dashboard",
+              "page"
+            ],
+            "summary": "import type { Metadata } from \"next\";. Contains 1 function: DashboardPage.",
+            "file_hash": "f33e7cd5",
+            "_score": 23,
+            "_role": "code",
+            "_intent": "general"
+          },
+          {
+            "id": "src/app/submit/page.tsx",
+            "kind": "file",
+            "path": "src/app/submit/page.tsx",
+            "ext": ".tsx",
+            "size": 1132,
+            "keywords": [
+              "submitpage",
+              "submit",
+              "page"
+            ],
+            "summary": "import { redirect } from \"next/navigation\". Contains 1 function: SubmitPage.",
+            "file_hash": "eb69d4ed",
+            "_score": 23,
+            "_role": "code",
+            "_intent": "general"
+          },
+          {
+            "id": "src/app/submit/SubmitForm.tsx",
+            "kind": "file",
+            "path": "src/app/submit/SubmitForm.tsx",
+            "ext": ".tsx",
+            "size": 891,
+            "keywords": [
+              "submitform",
+              "submit",
+              "form"
+            ],
+            "summary": "\"use client\". Contains 1 function: SubmitForm.",
+            "file_hash": "55e5e39d",
+            "_score": 22,
+            "_role": "code",
+            "_intent": "general"
+          },
+          {
+            "id": "src/components/SubmitForm.tsx",
+            "kind": "file",
+            "path": "src/components/SubmitForm.tsx",
+            "ext": ".tsx",
+            "size": 125,
+            "keywords": [
+              "submitform",
+              "submit",
+              "form"
+            ],
+            "summary": "\"use client\". Contains 1 function: SubmitForm.",
+            "file_hash": "d09d5cdb",
+            "_score": 21,
+            "_role": "code",
+            "_intent": "general"
+          },
+          {
+            "id": "src/components/TrainerDashboard.tsx",
+            "kind": "file",
+            "path": "src/components/TrainerDashboard.tsx",
+            "ext": ".tsx",
+            "size": 11665,
+            "keywords": [
+              "trainerdashboard",
+              "trainer",
+              "dashboard",
+              "api",
+              "submit"
+            ],
+            "summary": "\"use client\";. Contains 1 function: TrainerDashboard.",
+            "file_hash": "f79a5f85",
+            "_score": 18,
+            "_role": "code",
+            "_intent": "general"
+          }
+        ],
+        "graph_edges": [
+          {
+            "from": "src/app/submit/SubmitForm.tsx",
+            "to": "@fillout/react",
+            "rel": "imports"
+          },
+          {
+            "from": "src/app/submit/page.tsx",
+            "to": "./SubmitForm",
+            "rel": "imports"
+          },
+          {
+            "from": "src/app/submit/page.tsx",
+            "to": "SubmitForm",
+            "rel": "imports"
+          },
+          {
+            "from": "src/app/dashboard/page.tsx",
+            "to": "@/components/TrainerDashboard",
+            "rel": "imports"
+          },
+          {
+            "from": "src/app/dashboard/page.tsx",
+            "to": "TrainerDashboard",
+            "rel": "imports"
+          },
+          {
+            "from": "src/app/dashboard/page.tsx",
+            "to": "next",
+            "rel": "imports"
+          },
+          {
+            "from": "src/app/dashboard/page.tsx",
+            "to": "next/font/google",
+            "rel": "imports"
+          },
+          {
+            "from": "src/app/dashboard/page.tsx",
+            "to": "type",
+            "rel": "imports"
+          },
+          {
+            "from": "src/app/submit/page.tsx",
+            "to": "@/app/lib/hackclub",
+            "rel": "imports"
+          },
+          {
+            "from": "src/app/submit/page.tsx",
+            "to": "@/app/lib/session",
+            "rel": "imports"
+          },
+          {
+            "from": "src/app/submit/page.tsx",
+            "to": "next/headers",
+            "rel": "imports"
+          },
+          {
+            "from": "src/app/submit/page.tsx",
+            "to": "next/navigation",
+            "rel": "imports"
+          }
+        ],
+        "grep_hits": [],
+        "reuse_candidates": [],
+        "read_budget": {
+          "remaining_chars": 60000,
+          "reuse_gate_candidates": []
+        }
+      }
+    }
+  }
 }

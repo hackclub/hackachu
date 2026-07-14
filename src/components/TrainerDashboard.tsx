@@ -3,6 +3,7 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import styles from "./TrainerDashboard.module.css";
 import Image from "next/image";
+import SubmitForm from "./SubmitForm";
 import Gravity, { MatterBody } from "./fancy/physics/gravity";
 const TIPS = [
   "join #hackachu!",
@@ -219,12 +220,14 @@ export default function TrainerDashboard() {
             &gt; SUBMIT YOUR PROJECT
           </button>
         </div>
-
-        <div
+        {panelOpen && (
+           <div
           ref={panelRef}
-          className={`${styles.panel} ${panelOpen ? styles.panelOpen : ""}`}
+          className="min-h-[80vh]"
         >
-          <div className={styles.panelInner}>
+
+          <SubmitForm />
+          {/* <div className={styles.panelInner}>
             {!shipped ? (
               <div>
                 <h3 className={styles.panelTitle}>Log your catch</h3>
@@ -324,8 +327,10 @@ export default function TrainerDashboard() {
                 </button>
               </div>
             )}
-          </div>
+          </div> */}
         </div>
+        ) }
+       
 
         <div className={styles.prizes}>
           <h2 className={styles.prizesTitle}>
